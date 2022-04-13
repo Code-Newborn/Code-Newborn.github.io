@@ -1,0 +1,975 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ChenZhao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="了解直角坐标系在空间中的位姿变换，是为了方便获取物体在三维空间中的位置和姿态，对于已知两物体之间相对的位姿（例如旋转向量和平移向量），如何求得两物体间的变换过程（平移和旋转的过程）是非常重要的，或者说已知变换过程，求出变换后两物体相对的位姿。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对直角坐标系位姿变换及描述的理解">
+<meta property="og:url" content="https://www.cznewborn.com/%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8A%80%E6%9C%AF/%E5%AF%B9%E7%9B%B4%E8%A7%92%E5%9D%90%E6%A0%87%E7%B3%BB%E4%BD%8D%E5%A7%BF%E5%8F%98%E6%8D%A2%E5%8F%8A%E6%8F%8F%E8%BF%B0%E7%9A%84%E7%90%86%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Leia Blog">
+<meta property="og:description" content="了解直角坐标系在空间中的位姿变换，是为了方便获取物体在三维空间中的位置和姿态，对于已知两物体之间相对的位姿（例如旋转向量和平移向量），如何求得两物体间的变换过程（平移和旋转的过程）是非常重要的，或者说已知变换过程，求出变换后两物体相对的位姿。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/14/三维坐标系变换-093117.jpg">
+<meta property="article:published_time" content="2022-02-22T02:31:53.000Z">
+<meta property="article:modified_time" content="2022-04-13T02:10:51.993Z">
+<meta property="article:author" content="ChenZhao">
+<meta property="article:tag" content="位姿描述">
+<meta property="article:tag" content="坐标系变换">
+<meta property="article:tag" content="四元数">
+<meta property="article:tag" content="欧拉角">
+<meta property="article:tag" content="旋转向量">
+<meta property="article:tag" content="轴角">
+<meta property="article:tag" content="旋转矩阵">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/14/三维坐标系变换-093117.jpg">
+  
+  
+  <title>对直角坐标系位姿变换及描述的理解 - Leia Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.cznewborn.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":6},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","app_key":"LUzOsNy6KL0b2iyCMMlIstrJ","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Leia Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="对直角坐标系位姿变换及描述的理解">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-22 10:31" pubdate>
+        2022年2月22日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      13k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      106 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">对直角坐标系位姿变换及描述的理解</h1>
+            
+            <div class="markdown-body">
+              <h1
+id="对直角坐标系位姿变换及描述的理解">对直角坐标系位姿变换及描述的理解</h1>
+<p>  任一刚性物体在空间中的静止状态需要由位置及姿态唯一确定，位置描述涉及平移变换，而姿态描述涉及旋转变换，如何在空间中准确描述一物体的位姿，需要了解物体的相对于某个确定坐标系的位姿信息，如若知道多个坐标系之间的相对位姿信息，即可获得该物体相对于中间任意坐标系的位姿描述，这也是坐标系转换的前提。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/14/三维坐标系变换-093117.jpg" srcset="/img/loading.gif" lazyload alt="三维坐标系变换" style="zoom:50%;" /></p>
+<h2 id="一空间描述">一、空间描述</h2>
+<h3 id="位置描述平移变换"> (1)位置描述：平移变换</h3>
+<p>  若仅描述两点之间的相对位置，用向量描述即可。首先需确定参考坐标系，才能确定
+XYZ 各轴分量，其矩阵描述如下： <span class="math display">\[
+% MathType!MTEF!2!1!+-
+% feaahqart1ev3aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLn
+% hiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr
+% 4rNCHbWexLMBbXgBd9gzLbvyNv2CaeHbl7mZLdGeaGqiVu0Je9sqqr
+% pepC0xbbL8F4rqqrFfpeea0xe9Lq-Jc9vqaqpepm0xbba9pwe9Q8fs
+% 0-yqaqpepae9pg0FirpepeKkFr0xfr-xfr-xb9adbaqaaeGaciGaai
+% aabeqaamaabaabauaakeaacaWGqbGaeyypa0ZaamWaaqaabeqaaiaa
+% dchadaWgaaWcbaGaamiEaaqabaaakeaacaWGWbWaaSbaaSqaaiaadM
+% haaeqaaaGcbaGaamiCamaaBaaaleaacaWG6baabeaaaaGccaGLBbGa
+% ayzxaaaaaa!496E!
+P = \left[ \begin{array}{l}
+{p_x}\\
+{p_y}\\
+{p_z}
+\end{array} \right]
+\]</span></p>
+<h3 id="姿态描述旋转变换"> (2)姿态描述：旋转变换</h3>
+<p>  要想描述刚性物体在空间中的状态，仅有位置信息时不够的，还需要有姿态信息，即确定与物体固连的坐标系相对与参考坐标系的位姿。通常我们给出旋转矩阵来描述这种相对姿态信息，而这<strong>仅仅用于表示两者之间得到相对姿态，并不体现变换过程</strong>。</p>
+<p>  两坐标系<strong>{A}</strong>，<strong>{B}</strong>之间的旋转矩阵<strong><span
+class="math inline">\(_B^AR\)</span></strong>，所指的就是是<strong>{B}</strong>在<strong>{A}</strong>中的姿态描述：</p>
+<p>$$ 
+_B^AR = \left[ {\begin{array}{*{20}{c}}
+{{X_B}{X_A}}&{{Y_B}{X_A}}&{{Z_B}{X_A}}\\
+{{X_B}{Y_A}}&{{Y_B}{Y_A}}&{{Z_B}{Y_A}}\\
+{{X_B}{Z_A}}&{{Y_B}{Z_A}}&{{Z_B}{Z_A}}
+\end{array}} \right]
+$$ </p>
+<p>  <span class="math inline">\(X_A\)</span>，<span
+class="math inline">\(Y_A\)</span>，<span
+class="math inline">\(Z_A\)</span>为坐标系<b>{A}</b>三坐标轴上的正单位向量；<span
+class="math inline">\(X_B\)</span>，<span
+class="math inline">\(Y_B\)</span>，<span
+class="math inline">\(Z_B\)</span>为坐标系<b>{B}</b>三坐标轴上的正单位向量。我们可以清晰看出旋转矩阵是由<b>{B}</b>各主轴单位向量分别在<b>{A}</b>中各主轴的投影（模长均为1）。</p>
+<p>  旋转矩阵具有一些性质例如：<strong>旋转矩阵是正交阵，即旋转矩阵的逆等于旋转矩阵的转置</strong>
+$$ 
+{R^{ - 1}} = {R^T}
+$$ </p>
+<h3 id="坐标系描述"> (3)坐标系描述</h3>
+<p>  若想完全表示两坐标系的相对状态，需要位置以及姿态信息，所以我们将两者组合用于准确描述两坐标系之间的相对位姿，例如<strong>{B}</strong>在<strong>{A}</strong>中的位姿表示。
+$$ 
+^A\{ B\}  = \{ {}_B^AR,{}^AP_{BORG}\}
+$$ </p>
+<h4 id="混合变换">  1.混合变换</h4>
+<p>  如下图，描述坐标系<strong>{C}</strong>在坐标系<strong>{A}</strong>下的位姿</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/Typora/typora-user-images/image-20220225112101330-20220225112104.png" srcset="/img/loading.gif" lazyload alt="混合坐标系" style="zoom:50%;" /></p>
+<p>  坐标系<strong>{C}</strong>中的<strong>P向量</strong>位姿描述转换到坐标系<strong>{A}</strong>中的位姿描述：（<span
+class="math inline">\({}_B^AT\)</span>为<strong>{B}</strong>在<strong>{A}</strong>中的变换描述，<span
+class="math inline">\({}_C^BT\)</span>为<strong>{C}</strong>在<strong>{B}</strong>中的变换描述）,列出下列式子：</p>
+<p>$$ 
+\left\{ \begin{array}{l}
+{}^BP = {}_C^BT \cdot {}^CP\\
+{}^AP = {}_B^AT \cdot {}^BP
+\end{array} \right. \Leftrightarrow {}^AP = {}_B^AT \cdot {}_C^BT \cdot {}^CP \Rightarrow def:{}_C^AT = {}_B^AT \cdot {}_C^BT
+$$ </p>
+<p>  求得坐标系<strong>{C}</strong>中的向量转换到坐标系<strong>{A}</strong>中的表示，<span
+class="math inline">\({}^AP = {}_C^AT \cdot {}^CP\)</span> $$
+
+{}_C^AT = \left( {\begin{array}{*{20}{c}}
+{{}_B^AR \cdot {}_{\rm{C}}^BR}&{{}_B^AR \cdot {}^B{P_{CORG}} + {}^A{P_{BORG}}}\\
+{\vec 0}&1
+\end{array}} \right)
+$$ </p>
+<h4 id="逆变换">  2.逆变换</h4>
+<p>  若已知<strong>{B}</strong>相对于<strong>{A}</strong>的变换<strong><span
+class="math inline">\({}_B^AT\)</span></strong>，要求<strong>{A}</strong>相对于<strong>{B}</strong>的变换<strong><span
+class="math inline">\({}_A^BT\)</span></strong>，即求矩阵的逆。直接的办法就是对转换矩阵求逆，也可以利用变换的性质进行推导：</p>
+<p>  旋转矩阵：<span class="math inline">\({}_A^BR =
+{}_B^A{R^T}\)</span></p>
+<p>  平移矩阵：<span class="math inline">\({}^B{P_{AORG}} = -
+{}_A^B{R^A}{P_{BORG}}\)</span></p>
+<p>  变换矩阵：<span class="math inline">\({}^B\{ A\} = \{ {}_B^A{R^T},
+- {}_A^B{R^A} \cdot {P_{BORG}}\}\)</span></p>
+<h3
+id="姿态的其他描述方法欧拉角四元数旋转向量或称为轴角"> (4)姿态的其他描述方法(欧拉角、四元数、旋转向量（或称为轴角）)</h3>
+<h4 id="欧拉角">  1.欧拉角</h4>
+<p>  欧拉角的描述如下图所示，表示两个物体间的相对姿态(通过三个角度<span
+class="math inline">\(\alpha\)</span>、<span
+class="math inline">\(\beta\)</span>、<span
+class="math inline">\(\gamma\)</span>描述姿态)，一般以自身坐标进行旋转的角度称为欧拉角，与以固定参考系进行旋转的角度RPY角有所不同。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/19/RPY角与欧拉角-121534.png" srcset="/img/loading.gif" lazyload alt="RPY角与欧拉角" style="zoom:80%;" /></p>
+<h5 id="a.欧拉角的旋转轴和旋转顺序">   a.欧拉角的旋转轴和旋转顺序</h5>
+<p>  表示旋转的欧拉角旋转顺序有12种：</p>
+<p>  Proper/classic Euler angle：<strong>z-x-z，x-y-x，y-z-y，z-y-z,
+x-z-x，y-x-y</strong></p>
+<p>  Tait-Bryan
+angle（也称作RPY角）：<strong>x-y-z，y-z-x，z-x-y，x-z-y，z-y-x，y-x-z</strong></p>
+<p>  Proper/classic Euler
+angle说明这些角度并不是独立的，例如当下面的旋转组合：先绕x轴旋转90度，再绕y轴旋转90度，最后绕x轴旋转-90度，这一系列组合得到的效果与只绕z轴旋转-90度是一样的。也就是说我们<strong>仅仅在2个平面上进行旋转</strong>（其中一个平面上必须进行两次旋转）<strong>同样可以得到任意的三维旋转！</strong></p>
+<h5 id="b.欧拉角内旋和外旋">   b.欧拉角内旋和外旋</h5>
+<p>  内旋指绕着动坐标系主轴旋转，外旋指绕着静坐标系主轴旋转，<strong>内旋右乘，外旋左乘</strong>。欧拉角的表述用于确定姿态变换的过程，不同的变换过程确定不同的绕轴旋转顺序以及角度。下列表给出欧拉角的旋转顺序及角度计算</p>
+<center class="half">
+<img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/14/顺序欧拉角-旋转矩阵-092741.png" srcset="/img/loading.gif" lazyload width="1000" alt="左手系下欧拉角与旋转矩阵"/>
+</center>
+<h4 id="四元数">  2.四元数</h4>
+<p>  一般情况下，两个复数相乘<span class="math inline">\({Z_1}
+\cdot{Z_2}\)</span> ，其实就是旋转+伸缩两种变换,
+也就是两个复数的模相乘（伸缩），
+辐角相加（旋转），而为了探究三维空间中的旋转变换，爱尔兰数学家哈密顿利用复数发明了四元数，用于描述旋转变换。四元数并不是生来为了解决三维旋转，而是它的性质非常有利于表达旋转信息。四元数相比其他描述形式的优点：</p>
+<ul>
+<li>解决万向节死锁（Gimbal Lock）问题</li>
+<li>仅需存储4个浮点数，相比矩阵更加轻量</li>
+<li>四元数无论是求逆、串联等操作，相比矩阵更加高效</li>
+</ul>
+<center class="half">
+<img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/14/两复数相乘-092520.gif" srcset="/img/loading.gif" lazyload width="400" alt="复数相乘"/>
+</center>
+<h5 id="a.四元数组成">   a.四元数组成</h5>
+<p>  四元数从表达意义上理解和轴角相差无几，也是使用一个4个量表示绕此转轴的旋转角度。四元数由1个实数和3个虚数组成，其表达为<span
+class="math inline">\(\left[{ \begin{array}
+ &amp;  &amp; 
+&amp; w \end{array} } \right]\)</span>，其中<span
+class="math inline">\({q_1} = x\sin \frac{\theta }{2}\)</span>，<span
+class="math inline">\({q_2} = y\sin \frac{\theta }{2}\)</span>，<span
+class="math inline">\({q_3} = z\sin \frac{\theta }{2}\)</span>，<span
+class="math inline">\(w = \cos \frac{\theta
+}{2}\)</span>。四元数表达中的<span
+class="math inline">\(x,y,z\)</span>代表旋转轴单位矢量，<span
+class="math inline">\(\theta\)</span>代表绕旋转轴旋转的角度大小，并且<span
+class="math inline">\({i^2} = {j^2} = {k^2} = i \cdot j \cdot k = -
+1\)</span>，这便是四元数的常规表达形式</p>
+<p><span class="math display">\[
+q = w + \vec n = w + {q_1}i + {q_2}j + {q_3}k
+\]</span>
+  四元数中的每个数都是经过“处理”的轴和角，轴角描述的四个量并不是一个空间下的东西，首先<span
+class="math inline">\(\left[{ \begin{array} x &amp; y
+&amp; z \end{array} } \right]\)</span>是一个3维坐标下的矢量，而<span
+class="math inline">\(\theta\)</span>则是极坐标下的角度，简单的将他们组合到一起并不能保证他们插值结果的稳定性，因为他们无法归一化，所以不能保证最终插值后得到的矢量长度（经过旋转变换后两点之间的距离）相等，而四元数在是在一个统一的4维空间中，方便归一化来插值，又能方便的得到轴、角这样用于3D信息数据，所以用四元数再合适不过了。相比于矩阵，四元素也只要存储4个浮点数，优势很明显。</p>
+<h5 id="b.四元数使用">   b.四元数使用</h5>
+<p>  四元数的共轭：<span class="math inline">\({q^*} = w - \vec n = w -
+{q_1}i - {q_2}j - {q_3}k\)</span></p>
+<p>  四元数的模长：<span class="math display">\[n(q) = \sqrt { q \cdot
+{q^*} }  = \sqrt { {w^2} + {q_1}^2 + {q_2}^2 + {q_3}^2 }\]</span></p>
+<p>  四元数的逆：<span class="math inline">\({q^{ - 1} } = \frac{ {
+{q^*} } }{ {\left\| q \right\|} }\)</span></p>
+<p>  单位四元数：<span
+class="math inline">\(n(q)=1\)</span>，逆等于其共轭<span
+class="math inline">\({ q^{ - 1} }={q^*}\)</span></p>
+<p>  以 <span class="math inline">\(u(\left[{ \begin{array}{ {c} } x
+&amp; y &amp; z \end{array} } \right])\)</span> 为轴，将 <span
+class="math inline">\(v\)</span> 旋转 <span
+class="math inline">\(\theta\)</span>
+度（右手定则），得到的新向量为<span class="math inline">\(v&#39; = q
+\cdot v \cdot {q^{ - 1}}\)</span></p>
+<h4 id="旋转向量">  3.旋转向量</h4>
+<p>  旋转向量也被称为轴角，其表达<span class="math inline">\(\left[{
+\begin{array} x &amp; y &amp; z &amp; \theta
+\end{array} } \right]\)</span>中<span class="math inline">\(\left[{
+\begin{array} x &amp; y &amp; z \end{array} }
+\right]\)</span>代表旋转轴单位矢量（即<span
+class="math inline">\(x^2+y^2+z^2=1\)</span>），而<span
+class="math inline">\(\theta\)</span>代表绕着旋转轴旋转的角度大小，四元数的组成意义虽和轴角相同，但是其表达形式却不相同。利用轴角进行姿态变换的方法称为轴角法，其具有两个优点也有两个缺点：</p>
+<p>  优点1：同轴的两次旋转可以直接相加来等效为一次旋转；</p>
+<p>  优点2：定义简单，相对直观；</p>
+<p>  缺点1：轴角法表示不唯一，当旋转角度是0的时候，旋转轴可以是任意的；</p>
+<p>  缺点2：两次任意的连续旋转无法合成；</p>
+<h3
+id="欧拉角旋转矩阵四元数旋转向量之间的转换关系左手系还是右手系一般计算机中采用左手系数学采用右手系从应用角度出发以左手系为例"> (5)欧拉角、旋转矩阵、四元数、旋转向量之间的转换关系（左手系还是右手系？一般计算机中采用左手系，数学采用右手系，从应用角度出发以左手系为例）</h3>
+<h4 id="先导知识">  先导知识</h4>
+<p>  有一些几何变换的推导文章，公式都是正确的，但是很多时候可能会很迷惑，因为他们的公式中的符号可能是相反的。在我们初识三维坐标系时，大都是右手坐标系，但是有些理论是以左手笛卡尔坐标系为基础，所以时常需要进行左手系与右手系的相互转换。</p>
+<center class="half">
+<img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/18/左手系与右手系-184953.png" srcset="/img/loading.gif" lazyload width="400" alt="左手系与右手系"/>
+</center>
+<p>  不管是左手系转右手系还是右手系转左手系，我们都需要这样一个转换矩阵：
+$$ 
+Z{\rm{ = }}\left[ {\begin{array}{*{20}{c}}
+1&0&0\\
+0&1&0\\
+0&0&{ - 1}
+\end{array}} \right]
+$$ </p>
+<h5 id="a.左手系转右手系">   a.左手系转右手系</h5>
+<p>  对于向量 <span
+class="math inline">\(T_左\)</span>，将其从左手坐标系转换到右手坐标系：
+$$ 
+{T_右{{\rm{ }}}} = Z \cdot {T_左{{\rm{ }}}} = \left[ {\begin{array}{*{20}{c}}1&0&0\\0&1&0\\0&0&{ - 1}\end{array}} \right]\left[ {\begin{array}{*{20}{l}}{{x_左{{\rm{ }}}}}\\{{y_左{{\rm{ }}}}}\\{{z_左{{\rm{ }}}}}\end{array}} \right] = \left[ {\begin{array}{*{20}{l}}{{x_右{{\rm{ }}}}}\\{{y_右{{\rm{ }}}}}\\{{z_右{{\rm{ }}}}}\end{array}} \right]
+$$ </p>
+<p>  对于旋转矩阵 <span
+class="math inline">\(R_左\)</span>，将其从左手坐标系转换到右手坐标系：
+$$ 
+{R_右}{\rm{ = }}Z \cdot {R_左} \cdot Z
+$$ </p>
+<h5 id="b.右手系转左手系">   b.右手系转左手系</h5>
+<p>  对于向量 <span
+class="math inline">\(T_右\)</span>，将其从右手坐标系转换到左手坐标系：
+$$ 
+{T_右{{\rm{ }}}} = Z \cdot {T_左{{\rm{ }}}} = \left[ {\begin{array}{*{20}{c}}1&0&0\\0&1&0\\0&0&{ - 1}\end{array}} \right]\left[ {\begin{array}{*{20}{l}}{{x_{{\rm{ }}}}}\\{{y_{{\rm{ }}}}}\\{{z_{{\rm{ }}}}}\end{array}} \right] = \left[ {\begin{array}{*{20}{l}}{{x_{{\rm{ }}}}}\\{{y_{{\rm{ }}}}}\\{{z_{{\rm{ }}}}}\end{array}} \right]
+$$ </p>
+<p>  对于旋转矩阵 <span
+class="math inline">\(R_右\)</span>，将其从右手坐标系转换到左手坐标系：
+$$ 
+{R_左} = {Z^{{\rm{ - 1}}}} \cdot {R_右} \cdot {Z^{{\rm{ - 1}}}} = Z \cdot {R_右} \cdot Z
+$$ </p>
+<p>  <strong>左手系用左手确定正方向，右手系用右手确定正方向。
+</strong></p>
+<h4 id="欧拉角旋转矩阵">  1.欧拉角↔︎旋转矩阵</h4>
+<h5 id="a.欧拉角旋转矩阵">   a.欧拉角→旋转矩阵</h5>
+<p>   以左手系下的单轴旋转矩阵获得 <span
+class="math inline">\(ZYX\)</span> 顺序欧拉角旋转矩阵 $$
+
+{R_x}\left( \alpha  \right) = \left[ {\begin{array}{*{20}{c}}
+1&0&0\\
+0&{\cos \alpha }&{ - \sin \alpha }\\
+0&{\sin \alpha }&{\cos \alpha }
+\end{array}} \right]\begin{array}{*{20}{c}}
+{}&{}
+\end{array}{R_y}\left( \beta  \right) = \left[ {\begin{array}{*{20}{c}}
+{\cos \beta }&0&{\sin \beta }\\
+0&1&0\\
+{ - \sin \beta }&0&{\cos \beta }
+\end{array}} \right]\begin{array}{*{20}{c}}
+{}&{}
+\end{array}{R_z}\left( \gamma  \right) = \left[ {\begin{array}{*{20}{c}}
+{\cos \alpha }&{ - \sin \alpha }&0\\
+{\sin \alpha }&{\cos \alpha }&0\\
+0&0&1
+\end{array}} \right]
+$$ </p>
+<p>$$ 
+R = {R_z}\left( \gamma  \right){R_y}\left( \beta  \right){R_x}\left( \alpha  \right) = \left[ {\begin{array}{*{20}{c}}
+{\cos \beta \cos \gamma }&{\sin \alpha \sin \beta \cos \gamma  - \cos \alpha \sin \gamma }&{\cos \alpha \sin \beta \cos \gamma  + \sin \alpha \sin \gamma }\\
+{\cos \beta \sin \gamma }&{\sin \alpha \sin \beta \sin \gamma  + \cos \alpha \cos \gamma }&{\cos \alpha \sin \beta \sin \gamma  - \sin \alpha \sin \gamma }\\
+{ - \sin \beta }&{\sin \alpha \cos \beta }&{\cos \alpha \cos \beta }
+\end{array}} \right]
+$$ </p>
+<h5 id="b.旋转矩阵欧拉角">   b.旋转矩阵→欧拉角</h5>
+<p>   利用欧拉角转旋转矩阵求反解： $$ 
+R = \left[ {\begin{array}{*{20}{c}}
+{\cos \beta \cos \gamma }&{\sin \alpha \sin \beta \cos \gamma  - \cos \alpha \sin \gamma }&{\cos \alpha \sin \beta \cos \gamma  + \sin \alpha \sin \gamma }\\
+{\cos \beta \sin \gamma }&{\sin \alpha \sin \beta \sin \gamma  + \cos \alpha \cos \gamma }&{\cos \alpha \sin \beta \sin \gamma  - \sin \alpha \sin \gamma }\\
+{ - \sin \beta }&{\sin \alpha \cos \beta }&{\cos \alpha \cos \beta }
+\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
+{{R_{11}}}&{{R_{12}}}&{{R_{13}}}\\
+{{R_{21}}}&{{R_{22}}}&{{R_{23}}}\\
+{{R_{31}}}&{{R_{32}}}&{{R_{33}}}
+\end{array}} \right]
+$$ </p>
+<p>   观察旋转矩阵各元素特点求解 <span
+class="math inline">\(ZYX\)</span> 顺序下各轴旋转角度<span
+class="math inline">\(\alpha，\beta，\gamma\)</span>，如下所示，其他旋转顺序的欧拉角可同理求得。</p>
+<p>$$ 
+\begin{array}{c}
+\alpha  = \arctan \left( {\frac{{{R_{32}}}}{{{R_{33}}}}} \right)\\
+\beta  = \arctan \left( {\frac{{ - {R_{31}}}}{{\sqrt {R_{32}^2 + R_{33}^2} }}} \right)\\
+\gamma  = \arctan \left( {\frac{{{R_{21}}}}{{{R_{11}}}}} \right)
+\end{array}
+$$ </p>
+<h4 id="四元数旋转矩阵">  2.四元数↔︎旋转矩阵</h4>
+<h5 id="a.四元数旋转矩阵">   a.四元数→旋转矩阵</h5>
+<p>   对于三维坐标的旋转，可以通过四元数乘法直接操作，与旋转矩阵操作可以等价，但是表示方式更加紧凑，计算量也可以小一些。</p>
+<p>   若已知四元数 <span class="math display">\[
+q = w + \vec n = w + {q_1}i + {q_2}j + {q_3}k
+\]</span>    利用<a
+target="_blank" rel="noopener" href="http://mathworld.wolfram.com/RodriguesRotationFormula.html">Rodrigues公式</a>(公式为右手系公式)，将<strong>右手系罗德里格公式</strong>中的元素按<span
+class="math inline">\((1 - \cos
+\theta)\)</span>在前的的格式进行整理后，对非对角线元素的加减号取反可得<strong>左手系罗德里格公式</strong>，最终可以由四元数求得左手系下旋转矩阵：
+$$ 
+R = \left[ {\begin{array}{*{20}{c}}
+{\omega _x^2(1 - \cos \theta ) + \cos \theta }&{{\omega _x}{\omega _y}(1 - \cos \theta ) + {\omega _z}\sin \theta }&{{\omega _x}{\omega _z}(1 - \cos \theta ) - {\omega _y}\sin \theta }\\
+{{\omega _x}{\omega _y}(1 - \cos \theta ) - {\omega _z}\sin \theta }&{\omega _y^2(1 - \cos \theta ) + \cos \theta }&{{\omega _y}{\omega _z}(1 - \cos \theta ) + {\omega _x}\sin \theta }\\
+{{\omega _x}{\omega _z}(1 - \cos \theta ) + {\omega _y}\sin \theta }&{{\omega _y}{\omega _z}(1 - \cos \theta ) - {\omega _x}\sin \theta }&{\omega _z^2(1 - \cos \theta ) + \cos \theta }
+\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
+{1 - 2q_2^2 - 2q_3^2}&{2{q_1}{q_2} + 2\omega {q_3}}&{2{q_1}{q_3} - 2\omega {q_2}}\\
+{2{q_1}{q_2} - 2\omega {q_3}}&{1 - 2q_1^2 - 2q_3^2}&{2{q_2}{q_3} + 2\omega {q_1}}\\
+{2{q_1}{q_3} + 2\omega {q_2}}&{2{q_2}{q_3} - 2\omega {q_1}}&{1 - 2q_1^2 - 2q_2^2}
+\end{array}} \right]
+$$     其中<span class="math inline">\(\omega
+_x=x\)</span>，<span class="math inline">\(\omega _y=y\)</span>，<span
+class="math inline">\(\omega _z=z\)</span>，<span
+class="math inline">\({q_1} = x\sin \frac{\theta }{2}\)</span>，<span
+class="math inline">\({q_2} = y\sin \frac{\theta }{2}\)</span>，<span
+class="math inline">\({q_3} = z\sin \frac{\theta }{2}\)</span>，<span
+class="math inline">\(w = \cos \frac{\theta }{2}\)</span>，<span
+class="math inline">\(\theta\)</span>为转动角度。</p>
+<h5 id="b.旋转矩阵四元数">   b.旋转矩阵→四元数</h5>
+<p>   由上述的旋转矩阵R，利用矩阵中元素可反向计算得出以下4组计算式 $$
+
+\begin{array}{l}
+w = \frac{{\sqrt {{R_{11}} + {R_{22}} + {R_{33}} + 1} }}{2} \Rightarrow q_1 = \frac{{{R_{23}} - {R_{32}}}}{{4w}}\;\;\;{\mkern 1mu} q_2 = \frac{{{R_{31}} - {R_{13}}}}{{4w}}\;\;\;{\mkern 1mu} q_3 = \frac{{{R_{12}} - {R_{21}}}}{{4w}}\\
+q_1 = \frac{{\sqrt {{R_{11}} - {R_{22}} - {R_{33}} + 1} }}{2} \Rightarrow w = \frac{{{R_{23}} - {R_{32}}}}{{4q_1}}\;\;\;{\mkern 1mu} q_2 = \frac{{{R_{12}} + {R_{21}}}}{{4q_1}}\;\;\;{\mkern 1mu} q_3 = \frac{{{R_{31}} + {R_{13}}}}{{4q_1}}\\
+q_2 = \frac{{\sqrt { - {R_{11}} + {R_{22}} - {R_{33}} + 1} }}{2} \Rightarrow w = \frac{{{R_{31}} - {R_{13}}}}{{4q_2}}\;\;\;{\mkern 1mu} q_1 = \frac{{{R_{12}} + {R_{21}}}}{{4q_2}}\;\;\;{\mkern 1mu} q_3 = \frac{{{R_{23}} + {R_{32}}}}{{4q_2}}\\
+q_3 = \frac{{\sqrt { - {R_{11}} - {R_{22}} + {R_{33}} + 1} }}{2} \Rightarrow w = \frac{{{R_{12}} - {R_{21}}}}{{4q_3}}\;\;\;{\mkern 1mu} q_1 = \frac{{{R_{31}} + {R_{13}}}}{{4q_3}}\;\;\;{\mkern 1mu} q_2 = \frac{{{R_{23}} + {R_{32}}}}{{4q_3}}
+\end{array}
+$$     那么应该选以上4种的哪一种呢？有学者建议首先判断 <span
+class="math inline">\(w,q_1,q_2,q_3\)</span>中哪一个最大，则先计算计算该元素，然后再通过计算方式二中公式计算其他三个分量。因为如果
+<span
+class="math inline">\(w=0\)</span>，除法就没有意义(分母不能为0)；如果<span
+class="math inline">\(w\)</span>非常小，将会出现数值不稳定。为什么这里可以不用考虑开方取正根还是负根的问题？因为此处用到了负四元数的性质，那就是
+<span class="math inline">\(q(w,q_1,q_2,q_3)\)</span>和 <span
+class="math inline">\(-q(-w,-q_1,-q_2,-q_3)\)</span>
+代表相同的旋转。所以只要保证他们的符号是相对一致即可，并且负号并不影响结果。</p>
+<h4 id="旋转向量轴角旋转矩阵">  3.旋转向量（轴角）↔︎旋转矩阵</h4>
+<h5 id="a.旋转向量轴角旋转矩阵">   a.旋转向量（轴角）→旋转矩阵</h5>
+<p>   假设有旋转向量(轴角)<span class="math inline">\(r=\left[{
+\begin{array} x &amp; y &amp; z &amp; \theta
+\end{array} } \right]\)</span>中，旋转轴单位向量<span
+class="math inline">\(\left[{ \begin{array} x &amp;
+y &amp; z \end{array} } \right]\)</span>，旋转角度为<span
+class="math inline">\(\theta\)</span>，转换后的旋转矩阵为<span
+class="math inline">\(R\)</span>，那么<span
+class="math inline">\(r\)</span>到<span
+class="math inline">\(R\)</span>的转换其实可以参照四元数转旋转矩阵： $$
+
+R = \left[ {\begin{array}{*{20}{c}}
+{x^2(1 - \cos \theta ) + \cos \theta }&{{x}{y}(1 - \cos \theta ) + {z}\sin \theta }&{{x}{z}(1 - \cos \theta ) - {y}\sin \theta }\\
+{{x}{y}(1 - \cos \theta ) - {z}\sin \theta }&{y^2(1 - \cos \theta ) + \cos \theta }&{{y}{z}(1 - \cos \theta ) + {x}\sin \theta }\\
+{{x}{z}(1 - \cos \theta ) + {y}\sin \theta }&{{y}{z}(1 - \cos \theta ) - {x}\sin \theta }&{z^2(1 - \cos \theta ) + \cos \theta }
+\end{array}} \right]
+$$ </p>
+<h5 id="b.旋转矩阵旋转向量轴角">   b.旋转矩阵→旋转向量（轴角）</h5>
+<p>   根据上述旋转矩阵元素排列特点，可得出下述计算式： $$ 
+\left[ {\begin{array}{*{20}{c}}
+0&{2z\sin \theta }&{ - 2y\sin \theta }\\
+{ - 2z\sin \theta }&0&{2x\sin \theta }\\
+{2y\sin \theta }&{ - 2x\sin \theta }&0
+\end{array}} \right] = R - {R^T}
+$$ 
+   根据矩阵各元素对应相等，可求解<span
+class="math inline">\(x,y,z,\theta\)</span>。</p>
+<h4 id="欧拉角四元数">  4.欧拉角↔︎四元数</h4>
+<h5 id="a.欧拉角四元数">   a.欧拉角→四元数</h5>
+<p>   欧拉角构造四元数，跟欧拉角构造旋转矩阵一样，就是把三个基础旋转组合在一起，将<span
+class="math inline">\(ZYX\)</span>欧拉角（或<span
+class="math inline">\(RPY\)</span>角：绕固定坐标系的<span
+class="math inline">\(XYZ\)</span>依次旋转<span
+class="math inline">\(\alpha,\beta,\gamma\)</span>角）转换为四元数： $$
+
+q = \left[ {\begin{array}{*{20}{c}}
+{\cos \frac{\gamma }{2}}\\
+0\\
+0\\
+{\sin \frac{\gamma }{2}}
+\end{array}} \right]\left[ {\begin{array}{*{20}{c}}
+{\cos \frac{\beta }{2}}\\
+0\\
+{\sin \frac{\beta }{2}}\\
+0
+\end{array}} \right]\left[ {\begin{array}{*{20}{c}}
+{\cos \frac{\alpha }{2}}\\
+{\sin \frac{\alpha }{2}}\\
+0\\
+0
+\end{array}} \right] = \left[ {\begin{array}{*{20}{l}}
+{\cos \frac{\alpha }{2}\cos \frac{\beta }{2}\cos \frac{\gamma }{2} + \sin \frac{\alpha }{2}\sin \frac{\beta }{2}\sin \frac{\gamma }{2}}\\
+{\sin \frac{\alpha }{2}\cos \frac{\beta }{2}\cos \frac{\gamma }{2} - \cos \frac{\alpha }{2}\sin \frac{\beta }{2}\sin \frac{\gamma }{2}}\\
+{\cos \frac{\alpha }{2}\sin \frac{\beta }{2}\cos \frac{\gamma }{2} + \sin \frac{\alpha }{2}\cos \frac{\beta }{2}\sin \frac{\gamma }{2}}\\
+{\cos \frac{\alpha }{2}\cos \frac{\beta }{2}\sin \frac{\gamma }{2} - \sin \frac{\alpha }{2}\sin \frac{\beta }{2}\cos \frac{\gamma }{2}}
+\end{array}} \right]
+$$ </p>
+<h5 id="b.四元数欧拉角">   b.四元数→欧拉角</h5>
+<p>   根据上述欧拉角转四元数公式可以求出逆解，即由四元数<span
+class="math inline">\(q=(\omega,q1,q2,q3)\)</span>到欧拉角<span
+class="math inline">\(ZYX(\gamma,\beta,\alpha)\)</span>的转换为： $$
+
+\left[ {\begin{array}{*{20}{c}}
+\alpha \\
+\beta \\
+\gamma 
+\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
+{\arctan \frac{{2\left( {{q_0}{q_1} + {q_2}{q_3}} \right)}}{{1 - 2\left( {q_1^2 + q_2^2} \right)}}}\\
+{\arcsin \left( {2\left( {{q_0}{q_2} - {q_1}{q_3}} \right)} \right)}\\
+{\arctan \frac{{2\left( {{q_0}{q_3} + {q_1}{q_2}} \right)}}{{1 - 2\left( {q_2^2 + q_3^2} \right)}}}
+\end{array}} \right]
+$$ </p>
+<p>   由于<span class="math inline">\(arctan\)</span>和<span
+class="math inline">\(arcsin\)</span>的取值范围在<span
+class="math inline">\(\left( { - \frac{\pi }{2},\frac{\pi }{2}}
+\right)\)</span>之间，只有180°，而绕某个轴旋转时范围是360°，因此采用计算机计算时要使用<span
+class="math inline">\(atan2\)</span>函数代替<span
+class="math inline">\(arctan\)</span>函数： $$ 
+\left[ {\begin{array}{*{20}{c}}
+\alpha \\
+\beta \\
+\gamma 
+\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
+{{\mathop{\rm atan}\nolimits} 2\left( {2\left( {{q_0}{q_1} + {q_2}{q_3}} \right),1 - 2\left( {q_1^2 + q_2^2} \right)} \right)}\\
+{\arcsin \left( {2\left( {{q_0}{q_2} - {q_1}{q_3}} \right)} \right)}\\
+{{\mathop{\rm atan}\nolimits} 2\left( {2\left( {{q_0}{q_3} + {q_1}{q_2}} \right),1 - 2\left( {q_2^2 + q_3^2} \right)} \right)}
+\end{array}} \right]
+$$ 
+   四元数转欧拉角计算过程中可能会出现旋转自由度丢失的情况，例如俯仰角为90度时，会出现<span
+class="math inline">\(atan(0,0)\)</span>无法计算，所以需要对具体情况进行阈值判断。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8A%80%E6%9C%AF/">机器人技术</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BD%8D%E5%A7%BF%E6%8F%8F%E8%BF%B0/">位姿描述</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%9D%90%E6%A0%87%E7%B3%BB%E5%8F%98%E6%8D%A2/">坐标系变换</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%9B%9B%E5%85%83%E6%95%B0/">四元数</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%AC%A7%E6%8B%89%E8%A7%92/">欧拉角</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%97%8B%E8%BD%AC%E5%90%91%E9%87%8F/">旋转向量</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%BD%B4%E8%A7%92/">轴角</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5/">旋转矩阵</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/Opencv/VS2019/%E5%88%A9%E7%94%A8Cmake%E9%80%9A%E8%BF%87Visual-Studio2019%E7%BC%96%E8%AF%91Opencv4-1-0-contrib-nonfree/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">利用Cmake通过Visual Studio2019编译Opencv4.1.0_contrib_nonfree</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/Hexo%E5%8D%9A%E5%AE%A2/Hexo%E4%B8%AD%E4%B8%BB%E9%A2%98NexT%E7%9A%84%E7%BE%8E%E5%8C%96%E6%8A%80%E5%B7%A7/">
+                        <span class="hidden-mobile">Hexo中主题NexT的美化技巧</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","appKey":"LUzOsNy6KL0b2iyCMMlIstrJ","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

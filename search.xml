@@ -1,0 +1,834 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Qt中的自适应布局策略</title>
+    <url>/%E6%AF%8D%E5%88%86%E7%B1%BB2/%E5%AD%90%E5%88%86%E7%B1%BB3/Qt%E4%B8%AD%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E7%AD%96%E7%95%A5/</url>
+    <content><![CDATA[<h1 id="qt控件在窗体中的自适应布局">Qt控件在窗体中的自适应布局</h1>
+<p>  为了Qt窗体在缩放的时候能够保证控件能够自适应地随着窗体进行尺寸变化，我们需要在窗口设计过程中考虑，窗体内控件的布局方式，以达到美观的效果。</p>
+<h2 id="一qt布局layout">一、Qt布局layout</h2>
+<p>  Vertical Layout（垂直布局）</p>
+<p>  Horizontal Layout（水平布局）</p>
+<p>  Grid Layout（栅格布局）</p>
+<p>  Form Layout（窗体布局）</p>
+<p>  以Horizontal Layout（水平布局）为例，进行相关参数讲解</p>
+<h3 id="外边距设置">(1)外边距设置</h3>
+<p>外边距包括layoutLeftMargin（左边距）、layoutTopMargin（上边距）、layoutRightMargin（右边距）、layoutBottomMargin（底边距），设置左边距20上边距20，效果如下所示。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/04/10/水平布局Margin-145219.png" alt="水平布局Margin" style="zoom:100%;" /></p>
+<h3 id="间隔设置">(2)间隔设置</h3>
+<p>间隔设置layoutSpacing是指布局当中控件之间的间隔大小，设置间隔为50，效果如下所示。</p>
+<h3 id="拉伸设置">(3)拉伸设置</h3>
+<p>拉伸设置layoutStretch是指控件在布局中所占比例，各控件依照此比例进行缩放显示，但也不能无条件地拉伸压缩，这还与控件所设置的sizepolicy策略有关，拉伸因子默认为（0，0，0，0），设置拉伸因子为（1，2，3，4），效果如下。</p>
+<h3 id="section">(4)</h3>
+]]></content>
+      <categories>
+        <category>母分类1</category>
+        <category>子分类1</category>
+        <category>子子分类1</category>
+        <category>子分类2</category>
+        <category>母分类2</category>
+        <category>子分类3</category>
+      </categories>
+      <tags>
+        <tag>tag1</tag>
+        <tag>tag2</tag>
+        <tag>tag3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Matlab符号对象与符号运算</title>
+    <url>/Matlab/%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97/Matlab%E7%AC%A6%E5%8F%B7%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97/</url>
+    <content><![CDATA[<h1 id="matlab符号对象与符号运算">Matlab符号对象与符号运算</h1>
+<p> 符号对象(Symbolic
+Objects)不同于普通的数值计算)是Matlab中的一种特殊数据类型，它可以用来表示符号变量、表达式以及矩阵，利用符号对象能够在不考虑符号所对应的具体数值的情况下能够进行代数分析和符号计算(symbolic
+math operations)，例如解代数方程、微分方程、进行矩阵运算等。</p>
+<center class="half">
+<img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/28/MATLAB-194451.jpg" width="400" alt="Matlab">
+</center>
+<h2 id="一符号对象的定义">一、符号对象的定义</h2>
+<p>  在matlab中，使用 sym 或者 syms 语句可以直接定义符号变量，一般会使用
+sym 进行定义，因为其适用范围比syms广。</p>
+<h3 id="sym函数">(1)sym函数</h3>
+<p>  对于sym函数，sym函数用于建立单个符号对象，其常用调用格式为：符号对象名=sym(A)。</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><code class="hljs matlab">x=sym(<span class="hljs-string">'x'</span>); y=sym(<span class="hljs-string">'y'</span>); z=sym(<span class="hljs-string">'z'</span>)<br></code></pre></td></tr></table></figure>
+<p>  不加单引号：A是数值常量、数值矩阵或数值表达式，此时符号对象为一个符号常量；</p>
+<p>  加单引号：A是变量名，这时符号对象为一个符号变量。</p>
+<h3 id="syms命令">(2)syms命令</h3>
+<p>  syms命令可以一次定义多个符号变量，其一般调用格式为：syms
+符号变量名1 符号变量名2 … 符号变量名n。</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><code class="hljs matlab">syms x y z<br></code></pre></td></tr></table></figure>
+<h2 id="一符号对象的运算">一、符号对象的运算</h2>
+<p>  利用符号变量可以构建符号表达式、符号函数、符号方程和符号矩阵等，然后可以进行因式分解、求导、求方程、求矩阵函数值的解等操作</p>
+<h3 id="因式分解与展开运算">(1)因式分解与展开运算</h3>
+<h4 id="对符号表达式s分解因式">1.对符号表达式s分解因式</h4>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><code class="hljs matlab">&gt;&gt; syms a b;<br>&gt;&gt; s=a^<span class="hljs-number">3</span>-b^<span class="hljs-number">3</span>;<br>&gt;&gt; <span class="hljs-built_in">factor</span>(s)<br><span class="hljs-built_in">ans</span> =<br>[ a - b, a^<span class="hljs-number">2</span> + a*b + b^<span class="hljs-number">2</span>]<br><br>&gt;&gt; <span class="hljs-built_in">factor</span>(<span class="hljs-number">12</span>)<br><span class="hljs-built_in">ans</span> =<br>     <span class="hljs-number">2</span>     <span class="hljs-number">2</span>     <span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
+<h4 id="对符号表达式s进行展开">2.对符号表达式s进行展开</h4>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><code class="hljs matlab">&gt;&gt; syms a b;<br>&gt;&gt; s=(<span class="hljs-number">3</span>*a + <span class="hljs-number">1</span>)(<span class="hljs-number">3</span>*b^<span class="hljs-number">2</span> + <span class="hljs-number">2</span>*b + <span class="hljs-number">2</span>);<br>&gt;&gt; expand(s)<br><span class="hljs-built_in">ans</span> =<br><span class="hljs-number">6</span>*a + <span class="hljs-number">2</span>*b + <span class="hljs-number">6</span>*a*b + <span class="hljs-number">9</span>*a*b^<span class="hljs-number">2</span> + <span class="hljs-number">3</span>*b^<span class="hljs-number">2</span> + <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+<h4 id="对符号表达式s合并同类项">3.对符号表达式s合并同类项</h4>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><code class="hljs matlab">&gt;&gt; syms x y<br>&gt;&gt; collect(x^<span class="hljs-number">2</span>*y + y*x - x^<span class="hljs-number">2</span> - <span class="hljs-number">2</span>*x, x)<br><span class="hljs-built_in">ans</span> =<br>(y - <span class="hljs-number">1</span>)*x^<span class="hljs-number">2</span> + (y - <span class="hljs-number">2</span>)*x<br><br>&gt;&gt; collect(x^<span class="hljs-number">2</span>*y + y*x - x^<span class="hljs-number">2</span> - <span class="hljs-number">2</span>*x, y)<br><span class="hljs-built_in">ans</span> =<br>(x^<span class="hljs-number">2</span> + x)*y - x^<span class="hljs-number">2</span> - <span class="hljs-number">2</span>*x<br></code></pre></td></tr></table></figure>
+<h4 id="roots函数">4.roots函数</h4>
+<p>  <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="12.028ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 5316.6 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45F" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(728.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mi" transform="translate(1784.6,0)"><path data-c="1D45F" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mi" transform="translate(2235.6,0)"><path data-c="1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path></g><g data-mml-node="mi" transform="translate(2720.6,0)"><path data-c="1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path></g><g data-mml-node="mi" transform="translate(3205.6,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g><g data-mml-node="mi" transform="translate(3566.6,0)"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g><g data-mml-node="mo" transform="translate(4035.6,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(4424.6,0)"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g><g data-mml-node="mo" transform="translate(4927.6,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></span>以列向量的形式返回
+<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.439ex" xmlns="http://www.w3.org/2000/svg" width="1.138ex" height="1.439ex" role="img" focusable="false" viewBox="0 -442 503 636"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g></g></g></svg></mjx-container></span> 表示的多项式的根。输入<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.439ex" xmlns="http://www.w3.org/2000/svg" width="1.138ex" height="1.439ex" role="img" focusable="false" viewBox="0 -442 503 636"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g></g></g></svg></mjx-container>是一个包含 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.186ex" xmlns="http://www.w3.org/2000/svg" width="5.254ex" height="1.692ex" role="img" focusable="false" viewBox="0 -666 2322.4 748"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(822.2,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mn" transform="translate(1822.4,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g></g></svg></mjx-container></span>多项式系数的向量，以
+<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex" xmlns="http://www.w3.org/2000/svg" width="2.442ex" height="1.357ex" role="img" focusable="false" viewBox="0 -442 1079.3 599.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></g><g data-mml-node="mi" transform="translate(605,-150) scale(0.707)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g></g></g></g></svg></mjx-container></span>系数开头。0系数表示方程中不存在的中间幂。例如：<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="15.092ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 6670.6 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g><g data-mml-node="mo" transform="translate(780.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mrow" transform="translate(1836.6,0)"><g data-mml-node="mo"><path data-c="5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(278,0)"><g data-mml-node="mtable"><g data-mml-node="mtr"><g data-mml-node="mtd"><g data-mml-node="mn"><path data-c="33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path></g></g><g data-mml-node="mtd" transform="translate(1500,0)"><g data-mml-node="mn"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g><g data-mml-node="mtd" transform="translate(3000,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mo"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mn" transform="translate(778,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g></g></g></g></g><g data-mml-node="mo" transform="translate(4556,0)"><path data-c="5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></g></g></g></g></svg></mjx-container></span>表示多项式<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.186ex" xmlns="http://www.w3.org/2000/svg" width="12.501ex" height="2.072ex" role="img" focusable="false" viewBox="0 -833.9 5525.4 915.9"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path></g><g data-mml-node="msup" transform="translate(500,0)"><g data-mml-node="mi"><path data-c="1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></g><g data-mml-node="mn" transform="translate(605,363) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g><g data-mml-node="mo" transform="translate(1730.8,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mn" transform="translate(2731,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="mi" transform="translate(3231,0)"><path data-c="1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></g><g data-mml-node="mo" transform="translate(4025.2,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mn" transform="translate(5025.4,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g></g></svg></mjx-container></span></p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><code class="hljs matlab">&gt;&gt; syms a b c x;<br>&gt;&gt; f=a*x^<span class="hljs-number">2</span>+b*x+c<br>f = <br>a*x^<span class="hljs-number">2</span> + b*x + c<br><br>&gt;&gt; g=coeffs(f,x)<br>g =<br>[ c, b, a]<br><br>&gt;&gt; g=g(<span class="hljs-keyword">end</span>:<span class="hljs-number">-1</span>:<span class="hljs-number">1</span>)<br>g =<br>[ a, b, c]<br><br>&gt;&gt; roots(g)<br><span class="hljs-built_in">ans</span> =<br> -(b + (b^<span class="hljs-number">2</span> - <span class="hljs-number">4</span>*a*c)^(<span class="hljs-number">1</span>/<span class="hljs-number">2</span>))/(<span class="hljs-number">2</span>*a)<br> -(b - (b^<span class="hljs-number">2</span> - <span class="hljs-number">4</span>*a*c)^(<span class="hljs-number">1</span>/<span class="hljs-number">2</span>))/(<span class="hljs-number">2</span>*a)<br></code></pre></td></tr></table></figure>
+<h4 id="等式求解">5.等式求解</h4>
+<h5 id="asolve函数">(a)solve函数</h5>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><code class="hljs matlab">&gt;&gt; syms a b c x<br>&gt;&gt; eqn = a*x^<span class="hljs-number">2</span> + b*x + c == <span class="hljs-number">0</span><br>&gt;&gt; S = solve(eqn, x)<br>S =<br> -(b + (b^<span class="hljs-number">2</span> - <span class="hljs-number">4</span>*a*c)^(<span class="hljs-number">1</span>/<span class="hljs-number">2</span>))/(<span class="hljs-number">2</span>*a)<br> -(b - (b^<span class="hljs-number">2</span> - <span class="hljs-number">4</span>*a*c)^(<span class="hljs-number">1</span>/<span class="hljs-number">2</span>))/(<span class="hljs-number">2</span>*a)<br></code></pre></td></tr></table></figure>
+<h5 id="bvpasolve函数数值解">(b)vpasolve函数（数值解）</h5>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><code class="hljs matlab">&gt;&gt; syms x<br>&gt;&gt; eqn = <span class="hljs-built_in">sin</span>(x) == x^<span class="hljs-number">2</span> - <span class="hljs-number">1</span>;<br>&gt;&gt; fplot([lhs(eqn) rhs(eqn)], [<span class="hljs-number">-2</span> <span class="hljs-number">2</span>])<br>&gt;&gt; V = vpasolve(eqn,x,[<span class="hljs-number">0</span> <span class="hljs-number">2</span>])<br>V = <span class="hljs-number">1.4096240040025962492355939705895</span><br><br>&gt;&gt; V = vpasolve(eqn,x,[<span class="hljs-number">-2</span> <span class="hljs-number">0</span>])<br>V = <span class="hljs-number">-0.63673265080528201088799090383828</span><br></code></pre></td></tr></table></figure>
+<h4 id="求导求微分differentiation">5.求导/求微分Differentiation</h4>
+<p>  对符号表达式f(x)求导的命令为diff(f)。<strong>Matlab可以自动识别表达式中的变量</strong>，如果表达式中只包含一个变量，则diff(f)函数是相对这个唯一的变量求导，若表达式中包含多个变量，则diff(f)是对f中的默认变量求导，默认变量是f中含有的在字母表中离x最近的变量。表达式f的默认变量可以用函数findsym(f,1)来得出。</p>
+<p>  如果要对f(x)求n阶导数，则用diff(f,n)。对于含有多个自变量的表达式，diff可以实现求偏导，例如表达式f(s,t)相对s求偏导就用diff(f,s)，如果相对s求2阶偏导则是diff(f,s,2)，先对x求偏导，再对y求偏导则是diff(f,x,y)，如果diff函数作用的对象不是符号函数，而是矩阵，那么对应的功能是求差分。</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><code class="hljs matlab">&gt;&gt; syms x y<br>&gt;&gt; f = x^<span class="hljs-number">2</span>*y + y*x - x^<span class="hljs-number">2</span> - <span class="hljs-number">2</span>*x<br>&gt;&gt; diff(f,x)<br><span class="hljs-built_in">ans</span> =<br>y - <span class="hljs-number">2</span>*x + <span class="hljs-number">2</span>*x*y - <span class="hljs-number">2</span><br><br>&gt;&gt; diff(f,x,<span class="hljs-number">2</span>)<br><span class="hljs-built_in">ans</span> =<br><span class="hljs-number">2</span>*y - <span class="hljs-number">2</span><br><br>&gt;&gt; diff(f,y)<br><span class="hljs-built_in">ans</span> =<br>x^<span class="hljs-number">2</span> + x<br><br>&gt;&gt; diff(f,y,<span class="hljs-number">2</span>)<br><span class="hljs-built_in">ans</span> =<br><span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+<h4 id="求积分integral">5.求积分Integral</h4>
+<p>  求符号表达式f(x)的不定积分用int(f)。对于含有多个符号变量的表达式f(x,s,t)，如果希望将其相对t求积分，用int(f,t)。求f(x)从0到1的定积分用int(f,0,1)或int(f,x,0,1)。</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><code class="hljs matlab">&gt;&gt; syms x y<br>&gt;&gt; eqn = x^<span class="hljs-number">2</span>*y + y*x - x^<span class="hljs-number">2</span> - <span class="hljs-number">2</span>*x<br>&gt;&gt; int(eqn,x)<br><span class="hljs-built_in">ans</span> =<br>(y/<span class="hljs-number">3</span> - <span class="hljs-number">1</span>/<span class="hljs-number">3</span>)*x^<span class="hljs-number">3</span> + (y/<span class="hljs-number">2</span> - <span class="hljs-number">1</span>)*x^<span class="hljs-number">2</span><br><br>&gt;&gt; int(eqn,x,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>)<br><span class="hljs-built_in">ans</span> =<br>(<span class="hljs-number">5</span>*y)/<span class="hljs-number">6</span> - <span class="hljs-number">4</span>/<span class="hljs-number">3</span><br><br>&gt;&gt; int(eqn,y)<br><span class="hljs-built_in">ans</span> =<br>(x^<span class="hljs-number">2</span>/<span class="hljs-number">2</span> + x/<span class="hljs-number">2</span>)*y^<span class="hljs-number">2</span> + (- x^<span class="hljs-number">2</span> - <span class="hljs-number">2</span>*x)*y<br><br>&gt;&gt; int(eqn,y,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>)<br><span class="hljs-built_in">ans</span> =<br>-(x*(x + <span class="hljs-number">3</span>))/<span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+<h4 id="求极限limits">5.求极限Limits</h4>
+<p>  求函数f(x)或f(x,y)在x趋近于0时的极限用limit(f,x,0)，求f在n趋近无穷大时的极限用limit(f,x,inf)，求f(x)在x趋近0-(左极限)或x趋近0+(右极限)的时候用limit(f,x,0,'left')或limit(f,x,0,'right')。</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><code class="hljs matlab">&gt;&gt; syms n<br>&gt;&gt; f = (<span class="hljs-number">1</span>+x/n)^n<br> <br>&gt;&gt; limit(f,n,<span class="hljs-built_in">inf</span>)<br><span class="hljs-built_in">ans</span> =<br><span class="hljs-built_in">exp</span>(x)<br><br>&gt;&gt; limit(f,n,<span class="hljs-number">0</span>,<span class="hljs-string">'left'</span>)<br><span class="hljs-built_in">ans</span> =<br><span class="hljs-number">1</span><br> <br>&gt;&gt; limit(f,n,<span class="hljs-number">0</span>,<span class="hljs-string">'right'</span>)<br><span class="hljs-built_in">ans</span> =<br><span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+<h4 id="符号矩阵运算">6.符号矩阵运算</h4>
+<p>  符号矩阵也是一种符号表达式，所以符号表达式运算都可以在矩阵意义下进行。注意：这些函数作用于符号矩阵时，是分别作用于矩阵的每一个元素</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><code class="hljs matlab">&gt;&gt; syms a b x y alp;<br>m=[a^<span class="hljs-number">3</span>-b^<span class="hljs-number">3</span>,<span class="hljs-built_in">sin</span>(alp)^<span class="hljs-number">2</span>+<span class="hljs-built_in">cos</span>(alp)^<span class="hljs-number">2</span>;(<span class="hljs-number">15</span>*x*y<span class="hljs-number">-3</span>*x^<span class="hljs-number">2</span>)/(x<span class="hljs-number">-5</span>*y),<span class="hljs-number">78</span>]<br> <br>m =<br>[                    a^<span class="hljs-number">3</span> - b^<span class="hljs-number">3</span>, <span class="hljs-built_in">cos</span>(alp)^<span class="hljs-number">2</span> + <span class="hljs-built_in">sin</span>(alp)^<span class="hljs-number">2</span>]<br>[ (- <span class="hljs-number">3</span>*x^<span class="hljs-number">2</span> + <span class="hljs-number">15</span>*y*x)/(x - <span class="hljs-number">5</span>*y),                      <span class="hljs-number">78</span>]<br> <br>&gt;&gt; simplify(m)<br><span class="hljs-built_in">ans</span> =<br>[ a^<span class="hljs-number">3</span> - b^<span class="hljs-number">3</span>,  <span class="hljs-number">1</span>]<br>[      <span class="hljs-number">-3</span>*x, <span class="hljs-number">78</span>]<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Matlab</category>
+        <category>符号运算</category>
+      </categories>
+      <tags>
+        <tag>符号函数组</tag>
+        <tag>符号矩阵</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>利用Cmake通过Visual Studio2019编译Opencv4.1.0_contrib_nonfree</title>
+    <url>/Opencv/VS2019/%E5%88%A9%E7%94%A8Cmake%E9%80%9A%E8%BF%87Visual-Studio2019%E7%BC%96%E8%AF%91Opencv4-1-0-contrib-nonfree/</url>
+    <content><![CDATA[<h1
+id="利用cmake通过visual-studio2019编译opencv4.1.0_contrib_nonfree">利用Cmake通过Visual
+Studio2019编译Opencv4.1.0_contrib_nonfree</h1>
+<p>  利用Cmake通过VS2019的编译器对Opencv库文件进行编译，以方便Opencv在VS2019中应用。</p>
+<h2 id="准备相应文件">1.准备相应文件</h2>
+<ul>
+<li><a
+href="https://github.com/opencv/opencv/tree/4.1.0">Opencv4.1.0</a></li>
+<li><a
+href="https://github.com/opencv/opencv_contrib/tree/4.1.0">Opencv4.1.0_with_contrib</a></li>
+<li><a href="https://cmake.org/download/">CMake.msi</a>直接安装</li>
+<li>新建一个文件夹用于存放编译后文件，例如文件夹名称H:.0-with-contrib-VS2019-nonfree</li>
+</ul>
+<h2 id="进行cmake编译">2.进行Cmake编译</h2>
+<p>  (a)在源代码路径中填入Opencv4.1.0的文件夹路径；</p>
+<p>  (b)在编译输出路径填入之前新建的存放编译后文件的文件夹路径；</p>
+<center class="half">
+<img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/22/image-20220322111002048-111006.png" width="600" alt="Setting the path"/>
+</center>
+<p>  (c)点击Configure，弹窗如下，按图中所示进行选择；</p>
+<center class="half">
+<img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/22/image-20220322111029217-111032.png" width="600" alt="Specify the generator for this project"/>
+</center>
+<p>  (d)初次点击Configure可能会报红，多点击几次可尝试消除报红，在编译输出文件夹中查看<strong>CMakeDownloadLog.txt</strong>内容，是否存在下载失败的情况，如果存在下载失败的情况，复制内容中的网址进行下载，并将H:.0.cache中对应的文件替换掉（若未下载成功，则文件大小显示0KB，保持未下载成功的文件名并替换文件），重新点击Configure；</p>
+<p>  (e)勾选OPENCV_ENABLE_NONFREE 以及添加
+OPENCV_EXTRA_MODULES_PATH的路径H:_contrib-4.1.0，点击Configure后，不报红且日志输出正常，则点击Generate生成；</p>
+<p>  (f)在编译后文件存放路径中会生成一个VS2019解决方案Opencv.sln，打开并重新生成解决方案，如若报错请自行上网查找相关问题，重新生成完成后，在VS2019解决方案管理器区中CmakeTargets找到INSTALL项目，右键仅生成INSTALL项目，生成完成后编译输出文件夹中会存在一个INSTALL文件夹，这个文件夹内的文件就是我们需要的VS2019编译后的所有文件，如下所示，其余文件可以自行删除；</p>
+<center class="half">
+<img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/22/image-20220322113756304-113759.png" width="600" alt="INSATALL文件夹内容"/>
+</center>
+<p>  (g)如何在VS2019中使用编译后的文件，可自行上网查找相关应用；</p>
+]]></content>
+      <categories>
+        <category>Opencv</category>
+        <category>VS2019</category>
+      </categories>
+      <tags>
+        <tag>VS2019</tag>
+        <tag>Opencv4.1.0</tag>
+        <tag>Cmake</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>对直角坐标系位姿变换及描述的理解</title>
+    <url>/%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8A%80%E6%9C%AF/%E5%AF%B9%E7%9B%B4%E8%A7%92%E5%9D%90%E6%A0%87%E7%B3%BB%E4%BD%8D%E5%A7%BF%E5%8F%98%E6%8D%A2%E5%8F%8A%E6%8F%8F%E8%BF%B0%E7%9A%84%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<h1
+id="对直角坐标系位姿变换及描述的理解">对直角坐标系位姿变换及描述的理解</h1>
+<p>  任一刚性物体在空间中的静止状态需要由位置及姿态唯一确定，位置描述涉及平移变换，而姿态描述涉及旋转变换，如何在空间中准确描述一物体的位姿，需要了解物体的相对于某个确定坐标系的位姿信息，如若知道多个坐标系之间的相对位姿信息，即可获得该物体相对于中间任意坐标系的位姿描述，这也是坐标系转换的前提。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/14/三维坐标系变换-093117.jpg" alt="三维坐标系变换" style="zoom:50%;" /></p>
+<h2 id="一空间描述">一、空间描述</h2>
+<h3 id="位置描述平移变换"> (1)位置描述：平移变换</h3>
+<p>  若仅描述两点之间的相对位置，用向量描述即可。首先需确定参考坐标系，才能确定
+XYZ 各轴分量，其矩阵描述如下： <span class="math display">\[
+% MathType!MTEF!2!1!+-
+% feaahqart1ev3aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLn
+% hiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr
+% 4rNCHbWexLMBbXgBd9gzLbvyNv2CaeHbl7mZLdGeaGqiVu0Je9sqqr
+% pepC0xbbL8F4rqqrFfpeea0xe9Lq-Jc9vqaqpepm0xbba9pwe9Q8fs
+% 0-yqaqpepae9pg0FirpepeKkFr0xfr-xfr-xb9adbaqaaeGaciGaai
+% aabeqaamaabaabauaakeaacaWGqbGaeyypa0ZaamWaaqaabeqaaiaa
+% dchadaWgaaWcbaGaamiEaaqabaaakeaacaWGWbWaaSbaaSqaaiaadM
+% haaeqaaaGcbaGaamiCamaaBaaaleaacaWG6baabeaaaaGccaGLBbGa
+% ayzxaaaaaa!496E!
+P = \left[ \begin{array}{l}
+{p_x}\\
+{p_y}\\
+{p_z}
+\end{array} \right]
+\]</span></p>
+<h3 id="姿态描述旋转变换"> (2)姿态描述：旋转变换</h3>
+<p>  要想描述刚性物体在空间中的状态，仅有位置信息时不够的，还需要有姿态信息，即确定与物体固连的坐标系相对与参考坐标系的位姿。通常我们给出旋转矩阵来描述这种相对姿态信息，而这<strong>仅仅用于表示两者之间得到相对姿态，并不体现变换过程</strong>。</p>
+<p>  两坐标系<strong>{A}</strong>，<strong>{B}</strong>之间的旋转矩阵<strong><span
+class="math inline">\(_B^AR\)</span></strong>，所指的就是是<strong>{B}</strong>在<strong>{A}</strong>中的姿态描述：</p>
+<p>$$ 
+_B^AR = \left[ {\begin{array}{*{20}{c}}
+{{X_B}{X_A}}&{{Y_B}{X_A}}&{{Z_B}{X_A}}\\
+{{X_B}{Y_A}}&{{Y_B}{Y_A}}&{{Z_B}{Y_A}}\\
+{{X_B}{Z_A}}&{{Y_B}{Z_A}}&{{Z_B}{Z_A}}
+\end{array}} \right]
+$$ </p>
+<p>  <span class="math inline">\(X_A\)</span>，<span
+class="math inline">\(Y_A\)</span>，<span
+class="math inline">\(Z_A\)</span>为坐标系<b>{A}</b>三坐标轴上的正单位向量；<span
+class="math inline">\(X_B\)</span>，<span
+class="math inline">\(Y_B\)</span>，<span
+class="math inline">\(Z_B\)</span>为坐标系<b>{B}</b>三坐标轴上的正单位向量。我们可以清晰看出旋转矩阵是由<b>{B}</b>各主轴单位向量分别在<b>{A}</b>中各主轴的投影（模长均为1）。</p>
+<p>  旋转矩阵具有一些性质例如：<strong>旋转矩阵是正交阵，即旋转矩阵的逆等于旋转矩阵的转置</strong>
+$$ 
+{R^{ - 1}} = {R^T}
+$$ </p>
+<h3 id="坐标系描述"> (3)坐标系描述</h3>
+<p>  若想完全表示两坐标系的相对状态，需要位置以及姿态信息，所以我们将两者组合用于准确描述两坐标系之间的相对位姿，例如<strong>{B}</strong>在<strong>{A}</strong>中的位姿表示。
+$$ 
+^A\{ B\}  = \{ {}_B^AR,{}^AP_{BORG}\}
+$$ </p>
+<h4 id="混合变换">  1.混合变换</h4>
+<p>  如下图，描述坐标系<strong>{C}</strong>在坐标系<strong>{A}</strong>下的位姿</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/Typora/typora-user-images/image-20220225112101330-20220225112104.png" alt="混合坐标系" style="zoom:50%;" /></p>
+<p>  坐标系<strong>{C}</strong>中的<strong>P向量</strong>位姿描述转换到坐标系<strong>{A}</strong>中的位姿描述：（<span
+class="math inline">\({}_B^AT\)</span>为<strong>{B}</strong>在<strong>{A}</strong>中的变换描述，<span
+class="math inline">\({}_C^BT\)</span>为<strong>{C}</strong>在<strong>{B}</strong>中的变换描述）,列出下列式子：</p>
+<p>$$ 
+\left\{ \begin{array}{l}
+{}^BP = {}_C^BT \cdot {}^CP\\
+{}^AP = {}_B^AT \cdot {}^BP
+\end{array} \right. \Leftrightarrow {}^AP = {}_B^AT \cdot {}_C^BT \cdot {}^CP \Rightarrow def:{}_C^AT = {}_B^AT \cdot {}_C^BT
+$$ </p>
+<p>  求得坐标系<strong>{C}</strong>中的向量转换到坐标系<strong>{A}</strong>中的表示，<span
+class="math inline">\({}^AP = {}_C^AT \cdot {}^CP\)</span> $$
+
+{}_C^AT = \left( {\begin{array}{*{20}{c}}
+{{}_B^AR \cdot {}_{\rm{C}}^BR}&{{}_B^AR \cdot {}^B{P_{CORG}} + {}^A{P_{BORG}}}\\
+{\vec 0}&1
+\end{array}} \right)
+$$ </p>
+<h4 id="逆变换">  2.逆变换</h4>
+<p>  若已知<strong>{B}</strong>相对于<strong>{A}</strong>的变换<strong><span
+class="math inline">\({}_B^AT\)</span></strong>，要求<strong>{A}</strong>相对于<strong>{B}</strong>的变换<strong><span
+class="math inline">\({}_A^BT\)</span></strong>，即求矩阵的逆。直接的办法就是对转换矩阵求逆，也可以利用变换的性质进行推导：</p>
+<p>  旋转矩阵：<span class="math inline">\({}_A^BR =
+{}_B^A{R^T}\)</span></p>
+<p>  平移矩阵：<span class="math inline">\({}^B{P_{AORG}} = -
+{}_A^B{R^A}{P_{BORG}}\)</span></p>
+<p>  变换矩阵：<span class="math inline">\({}^B\{ A\} = \{ {}_B^A{R^T},
+- {}_A^B{R^A} \cdot {P_{BORG}}\}\)</span></p>
+<h3
+id="姿态的其他描述方法欧拉角四元数旋转向量或称为轴角"> (4)姿态的其他描述方法(欧拉角、四元数、旋转向量（或称为轴角）)</h3>
+<h4 id="欧拉角">  1.欧拉角</h4>
+<p>  欧拉角的描述如下图所示，表示两个物体间的相对姿态(通过三个角度<span
+class="math inline">\(\alpha\)</span>、<span
+class="math inline">\(\beta\)</span>、<span
+class="math inline">\(\gamma\)</span>描述姿态)，一般以自身坐标进行旋转的角度称为欧拉角，与以固定参考系进行旋转的角度RPY角有所不同。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/19/RPY角与欧拉角-121534.png" alt="RPY角与欧拉角" style="zoom:80%;" /></p>
+<h5 id="a.欧拉角的旋转轴和旋转顺序">   a.欧拉角的旋转轴和旋转顺序</h5>
+<p>  表示旋转的欧拉角旋转顺序有12种：</p>
+<p>  Proper/classic Euler angle：<strong>z-x-z，x-y-x，y-z-y，z-y-z,
+x-z-x，y-x-y</strong></p>
+<p>  Tait-Bryan
+angle（也称作RPY角）：<strong>x-y-z，y-z-x，z-x-y，x-z-y，z-y-x，y-x-z</strong></p>
+<p>  Proper/classic Euler
+angle说明这些角度并不是独立的，例如当下面的旋转组合：先绕x轴旋转90度，再绕y轴旋转90度，最后绕x轴旋转-90度，这一系列组合得到的效果与只绕z轴旋转-90度是一样的。也就是说我们<strong>仅仅在2个平面上进行旋转</strong>（其中一个平面上必须进行两次旋转）<strong>同样可以得到任意的三维旋转！</strong></p>
+<h5 id="b.欧拉角内旋和外旋">   b.欧拉角内旋和外旋</h5>
+<p>  内旋指绕着动坐标系主轴旋转，外旋指绕着静坐标系主轴旋转，<strong>内旋右乘，外旋左乘</strong>。欧拉角的表述用于确定姿态变换的过程，不同的变换过程确定不同的绕轴旋转顺序以及角度。下列表给出欧拉角的旋转顺序及角度计算</p>
+<center class="half">
+<img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/14/顺序欧拉角-旋转矩阵-092741.png" width="1000" alt="左手系下欧拉角与旋转矩阵"/>
+</center>
+<h4 id="四元数">  2.四元数</h4>
+<p>  一般情况下，两个复数相乘<span class="math inline">\({Z_1}
+\cdot{Z_2}\)</span> ，其实就是旋转+伸缩两种变换,
+也就是两个复数的模相乘（伸缩），
+辐角相加（旋转），而为了探究三维空间中的旋转变换，爱尔兰数学家哈密顿利用复数发明了四元数，用于描述旋转变换。四元数并不是生来为了解决三维旋转，而是它的性质非常有利于表达旋转信息。四元数相比其他描述形式的优点：</p>
+<ul>
+<li>解决万向节死锁（Gimbal Lock）问题</li>
+<li>仅需存储4个浮点数，相比矩阵更加轻量</li>
+<li>四元数无论是求逆、串联等操作，相比矩阵更加高效</li>
+</ul>
+<center class="half">
+<img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/14/两复数相乘-092520.gif" width="400" alt="复数相乘"/>
+</center>
+<h5 id="a.四元数组成">   a.四元数组成</h5>
+<p>  四元数从表达意义上理解和轴角相差无几，也是使用一个4个量表示绕此转轴的旋转角度。四元数由1个实数和3个虚数组成，其表达为<span
+class="math inline">\(\left[{ \begin{array}
+ &amp;  &amp; 
+&amp; w \end{array} } \right]\)</span>，其中<span
+class="math inline">\({q_1} = x\sin \frac{\theta }{2}\)</span>，<span
+class="math inline">\({q_2} = y\sin \frac{\theta }{2}\)</span>，<span
+class="math inline">\({q_3} = z\sin \frac{\theta }{2}\)</span>，<span
+class="math inline">\(w = \cos \frac{\theta
+}{2}\)</span>。四元数表达中的<span
+class="math inline">\(x,y,z\)</span>代表旋转轴单位矢量，<span
+class="math inline">\(\theta\)</span>代表绕旋转轴旋转的角度大小，并且<span
+class="math inline">\({i^2} = {j^2} = {k^2} = i \cdot j \cdot k = -
+1\)</span>，这便是四元数的常规表达形式</p>
+<p><span class="math display">\[
+q = w + \vec n = w + {q_1}i + {q_2}j + {q_3}k
+\]</span>
+  四元数中的每个数都是经过“处理”的轴和角，轴角描述的四个量并不是一个空间下的东西，首先<span
+class="math inline">\(\left[{ \begin{array} x &amp; y
+&amp; z \end{array} } \right]\)</span>是一个3维坐标下的矢量，而<span
+class="math inline">\(\theta\)</span>则是极坐标下的角度，简单的将他们组合到一起并不能保证他们插值结果的稳定性，因为他们无法归一化，所以不能保证最终插值后得到的矢量长度（经过旋转变换后两点之间的距离）相等，而四元数在是在一个统一的4维空间中，方便归一化来插值，又能方便的得到轴、角这样用于3D信息数据，所以用四元数再合适不过了。相比于矩阵，四元素也只要存储4个浮点数，优势很明显。</p>
+<h5 id="b.四元数使用">   b.四元数使用</h5>
+<p>  四元数的共轭：<span class="math inline">\({q^*} = w - \vec n = w -
+{q_1}i - {q_2}j - {q_3}k\)</span></p>
+<p>  四元数的模长：<span class="math display">\[n(q) = \sqrt { q \cdot
+{q^*} }  = \sqrt { {w^2} + {q_1}^2 + {q_2}^2 + {q_3}^2 }\]</span></p>
+<p>  四元数的逆：<span class="math inline">\({q^{ - 1} } = \frac{ {
+{q^*} } }{ {\left\| q \right\|} }\)</span></p>
+<p>  单位四元数：<span
+class="math inline">\(n(q)=1\)</span>，逆等于其共轭<span
+class="math inline">\({ q^{ - 1} }={q^*}\)</span></p>
+<p>  以 <span class="math inline">\(u(\left[{ \begin{array}{ {c} } x
+&amp; y &amp; z \end{array} } \right])\)</span> 为轴，将 <span
+class="math inline">\(v\)</span> 旋转 <span
+class="math inline">\(\theta\)</span>
+度（右手定则），得到的新向量为<span class="math inline">\(v&#39; = q
+\cdot v \cdot {q^{ - 1}}\)</span></p>
+<h4 id="旋转向量">  3.旋转向量</h4>
+<p>  旋转向量也被称为轴角，其表达<span class="math inline">\(\left[{
+\begin{array} x &amp; y &amp; z &amp; \theta
+\end{array} } \right]\)</span>中<span class="math inline">\(\left[{
+\begin{array} x &amp; y &amp; z \end{array} }
+\right]\)</span>代表旋转轴单位矢量（即<span
+class="math inline">\(x^2+y^2+z^2=1\)</span>），而<span
+class="math inline">\(\theta\)</span>代表绕着旋转轴旋转的角度大小，四元数的组成意义虽和轴角相同，但是其表达形式却不相同。利用轴角进行姿态变换的方法称为轴角法，其具有两个优点也有两个缺点：</p>
+<p>  优点1：同轴的两次旋转可以直接相加来等效为一次旋转；</p>
+<p>  优点2：定义简单，相对直观；</p>
+<p>  缺点1：轴角法表示不唯一，当旋转角度是0的时候，旋转轴可以是任意的；</p>
+<p>  缺点2：两次任意的连续旋转无法合成；</p>
+<h3
+id="欧拉角旋转矩阵四元数旋转向量之间的转换关系左手系还是右手系一般计算机中采用左手系数学采用右手系从应用角度出发以左手系为例"> (5)欧拉角、旋转矩阵、四元数、旋转向量之间的转换关系（左手系还是右手系？一般计算机中采用左手系，数学采用右手系，从应用角度出发以左手系为例）</h3>
+<h4 id="先导知识">  先导知识</h4>
+<p>  有一些几何变换的推导文章，公式都是正确的，但是很多时候可能会很迷惑，因为他们的公式中的符号可能是相反的。在我们初识三维坐标系时，大都是右手坐标系，但是有些理论是以左手笛卡尔坐标系为基础，所以时常需要进行左手系与右手系的相互转换。</p>
+<center class="half">
+<img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/18/左手系与右手系-184953.png" width="400" alt="左手系与右手系"/>
+</center>
+<p>  不管是左手系转右手系还是右手系转左手系，我们都需要这样一个转换矩阵：
+$$ 
+Z{\rm{ = }}\left[ {\begin{array}{*{20}{c}}
+1&0&0\\
+0&1&0\\
+0&0&{ - 1}
+\end{array}} \right]
+$$ </p>
+<h5 id="a.左手系转右手系">   a.左手系转右手系</h5>
+<p>  对于向量 <span
+class="math inline">\(T_左\)</span>，将其从左手坐标系转换到右手坐标系：
+$$ 
+{T_右{{\rm{ }}}} = Z \cdot {T_左{{\rm{ }}}} = \left[ {\begin{array}{*{20}{c}}1&0&0\\0&1&0\\0&0&{ - 1}\end{array}} \right]\left[ {\begin{array}{*{20}{l}}{{x_左{{\rm{ }}}}}\\{{y_左{{\rm{ }}}}}\\{{z_左{{\rm{ }}}}}\end{array}} \right] = \left[ {\begin{array}{*{20}{l}}{{x_右{{\rm{ }}}}}\\{{y_右{{\rm{ }}}}}\\{{z_右{{\rm{ }}}}}\end{array}} \right]
+$$ </p>
+<p>  对于旋转矩阵 <span
+class="math inline">\(R_左\)</span>，将其从左手坐标系转换到右手坐标系：
+$$ 
+{R_右}{\rm{ = }}Z \cdot {R_左} \cdot Z
+$$ </p>
+<h5 id="b.右手系转左手系">   b.右手系转左手系</h5>
+<p>  对于向量 <span
+class="math inline">\(T_右\)</span>，将其从右手坐标系转换到左手坐标系：
+$$ 
+{T_右{{\rm{ }}}} = Z \cdot {T_左{{\rm{ }}}} = \left[ {\begin{array}{*{20}{c}}1&0&0\\0&1&0\\0&0&{ - 1}\end{array}} \right]\left[ {\begin{array}{*{20}{l}}{{x_{{\rm{ }}}}}\\{{y_{{\rm{ }}}}}\\{{z_{{\rm{ }}}}}\end{array}} \right] = \left[ {\begin{array}{*{20}{l}}{{x_{{\rm{ }}}}}\\{{y_{{\rm{ }}}}}\\{{z_{{\rm{ }}}}}\end{array}} \right]
+$$ </p>
+<p>  对于旋转矩阵 <span
+class="math inline">\(R_右\)</span>，将其从右手坐标系转换到左手坐标系：
+$$ 
+{R_左} = {Z^{{\rm{ - 1}}}} \cdot {R_右} \cdot {Z^{{\rm{ - 1}}}} = Z \cdot {R_右} \cdot Z
+$$ </p>
+<p>  <strong>左手系用左手确定正方向，右手系用右手确定正方向。
+</strong></p>
+<h4 id="欧拉角旋转矩阵">  1.欧拉角↔︎旋转矩阵</h4>
+<h5 id="a.欧拉角旋转矩阵">   a.欧拉角→旋转矩阵</h5>
+<p>   以左手系下的单轴旋转矩阵获得 <span
+class="math inline">\(ZYX\)</span> 顺序欧拉角旋转矩阵 $$
+
+{R_x}\left( \alpha  \right) = \left[ {\begin{array}{*{20}{c}}
+1&0&0\\
+0&{\cos \alpha }&{ - \sin \alpha }\\
+0&{\sin \alpha }&{\cos \alpha }
+\end{array}} \right]\begin{array}{*{20}{c}}
+{}&{}
+\end{array}{R_y}\left( \beta  \right) = \left[ {\begin{array}{*{20}{c}}
+{\cos \beta }&0&{\sin \beta }\\
+0&1&0\\
+{ - \sin \beta }&0&{\cos \beta }
+\end{array}} \right]\begin{array}{*{20}{c}}
+{}&{}
+\end{array}{R_z}\left( \gamma  \right) = \left[ {\begin{array}{*{20}{c}}
+{\cos \alpha }&{ - \sin \alpha }&0\\
+{\sin \alpha }&{\cos \alpha }&0\\
+0&0&1
+\end{array}} \right]
+$$ </p>
+<p>$$ 
+R = {R_z}\left( \gamma  \right){R_y}\left( \beta  \right){R_x}\left( \alpha  \right) = \left[ {\begin{array}{*{20}{c}}
+{\cos \beta \cos \gamma }&{\sin \alpha \sin \beta \cos \gamma  - \cos \alpha \sin \gamma }&{\cos \alpha \sin \beta \cos \gamma  + \sin \alpha \sin \gamma }\\
+{\cos \beta \sin \gamma }&{\sin \alpha \sin \beta \sin \gamma  + \cos \alpha \cos \gamma }&{\cos \alpha \sin \beta \sin \gamma  - \sin \alpha \sin \gamma }\\
+{ - \sin \beta }&{\sin \alpha \cos \beta }&{\cos \alpha \cos \beta }
+\end{array}} \right]
+$$ </p>
+<h5 id="b.旋转矩阵欧拉角">   b.旋转矩阵→欧拉角</h5>
+<p>   利用欧拉角转旋转矩阵求反解： $$ 
+R = \left[ {\begin{array}{*{20}{c}}
+{\cos \beta \cos \gamma }&{\sin \alpha \sin \beta \cos \gamma  - \cos \alpha \sin \gamma }&{\cos \alpha \sin \beta \cos \gamma  + \sin \alpha \sin \gamma }\\
+{\cos \beta \sin \gamma }&{\sin \alpha \sin \beta \sin \gamma  + \cos \alpha \cos \gamma }&{\cos \alpha \sin \beta \sin \gamma  - \sin \alpha \sin \gamma }\\
+{ - \sin \beta }&{\sin \alpha \cos \beta }&{\cos \alpha \cos \beta }
+\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
+{{R_{11}}}&{{R_{12}}}&{{R_{13}}}\\
+{{R_{21}}}&{{R_{22}}}&{{R_{23}}}\\
+{{R_{31}}}&{{R_{32}}}&{{R_{33}}}
+\end{array}} \right]
+$$ </p>
+<p>   观察旋转矩阵各元素特点求解 <span
+class="math inline">\(ZYX\)</span> 顺序下各轴旋转角度<span
+class="math inline">\(\alpha，\beta，\gamma\)</span>，如下所示，其他旋转顺序的欧拉角可同理求得。</p>
+<p>$$ 
+\begin{array}{c}
+\alpha  = \arctan \left( {\frac{{{R_{32}}}}{{{R_{33}}}}} \right)\\
+\beta  = \arctan \left( {\frac{{ - {R_{31}}}}{{\sqrt {R_{32}^2 + R_{33}^2} }}} \right)\\
+\gamma  = \arctan \left( {\frac{{{R_{21}}}}{{{R_{11}}}}} \right)
+\end{array}
+$$ </p>
+<h4 id="四元数旋转矩阵">  2.四元数↔︎旋转矩阵</h4>
+<h5 id="a.四元数旋转矩阵">   a.四元数→旋转矩阵</h5>
+<p>   对于三维坐标的旋转，可以通过四元数乘法直接操作，与旋转矩阵操作可以等价，但是表示方式更加紧凑，计算量也可以小一些。</p>
+<p>   若已知四元数 <span class="math display">\[
+q = w + \vec n = w + {q_1}i + {q_2}j + {q_3}k
+\]</span>    利用<a
+href="http://mathworld.wolfram.com/RodriguesRotationFormula.html">Rodrigues公式</a>(公式为右手系公式)，将<strong>右手系罗德里格公式</strong>中的元素按<span
+class="math inline">\((1 - \cos
+\theta)\)</span>在前的的格式进行整理后，对非对角线元素的加减号取反可得<strong>左手系罗德里格公式</strong>，最终可以由四元数求得左手系下旋转矩阵：
+$$ 
+R = \left[ {\begin{array}{*{20}{c}}
+{\omega _x^2(1 - \cos \theta ) + \cos \theta }&{{\omega _x}{\omega _y}(1 - \cos \theta ) + {\omega _z}\sin \theta }&{{\omega _x}{\omega _z}(1 - \cos \theta ) - {\omega _y}\sin \theta }\\
+{{\omega _x}{\omega _y}(1 - \cos \theta ) - {\omega _z}\sin \theta }&{\omega _y^2(1 - \cos \theta ) + \cos \theta }&{{\omega _y}{\omega _z}(1 - \cos \theta ) + {\omega _x}\sin \theta }\\
+{{\omega _x}{\omega _z}(1 - \cos \theta ) + {\omega _y}\sin \theta }&{{\omega _y}{\omega _z}(1 - \cos \theta ) - {\omega _x}\sin \theta }&{\omega _z^2(1 - \cos \theta ) + \cos \theta }
+\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
+{1 - 2q_2^2 - 2q_3^2}&{2{q_1}{q_2} + 2\omega {q_3}}&{2{q_1}{q_3} - 2\omega {q_2}}\\
+{2{q_1}{q_2} - 2\omega {q_3}}&{1 - 2q_1^2 - 2q_3^2}&{2{q_2}{q_3} + 2\omega {q_1}}\\
+{2{q_1}{q_3} + 2\omega {q_2}}&{2{q_2}{q_3} - 2\omega {q_1}}&{1 - 2q_1^2 - 2q_2^2}
+\end{array}} \right]
+$$     其中<span class="math inline">\(\omega
+_x=x\)</span>，<span class="math inline">\(\omega _y=y\)</span>，<span
+class="math inline">\(\omega _z=z\)</span>，<span
+class="math inline">\({q_1} = x\sin \frac{\theta }{2}\)</span>，<span
+class="math inline">\({q_2} = y\sin \frac{\theta }{2}\)</span>，<span
+class="math inline">\({q_3} = z\sin \frac{\theta }{2}\)</span>，<span
+class="math inline">\(w = \cos \frac{\theta }{2}\)</span>，<span
+class="math inline">\(\theta\)</span>为转动角度。</p>
+<h5 id="b.旋转矩阵四元数">   b.旋转矩阵→四元数</h5>
+<p>   由上述的旋转矩阵R，利用矩阵中元素可反向计算得出以下4组计算式 $$
+
+\begin{array}{l}
+w = \frac{{\sqrt {{R_{11}} + {R_{22}} + {R_{33}} + 1} }}{2} \Rightarrow q_1 = \frac{{{R_{23}} - {R_{32}}}}{{4w}}\;\;\;{\mkern 1mu} q_2 = \frac{{{R_{31}} - {R_{13}}}}{{4w}}\;\;\;{\mkern 1mu} q_3 = \frac{{{R_{12}} - {R_{21}}}}{{4w}}\\
+q_1 = \frac{{\sqrt {{R_{11}} - {R_{22}} - {R_{33}} + 1} }}{2} \Rightarrow w = \frac{{{R_{23}} - {R_{32}}}}{{4q_1}}\;\;\;{\mkern 1mu} q_2 = \frac{{{R_{12}} + {R_{21}}}}{{4q_1}}\;\;\;{\mkern 1mu} q_3 = \frac{{{R_{31}} + {R_{13}}}}{{4q_1}}\\
+q_2 = \frac{{\sqrt { - {R_{11}} + {R_{22}} - {R_{33}} + 1} }}{2} \Rightarrow w = \frac{{{R_{31}} - {R_{13}}}}{{4q_2}}\;\;\;{\mkern 1mu} q_1 = \frac{{{R_{12}} + {R_{21}}}}{{4q_2}}\;\;\;{\mkern 1mu} q_3 = \frac{{{R_{23}} + {R_{32}}}}{{4q_2}}\\
+q_3 = \frac{{\sqrt { - {R_{11}} - {R_{22}} + {R_{33}} + 1} }}{2} \Rightarrow w = \frac{{{R_{12}} - {R_{21}}}}{{4q_3}}\;\;\;{\mkern 1mu} q_1 = \frac{{{R_{31}} + {R_{13}}}}{{4q_3}}\;\;\;{\mkern 1mu} q_2 = \frac{{{R_{23}} + {R_{32}}}}{{4q_3}}
+\end{array}
+$$     那么应该选以上4种的哪一种呢？有学者建议首先判断 <span
+class="math inline">\(w,q_1,q_2,q_3\)</span>中哪一个最大，则先计算计算该元素，然后再通过计算方式二中公式计算其他三个分量。因为如果
+<span
+class="math inline">\(w=0\)</span>，除法就没有意义(分母不能为0)；如果<span
+class="math inline">\(w\)</span>非常小，将会出现数值不稳定。为什么这里可以不用考虑开方取正根还是负根的问题？因为此处用到了负四元数的性质，那就是
+<span class="math inline">\(q(w,q_1,q_2,q_3)\)</span>和 <span
+class="math inline">\(-q(-w,-q_1,-q_2,-q_3)\)</span>
+代表相同的旋转。所以只要保证他们的符号是相对一致即可，并且负号并不影响结果。</p>
+<h4 id="旋转向量轴角旋转矩阵">  3.旋转向量（轴角）↔︎旋转矩阵</h4>
+<h5 id="a.旋转向量轴角旋转矩阵">   a.旋转向量（轴角）→旋转矩阵</h5>
+<p>   假设有旋转向量(轴角)<span class="math inline">\(r=\left[{
+\begin{array} x &amp; y &amp; z &amp; \theta
+\end{array} } \right]\)</span>中，旋转轴单位向量<span
+class="math inline">\(\left[{ \begin{array} x &amp;
+y &amp; z \end{array} } \right]\)</span>，旋转角度为<span
+class="math inline">\(\theta\)</span>，转换后的旋转矩阵为<span
+class="math inline">\(R\)</span>，那么<span
+class="math inline">\(r\)</span>到<span
+class="math inline">\(R\)</span>的转换其实可以参照四元数转旋转矩阵： $$
+
+R = \left[ {\begin{array}{*{20}{c}}
+{x^2(1 - \cos \theta ) + \cos \theta }&{{x}{y}(1 - \cos \theta ) + {z}\sin \theta }&{{x}{z}(1 - \cos \theta ) - {y}\sin \theta }\\
+{{x}{y}(1 - \cos \theta ) - {z}\sin \theta }&{y^2(1 - \cos \theta ) + \cos \theta }&{{y}{z}(1 - \cos \theta ) + {x}\sin \theta }\\
+{{x}{z}(1 - \cos \theta ) + {y}\sin \theta }&{{y}{z}(1 - \cos \theta ) - {x}\sin \theta }&{z^2(1 - \cos \theta ) + \cos \theta }
+\end{array}} \right]
+$$ </p>
+<h5 id="b.旋转矩阵旋转向量轴角">   b.旋转矩阵→旋转向量（轴角）</h5>
+<p>   根据上述旋转矩阵元素排列特点，可得出下述计算式： $$ 
+\left[ {\begin{array}{*{20}{c}}
+0&{2z\sin \theta }&{ - 2y\sin \theta }\\
+{ - 2z\sin \theta }&0&{2x\sin \theta }\\
+{2y\sin \theta }&{ - 2x\sin \theta }&0
+\end{array}} \right] = R - {R^T}
+$$ 
+   根据矩阵各元素对应相等，可求解<span
+class="math inline">\(x,y,z,\theta\)</span>。</p>
+<h4 id="欧拉角四元数">  4.欧拉角↔︎四元数</h4>
+<h5 id="a.欧拉角四元数">   a.欧拉角→四元数</h5>
+<p>   欧拉角构造四元数，跟欧拉角构造旋转矩阵一样，就是把三个基础旋转组合在一起，将<span
+class="math inline">\(ZYX\)</span>欧拉角（或<span
+class="math inline">\(RPY\)</span>角：绕固定坐标系的<span
+class="math inline">\(XYZ\)</span>依次旋转<span
+class="math inline">\(\alpha,\beta,\gamma\)</span>角）转换为四元数： $$
+
+q = \left[ {\begin{array}{*{20}{c}}
+{\cos \frac{\gamma }{2}}\\
+0\\
+0\\
+{\sin \frac{\gamma }{2}}
+\end{array}} \right]\left[ {\begin{array}{*{20}{c}}
+{\cos \frac{\beta }{2}}\\
+0\\
+{\sin \frac{\beta }{2}}\\
+0
+\end{array}} \right]\left[ {\begin{array}{*{20}{c}}
+{\cos \frac{\alpha }{2}}\\
+{\sin \frac{\alpha }{2}}\\
+0\\
+0
+\end{array}} \right] = \left[ {\begin{array}{*{20}{l}}
+{\cos \frac{\alpha }{2}\cos \frac{\beta }{2}\cos \frac{\gamma }{2} + \sin \frac{\alpha }{2}\sin \frac{\beta }{2}\sin \frac{\gamma }{2}}\\
+{\sin \frac{\alpha }{2}\cos \frac{\beta }{2}\cos \frac{\gamma }{2} - \cos \frac{\alpha }{2}\sin \frac{\beta }{2}\sin \frac{\gamma }{2}}\\
+{\cos \frac{\alpha }{2}\sin \frac{\beta }{2}\cos \frac{\gamma }{2} + \sin \frac{\alpha }{2}\cos \frac{\beta }{2}\sin \frac{\gamma }{2}}\\
+{\cos \frac{\alpha }{2}\cos \frac{\beta }{2}\sin \frac{\gamma }{2} - \sin \frac{\alpha }{2}\sin \frac{\beta }{2}\cos \frac{\gamma }{2}}
+\end{array}} \right]
+$$ </p>
+<h5 id="b.四元数欧拉角">   b.四元数→欧拉角</h5>
+<p>   根据上述欧拉角转四元数公式可以求出逆解，即由四元数<span
+class="math inline">\(q=(\omega,q1,q2,q3)\)</span>到欧拉角<span
+class="math inline">\(ZYX(\gamma,\beta,\alpha)\)</span>的转换为： $$
+
+\left[ {\begin{array}{*{20}{c}}
+\alpha \\
+\beta \\
+\gamma 
+\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
+{\arctan \frac{{2\left( {{q_0}{q_1} + {q_2}{q_3}} \right)}}{{1 - 2\left( {q_1^2 + q_2^2} \right)}}}\\
+{\arcsin \left( {2\left( {{q_0}{q_2} - {q_1}{q_3}} \right)} \right)}\\
+{\arctan \frac{{2\left( {{q_0}{q_3} + {q_1}{q_2}} \right)}}{{1 - 2\left( {q_2^2 + q_3^2} \right)}}}
+\end{array}} \right]
+$$ </p>
+<p>   由于<span class="math inline">\(arctan\)</span>和<span
+class="math inline">\(arcsin\)</span>的取值范围在<span
+class="math inline">\(\left( { - \frac{\pi }{2},\frac{\pi }{2}}
+\right)\)</span>之间，只有180°，而绕某个轴旋转时范围是360°，因此采用计算机计算时要使用<span
+class="math inline">\(atan2\)</span>函数代替<span
+class="math inline">\(arctan\)</span>函数： $$ 
+\left[ {\begin{array}{*{20}{c}}
+\alpha \\
+\beta \\
+\gamma 
+\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
+{{\mathop{\rm atan}\nolimits} 2\left( {2\left( {{q_0}{q_1} + {q_2}{q_3}} \right),1 - 2\left( {q_1^2 + q_2^2} \right)} \right)}\\
+{\arcsin \left( {2\left( {{q_0}{q_2} - {q_1}{q_3}} \right)} \right)}\\
+{{\mathop{\rm atan}\nolimits} 2\left( {2\left( {{q_0}{q_3} + {q_1}{q_2}} \right),1 - 2\left( {q_2^2 + q_3^2} \right)} \right)}
+\end{array}} \right]
+$$ 
+   四元数转欧拉角计算过程中可能会出现旋转自由度丢失的情况，例如俯仰角为90度时，会出现<span
+class="math inline">\(atan(0,0)\)</span>无法计算，所以需要对具体情况进行阈值判断。</p>
+]]></content>
+      <categories>
+        <category>机器人技术</category>
+      </categories>
+      <tags>
+        <tag>位姿描述</tag>
+        <tag>坐标系变换</tag>
+        <tag>四元数</tag>
+        <tag>欧拉角</tag>
+        <tag>旋转向量</tag>
+        <tag>轴角</tag>
+        <tag>旋转矩阵</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo中主题NexT的美化技巧</title>
+    <url>/Hexo%E5%8D%9A%E5%AE%A2/Hexo%E4%B8%AD%E4%B8%BB%E9%A2%98NexT%E7%9A%84%E7%BE%8E%E5%8C%96%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<h1 id="hexo-next或fluid主题美化技巧">Hexo +
+NexT（或Fluid）主题美化技巧</h1>
+<h2 id="网站界面">1. 网站界面</h2>
+<h3 id="更改网站底部年份和版权信息之间的图标nextfluid">(1)更改网站底部年份和版权信息之间的图标（NexT，Fluid）</h3>
+<p>  在<b>NexT主题配置文件</b>中找到<b>Footer
+Settings</b>修改配置项如下：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">footer:</span><br>  <span class="hljs-comment"># Specify the year when the site was setup. If not defined, current year will be used.</span><br>  <span class="hljs-comment">#since: 2021</span><br><br>  <span class="hljs-comment"># Icon between year and copyright info.</span><br>  <span class="hljs-attr">icon:</span><br>    <span class="hljs-comment"># Icon name in Font Awesome. See: https://fontawesome.com/icons</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">fa</span> <span class="hljs-string">fa-paw</span> <span class="hljs-comment"># 狗爪paw</span><br>    <span class="hljs-comment"># If you want to animate the icon, set it to true.</span><br>    <span class="hljs-attr">animated:</span> <span class="hljs-literal">true</span>	<span class="hljs-comment"># 动画显示</span><br>    <span class="hljs-comment"># Change the color of icon, using Hex Code.</span><br>    <span class="hljs-attr">color:</span> <span class="hljs-string">"#000000"</span> <span class="hljs-comment"># 图标颜色</span><br></code></pre></td></tr></table></figure>
+<p>   在Fluid<b>主题配置文件</b>中查找<b>Footer </b>修改相关配置。</p>
+<h3 id="更改网站图标nextfluid">(2)更改网站图标（NexT，Fluid）</h3>
+<p>  在<b>\blog\source</b>目录下创建资源管理的文件夹，例如<b>\blog\source\uploads</b>，将4份文件放入用户网站图标资源文件夹中<b>\blog\source\uploads\user-favicons\1</b>，并根据图片路径更改<b>主题配置文件</b>中的<b>Favicon</b>选项，更改内容如下：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">favicon:</span><br>  <span class="hljs-attr">small:</span> <span class="hljs-string">/uploads/user-favicons/1/favicon-16x16.png</span><br>  <span class="hljs-attr">medium:</span> <span class="hljs-string">/uploads/user-favicons/1/favicon-32x32.png</span><br>  <span class="hljs-attr">apple_touch_icon:</span> <span class="hljs-string">/uploads/user-favicons/1/apple-touch-icon.png</span><br>  <span class="hljs-attr">safari_pinned_tab:</span> <span class="hljs-string">/uploads/user-favicons/1/logo.svg</span><br>  <span class="hljs-comment">#android_manifest: /manifest.json</span><br></code></pre></td></tr></table></figure>
+<p>  创建网站图标可以在<a href="https://realfavicongenerator.net/">Favicon
+Generator</a>网站上传SVG文件，可获得网站图标文件包，含有各种尺寸的png图片。</p>
+<p>  在Fluid<b>主题配置文件</b>中查找<b>Favicon</b>修改图标路径如下，若无所示文件夹则在<b>\source</b>中创建：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># 用于浏览器标签的图标</span><br><span class="hljs-comment"># Icon for browser tab</span><br><span class="hljs-attr">favicon:</span> <span class="hljs-string">/img/favicon.png</span><br></code></pre></td></tr></table></figure>
+<h3 id="更改网站作者头像nextfluid">(3)更改网站作者头像（NexT，Fluid）</h3>
+<p>  在<b></b>目录下创建资源管理的文件夹，例如<b>\blog\source\uploads</b>，将头像文件（常用图片格式）放入用户头像资源文件夹中<b>\blog\source\uploads\user-avatars</b>，并根据图片路径更改<b>主题配置文件</b>中的<b>avatar</b>选项，更改内容如下：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">avatar:</span><br>  <span class="hljs-comment"># Replace the default image and set the url here.</span><br>  <span class="hljs-attr">url:</span> <span class="hljs-string">/uploads/user-avatars/boy-blue.svg</span><br>  <span class="hljs-comment"># If true, the avatar will be displayed in circle.</span><br>  <span class="hljs-attr">rounded:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-comment"># If true, the avatar will be rotated with the cursor.</span><br>  <span class="hljs-attr">rotated:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+<p>  在主题配置文件_config.fluid.yml中查找avatar设置，位于<b>About页的头像</b>，修改图片路径，若无所示文件夹则在<b>\source</b>中创建：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment">#---------------------------</span><br><span class="hljs-comment"># 关于页</span><br><span class="hljs-comment"># About Page</span><br><span class="hljs-comment">#---------------------------</span><br><span class="hljs-attr">about:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">banner_img:</span> <span class="hljs-string">/img/default.png</span><br>  <span class="hljs-attr">banner_img_height:</span> <span class="hljs-number">60</span><br>  <span class="hljs-attr">banner_mask_alpha:</span> <span class="hljs-number">0.3</span><br>  <span class="hljs-attr">subtitle:</span><br>  <span class="hljs-attr">avatar:</span> <span class="hljs-string">/img/avatar.png</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">"Leia"</span><br>  <span class="hljs-attr">intro:</span> <span class="hljs-string">"技术博客，分享知识！"</span><br>  <span class="hljs-comment"># 更多图标可从 https://hexo.fluid-dev.com/docs/icon/ 查找，`class` 代表图标的 css class，添加 `qrcode` 后，图标不再是链接而是悬浮二维码</span><br>  <span class="hljs-comment"># More icons can be found from https://hexo.fluid-dev.com/docs/en/icon/  `class` is the css class of the icon. If adding `qrcode`, The icon is no longer a link, but a hovering QR code</span><br>  <span class="hljs-attr">icons:</span><br>    <span class="hljs-bullet">-</span> { <span class="hljs-attr">class:</span> <span class="hljs-string">"iconfont icon-github-fill"</span>, <span class="hljs-attr">link:</span> <span class="hljs-string">"https://github.com"</span>, <span class="hljs-attr">tip:</span> <span class="hljs-string">"GitHub"</span> }<br>    <span class="hljs-bullet">-</span> { <span class="hljs-attr">class:</span> <span class="hljs-string">"iconfont icon-douban-fill"</span>, <span class="hljs-attr">link:</span> <span class="hljs-string">"https://douban.com"</span>, <span class="hljs-attr">tip:</span> <span class="hljs-string">"豆瓣"</span> }<br>    <span class="hljs-bullet">-</span> { <span class="hljs-attr">class:</span> <span class="hljs-string">"iconfont icon-wechat-fill"</span>, <span class="hljs-attr">qrcode:</span> <span class="hljs-string">"/img/favicon.png"</span> }<br></code></pre></td></tr></table></figure>
+<h3 id="给文章添加访问密码next">(4)给文章添加访问密码（NexT）</h3>
+<p>　　在<b>\source</b>目录下的_data文件夹（若无此文件夹则创建）中创建<b>head.njk</b>文件，在主题配置文件中查找<b>custom_file_path</b>选项，取消相应文件的注释。<b>head.njk</b>添加如下内容：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">&lt;script&gt;<br>    (<span class="hljs-built_in">function</span>(){<br>        <span class="hljs-built_in">if</span>(<span class="hljs-string">'{{ page.password }}'</span>){<br>            <span class="hljs-built_in">if</span>(<span class="hljs-built_in">prompt</span>(<span class="hljs-string">'请输入文章密码'</span>) !== <span class="hljs-string">'{{ page.password }}'</span>){<br>                <span class="hljs-built_in">alert</span>(<span class="hljs-string">'密码错误！'</span>);<br>                history<span class="hljs-selector-class">.back</span>();<br>            }<br>        }<br>    })();<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+<p>  在创建的文章顶部的配置选项中添加password字段用于设置文章访问密码，例如：</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/Typora/typora-user-images/image-20220219201529466-20220219201532.png" alt="文章头部添加密码字段">
+<figcaption aria-hidden="true">文章头部添加密码字段</figcaption>
+</figure>
+<h3 id="去除next主题下博客网站顶部的黑色宽线条next">(5)去除NexT主题下博客网站顶部的黑色宽线条（NexT）</h3>
+<p>  在<b>\blog\source</b>目录下的<b>_data文件夹</b>（若无此文件夹则创建）中创建<b>styles.sty</b>文件，在主题配置文件中查找<b>custom_file_path</b>选项，取消相应文件的注释。<b>styles.sty</b>添加如下内容：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus"><span class="hljs-comment">//去掉顶部黑线：</span><br><span class="hljs-selector-class">.headband</span> {<span class="hljs-attribute">display</span>:none;}<br></code></pre></td></tr></table></figure>
+<h3 id="添加站内搜索功能nextfluid">(6)添加站内搜索功能（NexT，Fluid）</h3>
+<p>  安装<b>hexo-generator-search</b></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">npm install hexo-generator-search --save<br></code></pre></td></tr></table></figure>
+<p>  安装<b> hexo-generator-searchdb</b></p>
+<p><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">npm install hexo-generator-searchdb --save<br></code></pre></td></tr></table></figure></p>
+<p>  编辑主题配置文件，查找<b>local_search</b>设置<b>enable</b>为<b>true</b>，内容如下：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># Local Search</span><br><span class="hljs-comment"># Dependencies: https://github.com/next-theme/hexo-generator-searchdb</span><br><span class="hljs-attr">local_search:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-comment"># If auto, trigger search by changing input.</span><br>  <span class="hljs-comment"># If manual, trigger search by pressing enter key or search button.</span><br>  <span class="hljs-attr">trigger:</span> <span class="hljs-string">auto</span><br>  <span class="hljs-comment"># Show top n results per article, show all results by setting to -1</span><br>  <span class="hljs-attr">top_n_per_article:</span> <span class="hljs-number">1</span><br>  <span class="hljs-comment"># Unescape html strings to the readable one.</span><br>  <span class="hljs-attr">unescape:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-comment"># Preload the search data when the page loads.</span><br>  <span class="hljs-attr">preload:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+<p>  Fluid主题的站内搜索设置与上述步骤类似。</p>
+<h3 id="添加文章访问数统计利用leancloud平台fluid">(7)添加文章访问数统计，利用LeanCloud平台（Fluid）</h3>
+<p>  注册<strong>LeanCloud</strong>账号，创建应用并进入设置，在存储选项中创建Class，名称只能为Counter，设置数据条目的默认为<strong>无限制</strong>，成功创建Class。进入平台的设置项页面查看<b>app_id</b>和<b>app_key</b>的值，并将其填入主题配置文件中的leancloud_visitors设置项，并关闭security，内容如下：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># Show number of visitors of each article.</span><br><span class="hljs-comment"># You can visit https://www.leancloud.cn to get AppID and AppKey.</span><br><span class="hljs-attr">leancloud_visitors:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">app_id:</span> <span class="hljs-string">fgaUlM9tpzalN2J6sOooSVc0-gzGzoHszcz</span><br>  <span class="hljs-attr">app_key:</span> <span class="hljs-string">LUzOsNy6KL0b2iyCMMlIstrJcz</span><br>  <span class="hljs-comment"># Required for apps from CN region</span><br>  <span class="hljs-attr">server_url:</span> <span class="hljs-comment"># &lt;your server url&gt;</span><br>  <span class="hljs-comment"># Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security</span><br>  <span class="hljs-comment"># If you don't care about security in leancloud counter and just want to use it directly</span><br>  <span class="hljs-comment"># (without hexo-leancloud-counter-security plugin), set `security` to `false`.</span><br>  <span class="hljs-attr">security:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+<p>  在LeanCloud平台中设置Web安全域名，进入平台设置页面-应用安全中心，填入博客网站的地址。</p>
+<p>  为防止访问记录被随意篡改，进入<b>云引擎 -&gt; 部署 -&gt;
+在线编辑</b>中，在弹出窗口选择Hook类型，在选择
+Hook处选择beforeUpdate，在选择
+Class处选择Counter类。粘贴下方代码后，点保存。</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-selector-tag">var</span> query = new AV<span class="hljs-selector-class">.Query</span>("Counter");<br>if (request.object.updatedKeys.indexOf('time') !== -<span class="hljs-number">1</span>) {<br>    return query<span class="hljs-selector-class">.get</span>(request.object.id)<span class="hljs-selector-class">.then</span>(function (obj) {<br>        if (obj.get("time") + <span class="hljs-number">1</span> !== request<span class="hljs-selector-class">.object</span><span class="hljs-selector-class">.get</span>("time")) {<br>            throw new AV<span class="hljs-selector-class">.Cloud</span><span class="hljs-selector-class">.Error</span>('Invalid update!');<br>        }<br>    })<br>}<br></code></pre></td></tr></table></figure>
+<p>  然后单击创建按钮右侧的部署 -&gt; 生产环境 -&gt;
+部署，待显示部署完成：1
+个实例部署成功即可。在主题配置文件_config.fluid.yml中查找网页访问统计，并设置LeanCloud的访问密钥：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># 网页访问统计</span><br><span class="hljs-comment"># Analysis of website visitors</span><br><span class="hljs-attr">web_analytics:</span>  <span class="hljs-comment"># 网页访问统计</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>   <span class="hljs-comment"># LeanCloud 计数统计，可用于 PV UV 展示，如果 `web_analytics: enable` 没有开启，PV UV 展示只会查询不会增加</span><br>  <span class="hljs-comment"># LeanCloud count statistics, which can be used for PV UV display. If `web_analytics: enable` is false, PV UV display will only query and not increase</span><br>  <span class="hljs-attr">leancloud:</span><br>    <span class="hljs-attr">app_id:</span> <span class="hljs-string">xxxxxxxxxxxxxx</span><br>    <span class="hljs-attr">app_key:</span> <span class="hljs-string">xxxxxxxxxxxxxx</span><br>    <span class="hljs-comment"># REST API 服务器地址，国际版不填</span><br>    <span class="hljs-comment"># Only the Chinese mainland users need to set</span><br>    <span class="hljs-attr">server_url:</span><br>    <span class="hljs-comment"># 统计页面时获取路径的属性</span><br>    <span class="hljs-comment"># Get the attribute of the page path during statistics</span><br>    <span class="hljs-attr">path:</span> <span class="hljs-string">window.location.pathname</span><br>    <span class="hljs-comment"># 开启后不统计本地路径( localhost 与 127.0.0.1 )</span><br>    <span class="hljs-comment"># If ture, ignore localhost &amp; 127.0.0.1</span><br>    <span class="hljs-attr">ignore_local:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+<h3 id="更改网站背景图片next">(8)更改网站背景图片（NexT）</h3>
+<p>  在<b>\source_data\style.styl</b>（如若不存在则创建，并在主题配置文件中的custom设置项取消相应的注释），将背景图片background.png放入自定义文件夹<b>\blog\source\uploads</b>（若不存在则创建）中，并在style.styl文件中增加如下内容：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css">// <span class="hljs-attribute">background</span><br><span class="hljs-selector-tag">body</span> {<br>  <span class="hljs-attribute">background-image</span>:<span class="hljs-built_in">url</span>(<span class="hljs-string">../uploads/background.png</span>);<br>  <span class="hljs-attribute">height</span>:<span class="hljs-number">100%</span>;<br>  <span class="hljs-attribute">width</span>:<span class="hljs-number">100%</span>;<br>  <span class="hljs-attribute">background-repeat</span>:repeat-x;<br>  <span class="hljs-attribute">background-attachment</span>:fixed;<br>  <span class="hljs-attribute">background-size</span>:<span class="hljs-number">100%</span> <span class="hljs-number">100%</span>;<br>}<br></code></pre></td></tr></table></figure>
+<h2 id="功能配置">2. 功能配置</h2>
+<h3 id="启用独立的主题配置文件以便后续next主题的升级nextfluid">(1)启用独立的主题配置文件，以便后续NexT主题的升级（NexT，Fluid）</h3>
+<p>  在<b></b>目录下新建<b>_config.hexo-theme-next.yml</b>，将<b>\blog\themes\hexo-theme-next</b>目录下的主题配置文件<b>_config.yml</b>中的内容全部复制到<b>_config.hexo-theme-next.yml</b>中，后续修改<b>_config.hexo-theme-next.yml</b>文件内容进行主题配置即可。</p>
+<p>  在<b></b>目录下新建<b>_config.fluid.yml</b>，将<b>\blog\themes\fluid</b>目录下的主题配置文件<b>_config.yml</b>中的内容全部复制到<b>_config.fluid.yml</b>中，后续修改<b>_config.fluid.yml</b>文件内容进行主题配置即可。</p>
+<h2 id="警告错误解决">3. 警告错误解决</h2>
+<h3 id="在部署完进行网站预览时命令行窗口警告提示">(1)在部署完进行网站预览时，命令行窗口警告提示</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">(node:87224) Warning: Accessing non-existent property <span class="hljs-string">'lineno'</span> of module exports inside circular dependency (Use `node --trace-warnings ...` to show <span class="hljs-built_in">where</span> the warning was created)accessing-non-existent-property-lineno-of-module-exports-inside-circu)<br>(node:87224) Warning: Accessing non-existent property <span class="hljs-string">'column'</span> of module exports inside circular dependency<br>(node:87224) Warning: Accessing non-existent property <span class="hljs-string">'filename'</span> of module exports inside circular dependency<br>(node:87224) Warning: Accessing non-existent property <span class="hljs-string">'lineno'</span> of module exports inside circular dependency<br>(node:87224) Warning: Accessing non-existent property <span class="hljs-string">'column'</span> of module exports inside circular dependency<br>(node:87224) Warning: Accessing non-existent property <span class="hljs-string">'filename'</span> of module exports inside circular dependency<br></code></pre></td></tr></table></figure>
+<p>  Hexo 这里的 warning是由于<a href="https://link.zhihu.com/?target=https%3A//github.com/stylus/stylus">stylus</a>导致的，幸运的是stylus
+在 0.54.8 版本修复了这个问题，所以对于 Hexo
+用户来说，更新一下<b>hexo-renderer-stylus</b>，就可正常使用。如若仍报错，则定位到<b>\blog\node_modules\nib</b>目录中执行<b>npm
+update stylus</b>更新stylus，解决过程中可能用到下列命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">npm update hexo-renderer-stylus <span class="hljs-comment"># 在\blog目录下执行更新hexo-renderer-stylus</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">npm update stylus <span class="hljs-comment"># 在\blog\node_modules\nib目录下执行更新stylus</span><br>npm uninstall stylus <span class="hljs-comment"># nib卸载stylus</span><br>npm install stylus <span class="hljs-comment"># nib安装stylus</span><br></code></pre></td></tr></table></figure>
+<h3 id="点击目录链接不跳转解决办法hexo版本-6.0.0hexo-theme-next版本-８.10.0next">(2)点击目录链接不跳转解决办法(Hexo版本:
+"6.0.0"，hexo-theme-next版本: "８.10.0")（NexT）</h3>
+<p>  进入<b> _modules-toc.js</b> 文件中，把 28 行～31 行修改为：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json">$title.attr('id'<span class="hljs-punctuation">,</span> id);<br><span class="hljs-comment">// $title.children('a').remove();</span><br><span class="hljs-comment">// $title.html( '&lt;span id="' + id + '"&gt;' + $title.html() + '' );</span><br><span class="hljs-comment">// $title.removeAttr('id');</span><br></code></pre></td></tr></table></figure>
+<h2 id="文章编辑">4. 文章编辑</h2>
+<h3 id="利用typora编辑hexo博客">(1)利用typora编辑Hexo博客</h3>
+<p>  通过typora对发布在Hexo上的文章进行编辑，遇到需要加粗文字以及添加背景色时，使用如下代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span> 加粗-背景色-文字 <span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="取消next主题侧边栏中目录的自动编号next">(2)取消NexT主题侧边栏中目录的自动编号（NexT）</h3>
+<p>​ 打开主题配置文件，查找 toc 选项，设置 number 选项为
+false，内容如下：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># Table of Contents in the Sidebar</span><br><span class="hljs-comment"># Front-matter variable (nonsupport wrap expand_all).</span><br><span class="hljs-attr">toc:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-comment"># Automatically add list number to toc.</span><br>  <span class="hljs-attr">number:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-comment"># If true, all words will placed on next lines if header width longer then sidebar width.</span><br>  <span class="hljs-attr">wrap:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-comment"># If true, all level of TOC in a post will be displayed, rather than the activated part of it.</span><br>  <span class="hljs-attr">expand_all:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-comment"># Maximum heading depth of generated toc.</span><br>  <span class="hljs-attr">max_depth:</span> <span class="hljs-number">6</span><br></code></pre></td></tr></table></figure>
+<h3 id="文章段落首行缩进next">(3)文章段落首行缩进（NexT）</h3>
+<p>  首先进入电脑设置，找到键盘语言选项，打开半角／圆角切换按键功能，切换至全角模式并在段落开头键入两个空格即为缩进两个字符，使用tab键并无效果，使用全角空格缩进效果如下：（这一问题貌似在更换mathjax渲染引擎时解决了？？？）</p>
+<p>  首行缩进两个字符；</p>
+<p>   首行缩进３个字符；</p>
+<p>    首行缩进４个字符；</p>
+<p>  <b>Fluid主题</b>下使用<code>&amp;emsp;</code>即可。</p>
+<h3 id="为文章在网站上显示添加read-more按钮next">(4)为文章在网站上显示添加Read
+More按钮（NexT）</h3>
+<p>  在文章中任意位置插入<code>&lt;!--more--&gt;</code>，在此之后的内容将被折叠隐藏。</p>
+<h3 id="数学公式显示nextfluid">(5)数学公式显示（NexT，Fluid）</h3>
+<p>  参考NexT主题官方教程<a href="https://theme-next.js.org/docs/third-party-services/math-equations.html?highlight=math+equation">Math
+Equations | NexT
+(theme-next.js.org)</a>，首先将站点配置文件中的mathjax项开启，如下所示</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">mathjax:</span><br>    <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-comment"># Available values: none | ams | all</span><br>    <span class="hljs-attr">tags:</span> <span class="hljs-string">none</span><br></code></pre></td></tr></table></figure>
+<p>然后安装公式渲染引擎hexo-renderer-pandoc，安装此插件前还需要安装<a href="https://github.com/jgm/pandoc/blob/master/INSTALL.md">pandoc</a>，以及卸载掉其他渲染引擎，可能会用到如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">npm uninstall hexo-renderer-marked<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">npm uninstall hexo-renderer-kramed<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">npm uninstall hexo-renderer-markdown-it<br></code></pre></td></tr></table></figure>
+<p>最后重启电脑，即可正确安装pandoc以及使用公式渲染引擎插件，效果如下：</p>
+<p>  行内公式<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.669ex" xmlns="http://www.w3.org/2000/svg" width="14.864ex" height="2.366ex" role="img" focusable="false" viewBox="0 -750 6569.8 1045.7"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path></g><g data-mml-node="mo" transform="translate(1702,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(2091,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(2691,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g><g data-mml-node="mo" transform="translate(3080,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g><g data-mml-node="mo" transform="translate(3746.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mi" transform="translate(4802.6,0)"><path data-c="1D459" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"></path></g><g data-mml-node="mi" transform="translate(5100.6,0)"><path data-c="1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path></g><g data-mml-node="msubsup" transform="translate(5585.6,0)"><g data-mml-node="mi"><path data-c="1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"></path></g><g data-mml-node="TeXAtom" transform="translate(510,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g></g><g data-mml-node="mn" transform="translate(510,-295.7) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g></g></g></svg></mjx-container></span>测试</p>
+<p>  行间公式： <span class="math display"><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -1.602ex" xmlns="http://www.w3.org/2000/svg" width="25.832ex" height="5.018ex" role="img" focusable="false" viewBox="0 -1509.9 11417.6 2217.9"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mi" transform="translate(345,0)"><path data-c="210F" d="M182 599Q182 611 174 615T133 619Q118 619 114 621T109 630Q109 636 114 656T122 681Q125 685 202 688Q272 695 286 695Q304 695 304 684Q304 682 295 644T282 597Q282 592 360 592H399Q430 592 445 587T460 563Q460 552 451 541L442 535H266L251 468Q247 453 243 436T236 409T233 399Q233 395 244 404Q295 441 357 441Q405 441 445 417T485 333Q485 284 449 178T412 58T426 44Q447 44 466 68Q485 87 500 130L509 152H531H543Q562 152 562 144Q562 128 546 93T494 23T415 -13Q385 -13 359 3T322 44Q318 52 318 77Q318 99 352 196T386 337Q386 386 346 386Q318 386 286 370Q267 361 245 338T211 292Q207 287 193 235T162 113T138 21Q128 7 122 4Q105 -12 83 -12Q66 -12 54 -2T42 26L166 530Q166 534 161 534T129 535Q127 535 122 535T112 534Q74 534 74 562Q74 570 77 576T84 585T96 589T109 591T124 592T138 592L182 595V599Z"></path></g><g data-mml-node="mfrac" transform="translate(907,0)"><g data-mml-node="mi" transform="translate(400.5,676)"><path data-c="1D715" d="M202 508Q179 508 169 520T158 547Q158 557 164 577T185 624T230 675T301 710L333 715H345Q378 715 384 714Q447 703 489 661T549 568T566 457Q566 362 519 240T402 53Q321 -22 223 -22Q123 -22 73 56Q42 102 42 148V159Q42 276 129 370T322 465Q383 465 414 434T455 367L458 378Q478 461 478 515Q478 603 437 639T344 676Q266 676 223 612Q264 606 264 572Q264 547 246 528T202 508ZM430 306Q430 372 401 400T333 428Q270 428 222 382Q197 354 183 323T150 221Q132 149 132 116Q132 21 232 21Q244 21 250 22Q327 35 374 112Q389 137 409 196T430 306Z"></path></g><g data-mml-node="mrow" transform="translate(220,-686)"><g data-mml-node="mi"><path data-c="1D715" d="M202 508Q179 508 169 520T158 547Q158 557 164 577T185 624T230 675T301 710L333 715H345Q378 715 384 714Q447 703 489 661T549 568T566 457Q566 362 519 240T402 53Q321 -22 223 -22Q123 -22 73 56Q42 102 42 148V159Q42 276 129 370T322 465Q383 465 414 434T455 367L458 378Q478 461 478 515Q478 603 437 639T344 676Q266 676 223 612Q264 606 264 572Q264 547 246 528T202 508ZM430 306Q430 372 401 400T333 428Q270 428 222 382Q197 354 183 323T150 221Q132 149 132 116Q132 21 232 21Q244 21 250 22Q327 35 374 112Q389 137 409 196T430 306Z"></path></g><g data-mml-node="mi" transform="translate(566,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g></g><rect width="1127" height="60" x="120" y="220"></rect></g><g data-mml-node="mi" transform="translate(2274,0)"><path data-c="1D713" d="M161 441Q202 441 226 417T250 358Q250 338 218 252T187 127Q190 85 214 61Q235 43 257 37Q275 29 288 29H289L371 360Q455 691 456 692Q459 694 472 694Q492 694 492 687Q492 678 411 356Q329 28 329 27T335 26Q421 26 498 114T576 278Q576 302 568 319T550 343T532 361T524 384Q524 405 541 424T583 443Q602 443 618 425T634 366Q634 337 623 288T605 220Q573 125 492 57T329 -11H319L296 -104Q272 -198 272 -199Q270 -205 252 -205H239Q233 -199 233 -197Q233 -192 256 -102T279 -9Q272 -8 265 -8Q106 14 106 139Q106 174 139 264T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Q21 299 34 333T82 404T161 441Z"></path></g><g data-mml-node="mo" transform="translate(3202.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mo" transform="translate(4258.6,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mfrac" transform="translate(5036.6,0)"><g data-mml-node="msup" transform="translate(384.2,676)"><g data-mml-node="mi"><path data-c="210F" d="M182 599Q182 611 174 615T133 619Q118 619 114 621T109 630Q109 636 114 656T122 681Q125 685 202 688Q272 695 286 695Q304 695 304 684Q304 682 295 644T282 597Q282 592 360 592H399Q430 592 445 587T460 563Q460 552 451 541L442 535H266L251 468Q247 453 243 436T236 409T233 399Q233 395 244 404Q295 441 357 441Q405 441 445 417T485 333Q485 284 449 178T412 58T426 44Q447 44 466 68Q485 87 500 130L509 152H531H543Q562 152 562 144Q562 128 546 93T494 23T415 -13Q385 -13 359 3T322 44Q318 52 318 77Q318 99 352 196T386 337Q386 386 346 386Q318 386 286 370Q267 361 245 338T211 292Q207 287 193 235T162 113T138 21Q128 7 122 4Q105 -12 83 -12Q66 -12 54 -2T42 26L166 530Q166 534 161 534T129 535Q127 535 122 535T112 534Q74 534 74 562Q74 570 77 576T84 585T96 589T109 591T124 592T138 592L182 595V599Z"></path></g><g data-mml-node="mn" transform="translate(646.1,363) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g><g data-mml-node="mrow" transform="translate(220,-686)"><g data-mml-node="mn"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="mi" transform="translate(500,0)"><path data-c="1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g></g><rect width="1578" height="60" x="120" y="220"></rect></g><g data-mml-node="msup" transform="translate(6854.6,0)"><g data-mml-node="mi"><path data-c="2207" d="M46 676Q46 679 51 683H781Q786 679 786 676Q786 674 617 326T444 -26Q439 -33 416 -33T388 -26Q385 -22 216 326T46 676ZM697 596Q697 597 445 597T193 596Q195 591 319 336T445 80L697 596Z"></path></g><g data-mml-node="mn" transform="translate(866,413) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g><g data-mml-node="mi" transform="translate(8124.1,0)"><path data-c="1D713" d="M161 441Q202 441 226 417T250 358Q250 338 218 252T187 127Q190 85 214 61Q235 43 257 37Q275 29 288 29H289L371 360Q455 691 456 692Q459 694 472 694Q492 694 492 687Q492 678 411 356Q329 28 329 27T335 26Q421 26 498 114T576 278Q576 302 568 319T550 343T532 361T524 384Q524 405 541 424T583 443Q602 443 618 425T634 366Q634 337 623 288T605 220Q573 125 492 57T329 -11H319L296 -104Q272 -198 272 -199Q270 -205 252 -205H239Q233 -199 233 -197Q233 -192 256 -102T279 -9Q272 -8 265 -8Q106 14 106 139Q106 174 139 264T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Q21 299 34 333T82 404T161 441Z"></path></g><g data-mml-node="mo" transform="translate(8997.3,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mi" transform="translate(9997.6,0)"><path data-c="1D449" d="M52 648Q52 670 65 683H76Q118 680 181 680Q299 680 320 683H330Q336 677 336 674T334 656Q329 641 325 637H304Q282 635 274 635Q245 630 242 620Q242 618 271 369T301 118L374 235Q447 352 520 471T595 594Q599 601 599 609Q599 633 555 637Q537 637 537 648Q537 649 539 661Q542 675 545 679T558 683Q560 683 570 683T604 682T668 681Q737 681 755 683H762Q769 676 769 672Q769 655 760 640Q757 637 743 637Q730 636 719 635T698 630T682 623T670 615T660 608T652 599T645 592L452 282Q272 -9 266 -16Q263 -18 259 -21L241 -22H234Q216 -22 216 -15Q213 -9 177 305Q139 623 138 626Q133 637 76 637H59Q52 642 52 648Z"></path></g><g data-mml-node="mi" transform="translate(10766.6,0)"><path data-c="1D713" d="M161 441Q202 441 226 417T250 358Q250 338 218 252T187 127Q190 85 214 61Q235 43 257 37Q275 29 288 29H289L371 360Q455 691 456 692Q459 694 472 694Q492 694 492 687Q492 678 411 356Q329 28 329 27T335 26Q421 26 498 114T576 278Q576 302 568 319T550 343T532 361T524 384Q524 405 541 424T583 443Q602 443 618 425T634 366Q634 337 623 288T605 220Q573 125 492 57T329 -11H319L296 -104Q272 -198 272 -199Q270 -205 252 -205H239Q233 -199 233 -197Q233 -192 256 -102T279 -9Q272 -8 265 -8Q106 14 106 139Q106 174 139 264T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Q21 299 34 333T82 404T161 441Z"></path></g></g></g></svg></mjx-container></span></p>
+<blockquote>
+<p>NexT主题下文章内公式渲染使用教程链接：<a href="https://theme-next.js.org/docs/third-party-services/math-equations.html?highlight=math+equation">Math
+Equations | NexT (theme-next.js.org)</a></p>
+</blockquote>
+<blockquote>
+<p>Fluid主题下文章内公式渲染使用教程链接：<a href="https://hexo.fluid-dev.com/docs/guide/#latex-数学公式">配置指南 |
+Hexo Fluid 用户手册 (fluid-dev.com)</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Hexo博客</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>NexT主题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo-GithubPage搭建个人博客</title>
+    <url>/Hexo%E5%8D%9A%E5%AE%A2/Hexo-GithubPage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h1 id="hexo-githubpage搭建个人博客">Hexo + GithubPage搭建个人博客</h1>
+<h2 id="安装创建准备">(1)安装、创建准备</h2>
+<p>​
+首先安装Git、node.js，安装完成后在桌面打开cmd命令窗口查看是否安装成功。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git --version<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">node -v<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">npm -v<br></code></pre></td></tr></table></figure>
+<p>​
+在自己的Github账号中创建一个公开库，创建时任何文件（包括README文件）都不要添加，仓库名称为【<strong>用户名.http://github.io</strong>】（用户名为你的Github账号名称，请勿自定义格式）</p>
+<h2 id="hexo安装使用">(2)Hexo安装使用</h2>
+<p>在电脑本机中创建一个文件夹用于存放管理博客网站，可以命名为Blog，进入Blog文件夹，在上方的文件地址栏输入cmd，将在此文件夹处打开cmd命令行窗口。</p>
+<span id="more"></span>
+<p>使用npm命令安装Hexo，输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">npm install -g hexo-cli <br></code></pre></td></tr></table></figure>
+<p>Hexo初始化博客网站，输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">hexo init blog<br></code></pre></td></tr></table></figure>
+<p>【测试】创建文章 test_my_site</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">hexo new test_my_site<br></code></pre></td></tr></table></figure>
+<p>【测试】生成站点文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">hexo g<br></code></pre></td></tr></table></figure>
+<p>【测试】启动本地服务器，实现快速预览博客网站效果</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">hexo s<br></code></pre></td></tr></table></figure>
+<p><strong>常用的Hexo 命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">npm install hexo -g <span class="hljs-comment">#安装Hexo</span><br>npm update hexo -g <span class="hljs-comment">#升级</span><br>hexo init [folder] <span class="hljs-comment">#新建一个网站，如果没有设置folder，Hexo默认在目前的文件夹建立网站。</span><br><br>命令简写<br>hexo new [layout] &lt;title&gt; <span class="hljs-comment">#新建文章，例如：hexo new post &quot;Hello Hexo&quot;</span><br>hexo g == hexo generate <span class="hljs-comment">#生成网站静态文件</span><br>hexo s == hexo server <span class="hljs-comment">#启动服务预览</span><br>hexo d == hexo deploy <span class="hljs-comment">#部署</span><br><br>hexo server <span class="hljs-comment">#Hexo会监视文件变动并自动更新，无须重启服务器</span><br>hexo server -s <span class="hljs-comment">#静态模式</span><br>hexo server -p 5000 <span class="hljs-comment">#更改端口</span><br>hexo server -i 192.168.1.1 <span class="hljs-comment">#自定义 IP</span><br>hexo clean <span class="hljs-comment">#清除缓存，若是网页正常情况下可以忽略这条命令</span><br></code></pre></td></tr></table></figure>
+<h2 id="博客网站推送绑定自定义域名">(3)博客网站推送、绑定自定义域名</h2>
+<h3 id="推送">【推送】</h3>
+<p>​
+上述仅完成在本地生成博客网站，他人无法通过网址访问，所以下一步是将网站推送至线上并部署，最后绑定自定义域名。</p>
+<p>​
+在blog根目录里的<span style="background-color: #f3f4f4;"><b>_config.yml</b></span>文件称为<strong>站点配置文件</strong>，而后续如果你安装了其他网站主题（例如nexT），则在<span
+style="background-color: #f3f4f4;"><b>-theme-next</b></span>文件夹中的<span
+style="background-color: #f3f4f4;"><b>_config.yml</b></span>文件称为<strong>主题配置文件</strong>。</p>
+<p>​
+打开站点配置文件<span style="background-color: #f3f4f4;"><b>\_config.yml</b></span>，找到deploy配置选项，添加如下内容并保存。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># Deployment</span><br><span class="hljs-comment">## Docs: https://hexo.io/docs/one-command-deployment</span><br><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-attr">repo:</span> <span class="hljs-string">https://github.com/Code-Newborn/Code-Newborn.github.io.git</span><br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">main</span><br></code></pre></td></tr></table></figure>
+<p>​ 安装Git部署插件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">npm install hexo-deployer-git --save<br></code></pre></td></tr></table></figure>
+<p>​ 生成并实现部署，进行预览：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">hexo clean <br>hexo g -d<br></code></pre></td></tr></table></figure>
+<p>​ 完成后，打开浏览器，在地址栏输入你的放置个人网站的仓库路径，即<span
+style="background-color: #f3f4f4;"><b>http://【GitHub用户名】.github.io]</b></span>，可以发现你的博客已经上线了，可以在网络上被访问了。</p>
+<h3 id="绑定个性化域名">【绑定个性化域名】</h3>
+<p>​ 虽然在Internet上可以访问我们的网站，但是网址是GitHub提供的:<a
+href="https://link.zhihu.com/?target=http%3A//xxxx.github.io">http://xxxx.github.io</a>
+(知乎排版可能会出现"http://"字样)
+而我们想使用我们自己的个性化域名，这就需要绑定我们自己的域名。这里演示的是在阿里云万网的域名绑定。</p>
+<p>​ 首先你需要在<a
+href="https://www.aliyun.com/">阿里云</a>上购买注册一个域名，购买完成后在右上角打开<strong>控制台</strong>，点开<strong>域名-域名解析</strong>，添加解析，IPv4记录值可以通过<span
+style="background-color: #f3f4f4;"><b>ping
+【Github用户名】.github.io</b></span>获得，CNAME记录值为<span
+style="background-color: #f3f4f4;"><b>【Github用户名】.github.io</b></span>内容如下：</p>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/Typora/typora-user-images/image-20220216154540992-20220216154543.png"
+alt="image-20220216154540992" />
+<figcaption aria-hidden="true">image-20220216154540992</figcaption>
+</figure>
+<p>​
+然后登录GitHub，进入之前创建的用于放置博客的仓库，点击<strong>settings-Pages</strong>，设置<strong>Custom
+domain</strong>，输入你的个性化域名例如<b><a
+href="https://www.cznewborn.com/">www.cznewborn.com</a></b>，点击<strong>Save</strong>。</p>
+<p>​ 最后进入本地博客文件夹目录
+，进入blog/source目录下，创建一个记事本文件，输入你的域名，对，只要写进你自己的域名例如<b><a
+href="https://www.cznewborn.com/">www.cznewborn.com</a></b>即可，最后文件命名保存为<strong>CNAME</strong>（无后缀文件格式）。</p>
+<p>​ 进入blog目录，进入cmd命令行窗口，依次输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">hexo clean<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">hexo g -d<br></code></pre></td></tr></table></figure>
+<p>​
+<strong>至此完成博客网站的搭建，在浏览器地址栏输入你的个性化域名将会直接进入你自己搭建的网站。</strong></p>
+<h2 id="博客网站主题更换">(4)博客网站主题更换</h2>
+<p>​ 如果你不喜欢Hexo的默认主题，你可以在<a
+href="https://hexo.io/themes/">Hexo
+Themes</a>中下载你喜欢的主题，例如NexT主题：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/Typora/typora-user-images/image-20220216161136949-20220216161139.png" alt="image-20220216161136949" style="zoom:50%;" /></p>
+<p>​
+将Next主题下载到<strong>blog</strong>目录的<strong>themes</strong>主题文件夹中，在本地<span
+style="background-color: #f3f4f4;"><b></b></span>目录下，打开Git
+bash输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/next-theme/hexo-theme-next<br></code></pre></td></tr></table></figure>
+<p>​
+打开<strong>站点配置文件</strong><span style="background-color: #f3f4f4;"><b>_config.yml</b></span>，修改主题为<span
+style="background-color: #f3f4f4;"><b>hexo-theme-next</b></span>(与NexT主题文件夹名称保持相同)</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">theme</span>: <span class="hljs-string">hexo-theme-next</span><br></code></pre></td></tr></table></figure>
+<p>​
+next主题有4个样式，我用的是<strong>Muse</strong>，你们可以自己试试看，选择你自己喜欢的样式（只需要把行首的#去除，#是注释），选择好后，再次生成部署网站<span
+style="background-color: #f3f4f4;"><b>hexo g
+-d</b></span>，查看效果。选择其他主题，按照上述过程即可实现。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># ---------------------------------------------------------------</span><br><span class="hljs-comment"># Scheme Settings</span><br><span class="hljs-comment"># ---------------------------------------------------------------</span><br><br><span class="hljs-comment"># Schemes</span><br><span class="hljs-attr">scheme:</span> <span class="hljs-string">Muse</span><br><span class="hljs-comment">#scheme: Mist</span><br><span class="hljs-comment">#scheme: Pisces</span><br><span class="hljs-comment">#scheme: Gemini</span><br></code></pre></td></tr></table></figure>
+<p>​
+博客网站还有很多美化技巧，需要大家去挖掘学习。每个人的审美不同，打造出来的网站风格各有千秋，希望大家最终能够搭建出属于自己的博客网站，用于介绍自己的分享获得，存储自己的技术知识，记录自己的成长历程。</p>
+<p>​ 本文参考<a href="https://zhuanlan.zhihu.com/p/26625249">GitHub+Hexo
+搭建个人网站详细教程 - 知乎 (zhihu.com)</a>，感谢❤知乎作者<a
+href="https://www.zhihu.com/people/wurun">吴润</a>的分享，教程上略有不同，请自行斟酌修改。</p>
+]]></content>
+      <categories>
+        <category>Hexo博客</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Qt使用Numcpp（c++版的Numpy）</title>
+    <url>/Qt%E5%BC%80%E5%8F%91/Qt%E4%BD%BF%E7%94%A8Numcpp/</url>
+    <content><![CDATA[<h3 id="qt使用boost_numcpp库">Qt使用Boost_Numcpp库</h3>
+<h4 id="下载boost_1.75.0库文件">(1) 下载<a
+href="https://www.boost.org/users/history/version_1_75_0.html">boost_1.75.0库文件</a></h4>
+<h4 id="下载numcpp-c-implementation-of-the-python-numpy-library">(2)
+下载<a href="https://github.com/dpilger26/NumCpp">Numcpp: C++
+implementation of the Python Numpy library</a></h4>
+<h4
+id="非中文路径下新建文件夹d_numcpp将boost_1.75.0文件夹中的boost文件夹复制进刚刚新建的文件夹中并将numcpp中的includes文件夹中的numcpp和numcpp.hpp复制进刚刚新建的文件夹中无需添加环境变量">(3)
+非中文路径下新建文件夹D:_Numcpp，将boost_1.75.0文件夹中的boost文件夹复制进刚刚新建的文件夹中，并将Numcpp中的includes文件夹中的NumCpp和NumCpp.hpp复制进刚刚新建的文件夹中（无需添加环境变量）</h4>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/Github-FilePages/img/新建文件夹-20220208125025.png"
+alt="新建文件夹" />
+<figcaption aria-hidden="true">新建文件夹</figcaption>
+</figure>
+<h4
+id="在qt控制台项目的配置文件.pro中修改config-c14并添加库文件路径配置文件.pro内容如下">(4)
+在Qt控制台项目的配置文件.pro中，修改CONFIG +=
+c++14，并添加库文件路径，配置文件.pro内容如下：</h4>
+<p><figure class="highlight properties"><table><tr><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">QT</span> <span class="hljs-string">-= gui</span><br><br><span class="hljs-attr">CONFIG</span> <span class="hljs-string">+= c++14 console</span><br><span class="hljs-attr">CONFIG</span> <span class="hljs-string">-= app_bundle</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"># The following define makes your compiler emit warnings if you use</span><br><span class="hljs-comment"># any Qt feature that has been marked deprecated (the exact warnings</span><br><span class="hljs-comment"># depend on your compiler). Please consult the documentation of the</span><br><span class="hljs-comment"># deprecated API in order to know how to port your code away from it.</span><br><span class="hljs-attr">DEFINES</span> <span class="hljs-string">+= QT_DEPRECATED_WARNINGS</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"># You can also make your code fail to compile if it uses deprecated APIs.</span><br><span class="hljs-comment"># In order to do so, uncomment the following line.</span><br><span class="hljs-comment"># You can also select to disable deprecated APIs only up to a certain version of Qt.</span><br><span class="hljs-comment">#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0</span><br><br><span class="hljs-attr">SOURCES</span> <span class="hljs-string">+= \</span><br><span class="hljs-string">        main.cpp</span><br><br><span class="hljs-attr">TRANSLATIONS</span> <span class="hljs-string">+= \</span><br><span class="hljs-string">    Boost_Numcpp_Test_zh_CN.ts</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"># Boost库文件路径添加</span><br><span class="hljs-attr">INCLUDEPATH</span> <span class="hljs-string">+= D:\Boost_Numcpp</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"># Default rules for deployment.</span><br><span class="hljs-attr">qnx</span>: <span class="hljs-string">target.path = /tmp/$$&#123;TARGET&#125;/bin</span><br><span class="hljs-attr">else</span>: <span class="hljs-string">unix:!android: target.path = /opt/$$&#123;TARGET&#125;/bin</span><br><span class="hljs-comment">!isEmpty(target.path): INSTALLS += target</span><br></code></pre></td></tr></table></figure></p>
+<h4 id="测试代码">(5) 测试代码</h4>
+<p><figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">boost::timer tmr;<br><span class="hljs-built_in">qDebug</span>() &lt;&lt; tmr.<span class="hljs-built_in">elapsed</span>() &lt;&lt; <span class="hljs-string">&quot;S&quot;</span> &lt;&lt; endl;<br><span class="hljs-built_in">qDebug</span>() &lt;&lt; BOOST_VERSION &lt;&lt; endl;<br><span class="hljs-built_in">qDebug</span>() &lt;&lt; BOOST_LIB_VERSION &lt;&lt; endl;<br><span class="hljs-built_in">qDebug</span>() &lt;&lt; BOOST_PLATFORM &lt;&lt; endl;<br><span class="hljs-built_in">qDebug</span>() &lt;&lt; BOOST_COMPILER &lt;&lt; endl;<br><span class="hljs-built_in">qDebug</span>() &lt;&lt; BOOST_STDLIB &lt;&lt; endl;<br><br>nc::NdArray&lt;<span class="hljs-type">float</span>&gt; m1 = &#123;&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>&#125;, &#123;<span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;&#125;;<br>nc::NdArray&lt;<span class="hljs-type">float</span>&gt; m2 = &#123;&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>&#125;, &#123;<span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;&#125;;<br>nc::NdArray&lt;<span class="hljs-type">float</span>&gt; m3 = m1 * m2;<br>std::cout &lt;&lt; m3 &lt;&lt; std::endl;<br><span class="hljs-keyword">return</span> a.<span class="hljs-built_in">exec</span>();<br></code></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>Qt开发</category>
+      </categories>
+      <tags>
+        <tag>Qt</tag>
+        <tag>Numcpp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello Hexo</title>
+    <url>/Hexo%E5%8D%9A%E5%AE%A2/hello-Hexo/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="2b88201341da6e9670e4db27a901abef3c55534f43fddb777b5a0a110aad43fa">10d79030e8222445804370796b90fca1cf7dd2ee01010d95413afa643c36d75c6da7dc8584583c53132d123565a83bc482d57efe09dbb13f6be1ebadf67b396c5e9af14ae37a94b87d779719bc8c1cd1e72dd8ba45389cae4caa3b323d7a9853fdcbb94a6c0d7b1c87d1d2c36f7d55e119cb630f81716c9ba478fcf2652efed7647367fb665209e2afa82a8d212048f9a9b8811db26709c09621001e4b24bca39d0f7792bc2153842af4c52f45a777a4b24696e8ae00a491872eacd62c271a9a6117c4e6cdff558e1a5e7b0021741f099ef5c874265eeff60394bec863f3553fb435b7cf05204d50dbfb9c5fca4b7c2a684f5834853743da858f7cbbc824c207c707d6ba5a35f5d7085c130487101b0b5f1aa74a3bb963ca925d04d275b98020d788fda4792c62950906ce36eceedda34aa0437fc7cf871c721863bb3cbcd17fdc77bb35a726d138d2682cf2d167428216207cc807a782ef032133a849422f078122ccc0ea4e0c4196e1c009756d7fe06e2f9702983b4d824ebdc4a38cb96693fc422605d3f49eaeb05e8a5dc0f273636e2e96789a51d67003d64727b35c12d3f3d56ca39dc7257d19c7145cf827b715325e147ca893e03e89409b81dd5ea835d1564ce905a6fb6da375068df326e6dd0ee93475aadab7ab33594dc8c24faa35d31fc7cfeb965ec092ad5f95ab3c5ac14dca2e9e9d103b51eac42828f4e8d29faf50f20932c18e9892f39d7e29014feee6338b2b0e4034f8841154b450a564af52ff879519eb8214fd2bfeb30c56f58118b2f0aad7b2df0aafd142023164a753deafc57aa13e94a1e0d26e8df72484731058ff828dda5a84abb1ce976cac28516400b4514c024d89daa311f10c290731eac51d2256269c386fb3ebacc6cda1886352a5100c3d616b2b92467771ca8ae42aaa4588ea6d1007d5f1a8f96b6da4985d05a17cfc661c90657cf02916344326e162993eb7dc9b31e13da3f926f96a1c9296a6d23783f509b9b8b169edae41e7bb394694d713066407eaafe7a48f41258bc449da73410d76fd7c1cb3e06bf9c40a697ff93e9d3998c09581d0da3fc2df1188dfb3d3e776057f146ee6f69582e06b79ec96013df527587edb1ec4a0f197a5d08ab17d4d2bdfad7643ebcae144c957b3695f7b7266ba370f32fd09fef9f1ba6f1fbd51b2653d8dda58fbfcd5fef42100a4bb041f284a9091808cce6e0b8461992c7d52e838a014c968f18d684f4e133440fd70b942148fd01d69ccad28287c04c8d56b33e11de55329af85231d1744202270a4259adf96efe77222767d76a80ed2339e1d4c31d5475f450a744e70474d761331cc345db8c3c8b13ac08c72696ff20c25c8d1fd9b3154789a764a8e7c3bf3981ad4715e0324d2108c5084393a14e504b0dc3616f7c4531dac7d07e10318215c914d383ffd478b661922ea652f12ea0d396c69791d3e37fee88da66665158f70a79f2af1bf80112e641a2bfa09b2948320e6be1501f11cf1853c246d3e804d477a161b8e368f456219c2245dd828d6e2323c7c022434b49e0bbf08f23242f7b64759f93283237e1d6b32b9e36f5d5437f3bed93146ed8afe47c9f369f126376d35a178d1e35e35aa6c48ed6c27998bd19cdb3949f5b94896525049ca015e37f5cac2a952c7876c4ef6c6eb5f3f28f16cb4ab0a0fc6d8776436db2e3875a8179bdabf4e190e97ae15fdd65627b8050457bb4cb5f2682f3a426d449fdf8fff3bff96e922affddb4a782c9c8662ee7109de6f510689762ca4bf035bd2610db81382b2a62868d665a5a3f789596d3ccd0f11e1b1887395a4f444c6d4150354d5c5e2a39e0127c7bf7b7419b1afea61a4a433431f37affe4bb2b89261c92c3bac2e11010d0c89f5ab56c2b9c96e4ded32ecbb6cdb71785553eb0aab0d59d39caf572539af0c881e32bcdb6ff9706bdc5e1b840e0cad4145edcbf53cc8cef036c4bbcc60dcd37be886cd71f620c51fa5380492a808b1706ba35006c48a7accb1492deac1c43ce4a33d212de1632789f74c05f03631fa8b9b431f6db07a6a7b09f21b77a808ca1cfbd33973f7c296a357e7502b9bd8a216b77a53bfddc63f8cc3f6a64d0f1ca4b10d0c9b78e4ed8177b38473ca5fd7f2ad88be33fb4abd5311437880777406d07835d9b3a8ab29e817e31103f7888e1aeb839b23aabcba35192056c9c2c28c8d01aa756f2cf915937db56e1c913a6ece02a5c9b7e2a6af9df14ec3251059b55b07aaa96a85d0f9916573fbec6a92a4610ac79e4b8e9ebd61d50a144a761df7887aea2b9c40681a557e5be480e157807a75258f3188cbebd3c8f79cddca6f2395136820a46ff6c4fc60437c122ff48c9f5a85df3025e83004ca489ea9d5734fcb87514ded4eecd347ebbbb42e95e79f240b8e450d64b8ec092b09c7233b00d67bc303b5ad6d699d5c8d5af5cfa2122ef80ee60ce8252e5146afa98fad82116783374c122743cbb25783990fcee0a2b4682d5e47c1b03ac3fdfe1e8c199267332ba45faaaa69ee54bf8f3cd2611e1d066889255ccf88b855887baa6e6b6b03892ee86b9edc18ab0fdb89e45dbbb4e0058fa6e34b067ec23fd460fb024db0204fa3f3dc6f27435f0cc6b38f6da44703cdad686d15d7a9c5496e4e5dd1855599b6b297b66fe985035a91828a03669262327af61c43de507c95bce1e06dc81ceb1c3e5cbf649e5140b4a932</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>Hexo博客</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+</search>
