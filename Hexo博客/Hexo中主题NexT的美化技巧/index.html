@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/28/Hexo-Theme-Fluid-213135.png">
 <meta property="article:published_time" content="2022-02-16T08:56:21.000Z">
-<meta property="article:modified_time" content="2022-04-13T02:10:51.990Z">
+<meta property="article:modified_time" content="2022-04-13T03:22:17.308Z">
 <meta property="article:author" content="ChenZhao">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="NexT主题">
@@ -312,7 +312,7 @@ mjx-container[display="true"] + br {
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      8.9k 字
+      9k 字
     </span>
   
 
@@ -321,7 +321,7 @@ mjx-container[display="true"] + br {
       <i class="iconfont icon-clock-fill"></i>
       
       
-      75 分钟
+      76 分钟
     </span>
   
 
@@ -433,6 +433,10 @@ update stylus</b>更新stylus，解决过程中可能用到下列命令：</p>
 "6.0.0"，hexo-theme-next版本: "８.10.0")（NexT）</h3>
 <p>  进入<b> _modules-toc.js</b> 文件中，把 28 行～31 行修改为：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs json">$title.attr('id'<span class="hljs-punctuation">,</span> id);<br><span class="hljs-comment">// $title.children('a').remove();</span><br><span class="hljs-comment">// $title.html( '&lt;span id="' + id + '"&gt;' + $title.html() + '' );</span><br><span class="hljs-comment">// $title.removeAttr('id');</span><br></code></pre></td></tr></table></figure>
+<h3 id="hexo部署出现错误err-error-spawn-failed解决方式">(2)Hexo部署出现错误err:
+Error: Spawn failed解决方式</h3>
+<p>  进入站点根目录<b></b>，删除 git 提交内容文件夹</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> -rf .deploy_git/<br></code></pre></td></tr></table></figure>
 <h2 id="文章编辑">4. 文章编辑</h2>
 <h3 id="利用typora编辑hexo博客">(1)利用typora编辑Hexo博客</h3>
 <p>  通过typora对发布在Hexo上的文章进行编辑，遇到需要加粗文字以及添加背景色时，使用如下代码：</p>
