@@ -5,36 +5,22 @@
   
   <entry>
     <title>Qt中的自适应布局策略</title>
-    <link href="/%E6%AF%8D%E5%88%86%E7%B1%BB2/%E5%AD%90%E5%88%86%E7%B1%BB3/Qt%E4%B8%AD%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E7%AD%96%E7%95%A5/"/>
-    <url>/%E6%AF%8D%E5%88%86%E7%B1%BB2/%E5%AD%90%E5%88%86%E7%B1%BB3/Qt%E4%B8%AD%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E7%AD%96%E7%95%A5/</url>
+    <link href="/Qt%E5%BC%80%E5%8F%91/Qt%E4%B8%AD%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E7%AD%96%E7%95%A5/"/>
+    <url>/Qt%E5%BC%80%E5%8F%91/Qt%E4%B8%AD%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E7%AD%96%E7%95%A5/</url>
     
     <content type="html"><![CDATA[<h1 id="qt控件在窗体中的自适应布局">Qt控件在窗体中的自适应布局</h1><p>  为了Qt窗体在缩放的时候能够保证控件能够自适应地随着窗体进行尺寸变化，我们需要在窗口设计过程中考虑，窗体内控件的布局方式，以达到美观的效果。</p><h2 id="一qt布局layout">一、Qt布局layout</h2><p>  Vertical Layout（垂直布局）</p><p>  Horizontal Layout（水平布局）</p><p>  Grid Layout（栅格布局）</p><p>  Form Layout（窗体布局）</p><p>  以Horizontal Layout（水平布局）为例，进行相关参数讲解</p><h3 id="外边距设置">(1)外边距设置</h3><p>外边距包括layoutLeftMargin（左边距）、layoutTopMargin（上边距）、layoutRightMargin（右边距）、layoutBottomMargin（底边距），设置左边距20上边距20，效果如下所示。</p><p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/04/10/水平布局Margin-145219.png" alt="水平布局Margin" style="zoom:100%;" /></p><h3 id="间隔设置">(2)间隔设置</h3><p>间隔设置layoutSpacing是指布局当中控件之间的间隔大小，设置间隔为50，效果如下所示。</p><h3 id="拉伸设置">(3)拉伸设置</h3><p>拉伸设置layoutStretch是指控件在布局中所占比例，各控件依照此比例进行缩放显示，但也不能无条件地拉伸压缩，这还与控件所设置的sizepolicy策略有关，拉伸因子默认为（0，0，0，0），设置拉伸因子为（1，2，3，4），效果如下。</p><h3 id="section">(4)</h3>]]></content>
     
     
     <categories>
       
-      <category>母分类1</category>
-      
-      <category>子分类1</category>
-      
-      <category>子子分类1</category>
-      
-      <category>子分类2</category>
-      
-      <category>母分类2</category>
-      
-      <category>子分类3</category>
+      <category>Qt开发</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>tag1</tag>
-      
-      <tag>tag2</tag>
-      
-      <tag>tag3</tag>
+      <tag>窗口布局</tag>
       
     </tags>
     

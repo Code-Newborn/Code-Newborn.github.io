@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Qt中的自适应布局策略</title>
-    <url>/%E6%AF%8D%E5%88%86%E7%B1%BB2/%E5%AD%90%E5%88%86%E7%B1%BB3/Qt%E4%B8%AD%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E7%AD%96%E7%95%A5/</url>
+    <url>/Qt%E5%BC%80%E5%8F%91/Qt%E4%B8%AD%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E7%AD%96%E7%95%A5/</url>
     <content><![CDATA[<h1 id="qt控件在窗体中的自适应布局">Qt控件在窗体中的自适应布局</h1>
 <p>  为了Qt窗体在缩放的时候能够保证控件能够自适应地随着窗体进行尺寸变化，我们需要在窗口设计过程中考虑，窗体内控件的布局方式，以达到美观的效果。</p>
 <h2 id="一qt布局layout">一、Qt布局layout</h2>
@@ -21,17 +21,10 @@
 <h3 id="section">(4)</h3>
 ]]></content>
       <categories>
-        <category>母分类1</category>
-        <category>子分类1</category>
-        <category>子子分类1</category>
-        <category>子分类2</category>
-        <category>母分类2</category>
-        <category>子分类3</category>
+        <category>Qt开发</category>
       </categories>
       <tags>
-        <tag>tag1</tag>
-        <tag>tag2</tag>
-        <tag>tag3</tag>
+        <tag>窗口布局</tag>
       </tags>
   </entry>
   <entry>
