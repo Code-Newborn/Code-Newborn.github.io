@@ -1,0 +1,757 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ChenZhao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Hexo + NexT（或Fluid）主题美化技巧 1. 网站界面 (1)更改网站底部年份和版权信息之间的图标（NexT，Fluid）   在NexT主题配置文件中找到Footer Settings修改配置项如下： 123456789101112footer:  # Specify the year when the site was setup. If not defined, cu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo + NexT（或Fluid）主题美化技巧">
+<meta property="og:url" content="https://www.cznewborn.com/Hexo%E5%8D%9A%E5%AE%A2/Hexo%20+%20NexT%EF%BC%88%E6%88%96Fluid%EF%BC%89%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%8A%80%E5%B7%A7/index.html">
+<meta property="og:site_name" content="Leia Blog">
+<meta property="og:description" content="Hexo + NexT（或Fluid）主题美化技巧 1. 网站界面 (1)更改网站底部年份和版权信息之间的图标（NexT，Fluid）   在NexT主题配置文件中找到Footer Settings修改配置项如下： 123456789101112footer:  # Specify the year when the site was setup. If not defined, cu">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/28/Hexo-Theme-Fluid-213135.png">
+<meta property="article:published_time" content="2022-02-16T08:56:21.000Z">
+<meta property="article:modified_time" content="2022-10-07T09:11:12.828Z">
+<meta property="article:author" content="ChenZhao">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="NexT主题">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/28/Hexo-Theme-Fluid-213135.png">
+  
+  
+  <title>Hexo + NexT（或Fluid）主题美化技巧 - Leia Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.cznewborn.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":6},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","app_key":"LUzOsNy6KL0b2iyCMMlIstrJ","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Leia Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Hexo + NexT（或Fluid）主题美化技巧">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-16 16:56" pubdate>
+        2022年2月16日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      9.2k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      78 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Hexo + NexT（或Fluid）主题美化技巧</h1>
+            
+            <div class="markdown-body">
+              <h1 id="hexo-next或fluid主题美化技巧">Hexo +
+NexT（或Fluid）主题美化技巧</h1>
+<h2 id="网站界面">1. 网站界面</h2>
+<h3 id="更改网站底部年份和版权信息之间的图标nextfluid">(1)更改网站底部年份和版权信息之间的图标（NexT，Fluid）</h3>
+<p>  在<b>NexT主题配置文件</b>中找到<b>Footer
+Settings</b>修改配置项如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">footer:</span><br>  <span class="hljs-comment"># Specify the year when the site was setup. If not defined, current year will be used.</span><br>  <span class="hljs-comment">#since: 2021</span><br><br>  <span class="hljs-comment"># Icon between year and copyright info.</span><br>  <span class="hljs-attr">icon:</span><br>    <span class="hljs-comment"># Icon name in Font Awesome. See: https://fontawesome.com/icons</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">fa</span> <span class="hljs-string">fa-paw</span> <span class="hljs-comment"># 狗爪paw</span><br>    <span class="hljs-comment"># If you want to animate the icon, set it to true.</span><br>    <span class="hljs-attr">animated:</span> <span class="hljs-literal">true</span>	<span class="hljs-comment"># 动画显示</span><br>    <span class="hljs-comment"># Change the color of icon, using Hex Code.</span><br>    <span class="hljs-attr">color:</span> <span class="hljs-string">"#000000"</span> <span class="hljs-comment"># 图标颜色</span><br></code></pre></td></tr></table></figure>
+<p>   在Fluid<b>主题配置文件</b>中查找<b>Footer </b>修改相关配置。</p>
+<h3 id="更改网站图标nextfluid">(2)更改网站图标（NexT，Fluid）</h3>
+<p>  在<b>\blog\source</b>目录下创建资源管理的文件夹，例如<b>\blog\source\uploads</b>，将4份文件放入用户网站图标资源文件夹中<b>\blog\source\uploads\user-favicons\1</b>，并根据图片路径更改<b>主题配置文件</b>中的<b>Favicon</b>选项，更改内容如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">favicon:</span><br>  <span class="hljs-attr">small:</span> <span class="hljs-string">/uploads/user-favicons/1/favicon-16x16.png</span><br>  <span class="hljs-attr">medium:</span> <span class="hljs-string">/uploads/user-favicons/1/favicon-32x32.png</span><br>  <span class="hljs-attr">apple_touch_icon:</span> <span class="hljs-string">/uploads/user-favicons/1/apple-touch-icon.png</span><br>  <span class="hljs-attr">safari_pinned_tab:</span> <span class="hljs-string">/uploads/user-favicons/1/logo.svg</span><br>  <span class="hljs-comment">#android_manifest: /manifest.json</span><br></code></pre></td></tr></table></figure>
+<p>  创建网站图标可以在<a target="_blank" rel="noopener" href="https://realfavicongenerator.net/">Favicon
+Generator</a>网站上传SVG文件，可获得网站图标文件包，含有各种尺寸的png图片。</p>
+<p>  在Fluid<b>主题配置文件</b>中查找<b>Favicon</b>修改图标路径如下，若无所示文件夹则在<b>\source</b>中创建：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># 用于浏览器标签的图标</span><br><span class="hljs-comment"># Icon for browser tab</span><br><span class="hljs-attr">favicon:</span> <span class="hljs-string">/img/favicon.png</span><br></code></pre></td></tr></table></figure>
+<h3 id="更改网站作者头像nextfluid">(3)更改网站作者头像（NexT，Fluid）</h3>
+<p>  在<b></b>目录下创建资源管理的文件夹，例如<b>\blog\source\uploads</b>，将头像文件（常用图片格式）放入用户头像资源文件夹中<b>\blog\source\uploads\user-avatars</b>，并根据图片路径更改<b>主题配置文件</b>中的<b>avatar</b>选项，更改内容如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">avatar:</span><br>  <span class="hljs-comment"># Replace the default image and set the url here.</span><br>  <span class="hljs-attr">url:</span> <span class="hljs-string">/uploads/user-avatars/boy-blue.svg</span><br>  <span class="hljs-comment"># If true, the avatar will be displayed in circle.</span><br>  <span class="hljs-attr">rounded:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-comment"># If true, the avatar will be rotated with the cursor.</span><br>  <span class="hljs-attr">rotated:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+<p>  在主题配置文件_config.fluid.yml中查找avatar设置，位于<b>About页的头像</b>，修改图片路径，若无所示文件夹则在<b>\source</b>中创建：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment">#---------------------------</span><br><span class="hljs-comment"># 关于页</span><br><span class="hljs-comment"># About Page</span><br><span class="hljs-comment">#---------------------------</span><br><span class="hljs-attr">about:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">banner_img:</span> <span class="hljs-string">/img/default.png</span><br>  <span class="hljs-attr">banner_img_height:</span> <span class="hljs-number">60</span><br>  <span class="hljs-attr">banner_mask_alpha:</span> <span class="hljs-number">0.3</span><br>  <span class="hljs-attr">subtitle:</span><br>  <span class="hljs-attr">avatar:</span> <span class="hljs-string">/img/avatar.png</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">"Leia"</span><br>  <span class="hljs-attr">intro:</span> <span class="hljs-string">"技术博客，分享知识！"</span><br>  <span class="hljs-comment"># 更多图标可从 https://hexo.fluid-dev.com/docs/icon/ 查找，`class` 代表图标的 css class，添加 `qrcode` 后，图标不再是链接而是悬浮二维码</span><br>  <span class="hljs-comment"># More icons can be found from https://hexo.fluid-dev.com/docs/en/icon/  `class` is the css class of the icon. If adding `qrcode`, The icon is no longer a link, but a hovering QR code</span><br>  <span class="hljs-attr">icons:</span><br>    <span class="hljs-bullet">-</span> { <span class="hljs-attr">class:</span> <span class="hljs-string">"iconfont icon-github-fill"</span>, <span class="hljs-attr">link:</span> <span class="hljs-string">"https://github.com"</span>, <span class="hljs-attr">tip:</span> <span class="hljs-string">"GitHub"</span> }<br>    <span class="hljs-bullet">-</span> { <span class="hljs-attr">class:</span> <span class="hljs-string">"iconfont icon-douban-fill"</span>, <span class="hljs-attr">link:</span> <span class="hljs-string">"https://douban.com"</span>, <span class="hljs-attr">tip:</span> <span class="hljs-string">"豆瓣"</span> }<br>    <span class="hljs-bullet">-</span> { <span class="hljs-attr">class:</span> <span class="hljs-string">"iconfont icon-wechat-fill"</span>, <span class="hljs-attr">qrcode:</span> <span class="hljs-string">"/img/favicon.png"</span> }<br></code></pre></td></tr></table></figure>
+<h3 id="给文章添加访问密码next">(4)给文章添加访问密码（NexT）</h3>
+<p>　　在<b>\source</b>目录下的_data文件夹（若无此文件夹则创建）中创建<b>head.njk</b>文件，在主题配置文件中查找<b>custom_file_path</b>选项，取消相应文件的注释。<b>head.njk</b>添加如下内容：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs stylus">&lt;script&gt;<br>    (<span class="hljs-built_in">function</span>(){<br>        <span class="hljs-built_in">if</span>(<span class="hljs-string">'{{ page.password }}'</span>){<br>            <span class="hljs-built_in">if</span>(<span class="hljs-built_in">prompt</span>(<span class="hljs-string">'请输入文章密码'</span>) !== <span class="hljs-string">'{{ page.password }}'</span>){<br>                <span class="hljs-built_in">alert</span>(<span class="hljs-string">'密码错误！'</span>);<br>                history<span class="hljs-selector-class">.back</span>();<br>            }<br>        }<br>    })();<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+<p>  在创建的文章顶部的配置选项中添加password字段用于设置文章访问密码，例如：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/Typora/typora-user-images/image-20220219201529466-20220219201532.png" srcset="/img/loading.gif" lazyload alt="文章头部添加密码字段"></p>
+<h3 id="去除next主题下博客网站顶部的黑色宽线条next">(5)去除NexT主题下博客网站顶部的黑色宽线条（NexT）</h3>
+<p>  在<b>\blog\source</b>目录下的<b>_data文件夹</b>（若无此文件夹则创建）中创建<b>styles.sty</b>文件，在主题配置文件中查找<b>custom_file_path</b>选项，取消相应文件的注释。<b>styles.sty</b>添加如下内容：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-comment">//去掉顶部黑线：</span><br><span class="hljs-selector-class">.headband</span> {<span class="hljs-attribute">display</span>:none;}<br></code></pre></td></tr></table></figure>
+<h3 id="添加站内搜索功能nextfluid">(6)添加站内搜索功能（NexT，Fluid）</h3>
+<p>  安装<b>hexo-generator-search</b></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install hexo-generator-search --save<br></code></pre></td></tr></table></figure>
+<p>  安装<b> hexo-generator-searchdb</b></p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install hexo-generator-searchdb --save<br></code></pre></td></tr></table></figure></p>
+<p>  编辑主题配置文件，查找<b>local_search</b>设置<b>enable</b>为<b>true</b>，内容如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># Local Search</span><br><span class="hljs-comment"># Dependencies: https://github.com/next-theme/hexo-generator-searchdb</span><br><span class="hljs-attr">local_search:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-comment"># If auto, trigger search by changing input.</span><br>  <span class="hljs-comment"># If manual, trigger search by pressing enter key or search button.</span><br>  <span class="hljs-attr">trigger:</span> <span class="hljs-string">auto</span><br>  <span class="hljs-comment"># Show top n results per article, show all results by setting to -1</span><br>  <span class="hljs-attr">top_n_per_article:</span> <span class="hljs-number">1</span><br>  <span class="hljs-comment"># Unescape html strings to the readable one.</span><br>  <span class="hljs-attr">unescape:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-comment"># Preload the search data when the page loads.</span><br>  <span class="hljs-attr">preload:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+<p>  Fluid主题的站内搜索设置与上述步骤类似。</p>
+<h3 id="添加文章访问数统计利用leancloud平台fluid">(7)添加文章访问数统计，利用LeanCloud平台（Fluid）</h3>
+<p>  注册<strong>LeanCloud</strong>账号，创建应用并进入设置，在存储选项中创建Class，名称只能为Counter，设置数据条目的默认为<strong>无限制</strong>，成功创建Class。进入平台的设置项页面查看<b>app_id</b>和<b>app_key</b>的值，并将其填入主题配置文件中的leancloud_visitors设置项，并关闭security，内容如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># Show number of visitors of each article.</span><br><span class="hljs-comment"># You can visit https://www.leancloud.cn to get AppID and AppKey.</span><br><span class="hljs-attr">leancloud_visitors:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">app_id:</span> <span class="hljs-string">fgaUlM9tpzalN2J6sOooSVc0-gzGzoHszcz</span><br>  <span class="hljs-attr">app_key:</span> <span class="hljs-string">LUzOsNy6KL0b2iyCMMlIstrJcz</span><br>  <span class="hljs-comment"># Required for apps from CN region</span><br>  <span class="hljs-attr">server_url:</span> <span class="hljs-comment"># &lt;your server url&gt;</span><br>  <span class="hljs-comment"># Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security</span><br>  <span class="hljs-comment"># If you don't care about security in leancloud counter and just want to use it directly</span><br>  <span class="hljs-comment"># (without hexo-leancloud-counter-security plugin), set `security` to `false`.</span><br>  <span class="hljs-attr">security:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+<p>  在LeanCloud平台中设置Web安全域名，进入平台设置页面-应用安全中心，填入博客网站的地址。</p>
+<p>  为防止访问记录被随意篡改，进入<b>云引擎 -&gt; 部署 -&gt;
+在线编辑</b>中，在弹出窗口选择Hook类型，在选择
+Hook处选择beforeUpdate，在选择
+Class处选择Counter类。粘贴下方代码后，点保存。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-selector-tag">var</span> query = new AV<span class="hljs-selector-class">.Query</span>("Counter");<br>if (request.object.updatedKeys.indexOf('time') !== -<span class="hljs-number">1</span>) {<br>    return query<span class="hljs-selector-class">.get</span>(request.object.id)<span class="hljs-selector-class">.then</span>(function (obj) {<br>        if (obj.get("time") + <span class="hljs-number">1</span> !== request<span class="hljs-selector-class">.object</span><span class="hljs-selector-class">.get</span>("time")) {<br>            throw new AV<span class="hljs-selector-class">.Cloud</span><span class="hljs-selector-class">.Error</span>('Invalid update!');<br>        }<br>    })<br>}<br></code></pre></td></tr></table></figure>
+<p>  然后单击创建按钮右侧的部署 -&gt; 生产环境 -&gt;
+部署，待显示部署完成：1
+个实例部署成功即可。在主题配置文件_config.fluid.yml中查找网页访问统计，并设置LeanCloud的访问密钥：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># 网页访问统计</span><br><span class="hljs-comment"># Analysis of website visitors</span><br><span class="hljs-attr">web_analytics:</span>  <span class="hljs-comment"># 网页访问统计</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>   <span class="hljs-comment"># LeanCloud 计数统计，可用于 PV UV 展示，如果 `web_analytics: enable` 没有开启，PV UV 展示只会查询不会增加</span><br>  <span class="hljs-comment"># LeanCloud count statistics, which can be used for PV UV display. If `web_analytics: enable` is false, PV UV display will only query and not increase</span><br>  <span class="hljs-attr">leancloud:</span><br>    <span class="hljs-attr">app_id:</span> <span class="hljs-string">xxxxxxxxxxxxxx</span><br>    <span class="hljs-attr">app_key:</span> <span class="hljs-string">xxxxxxxxxxxxxx</span><br>    <span class="hljs-comment"># REST API 服务器地址，国际版不填</span><br>    <span class="hljs-comment"># Only the Chinese mainland users need to set</span><br>    <span class="hljs-attr">server_url:</span><br>    <span class="hljs-comment"># 统计页面时获取路径的属性</span><br>    <span class="hljs-comment"># Get the attribute of the page path during statistics</span><br>    <span class="hljs-attr">path:</span> <span class="hljs-string">window.location.pathname</span><br>    <span class="hljs-comment"># 开启后不统计本地路径( localhost 与 127.0.0.1 )</span><br>    <span class="hljs-comment"># If ture, ignore localhost &amp; 127.0.0.1</span><br>    <span class="hljs-attr">ignore_local:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+<h3 id="更改网站背景图片next">(8)更改网站背景图片（NexT）</h3>
+<p>  在<b>\source_data\style.styl</b>（如若不存在则创建，并在主题配置文件中的custom设置项取消相应的注释），将背景图片background.png放入自定义文件夹<b>\blog\source\uploads</b>（若不存在则创建）中，并在style.styl文件中增加如下内容：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs css">// <span class="hljs-attribute">background</span><br><span class="hljs-selector-tag">body</span> {<br>  <span class="hljs-attribute">background-image</span>:<span class="hljs-built_in">url</span>(<span class="hljs-string">../uploads/background.png</span>);<br>  <span class="hljs-attribute">height</span>:<span class="hljs-number">100%</span>;<br>  <span class="hljs-attribute">width</span>:<span class="hljs-number">100%</span>;<br>  <span class="hljs-attribute">background-repeat</span>:repeat-x;<br>  <span class="hljs-attribute">background-attachment</span>:fixed;<br>  <span class="hljs-attribute">background-size</span>:<span class="hljs-number">100%</span> <span class="hljs-number">100%</span>;<br>}<br></code></pre></td></tr></table></figure>
+<h2 id="功能配置">2. 功能配置</h2>
+<h3 id="启用独立的主题配置文件以便后续next主题的升级nextfluid">(1)启用独立的主题配置文件，以便后续NexT主题的升级（NexT，Fluid）</h3>
+<p>  在<b></b>目录下新建<b>_config.hexo-theme-next.yml</b>，将<b>\blog\themes\hexo-theme-next</b>目录下的主题配置文件<b>_config.yml</b>中的内容全部复制到<b>_config.hexo-theme-next.yml</b>中，后续修改<b>_config.hexo-theme-next.yml</b>文件内容进行主题配置即可。</p>
+<p>  在<b></b>目录下新建<b>_config.fluid.yml</b>，将<b>\blog\themes\fluid</b>目录下的主题配置文件<b>_config.yml</b>中的内容全部复制到<b>_config.fluid.yml</b>中，后续修改<b>_config.fluid.yml</b>文件内容进行主题配置即可。</p>
+<h2 id="警告错误解决">3. 警告错误解决</h2>
+<h3 id="在部署完进行网站预览时命令行窗口警告提示">(1)在部署完进行网站预览时，命令行窗口警告提示</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">(node:87224) Warning: Accessing non-existent property <span class="hljs-string">'lineno'</span> of module exports inside circular dependency (Use `node --trace-warnings ...` to show <span class="hljs-built_in">where</span> the warning was created)accessing-non-existent-property-lineno-of-module-exports-inside-circu)<br>(node:87224) Warning: Accessing non-existent property <span class="hljs-string">'column'</span> of module exports inside circular dependency<br>(node:87224) Warning: Accessing non-existent property <span class="hljs-string">'filename'</span> of module exports inside circular dependency<br>(node:87224) Warning: Accessing non-existent property <span class="hljs-string">'lineno'</span> of module exports inside circular dependency<br>(node:87224) Warning: Accessing non-existent property <span class="hljs-string">'column'</span> of module exports inside circular dependency<br>(node:87224) Warning: Accessing non-existent property <span class="hljs-string">'filename'</span> of module exports inside circular dependency<br></code></pre></td></tr></table></figure>
+<p>  Hexo 这里的 warning是由于<a href="https://link.zhihu.com/?target=https%3A//github.com/stylus/stylus">stylus</a>导致的，幸运的是stylus
+在 0.54.8 版本修复了这个问题，所以对于 Hexo
+用户来说，更新一下<b>hexo-renderer-stylus</b>，就可正常使用。如若仍报错，则定位到<b>\blog\node_modules\nib</b>目录中执行<b>npm
+update stylus</b>更新stylus，解决过程中可能用到下列命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm update hexo-renderer-stylus <span class="hljs-comment"># 在\blog目录下执行更新hexo-renderer-stylus</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm update stylus <span class="hljs-comment"># 在\blog\node_modules\nib目录下执行更新stylus</span><br>npm uninstall stylus <span class="hljs-comment"># nib卸载stylus</span><br>npm install stylus <span class="hljs-comment"># nib安装stylus</span><br></code></pre></td></tr></table></figure>
+<h3 id="点击目录链接不跳转解决办法hexo版本-6.0.0hexo-theme-next版本-８.10.0next">(2)点击目录链接不跳转解决办法(Hexo版本:
+"6.0.0"，hexo-theme-next版本: "８.10.0")（NexT）</h3>
+<p>  进入<b> _modules-toc.js</b> 文件中，把 28 行～31 行修改为：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs json">$title.attr('id'<span class="hljs-punctuation">,</span> id);<br><span class="hljs-comment">// $title.children('a').remove();</span><br><span class="hljs-comment">// $title.html( '&lt;span id="' + id + '"&gt;' + $title.html() + '' );</span><br><span class="hljs-comment">// $title.removeAttr('id');</span><br></code></pre></td></tr></table></figure>
+<h3 id="hexo部署出现错误err-error-spawn-failed解决方式">(2)Hexo部署出现错误err:
+Error: Spawn failed解决方式</h3>
+<p>  进入站点根目录<b></b>，删除 git 提交内容文件夹</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> -rf .deploy_git/<br></code></pre></td></tr></table></figure>
+<h2 id="文章编辑">4. 文章编辑</h2>
+<h3 id="利用typora编辑hexo博客">(1)利用typora编辑Hexo博客</h3>
+<p>  通过typora对发布在Hexo上的文章进行编辑，遇到需要加粗文字以及添加背景色时，使用如下代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span> 加粗-背景色-文字 <span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="取消next主题侧边栏中目录的自动编号next">(2)取消NexT主题侧边栏中目录的自动编号（NexT）</h3>
+<p>​ 打开主题配置文件，查找 toc 选项，设置 number 选项为
+false，内容如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># Table of Contents in the Sidebar</span><br><span class="hljs-comment"># Front-matter variable (nonsupport wrap expand_all).</span><br><span class="hljs-attr">toc:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-comment"># Automatically add list number to toc.</span><br>  <span class="hljs-attr">number:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-comment"># If true, all words will placed on next lines if header width longer then sidebar width.</span><br>  <span class="hljs-attr">wrap:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-comment"># If true, all level of TOC in a post will be displayed, rather than the activated part of it.</span><br>  <span class="hljs-attr">expand_all:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-comment"># Maximum heading depth of generated toc.</span><br>  <span class="hljs-attr">max_depth:</span> <span class="hljs-number">6</span><br></code></pre></td></tr></table></figure>
+<h3 id="文章段落首行缩进next">(3)文章段落首行缩进（NexT）</h3>
+<p>  首先进入电脑设置，找到键盘语言选项，打开半角／圆角切换按键功能，切换至全角模式并在段落开头键入两个空格即为缩进两个字符，使用tab键并无效果，使用全角空格缩进效果如下：（这一问题貌似在更换mathjax渲染引擎时解决了？？？）</p>
+<p>  首行缩进两个字符；</p>
+<p>   首行缩进３个字符；</p>
+<p>    首行缩进４个字符；</p>
+<p>  <b>Fluid主题</b>下使用<code>&amp;emsp;</code>即可。</p>
+<h3 id="为文章在网站上显示添加read-more按钮next">(4)为文章在网站上显示添加Read
+More按钮（NexT）</h3>
+<p>  在文章中任意位置插入<code>&lt;!--more--&gt;</code>，在此之后的内容将被折叠隐藏。</p>
+<h3 id="数学公式显示nextfluid">(5)数学公式显示（NexT，Fluid）</h3>
+<p>  参考NexT主题官方教程<a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/third-party-services/math-equations.html?highlight=math+equation">Math
+Equations | NexT
+(theme-next.js.org)</a>，首先将站点配置文件中的mathjax项开启，如下所示</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">mathjax:</span><br>    <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-comment"># Available values: none | ams | all</span><br>    <span class="hljs-attr">tags:</span> <span class="hljs-string">none</span><br></code></pre></td></tr></table></figure>
+<p>然后安装公式渲染引擎hexo-renderer-pandoc，安装此插件前还需要安装<a target="_blank" rel="noopener" href="https://github.com/jgm/pandoc/blob/master/INSTALL.md">pandoc</a>，以及卸载掉其他渲染引擎，可能会用到如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm uninstall hexo-renderer-marked<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm uninstall hexo-renderer-kramed<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm uninstall hexo-renderer-markdown-it<br></code></pre></td></tr></table></figure>
+<p>最后重启电脑，即可正确安装pandoc以及使用公式渲染引擎插件，效果如下：</p>
+<p>  行内公式<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.669ex" xmlns="http://www.w3.org/2000/svg" width="14.864ex" height="2.366ex" role="img" focusable="false" viewBox="0 -750 6569.8 1045.7"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1152,0)"><path data-c="1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path></g><g data-mml-node="mo" transform="translate(1702,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(2091,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(2691,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g><g data-mml-node="mo" transform="translate(3080,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g><g data-mml-node="mo" transform="translate(3746.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mi" transform="translate(4802.6,0)"><path data-c="1D459" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"></path></g><g data-mml-node="mi" transform="translate(5100.6,0)"><path data-c="1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path></g><g data-mml-node="msubsup" transform="translate(5585.6,0)"><g data-mml-node="mi"><path data-c="1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"></path></g><g data-mml-node="TeXAtom" transform="translate(510,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g></g><g data-mml-node="mn" transform="translate(510,-295.7) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g></g></g></svg></mjx-container></span>测试</p>
+<p>  行间公式： <span class="math display"><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -1.602ex" xmlns="http://www.w3.org/2000/svg" width="25.832ex" height="5.018ex" role="img" focusable="false" viewBox="0 -1509.9 11417.6 2217.9"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mi" transform="translate(345,0)"><path data-c="210F" d="M182 599Q182 611 174 615T133 619Q118 619 114 621T109 630Q109 636 114 656T122 681Q125 685 202 688Q272 695 286 695Q304 695 304 684Q304 682 295 644T282 597Q282 592 360 592H399Q430 592 445 587T460 563Q460 552 451 541L442 535H266L251 468Q247 453 243 436T236 409T233 399Q233 395 244 404Q295 441 357 441Q405 441 445 417T485 333Q485 284 449 178T412 58T426 44Q447 44 466 68Q485 87 500 130L509 152H531H543Q562 152 562 144Q562 128 546 93T494 23T415 -13Q385 -13 359 3T322 44Q318 52 318 77Q318 99 352 196T386 337Q386 386 346 386Q318 386 286 370Q267 361 245 338T211 292Q207 287 193 235T162 113T138 21Q128 7 122 4Q105 -12 83 -12Q66 -12 54 -2T42 26L166 530Q166 534 161 534T129 535Q127 535 122 535T112 534Q74 534 74 562Q74 570 77 576T84 585T96 589T109 591T124 592T138 592L182 595V599Z"></path></g><g data-mml-node="mfrac" transform="translate(907,0)"><g data-mml-node="mi" transform="translate(400.5,676)"><path data-c="1D715" d="M202 508Q179 508 169 520T158 547Q158 557 164 577T185 624T230 675T301 710L333 715H345Q378 715 384 714Q447 703 489 661T549 568T566 457Q566 362 519 240T402 53Q321 -22 223 -22Q123 -22 73 56Q42 102 42 148V159Q42 276 129 370T322 465Q383 465 414 434T455 367L458 378Q478 461 478 515Q478 603 437 639T344 676Q266 676 223 612Q264 606 264 572Q264 547 246 528T202 508ZM430 306Q430 372 401 400T333 428Q270 428 222 382Q197 354 183 323T150 221Q132 149 132 116Q132 21 232 21Q244 21 250 22Q327 35 374 112Q389 137 409 196T430 306Z"></path></g><g data-mml-node="mrow" transform="translate(220,-686)"><g data-mml-node="mi"><path data-c="1D715" d="M202 508Q179 508 169 520T158 547Q158 557 164 577T185 624T230 675T301 710L333 715H345Q378 715 384 714Q447 703 489 661T549 568T566 457Q566 362 519 240T402 53Q321 -22 223 -22Q123 -22 73 56Q42 102 42 148V159Q42 276 129 370T322 465Q383 465 414 434T455 367L458 378Q478 461 478 515Q478 603 437 639T344 676Q266 676 223 612Q264 606 264 572Q264 547 246 528T202 508ZM430 306Q430 372 401 400T333 428Q270 428 222 382Q197 354 183 323T150 221Q132 149 132 116Q132 21 232 21Q244 21 250 22Q327 35 374 112Q389 137 409 196T430 306Z"></path></g><g data-mml-node="mi" transform="translate(566,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g></g><rect width="1127" height="60" x="120" y="220"></rect></g><g data-mml-node="mi" transform="translate(2274,0)"><path data-c="1D713" d="M161 441Q202 441 226 417T250 358Q250 338 218 252T187 127Q190 85 214 61Q235 43 257 37Q275 29 288 29H289L371 360Q455 691 456 692Q459 694 472 694Q492 694 492 687Q492 678 411 356Q329 28 329 27T335 26Q421 26 498 114T576 278Q576 302 568 319T550 343T532 361T524 384Q524 405 541 424T583 443Q602 443 618 425T634 366Q634 337 623 288T605 220Q573 125 492 57T329 -11H319L296 -104Q272 -198 272 -199Q270 -205 252 -205H239Q233 -199 233 -197Q233 -192 256 -102T279 -9Q272 -8 265 -8Q106 14 106 139Q106 174 139 264T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Q21 299 34 333T82 404T161 441Z"></path></g><g data-mml-node="mo" transform="translate(3202.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mo" transform="translate(4258.6,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mfrac" transform="translate(5036.6,0)"><g data-mml-node="msup" transform="translate(384.2,676)"><g data-mml-node="mi"><path data-c="210F" d="M182 599Q182 611 174 615T133 619Q118 619 114 621T109 630Q109 636 114 656T122 681Q125 685 202 688Q272 695 286 695Q304 695 304 684Q304 682 295 644T282 597Q282 592 360 592H399Q430 592 445 587T460 563Q460 552 451 541L442 535H266L251 468Q247 453 243 436T236 409T233 399Q233 395 244 404Q295 441 357 441Q405 441 445 417T485 333Q485 284 449 178T412 58T426 44Q447 44 466 68Q485 87 500 130L509 152H531H543Q562 152 562 144Q562 128 546 93T494 23T415 -13Q385 -13 359 3T322 44Q318 52 318 77Q318 99 352 196T386 337Q386 386 346 386Q318 386 286 370Q267 361 245 338T211 292Q207 287 193 235T162 113T138 21Q128 7 122 4Q105 -12 83 -12Q66 -12 54 -2T42 26L166 530Q166 534 161 534T129 535Q127 535 122 535T112 534Q74 534 74 562Q74 570 77 576T84 585T96 589T109 591T124 592T138 592L182 595V599Z"></path></g><g data-mml-node="mn" transform="translate(646.1,363) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g><g data-mml-node="mrow" transform="translate(220,-686)"><g data-mml-node="mn"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="mi" transform="translate(500,0)"><path data-c="1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g></g><rect width="1578" height="60" x="120" y="220"></rect></g><g data-mml-node="msup" transform="translate(6854.6,0)"><g data-mml-node="mi"><path data-c="2207" d="M46 676Q46 679 51 683H781Q786 679 786 676Q786 674 617 326T444 -26Q439 -33 416 -33T388 -26Q385 -22 216 326T46 676ZM697 596Q697 597 445 597T193 596Q195 591 319 336T445 80L697 596Z"></path></g><g data-mml-node="mn" transform="translate(866,413) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g><g data-mml-node="mi" transform="translate(8124.1,0)"><path data-c="1D713" d="M161 441Q202 441 226 417T250 358Q250 338 218 252T187 127Q190 85 214 61Q235 43 257 37Q275 29 288 29H289L371 360Q455 691 456 692Q459 694 472 694Q492 694 492 687Q492 678 411 356Q329 28 329 27T335 26Q421 26 498 114T576 278Q576 302 568 319T550 343T532 361T524 384Q524 405 541 424T583 443Q602 443 618 425T634 366Q634 337 623 288T605 220Q573 125 492 57T329 -11H319L296 -104Q272 -198 272 -199Q270 -205 252 -205H239Q233 -199 233 -197Q233 -192 256 -102T279 -9Q272 -8 265 -8Q106 14 106 139Q106 174 139 264T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Q21 299 34 333T82 404T161 441Z"></path></g><g data-mml-node="mo" transform="translate(8997.3,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mi" transform="translate(9997.6,0)"><path data-c="1D449" d="M52 648Q52 670 65 683H76Q118 680 181 680Q299 680 320 683H330Q336 677 336 674T334 656Q329 641 325 637H304Q282 635 274 635Q245 630 242 620Q242 618 271 369T301 118L374 235Q447 352 520 471T595 594Q599 601 599 609Q599 633 555 637Q537 637 537 648Q537 649 539 661Q542 675 545 679T558 683Q560 683 570 683T604 682T668 681Q737 681 755 683H762Q769 676 769 672Q769 655 760 640Q757 637 743 637Q730 636 719 635T698 630T682 623T670 615T660 608T652 599T645 592L452 282Q272 -9 266 -16Q263 -18 259 -21L241 -22H234Q216 -22 216 -15Q213 -9 177 305Q139 623 138 626Q133 637 76 637H59Q52 642 52 648Z"></path></g><g data-mml-node="mi" transform="translate(10766.6,0)"><path data-c="1D713" d="M161 441Q202 441 226 417T250 358Q250 338 218 252T187 127Q190 85 214 61Q235 43 257 37Q275 29 288 29H289L371 360Q455 691 456 692Q459 694 472 694Q492 694 492 687Q492 678 411 356Q329 28 329 27T335 26Q421 26 498 114T576 278Q576 302 568 319T550 343T532 361T524 384Q524 405 541 424T583 443Q602 443 618 425T634 366Q634 337 623 288T605 220Q573 125 492 57T329 -11H319L296 -104Q272 -198 272 -199Q270 -205 252 -205H239Q233 -199 233 -197Q233 -192 256 -102T279 -9Q272 -8 265 -8Q106 14 106 139Q106 174 139 264T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Q21 299 34 333T82 404T161 441Z"></path></g></g></g></svg></mjx-container></span></p>
+<blockquote>
+<p>NexT主题下文章内公式渲染使用教程链接：<a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/third-party-services/math-equations.html?highlight=math+equation">Math
+Equations | NexT (theme-next.js.org)</a></p>
+</blockquote>
+<blockquote>
+<p>Fluid主题下文章内公式渲染使用教程链接：<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/#latex-数学公式">配置指南 |
+Hexo Fluid 用户手册 (fluid-dev.com)</a></p>
+</blockquote>
+<p>  将复制Mathtype公式至Markdown中，首先将Mathtype预置中的<strong>剪切和复制预置</strong>设置为<strong>Latex2.0.9
+and
+Later</strong>，并且注意公式中的<code>{{`和`}}</code>符号，之间一定要加上空格将其分开，否则公式显示不正确。</p>
+<h3 id="图片双caption渲染问题fluid">(5)图片双caption渲染问题（Fluid）</h3>
+<p>图片会出现双标题显示的问题，在站点配置文件中加入</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment"># 解决图片重复双标题显示的问题</span><br><span class="hljs-attr">pandoc</span>:<span class="hljs-string"></span><br>  <span class="hljs-attr">extensions</span>:<span class="hljs-string"></span><br>    <span class="hljs-attr">-</span> <span class="hljs-string">'-implicit_figures'</span><br></code></pre></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Hexo/">Hexo</a>
+                    
+                      <a class="hover-with-bg" href="/tags/NexT%E4%B8%BB%E9%A2%98/">NexT主题</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8A%80%E6%9C%AF/%E5%AF%B9%E7%9B%B4%E8%A7%92%E5%9D%90%E6%A0%87%E7%B3%BB%E4%BD%8D%E5%A7%BF%E5%8F%98%E6%8D%A2%E5%8F%8A%E6%8F%8F%E8%BF%B0%E7%9A%84%E7%90%86%E8%A7%A3/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">对直角坐标系位姿变换及描述的理解</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/Hexo%E5%8D%9A%E5%AE%A2/Hexo-GithubPage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+                        <span class="hidden-mobile">Hexo-GithubPage搭建个人博客</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","appKey":"LUzOsNy6KL0b2iyCMMlIstrJ","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

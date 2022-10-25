@@ -1,0 +1,548 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ChenZhao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Qt使用Boost_Numcpp库 (1) 下载boost_1.75.0库文件 (2) 下载Numcpp: C++ implementation of the Python Numpy library (3) 非中文路径下新建文件夹D:_Numcpp，将boost_1.75.0文件夹中的boost文件夹复制进刚刚新建的文件夹中，并将Numcpp中的includes文件夹中的NumCpp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Qt使用Numcpp（c++版的Numpy）">
+<meta property="og:url" content="https://www.cznewborn.com/Qt%E5%BC%80%E5%8F%91/Qt%E4%BD%BF%E7%94%A8Numcpp/index.html">
+<meta property="og:site_name" content="Leia Blog">
+<meta property="og:description" content="Qt使用Boost_Numcpp库 (1) 下载boost_1.75.0库文件 (2) 下载Numcpp: C++ implementation of the Python Numpy library (3) 非中文路径下新建文件夹D:_Numcpp，将boost_1.75.0文件夹中的boost文件夹复制进刚刚新建的文件夹中，并将Numcpp中的includes文件夹中的NumCpp">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/28/Numpy_Python-212622.png">
+<meta property="article:published_time" content="2022-02-15T13:24:18.000Z">
+<meta property="article:modified_time" content="2022-04-13T02:10:51.992Z">
+<meta property="article:author" content="ChenZhao">
+<meta property="article:tag" content="Qt">
+<meta property="article:tag" content="Numcpp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/28/Numpy_Python-212622.png">
+  
+  
+  <title>Qt使用Numcpp（c++版的Numpy） - Leia Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.cznewborn.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":6},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","app_key":"LUzOsNy6KL0b2iyCMMlIstrJ","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Leia Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Qt使用Numcpp（c++版的Numpy）">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-15 21:24" pubdate>
+        2022年2月15日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.7k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      15 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Qt使用Numcpp（c++版的Numpy）</h1>
+            
+            <div class="markdown-body">
+              <h3 id="qt使用boost_numcpp库">Qt使用Boost_Numcpp库</h3>
+<h4 id="下载boost_1.75.0库文件">(1) 下载<a
+target="_blank" rel="noopener" href="https://www.boost.org/users/history/version_1_75_0.html">boost_1.75.0库文件</a></h4>
+<h4 id="下载numcpp-c-implementation-of-the-python-numpy-library">(2)
+下载<a target="_blank" rel="noopener" href="https://github.com/dpilger26/NumCpp">Numcpp: C++
+implementation of the Python Numpy library</a></h4>
+<h4
+id="非中文路径下新建文件夹d_numcpp将boost_1.75.0文件夹中的boost文件夹复制进刚刚新建的文件夹中并将numcpp中的includes文件夹中的numcpp和numcpp.hpp复制进刚刚新建的文件夹中无需添加环境变量">(3)
+非中文路径下新建文件夹D:_Numcpp，将boost_1.75.0文件夹中的boost文件夹复制进刚刚新建的文件夹中，并将Numcpp中的includes文件夹中的NumCpp和NumCpp.hpp复制进刚刚新建的文件夹中（无需添加环境变量）</h4>
+<p><img
+src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/Github-FilePages/img/新建文件夹-20220208125025.png" srcset="/img/loading.gif" lazyload
+alt="新建文件夹" /></p>
+<h4
+id="在qt控制台项目的配置文件.pro中修改config-c14并添加库文件路径配置文件.pro内容如下">(4)
+在Qt控制台项目的配置文件.pro中，修改CONFIG +=
+c++14，并添加库文件路径，配置文件.pro内容如下：</h4>
+<p><figure class="highlight properties"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></div></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">QT</span> <span class="hljs-string">-= gui</span><br><br><span class="hljs-attr">CONFIG</span> <span class="hljs-string">+= c++14 console</span><br><span class="hljs-attr">CONFIG</span> <span class="hljs-string">-= app_bundle</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"># The following define makes your compiler emit warnings if you use</span><br><span class="hljs-comment"># any Qt feature that has been marked deprecated (the exact warnings</span><br><span class="hljs-comment"># depend on your compiler). Please consult the documentation of the</span><br><span class="hljs-comment"># deprecated API in order to know how to port your code away from it.</span><br><span class="hljs-attr">DEFINES</span> <span class="hljs-string">+= QT_DEPRECATED_WARNINGS</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"># You can also make your code fail to compile if it uses deprecated APIs.</span><br><span class="hljs-comment"># In order to do so, uncomment the following line.</span><br><span class="hljs-comment"># You can also select to disable deprecated APIs only up to a certain version of Qt.</span><br><span class="hljs-comment">#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0</span><br><br><span class="hljs-attr">SOURCES</span> <span class="hljs-string">+= \</span><br><span class="hljs-string">        main.cpp</span><br><br><span class="hljs-attr">TRANSLATIONS</span> <span class="hljs-string">+= \</span><br><span class="hljs-string">    Boost_Numcpp_Test_zh_CN.ts</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"># Boost库文件路径添加</span><br><span class="hljs-attr">INCLUDEPATH</span> <span class="hljs-string">+= D:\Boost_Numcpp</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"># Default rules for deployment.</span><br><span class="hljs-attr">qnx</span>: <span class="hljs-string">target.path = /tmp/$$&#123;TARGET&#125;/bin</span><br><span class="hljs-attr">else</span>: <span class="hljs-string">unix:!android: target.path = /opt/$$&#123;TARGET&#125;/bin</span><br><span class="hljs-comment">!isEmpty(target.path): INSTALLS += target</span><br></code></pre></td></tr></table></figure></p>
+<h4 id="测试代码">(5) 测试代码</h4>
+<p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++">boost::timer tmr;<br><span class="hljs-built_in">qDebug</span>() &lt;&lt; tmr.<span class="hljs-built_in">elapsed</span>() &lt;&lt; <span class="hljs-string">&quot;S&quot;</span> &lt;&lt; endl;<br><span class="hljs-built_in">qDebug</span>() &lt;&lt; BOOST_VERSION &lt;&lt; endl;<br><span class="hljs-built_in">qDebug</span>() &lt;&lt; BOOST_LIB_VERSION &lt;&lt; endl;<br><span class="hljs-built_in">qDebug</span>() &lt;&lt; BOOST_PLATFORM &lt;&lt; endl;<br><span class="hljs-built_in">qDebug</span>() &lt;&lt; BOOST_COMPILER &lt;&lt; endl;<br><span class="hljs-built_in">qDebug</span>() &lt;&lt; BOOST_STDLIB &lt;&lt; endl;<br><br>nc::NdArray&lt;<span class="hljs-type">float</span>&gt; m1 = &#123;&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>&#125;, &#123;<span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;&#125;;<br>nc::NdArray&lt;<span class="hljs-type">float</span>&gt; m2 = &#123;&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>&#125;, &#123;<span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;&#125;;<br>nc::NdArray&lt;<span class="hljs-type">float</span>&gt; m3 = m1 * m2;<br>std::cout &lt;&lt; m3 &lt;&lt; std::endl;<br><span class="hljs-keyword">return</span> a.<span class="hljs-built_in">exec</span>();<br></code></pre></td></tr></table></figure></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Qt%E5%BC%80%E5%8F%91/">Qt开发</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Qt/">Qt</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Numcpp/">Numcpp</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/Hexo%E5%8D%9A%E5%AE%A2/Hexo-GithubPage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hexo-GithubPage搭建个人博客</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/Hexo%E5%8D%9A%E5%AE%A2/hello-Hexo/">
+                        <span class="hidden-mobile">Hello Hexo</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","appKey":"LUzOsNy6KL0b2iyCMMlIstrJ","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

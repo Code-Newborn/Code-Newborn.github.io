@@ -1,0 +1,644 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ChenZhao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="当 Qt 程序编写完成通过 IDE 编译后就可以得到对应的可执行程序.exe，但若是直接将可执行文件发布给他人时，往往并不能运行起来，原因是他人机器上并不具有该程序所需要的库资源，所以通过程序封包工具将可执行文件以及所需动态库文件封装在一起发布给别人，在计算机上安装完成后即可运行起来。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Qt程序发布与打包">
+<meta property="og:url" content="https://www.cznewborn.com/Qt%E5%BC%80%E5%8F%91/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/index.html">
+<meta property="og:site_name" content="Leia Blog">
+<meta property="og:description" content="当 Qt 程序编写完成通过 IDE 编译后就可以得到对应的可执行程序.exe，但若是直接将可执行文件发布给他人时，往往并不能运行起来，原因是他人机器上并不具有该程序所需要的库资源，所以通过程序封包工具将可执行文件以及所需动态库文件封装在一起发布给别人，在计算机上安装完成后即可运行起来。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/_posts/Qt程序发布与打包/Qt程序打包发布-20220510205639.jpg">
+<meta property="article:published_time" content="2022-05-10T09:22:57.000Z">
+<meta property="article:modified_time" content="2022-09-26T14:23:20.422Z">
+<meta property="article:author" content="ChenZhao">
+<meta property="article:tag" content="Qt">
+<meta property="article:tag" content="程序打包发布">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/_posts/Qt程序发布与打包/Qt程序打包发布-20220510205639.jpg">
+  
+  
+  <title>Qt程序发布与打包 - Leia Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.cznewborn.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":6},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","app_key":"LUzOsNy6KL0b2iyCMMlIstrJ","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Leia Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Qt程序发布与打包">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-05-10 17:22" pubdate>
+        2022年5月10日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.2k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      19 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Qt程序发布与打包</h1>
+            
+            <div class="markdown-body">
+              <h1 id="qt程序发布与打包2种方式">Qt程序发布与打包（2种方式）</h1>
+<p>  当 Qt 程序编写完成通过 IDE
+编译后就可以得到对应的可执行程序.exe，这个可执行程序在本机本地运行是完全没有问题的（因为在本机本地有对应的
+Qt
+环境，程序运行过程中可以自动加载到相关的动态库），但是如果我们想把这个
+Qt
+程序给到其他人使用可能就会出问题了，因为其他人的机器上可能并不具有相应的Qt编译环境，所以我们需要将Qt程序以及所需的资源一起发布打包给别人，这样在其他机器上不需要Qt编译环境也可运行你的Qt程序。</p>
+<blockquote>
+<p>参考<a target="_blank" rel="noopener" href="https://subingwen.cn/qt/qt-setup/#2-Qt程序打包">Qt
+程序的发布和打包 | 爱编程的大丙</a></p>
+<p>参考<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/m0_58844968/article/details/124307449">CSDN博客：QT
+软件打包为一个单独可执行.exe文件流程</a></p>
+</blockquote>
+<h2 id="一生成release版本程序">一、生成release版本程序</h2>
+<p>  相较于Debug版本程序，Release版本程序更加简洁，并且程序大小也会相对小一些，一般打包发布采用Release版本的可执行文件.exe。选择构建选项Release版本，生成可执行文件.exe，进入Release版本可执行文件所在文件夹，即可找到生成的.exe文件。注意！！！要保证Qt所使用的编译器bin路径已添加到环境变量path中，否则执行windeployqt时会漏掉某些动态库文件。</p>
+<h2
+id="二可执行文件部署工具windeployqt">二、可执行文件部署工具windeployqt</h2>
+<p>  生成的可执行程序在运行的时候需要加载相关的 Qt
+库文件，因此需要将这些动态库一并发布给使用者，Qt
+官方给我们提供了相关的发布工具，通过这个工具就可以非常轻松的找出这些动态库文件了，这个工具叫做
+windeployqt.exe，该文件位于 Qt 安装目录的编译套件目录的 bin
+目录中，以我本地为例<b>D:.2\5.14.2_64</b>，如果需要在当前操作系统的任意目录下都可以访问
+windeployqt.exe，则需要将此路径设置到环境变量中。</p>
+<p>  将Release版本可执行文件复制到一个新的空的文件夹中，在文件夹中按住Shift+右键，打开PowerShell，输入以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># LordCard.exe 是可执行程序的名字</span><br><span class="hljs-comment"># windeployqt.exe 的后缀 .exe 可以省略不写</span><br>windeployqt.exe Landlors.exe<br></code></pre></td></tr></table></figure>
+<p>  使用这种方式 Qt
+会将一些用不到的动态库也拷贝到当前的目录中，如果确定用不到可以手动将其删除，如果不在意这些，完全可以不用理会，更倾向选择后者。现在一个绿色免安装版的程序就得到了，可以将这个目录打个压缩包发送给自己的小伙伴，但是这种方式终究比较
+low，我们可以将这个目录中的文件制作成一个安装包，这样就类似于我们在网上下载的安装包程序一样了。</p>
+<h2 id="三程序打包发布2种方式">三、程序打包发布（2种方式）</h2>
+<p>  将应用程序和相关的动态库打包成安装包的工具有很多，现介绍两种方式（工具）Inno
+Setup和Enigma Virtual Box。</p>
+<h3 id="方式1">(1)方式1</h3>
+<blockquote>
+<p>Inno Setup，是一个免费的 Windows
+安装程序制作软件，小巧、简便、精美。</p>
+<p>特点：为应用程序创建安装程序，可自定义应用程序图标，加密安装，自动添加卸载程序，安装后以目录形式存在</p>
+<p>官方下载地址：<a target="_blank" rel="noopener" href="https://jrsoftware.org/isdl.php#stable">Inno
+Setup Downloads</a></p>
+</blockquote>
+<h4 id="创建向导">1.创建向导</h4>
+<p>点击File→New，创建脚本向导文件，不要勾选创建一个新的空脚本文件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/_posts/Qt程序发布与打包/inno setup script wizard-20220510205325.png" srcset="/img/loading.gif" lazyload alt="inno setup script wizard"  /></p>
+<h4 id="填写相关的应用程序信息">2.填写相关的应用程序信息</h4>
+<p>填写程序的相关信息，包括应用程序名称、应用程序版本、应用程序发布者以及应用程序网址</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/_posts/Qt程序发布与打包/ApplicationInfo-20220510205346.png" srcset="/img/loading.gif" lazyload alt="ApplicationInfo"  /></p>
+<h4
+id="指定应用程序的安装目录相关的信息">3.指定应用程序的安装目录相关的信息</h4>
+<p>设置应用程序安装时的默认安装路径信息</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/_posts/Qt程序发布与打包/applicationFolder-20220510205227.png" srcset="/img/loading.gif" lazyload alt="applicationFolder"  /></p>
+<h4
+id="选择可执行程序和相关的动态库">4.选择可执行程序和相关的动态库</h4>
+<p>选择前述windeployqt所执行的文件夹路径，选择.exe可执行文件，选择动态库文件目录。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/_posts/Qt程序发布与打包/applicationFile-20220510205353.png" srcset="/img/loading.gif" lazyload alt="applicationFile"  /></p>
+<p>由于可执行程序关系的动态库有很多，所以可以直接添加动态库的目录，选中对应的目录之后，如果里边还有子目录会弹出如下对话框，选择是即可，需要包含这些子目录。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/_posts/Qt程序发布与打包/confirm-20220510205355.png" srcset="/img/loading.gif" lazyload alt="confirm"  /></p>
+<h4 id="可执行程序文件格式设置关联">5.可执行程序文件格式设置关联</h4>
+<p>给可执行程序关联本地的某种格式的磁盘文件（比如记事本程序会自动关联本地的
+.txt
+文件），对于我的可执行程序来说无需关联，因此没有做任何设置，直接下一步</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/_posts/Qt程序发布与打包/association-20220510205357.png" srcset="/img/loading.gif" lazyload alt="association"  /></p>
+<h4 id="创建快捷方式">6.创建快捷方式</h4>
+<p>给应用程序创建快捷方式，此处没有进行任何设置，使用的默认选项</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/_posts/Qt程序发布与打包/shortcuts-20220510205505.png" srcset="/img/loading.gif" lazyload alt="shortcuts"  /></p>
+<h4 id="指定许可文件">7.指定许可文件</h4>
+<p>指定许可文件，文件中的内容会显示到安装向导的相关窗口中，可以选择不指定，直接跳过。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/_posts/Qt程序发布与打包/documention-20220510205401.png" srcset="/img/loading.gif" lazyload alt="documention"  /></p>
+<h4 id="安装模式all-user-or-current-user">8.安装模式（All User or
+Current User）</h4>
+<p>选择安装模式（给系统的当前用户安装还是给所有用户安装），根据自己喜好指定即可</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/_posts/Qt程序发布与打包/install mode-20220510205403.png" srcset="/img/loading.gif" lazyload alt="install mode"  /></p>
+<h4 id="选择安装语言">9.选择安装语言</h4>
+<p>打包工具不提供中文</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/_posts/Qt程序发布与打包/setup language-20220510205430.png" srcset="/img/loading.gif" lazyload alt="setup language"  /></p>
+<h4 id="指定安装包文件的相关信息">10.指定安装包文件的相关信息</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/_posts/Qt程序发布与打包/compiler setting-20220510205406.png" srcset="/img/loading.gif" lazyload alt="compiler setting"  /></p>
+<h4 id="完成打包生成安装程序">11.完成打包生成安装程序</h4>
+<p>勾选Yes，use #define compiler directives</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/_posts/Qt程序发布与打包/setup preprocessor-20220510205517.png" srcset="/img/loading.gif" lazyload alt="setup preprocessor"  /></p>
+<p>编译生成的脚本文件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/_posts/Qt程序发布与打包/compile script-20220510205410.png" srcset="/img/loading.gif" lazyload alt="compile script"  /></p>
+<p>保存脚本文件生成安装包</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/_posts/Qt程序发布与打包/save script-20220510205523.png" srcset="/img/loading.gif" lazyload alt="save script"  /></p>
+<p>编译完成之后，生成的安装包文件在保存脚本文件的目录中</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/_posts/Qt程序发布与打包/script-20220510205526.png" srcset="/img/loading.gif" lazyload alt="script" style="zoom:80%;" /></p>
+<h3 id="方式2">(2)方式2</h3>
+<blockquote>
+<p>Enigma Virtual
+Box，是软件虚拟化工具，它可以将多个文件封装到应用程序主文件，从而制作成为单执行文件的绿色软件。它支持所有类型的文件格式，虚拟化后的软件不释放任何临时文件到您的硬盘，文件模拟过程仅在内存运行。</p>
+<p>特点：能够多个文件封装到单个应用程序主文件.exe直接运行，但不能自定义程序图标。</p>
+<p>官方下载地址：<a
+target="_blank" rel="noopener" href="https://enigmaprotector.com/en/downloads.html">Enigma Virtual Box
+Downloads</a></p>
+</blockquote>
+<h4
+id="选择需要封包的主程序并设置封包后的程序另存路径">1.选择需要封包的主程序并设置封包后的程序另存路径</h4>
+<p><img
+src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/09/26/image-Enigma1-215842.png" srcset="/img/loading.gif" lazyload
+alt="选择待封装程序及设置封装程序的另存路径" /></p>
+<h4 id="增加文件夹递归">2.增加文件夹[递归]</h4>
+<p>选择前述windeployqt所执行的文件夹路径，确定添加<strong>%DEFAULT
+FOLDER%</strong></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/09/26/image-image-Enigma2-220145-220242.png" srcset="/img/loading.gif" lazyload
+alt="添加动态链接库文件" /></p>
+<h4 id="文件选项">3.文件选项</h4>
+<p>勾选文件压缩</p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/09/26/image-Enigma3-220553.png" srcset="/img/loading.gif" lazyload
+alt="勾选文件压缩" /></p>
+<h4 id="执行封包">4.执行封包</h4>
+<p>生成单个执行文件.exe，可直接运行。</p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/09/26/image-Enigma4-220913.png" srcset="/img/loading.gif" lazyload
+alt="执行封包" /></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Qt%E5%BC%80%E5%8F%91/">Qt开发</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Qt/">Qt</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E5%8F%91%E5%B8%83/">程序打包发布</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E4%BB%A3%E7%A0%81%E7%BE%8E%E5%8C%96/clang-format%E7%BE%8E%E5%8C%96Qt-Creator%E4%BB%A3%E7%A0%81/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">clang-format美化Qt Creator代码</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/Qt%E5%BC%80%E5%8F%91/Qt%E4%B8%AD%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E7%AD%96%E7%95%A5/">
+                        <span class="hidden-mobile">Qt中的自适应布局策略</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","appKey":"LUzOsNy6KL0b2iyCMMlIstrJ","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

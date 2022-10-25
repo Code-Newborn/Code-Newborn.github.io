@@ -1,0 +1,553 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ChenZhao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Clang-Format可用于格式化（排版）多种不同语言的代码。其自带的排版格式主要有：LLVM, Google, Chromium, Mozilla, WebKit等; 利用style参数配置风格。通过编写 .clang-format 文件，可以实现代码风格的配置。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="clang-format美化Qt Creator代码">
+<meta property="og:url" content="https://www.cznewborn.com/%E4%BB%A3%E7%A0%81%E7%BE%8E%E5%8C%96/clang-format%E7%BE%8E%E5%8C%96Qt-Creator%E4%BB%A3%E7%A0%81/index.html">
+<meta property="og:site_name" content="Leia Blog">
+<meta property="og:description" content="Clang-Format可用于格式化（排版）多种不同语言的代码。其自带的排版格式主要有：LLVM, Google, Chromium, Mozilla, WebKit等; 利用style参数配置风格。通过编写 .clang-format 文件，可以实现代码风格的配置。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/_posts/clang-format%E7%BE%8E%E5%8C%96Qt-Creator%E4%BB%A3%E7%A0%81/LLVM_Logo-20220911221356.png">
+<meta property="article:published_time" content="2022-09-11T13:58:29.000Z">
+<meta property="article:modified_time" content="2022-09-13T04:23:04.790Z">
+<meta property="article:author" content="ChenZhao">
+<meta property="article:tag" content="Qt">
+<meta property="article:tag" content="代码美化">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/_posts/clang-format%E7%BE%8E%E5%8C%96Qt-Creator%E4%BB%A3%E7%A0%81/LLVM_Logo-20220911221356.png">
+  
+  
+  <title>clang-format美化Qt Creator代码 - Leia Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.cznewborn.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":6},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","app_key":"LUzOsNy6KL0b2iyCMMlIstrJ","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Leia Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="clang-format美化Qt Creator代码">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-09-11 21:58" pubdate>
+        2022年9月11日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      50 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">clang-format美化Qt Creator代码</h1>
+            
+            <div class="markdown-body">
+              <h1 id="qt-creator-使用代码格式化文件.clang-format">Qt Creator
+使用代码格式化文件.clang-format</h1>
+<p>  Clang-Format可用于格式化（排版）多种不同语言的代码。其自带的排版格式主要有：LLVM,
+Google, Chromium, Mozilla, WebKit等; 利用style参数配置风格。通过编写
+.clang-format 文件，可以实现代码风格的配置。</p>
+<h5
+id="打开qt-creator打开帮助中的关于插件勾选beautifier重启qt-creator">1.
+打开Qt
+creator，打开<code>帮助</code>中的<code>关于插件</code>，勾选<code>beautifier</code>，重启Qt
+Creator</h5>
+<h5 id="安装clang-format_llvm-10.0.0.exe解压压缩包至合适的文件夹路径">2.
+安装<a
+href="%5BGithub-FilePages/clang-format_LLVM-10.0.0.exe.zip%20at%20main%20·%20Code-Newborn/Github-FilePages%5D(https://github.com/Code-Newborn/Github-FilePages/blob/main/package/clang-format_LLVM-10.0.0.exe.zip)">clang-format_LLVM-10.0.0.exe</a>，解压压缩包至合适的文件夹路径</h5>
+<h5 id="打开qt-creator点击工具-选项-beautifier">3. 打开Qt
+creator，点击<code>工具-&gt;选项-&gt;Beautifier</code>：</h5>
+<h6
+id="a-设置clang-format-command为clang-format_llvm-10.0.0.exe所在路径">  (a)
+设置<code>Clang Format command</code>为<code>clang-format_LLVM-10.0.0.exe</code>所在路径</h6>
+<h6 id="b-设置use-predefined-style为filefallback-style为default">  (b)
+设置<code>Use predefined style</code>为<code>file</code>，<code>Fallback style</code>为<code>Default</code></h6>
+<h5
+id="添加.clang-format文件至.pro文件的同级目录下其格式化设置内容如下">4.
+添加<code>.clang-format</code>文件至<code>.pro</code>文件的同级目录下，其格式化设置内容如下</h5>
+<figure class="highlight properties"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br></pre></div></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment"># 语言: None, Cpp, Java, JavaScript, ObjC, Proto, TableGen, TextProto</span><br><span class="hljs-attr">Language</span>:        <span class="hljs-string">Cpp</span><br><span class="hljs-comment"># BasedOnStyle:  WebKit</span><br><span class="hljs-comment"># 访问说明符(public、private等)的偏移</span><br><span class="hljs-attr">AccessModifierOffset</span>: <span class="hljs-string">-4</span><br><span class="hljs-comment"># 开括号(开圆括号、开尖括号、开方括号)后的对齐: Align, DontAlign, AlwaysBreak(总是在开括号后换行)</span><br><span class="hljs-attr">AlignAfterOpenBracket</span>: <span class="hljs-string">AlwaysBreak</span><br><span class="hljs-comment"># 连续赋值时，对齐所有等号</span><br><span class="hljs-attr">AlignConsecutiveAssignments</span>: <span class="hljs-string">false</span><br><span class="hljs-comment"># 连续声明时，对齐所有声明的变量名</span><br><span class="hljs-attr">AlignConsecutiveDeclarations</span>: <span class="hljs-string">false</span><br><span class="hljs-comment"># 左对齐逃脱换行(使用反斜杠换行)的反斜杠</span><br><span class="hljs-attr">AlignEscapedNewlines</span>: <span class="hljs-string">Right</span><br><span class="hljs-comment"># 水平对齐二元和三元表达式的操作数</span><br><span class="hljs-attr">AlignOperands</span>:   <span class="hljs-string">true</span><br><span class="hljs-comment"># 对齐连续的尾随的注释</span><br><span class="hljs-attr">AlignTrailingComments</span>: <span class="hljs-string">true</span><br><span class="hljs-comment"># 允许函数声明的所有参数在放在下一行</span><br><span class="hljs-attr">AllowAllParametersOfDeclarationOnNextLine</span>: <span class="hljs-string">true</span><br><span class="hljs-comment"># 允许短的块放在同一行</span><br><span class="hljs-attr">AllowShortBlocksOnASingleLine</span>: <span class="hljs-string">false</span><br><span class="hljs-comment"># 允许短的case标签放在同一行</span><br><span class="hljs-attr">AllowShortCaseLabelsOnASingleLine</span>: <span class="hljs-string">false</span><br><span class="hljs-comment"># 允许短的函数放在同一行: None, InlineOnly(定义在类中), Empty(空函数), Inline(定义在类中，空函数), All</span><br><span class="hljs-attr">AllowShortFunctionsOnASingleLine</span>: <span class="hljs-string">Empty</span><br><span class="hljs-comment"># 允许短的if语句保持在同一行</span><br><span class="hljs-attr">AllowShortIfStatementsOnASingleLine</span>: <span class="hljs-string">false</span><br><span class="hljs-comment"># 允许短的循环保持在同一行</span><br><span class="hljs-attr">AllowShortLoopsOnASingleLine</span>: <span class="hljs-string">false</span><br><span class="hljs-comment"># 总是在定义返回类型后换行(deprecated)</span><br><span class="hljs-attr">AlwaysBreakAfterDefinitionReturnType</span>: <span class="hljs-string">None</span><br><span class="hljs-comment"># 总是在返回类型后换行: None, All, TopLevel(顶级函数，不包括在类中的函数),</span><br><span class="hljs-comment">#   AllDefinitions(所有的定义，不包括声明), TopLevelDefinitions(所有的顶级函数的定义)</span><br><span class="hljs-attr">AlwaysBreakAfterReturnType</span>: <span class="hljs-string">None</span><br><span class="hljs-comment"># 总是在多行string字面量前换行</span><br><span class="hljs-attr">AlwaysBreakBeforeMultilineStrings</span>: <span class="hljs-string">false</span><br><span class="hljs-comment"># 总是在template声明后换行</span><br><span class="hljs-attr">AlwaysBreakTemplateDeclarations</span>: <span class="hljs-string">true</span><br><span class="hljs-comment"># false表示函数实参要么都在同一行，要么都各自一行</span><br><span class="hljs-attr">BinPackArguments</span>: <span class="hljs-string">false</span><br><span class="hljs-comment"># false表示所有形参要么都在同一行，要么都各自一行</span><br><span class="hljs-attr">BinPackParameters</span>: <span class="hljs-string">false</span><br><span class="hljs-comment"># 大括号换行，只有当BreakBeforeBraces设置为Custom时才有效</span><br><span class="hljs-attr">BraceWrapping</span>:   <span class="hljs-string"></span><br><span class="hljs-comment">  # class定义后面</span><br>  <span class="hljs-attr">AfterClass</span>:      <span class="hljs-string">true</span><br><span class="hljs-comment">  # 控制语句后面</span><br>  <span class="hljs-attr">AfterControlStatement</span>: <span class="hljs-string">true</span><br><span class="hljs-comment">  # enum定义后面</span><br>  <span class="hljs-attr">AfterEnum</span>:       <span class="hljs-string">true</span><br><span class="hljs-comment">  # 函数定义后面</span><br>  <span class="hljs-attr">AfterFunction</span>:   <span class="hljs-string">true</span><br><span class="hljs-comment">  # 命名空间定义后面</span><br>  <span class="hljs-attr">AfterNamespace</span>:  <span class="hljs-string">true</span><br><span class="hljs-comment">  # ObjC定义后面</span><br>  <span class="hljs-attr">AfterObjCDeclaration</span>: <span class="hljs-string">false</span><br><span class="hljs-comment">  # struct定义后面</span><br>  <span class="hljs-attr">AfterStruct</span>:     <span class="hljs-string">true</span><br><span class="hljs-comment">  # union定义后面</span><br>  <span class="hljs-attr">AfterUnion</span>:      <span class="hljs-string">true</span><br><span class="hljs-comment">  # extern 定义后面</span><br>  <span class="hljs-attr">AfterExternBlock</span>: <span class="hljs-string">true</span><br><span class="hljs-comment">  # catch之前</span><br>  <span class="hljs-attr">BeforeCatch</span>:     <span class="hljs-string">true</span><br><span class="hljs-comment">  # else 之前</span><br>  <span class="hljs-attr">BeforeElse</span>:      <span class="hljs-string">true</span><br><span class="hljs-comment">  # 缩进大括号</span><br>  <span class="hljs-attr">IndentBraces</span>:    <span class="hljs-string">false</span><br><br>  <span class="hljs-attr">SplitEmptyFunction</span>: <span class="hljs-string">true</span><br><br>  <span class="hljs-attr">SplitEmptyRecord</span>: <span class="hljs-string">true</span><br><br>  <span class="hljs-attr">SplitEmptyNamespace</span>: <span class="hljs-string">true</span><br><span class="hljs-comment"># 在二元运算符前换行: None(在操作符后换行), NonAssignment(在非赋值的操作符前换行), All(在操作符前换行)</span><br><span class="hljs-attr">BreakBeforeBinaryOperators</span>: <span class="hljs-string">All</span><br><span class="hljs-comment"># 在大括号前换行: Attach(始终将大括号附加到周围的上下文), Linux(除函数、命名空间和类定义，与Attach类似),</span><br><span class="hljs-comment">#   Mozilla(除枚举、函数、记录定义，与Attach类似), Stroustrup(除函数定义、catch、else，与Attach类似),</span><br><span class="hljs-comment">#   Allman(总是在大括号前换行), GNU(总是在大括号前换行，并对于控制语句的大括号增加额外的缩进), WebKit(在函数前换行), Custom</span><br><span class="hljs-comment">#   注：这里认为语句块也属于函数</span><br><span class="hljs-attr">BreakBeforeBraces</span>: <span class="hljs-string">Allman</span><br><span class="hljs-comment"># 继承列表的逗号前换行</span><br><span class="hljs-attr">BreakBeforeInheritanceComma</span>: <span class="hljs-string">false</span><br><span class="hljs-comment"># 在三元运算符前换行</span><br><span class="hljs-attr">BreakBeforeTernaryOperators</span>: <span class="hljs-string">true</span><br><span class="hljs-comment"># 在构造函数的初始化列表的逗号前换行</span><br><span class="hljs-attr">BreakConstructorInitializersBeforeComma</span>: <span class="hljs-string">false</span><br><span class="hljs-comment"># 初始化列表前换行</span><br><span class="hljs-attr">BreakConstructorInitializers</span>: <span class="hljs-string">BeforeComma</span><br><span class="hljs-comment"># Java注解后换行</span><br><span class="hljs-attr">BreakAfterJavaFieldAnnotations</span>: <span class="hljs-string">false</span><br><br><span class="hljs-attr">BreakStringLiterals</span>: <span class="hljs-string">true</span><br><span class="hljs-comment"># 每行字符的限制，0表示没有限制</span><br><span class="hljs-attr">ColumnLimit</span>:     <span class="hljs-string">160</span><br><span class="hljs-comment"># 描述具有特殊意义的注释的正则表达式，它不应该被分割为多行或以其它方式改变</span><br><span class="hljs-attr">CommentPragmas</span>:  <span class="hljs-string">&#x27;^ IWYU pragma:&#x27;</span><br><span class="hljs-comment"># 紧凑 命名空间</span><br><span class="hljs-attr">CompactNamespaces</span>: <span class="hljs-string">false</span><br><span class="hljs-comment"># 构造函数的初始化列表要么都在同一行，要么都各自一行</span><br><span class="hljs-attr">ConstructorInitializerAllOnOneLineOrOnePerLine</span>: <span class="hljs-string">true</span><br><span class="hljs-comment"># 构造函数的初始化列表的缩进宽度</span><br><span class="hljs-attr">ConstructorInitializerIndentWidth</span>: <span class="hljs-string">4</span><br><span class="hljs-comment"># 延续的行的缩进宽度</span><br><span class="hljs-attr">ContinuationIndentWidth</span>: <span class="hljs-string">4</span><br><span class="hljs-comment"># 去除C++11的列表初始化的大括号&#123;后和&#125;前的空格</span><br><span class="hljs-attr">Cpp11BracedListStyle</span>: <span class="hljs-string">false</span><br><span class="hljs-comment"># 继承最常用的指针和引用的对齐方式</span><br><span class="hljs-attr">DerivePointerAlignment</span>: <span class="hljs-string">false</span><br><span class="hljs-comment"># 关闭格式化</span><br><span class="hljs-attr">DisableFormat</span>:   <span class="hljs-string">false</span><br><span class="hljs-comment"># 自动检测函数的调用和定义是否被格式为每行一个参数(Experimental)</span><br><span class="hljs-attr">ExperimentalAutoDetectBinPacking</span>: <span class="hljs-string">false</span><br><span class="hljs-comment"># 固定命名空间注释</span><br><span class="hljs-attr">FixNamespaceComments</span>: <span class="hljs-string">true</span><br><span class="hljs-comment"># 需要被解读为foreach循环而不是函数调用的宏</span><br><span class="hljs-attr">ForEachMacros</span>:   <span class="hljs-string"></span><br>  <span class="hljs-attr">-</span> <span class="hljs-string">foreach</span><br>  <span class="hljs-attr">-</span> <span class="hljs-string">Q_FOREACH</span><br>  <span class="hljs-attr">-</span> <span class="hljs-string">BOOST_FOREACH</span><br><br><span class="hljs-attr">IncludeBlocks</span>:   <span class="hljs-string">Preserve</span><br><span class="hljs-comment"># 对#include进行排序，匹配了某正则表达式的#include拥有对应的优先级，匹配不到的则默认优先级为INT_MAX(优先级越小排序越靠前)，</span><br><span class="hljs-comment">#   可以定义负数优先级从而保证某些#include永远在最前面</span><br><span class="hljs-attr">IncludeCategories</span>: <span class="hljs-string"></span><br>  <span class="hljs-attr">-</span> <span class="hljs-string">Regex:           &#x27;^&quot;(llvm|llvm-c|clang|clang-c)/&#x27;</span><br>    <span class="hljs-attr">Priority</span>:        <span class="hljs-string">2</span><br>  <span class="hljs-attr">-</span> <span class="hljs-string">Regex:           &#x27;^(&lt;|&quot;(gtest|gmock|isl|json)/)&#x27;</span><br>    <span class="hljs-attr">Priority</span>:        <span class="hljs-string">3</span><br>  <span class="hljs-attr">-</span> <span class="hljs-string">Regex:           &#x27;.*&#x27;</span><br>    <span class="hljs-attr">Priority</span>:        <span class="hljs-string">1</span><br><span class="hljs-attr">IncludeIsMainRegex</span>: <span class="hljs-string">&#x27;(Test)?$&#x27;</span><br><span class="hljs-comment"># 缩进case标签</span><br><span class="hljs-attr">IndentCaseLabels</span>: <span class="hljs-string">true</span><br><br><span class="hljs-attr">IndentPPDirectives</span>: <span class="hljs-string">None</span><br><span class="hljs-comment"># 缩进宽度</span><br><span class="hljs-attr">IndentWidth</span>:     <span class="hljs-string">4</span><br><span class="hljs-comment"># 函数返回类型换行时，缩进函数声明或函数定义的函数名</span><br><span class="hljs-attr">IndentWrappedFunctionNames</span>: <span class="hljs-string">false</span><br><br><span class="hljs-attr">JavaScriptQuotes</span>: <span class="hljs-string">Leave</span><br><br><span class="hljs-attr">JavaScriptWrapImports</span>: <span class="hljs-string">true</span><br><span class="hljs-comment"># 保留在块开始处的空行</span><br><span class="hljs-attr">KeepEmptyLinesAtTheStartOfBlocks</span>: <span class="hljs-string">true</span><br><span class="hljs-comment"># 开始一个块的宏的正则表达式</span><br><span class="hljs-attr">MacroBlockBegin</span>: <span class="hljs-string">&#x27;&#x27;</span><br><span class="hljs-comment"># 结束一个块的宏的正则表达式</span><br><span class="hljs-attr">MacroBlockEnd</span>:   <span class="hljs-string">&#x27;&#x27;</span><br><span class="hljs-comment"># 连续空行的最大数量</span><br><span class="hljs-attr">MaxEmptyLinesToKeep</span>: <span class="hljs-string">1</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"># 命名空间的缩进: None, Inner(缩进嵌套的命名空间中的内容), All</span><br><span class="hljs-attr">NamespaceIndentation</span>: <span class="hljs-string">All</span><br><span class="hljs-comment"># 使用ObjC块时缩进宽度</span><br><span class="hljs-attr">ObjCBlockIndentWidth</span>: <span class="hljs-string">4</span><br><span class="hljs-comment"># 在ObjC的@property后添加一个空格</span><br><span class="hljs-attr">ObjCSpaceAfterProperty</span>: <span class="hljs-string">true</span><br><span class="hljs-comment"># 在ObjC的protocol列表前添加一个空格</span><br><span class="hljs-attr">ObjCSpaceBeforeProtocolList</span>: <span class="hljs-string">true</span><br><br><span class="hljs-attr">PenaltyBreakAssignment</span>: <span class="hljs-string">2</span><br><br><span class="hljs-attr">PenaltyBreakBeforeFirstCallParameter</span>: <span class="hljs-string">19</span><br><span class="hljs-comment"># 在一个注释中引入换行的penalty</span><br><span class="hljs-attr">PenaltyBreakComment</span>: <span class="hljs-string">300</span><br><span class="hljs-comment"># 第一次在&lt;&lt;前换行的penalty</span><br><span class="hljs-attr">PenaltyBreakFirstLessLess</span>: <span class="hljs-string">120</span><br><span class="hljs-comment"># 在一个字符串字面量中引入换行的penalty</span><br><span class="hljs-attr">PenaltyBreakString</span>: <span class="hljs-string">1000</span><br><span class="hljs-comment"># 对于每个在行字符数限制之外的字符的penalty</span><br><span class="hljs-attr">PenaltyExcessCharacter</span>: <span class="hljs-string">1000000</span><br><span class="hljs-comment"># 将函数的返回类型放到它自己的行的penalty</span><br><span class="hljs-attr">PenaltyReturnTypeOnItsOwnLine</span>: <span class="hljs-string">60</span><br><span class="hljs-comment"># 指针和引用的对齐: Left, Right, Middle</span><br><span class="hljs-attr">PointerAlignment</span>: <span class="hljs-string">Right</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">#RawStringFormats: </span><br><span class="hljs-comment">#  - Delimiter:       pb</span><br><span class="hljs-comment">#    Language:        TextProto</span><br><span class="hljs-comment">#    BasedOnStyle:    google</span><br><span class="hljs-comment"># 允许重新排版注释</span><br><span class="hljs-attr">ReflowComments</span>:  <span class="hljs-string">false</span><br><span class="hljs-comment"># 允许排序#include</span><br><span class="hljs-attr">SortIncludes</span>:    <span class="hljs-string">true</span><br><br><span class="hljs-attr">SortUsingDeclarations</span>: <span class="hljs-string">true</span><br><span class="hljs-comment"># 在C风格类型转换后添加空格</span><br><span class="hljs-attr">SpaceAfterCStyleCast</span>: <span class="hljs-string">false</span><br><span class="hljs-comment"># 模板关键字后面添加空格</span><br><span class="hljs-attr">SpaceAfterTemplateKeyword</span>: <span class="hljs-string">true</span><br><span class="hljs-comment"># 在赋值运算符之前添加空格</span><br><span class="hljs-attr">SpaceBeforeAssignmentOperators</span>: <span class="hljs-string">true</span><br><span class="hljs-comment"># 开圆括号之前添加一个空格: Never, ControlStatements, Always</span><br><span class="hljs-attr">SpaceBeforeParens</span>: <span class="hljs-string">ControlStatements</span><br><span class="hljs-comment"># 在空的圆括号中添加空格</span><br><span class="hljs-attr">SpaceInEmptyParentheses</span>: <span class="hljs-string">false</span><br><span class="hljs-comment"># 在尾随的评论前添加的空格数(只适用于//)</span><br><span class="hljs-attr">SpacesBeforeTrailingComments</span>: <span class="hljs-string">1</span><br><span class="hljs-comment"># 在尖括号的&lt;后和&gt;前添加空格</span><br><span class="hljs-attr">SpacesInAngles</span>:  <span class="hljs-string">false</span><br><span class="hljs-comment"># 在容器(ObjC和JavaScript的数组和字典等)字面量中添加空格</span><br><span class="hljs-attr">SpacesInContainerLiterals</span>: <span class="hljs-string">true</span><br><span class="hljs-comment"># 在C风格类型转换的括号中添加空格</span><br><span class="hljs-attr">SpacesInCStyleCastParentheses</span>: <span class="hljs-string">false</span><br><span class="hljs-comment"># 在圆括号的(后和)前添加空格</span><br><span class="hljs-attr">SpacesInParentheses</span>: <span class="hljs-string">false</span><br><span class="hljs-comment"># 在方括号的[后和]前添加空格，lamda表达式和未指明大小的数组的声明不受影响</span><br><span class="hljs-attr">SpacesInSquareBrackets</span>: <span class="hljs-string">false</span><br><span class="hljs-comment"># 标准: Cpp03, Cpp11, Auto</span><br><span class="hljs-attr">Standard</span>:        <span class="hljs-string">Cpp11</span><br><span class="hljs-comment"># tab宽度</span><br><span class="hljs-attr">TabWidth</span>:        <span class="hljs-string">4</span><br><span class="hljs-comment"># 使用tab字符: Never, ForIndentation, ForContinuationAndIndentation, Always</span><br><span class="hljs-attr">UseTab</span>:          <span class="hljs-string">Never</span><br></code></pre></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%BB%A3%E7%A0%81%E7%BE%8E%E5%8C%96/">代码美化</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Qt/">Qt</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BB%A3%E7%A0%81%E7%BE%8E%E5%8C%96/">代码美化</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/Matlab/%E5%8F%8C%E7%9B%AE%E6%A0%87%E5%AE%9A/Matlab%E4%B8%AD%E5%8F%8C%E7%9B%AE%E6%A0%87%E5%AE%9A%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Matlab双目标定</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/Qt%E5%BC%80%E5%8F%91/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/">
+                        <span class="hidden-mobile">Qt程序发布与打包</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","appKey":"LUzOsNy6KL0b2iyCMMlIstrJ","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

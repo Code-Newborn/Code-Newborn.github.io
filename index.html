@@ -1,0 +1,1043 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ChenZhao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="技术分享，干货满满">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Leia Blog">
+<meta property="og:url" content="https://www.cznewborn.com/index.html">
+<meta property="og:site_name" content="Leia Blog">
+<meta property="og:description" content="技术分享，干货满满">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="ChenZhao">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>Leia Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.cznewborn.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":6},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","app_key":"LUzOsNy6KL0b2iyCMMlIstrJ","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Leia Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/Banner_2.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="粗缯大布裹生涯，腹有诗书气自华">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/Matlab/%E5%8F%8C%E7%9B%AE%E6%A0%87%E5%AE%9A/Matlab%E4%B8%AD%E5%8F%8C%E7%9B%AE%E6%A0%87%E5%AE%9A%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E/" target="_self">
+          <img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/10/14/image-StereoCalibrate-192017.png" srcset="/img/loading.gif" lazyload alt="Matlab双目标定">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/Matlab/%E5%8F%8C%E7%9B%AE%E6%A0%87%E5%AE%9A/Matlab%E4%B8%AD%E5%8F%8C%E7%9B%AE%E6%A0%87%E5%AE%9A%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E/" target="_self">
+          Matlab双目标定
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/Matlab/%E5%8F%8C%E7%9B%AE%E6%A0%87%E5%AE%9A/Matlab%E4%B8%AD%E5%8F%8C%E7%9B%AE%E6%A0%87%E5%AE%9A%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E/" target="_self">
+          
+          Matlab的工具箱中已包含有Stereo Camera Calibrator（立体相机标定）工具，具有良好的交互性，易于对双目相机的内参和外参进行标定，但是Matlab的文档中对RotationOfCamera2和TranslationOfCamera2的解释让人不明所以，故在此文章中对其进行合理解释。
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-14 19:14" pubdate>
+              2022-10-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Matlab/">Matlab</a>
+            
+              <a href="/categories/Matlab/%E5%8F%8C%E7%9B%AE%E6%A0%87%E5%AE%9A/">双目标定</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Matlab/">Matlab</a>
+            
+              <a href="/tags/%E5%8F%8C%E7%9B%AE%E6%A0%87%E5%AE%9A/">双目标定</a>
+            
+              <a href="/tags/StereoCalibrate/">StereoCalibrate</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/%E4%BB%A3%E7%A0%81%E7%BE%8E%E5%8C%96/clang-format%E7%BE%8E%E5%8C%96Qt-Creator%E4%BB%A3%E7%A0%81/" target="_self">
+          <img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/_posts/clang-format%E7%BE%8E%E5%8C%96Qt-Creator%E4%BB%A3%E7%A0%81/LLVM_Logo-20220911221356.png" srcset="/img/loading.gif" lazyload alt="clang-format美化Qt Creator代码">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/%E4%BB%A3%E7%A0%81%E7%BE%8E%E5%8C%96/clang-format%E7%BE%8E%E5%8C%96Qt-Creator%E4%BB%A3%E7%A0%81/" target="_self">
+          clang-format美化Qt Creator代码
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/%E4%BB%A3%E7%A0%81%E7%BE%8E%E5%8C%96/clang-format%E7%BE%8E%E5%8C%96Qt-Creator%E4%BB%A3%E7%A0%81/" target="_self">
+          
+          Clang-Format可用于格式化（排版）多种不同语言的代码。其自带的排版格式主要有：LLVM, Google, Chromium, Mozilla, WebKit等; 利用style参数配置风格。通过编写 .clang-format 文件，可以实现代码风格的配置。
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-11 21:58" pubdate>
+              2022-09-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BB%A3%E7%A0%81%E7%BE%8E%E5%8C%96/">代码美化</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Qt/">Qt</a>
+            
+              <a href="/tags/%E4%BB%A3%E7%A0%81%E7%BE%8E%E5%8C%96/">代码美化</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/Qt%E5%BC%80%E5%8F%91/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/" target="_self">
+          <img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/_posts/Qt程序发布与打包/Qt程序打包发布-20220510205639.jpg" srcset="/img/loading.gif" lazyload alt="Qt程序发布与打包">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/Qt%E5%BC%80%E5%8F%91/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/" target="_self">
+          Qt程序发布与打包
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/Qt%E5%BC%80%E5%8F%91/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/" target="_self">
+          
+          当 Qt 程序编写完成通过 IDE 编译后就可以得到对应的可执行程序.exe，但若是直接将可执行文件发布给他人时，往往并不能运行起来，原因是他人机器上并不具有该程序所需要的库资源，所以通过程序封包工具将可执行文件以及所需动态库文件封装在一起发布给别人，在计算机上安装完成后即可运行起来。
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-10 17:22" pubdate>
+              2022-05-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Qt%E5%BC%80%E5%8F%91/">Qt开发</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Qt/">Qt</a>
+            
+              <a href="/tags/%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E5%8F%91%E5%B8%83/">程序打包发布</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/Qt%E5%BC%80%E5%8F%91/Qt%E4%B8%AD%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E7%AD%96%E7%95%A5/" target="_self">
+          <img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/04/14/index_img-204555.png" srcset="/img/loading.gif" lazyload alt="Qt中的自适应布局策略">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/Qt%E5%BC%80%E5%8F%91/Qt%E4%B8%AD%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E7%AD%96%E7%95%A5/" target="_self">
+          Qt中的自适应布局策略
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/Qt%E5%BC%80%E5%8F%91/Qt%E4%B8%AD%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%E7%AD%96%E7%95%A5/" target="_self">
+          
+          为了Qt窗体在缩放的时候能够保证控件能够自适应地随着窗体进行尺寸变化，我们需要在窗口设计过程中考虑，窗体内控件的布局方式，以达到美观的效果。
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-30 10:53" pubdate>
+              2022-03-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Qt%E5%BC%80%E5%8F%91/">Qt开发</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AA%97%E5%8F%A3%E5%B8%83%E5%B1%80/">窗口布局</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/Matlab/%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97/Matlab%E7%AC%A6%E5%8F%B7%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97/" target="_self">
+          <img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/28/MATLAB-194451.jpg" srcset="/img/loading.gif" lazyload alt="Matlab符号对象与符号运算">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/Matlab/%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97/Matlab%E7%AC%A6%E5%8F%B7%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97/" target="_self">
+          Matlab符号对象与符号运算
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/Matlab/%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97/Matlab%E7%AC%A6%E5%8F%B7%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97/" target="_self">
+          
+          Matlab符号对象与符号运算  符号对象(Symbolic Objects)不同于普通的数值计算)是Matlab中的一种特殊数据类型，它可以用来表示符号变量、表达式以及矩阵，利用符号对象能够在不考虑符号所对应的具体数值的情况下能够进行代数分析和符号计算(symbolic math operations)，例如解代数方程、微分方程、进行矩阵运算等。    一、符号对象的定义   在
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-28 16:31" pubdate>
+              2022-03-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Matlab/">Matlab</a>
+            
+              <a href="/categories/Matlab/%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97/">符号运算</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AC%A6%E5%8F%B7%E5%87%BD%E6%95%B0%E7%BB%84/">符号函数组</a>
+            
+              <a href="/tags/%E7%AC%A6%E5%8F%B7%E7%9F%A9%E9%98%B5/">符号矩阵</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/Opencv/VS2019/%E5%88%A9%E7%94%A8Cmake%E9%80%9A%E8%BF%87Visual-Studio2019%E7%BC%96%E8%AF%91Opencv4-1-0-contrib-nonfree/" target="_self">
+          <img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/28/OpenCv-VS-213552.jpeg" srcset="/img/loading.gif" lazyload alt="利用Cmake通过Visual Studio2019编译Opencv4.1.0_contrib_nonfree">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/Opencv/VS2019/%E5%88%A9%E7%94%A8Cmake%E9%80%9A%E8%BF%87Visual-Studio2019%E7%BC%96%E8%AF%91Opencv4-1-0-contrib-nonfree/" target="_self">
+          利用Cmake通过Visual Studio2019编译Opencv4.1.0_contrib_nonfree
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/Opencv/VS2019/%E5%88%A9%E7%94%A8Cmake%E9%80%9A%E8%BF%87Visual-Studio2019%E7%BC%96%E8%AF%91Opencv4-1-0-contrib-nonfree/" target="_self">
+          
+          利用Cmake通过Visual Studio2019编译Opencv4.1.0_contrib_nonfree   利用Cmake通过VS2019的编译器对Opencv库文件进行编译，以方便Opencv在VS2019中应用。 1.准备相应文件  Opencv4.1.0 Opencv4.1.0_with_contrib CMake.msi直接安装 新建一个文件夹用于存放编译后文件，例
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-22 10:52" pubdate>
+              2022-03-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Opencv/">Opencv</a>
+            
+              <a href="/categories/Opencv/VS2019/">VS2019</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/VS2019/">VS2019</a>
+            
+              <a href="/tags/Opencv4-1-0/">Opencv4.1.0</a>
+            
+              <a href="/tags/Cmake/">Cmake</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8A%80%E6%9C%AF/%E5%AF%B9%E7%9B%B4%E8%A7%92%E5%9D%90%E6%A0%87%E7%B3%BB%E4%BD%8D%E5%A7%BF%E5%8F%98%E6%8D%A2%E5%8F%8A%E6%8F%8F%E8%BF%B0%E7%9A%84%E7%90%86%E8%A7%A3/" target="_self">
+          <img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/14/三维坐标系变换-093117.jpg" srcset="/img/loading.gif" lazyload alt="对直角坐标系位姿变换及描述的理解">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8A%80%E6%9C%AF/%E5%AF%B9%E7%9B%B4%E8%A7%92%E5%9D%90%E6%A0%87%E7%B3%BB%E4%BD%8D%E5%A7%BF%E5%8F%98%E6%8D%A2%E5%8F%8A%E6%8F%8F%E8%BF%B0%E7%9A%84%E7%90%86%E8%A7%A3/" target="_self">
+          对直角坐标系位姿变换及描述的理解
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8A%80%E6%9C%AF/%E5%AF%B9%E7%9B%B4%E8%A7%92%E5%9D%90%E6%A0%87%E7%B3%BB%E4%BD%8D%E5%A7%BF%E5%8F%98%E6%8D%A2%E5%8F%8A%E6%8F%8F%E8%BF%B0%E7%9A%84%E7%90%86%E8%A7%A3/" target="_self">
+          
+          了解直角坐标系在空间中的位姿变换，是为了方便获取物体在三维空间中的位置和姿态，对于已知两物体之间相对的位姿（例如旋转向量和平移向量），如何求得两物体间的变换过程（平移和旋转的过程）是非常重要的，或者说已知变换过程，求出变换后两物体相对的位姿。
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-22 10:31" pubdate>
+              2022-02-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8A%80%E6%9C%AF/">机器人技术</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%BD%8D%E5%A7%BF%E6%8F%8F%E8%BF%B0/">位姿描述</a>
+            
+              <a href="/tags/%E5%9D%90%E6%A0%87%E7%B3%BB%E5%8F%98%E6%8D%A2/">坐标系变换</a>
+            
+              <a href="/tags/%E5%9B%9B%E5%85%83%E6%95%B0/">四元数</a>
+            
+              <a href="/tags/%E6%AC%A7%E6%8B%89%E8%A7%92/">欧拉角</a>
+            
+              <a href="/tags/%E6%97%8B%E8%BD%AC%E5%90%91%E9%87%8F/">旋转向量</a>
+            
+              <a href="/tags/%E8%BD%B4%E8%A7%92/">轴角</a>
+            
+              <a href="/tags/%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5/">旋转矩阵</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/Hexo%E5%8D%9A%E5%AE%A2/Hexo%20+%20NexT%EF%BC%88%E6%88%96Fluid%EF%BC%89%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%8A%80%E5%B7%A7/" target="_self">
+          <img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/28/Hexo-Theme-Fluid-213135.png" srcset="/img/loading.gif" lazyload alt="Hexo + NexT（或Fluid）主题美化技巧">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/Hexo%E5%8D%9A%E5%AE%A2/Hexo%20+%20NexT%EF%BC%88%E6%88%96Fluid%EF%BC%89%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%8A%80%E5%B7%A7/" target="_self">
+          Hexo + NexT（或Fluid）主题美化技巧
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/Hexo%E5%8D%9A%E5%AE%A2/Hexo%20+%20NexT%EF%BC%88%E6%88%96Fluid%EF%BC%89%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%8A%80%E5%B7%A7/" target="_self">
+          
+          Hexo + NexT（或Fluid）主题美化技巧 1. 网站界面 (1)更改网站底部年份和版权信息之间的图标（NexT，Fluid）   在NexT主题配置文件中找到Footer Settings修改配置项如下： 123456789101112footer:  # Specify the year when the site was setup. If not defined, cu
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-16 16:56" pubdate>
+              2022-02-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Hexo/">Hexo</a>
+            
+              <a href="/tags/NexT%E4%B8%BB%E9%A2%98/">NexT主题</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/Hexo%E5%8D%9A%E5%AE%A2/Hexo-GithubPage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" target="_self">
+          <img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/28/Hexo-211046.png" srcset="/img/loading.gif" lazyload alt="Hexo-GithubPage搭建个人博客">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/Hexo%E5%8D%9A%E5%AE%A2/Hexo-GithubPage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" target="_self">
+          Hexo-GithubPage搭建个人博客
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/Hexo%E5%8D%9A%E5%AE%A2/Hexo-GithubPage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" target="_self">
+          
+          Hexo + GithubPage搭建个人博客 (1)安装、创建准备 ​ 首先安装Git、node.js，安装完成后在桌面打开cmd命令窗口查看是否安装成功。 1git --version 1node -v 1npm -v ​ 在自己的Github账号中创建一个公开库，创建时任何文件（包括README文件）都不要添加，仓库名称为【用户名.http:&#x2F;&#x2F;github.io】（用户名为
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-16 15:50" pubdate>
+              2022-02-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Hexo/">Hexo</a>
+            
+              <a href="/tags/Github/">Github</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/Qt%E5%BC%80%E5%8F%91/Qt%E4%BD%BF%E7%94%A8Numcpp/" target="_self">
+          <img src="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/28/Numpy_Python-212622.png" srcset="/img/loading.gif" lazyload alt="Qt使用Numcpp（c++版的Numpy）">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/Qt%E5%BC%80%E5%8F%91/Qt%E4%BD%BF%E7%94%A8Numcpp/" target="_self">
+          Qt使用Numcpp（c++版的Numpy）
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/Qt%E5%BC%80%E5%8F%91/Qt%E4%BD%BF%E7%94%A8Numcpp/" target="_self">
+          
+          Qt使用Boost_Numcpp库 (1) 下载boost_1.75.0库文件 (2) 下载Numcpp: C++ implementation of the Python Numpy library (3) 非中文路径下新建文件夹D:_Numcpp，将boost_1.75.0文件夹中的boost文件夹复制进刚刚新建的文件夹中，并将Numcpp中的includes文件夹中的NumCpp
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-15 21:24" pubdate>
+              2022-02-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Qt%E5%BC%80%E5%8F%91/">Qt开发</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Qt/">Qt</a>
+            
+              <a href="/tags/Numcpp/">Numcpp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
