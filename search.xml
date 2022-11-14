@@ -7,6 +7,9 @@
 <p>  直流电机是将直流电能转换为机械能的转动装置。电动机定子提供磁场，直流电源向转子的绕组提供电流，换向器使转子电流与磁场产生的转矩保持方向不变。根据是否是否配置有常用的电刷-换向器可以将直流电动机分为两类，包括有刷直流电动机和无刷直流电动机。</p>
 <blockquote>
 <p>参考：<a href="https://www.monolithicpower.com/en/brushless-vs-brushed-dc-motors">无刷直流电机Vs有刷直流电机</a></p>
+<p>参考：<a href="https://ctms.engin.umich.edu/CTMS/index.php?example=MotorPosition&amp;section=SystemModeling">Control
+Tutorials for MATLAB and Simulink - Motor Position: System Modeling
+(密歇根大学)</a></p>
 </blockquote>
 <p>  有刷直流电机中含有电刷进行电流换向，而无刷直流电机中通过电子换向器对电流进行换向，从而产生变化的磁场（一般包含在电机驱动器中）。为对直流电机进行精确的位置控制，需要对其进行控制模型建立，揭示电机转动角位置与输入角指令之间的传递函数模型。</p>
 <h2 id="一直流电机物理模型">一、直流电机物理模型</h2>
