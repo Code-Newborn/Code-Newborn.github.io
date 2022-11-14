@@ -4,6 +4,39 @@
   
   
   <entry>
+    <title>直流电机DC-Motor位置控制模型</title>
+    <link href="/%E6%8E%A7%E5%88%B6/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BADC-Motor%E4%BD%8D%E7%BD%AE%E6%8E%A7%E5%88%B6%E6%A8%A1%E5%9E%8B/"/>
+    <url>/%E6%8E%A7%E5%88%B6/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BADC-Motor%E4%BD%8D%E7%BD%AE%E6%8E%A7%E5%88%B6%E6%A8%A1%E5%9E%8B/</url>
+    
+    <content type="html"><![CDATA[<h1 id="直流电机dc-motor位置控制模型">直流电机DC-Motor位置控制模型</h1><p>  直流电机是将直流电能转换为机械能的转动装置。电动机定子提供磁场，直流电源向转子的绕组提供电流，换向器使转子电流与磁场产生的转矩保持方向不变。根据是否是否配置有常用的电刷-换向器可以将直流电动机分为两类，包括有刷直流电动机和无刷直流电动机。</p><blockquote><p>参考：<ahref="https://www.monolithicpower.com/en/brushless-vs-brushed-dc-motors">无刷直流电机Vs有刷直流电机</a></p></blockquote><p>  有刷直流电机中含有电刷进行电流换向，而无刷直流电机中通过电子换向器对电流进行换向，从而产生变化的磁场（一般包含在电机驱动器中）。为对直流电机进行精确的位置控制，需要对其进行控制模型建立，揭示电机转动角位置与输入角指令之间的传递函数模型。</p><h2 id="一直流电机物理模型">一、直流电机物理模型</h2><p>  是直流电动机直接提供旋转运动，并与转轴上的负载相结合，可以提供旋转运动。电枢的等效电路和转子的负载受力图如下图所示。</p><p><img src="https://s1.ax1x.com/2022/11/14/zkWabd.png" alt="直流电机物理模型"  /></p><p>  在上述模型中，我们假设系统的输入是施加在电机电枢上的电压源(<spanclass="math inline">\(V\)</span>)，而输出是轴的角位置(<spanclass="math inline">\(\theta\)</span>)。假设转子和轴是刚性的。我们进一步假设一个粘性摩擦模型，即转轴摩擦力矩与轴角速度成正比（根据情况自定义）。为建立直流电机的控制模型，需提供以下参数：</p><table><thead><tr class="header"><th style="text-align: left;">参数</th><th>符号</th><th>单位</th></tr></thead><tbody><tr class="odd"><td style="text-align: left;">转子的转动惯量（包括转轴上的负载）</td><td><span class="math inline">\(J\)</span></td><td><span class="math inline">\(kg \cdot {m^2}\)</span></td></tr><tr class="even"><td style="text-align: left;">电机粘性摩擦常数</td><td><span class="math inline">\(K_b\)</span></td><td><span class="math inline">\(N \cdot m \cdot s\)</span></td></tr><tr class="odd"><td style="text-align: left;">反电动势常数</td><td><span class="math inline">\(K_e\)</span></td><td><span class="math inline">\(V/(rad/s)\)</span></td></tr><tr class="even"><td style="text-align: left;">电机转矩常数</td><td><span class="math inline">\(K_t\)</span></td><td><span class="math inline">\((N \cdot m)/A\)</span></td></tr><tr class="odd"><td style="text-align: left;">电阻</td><td><span class="math inline">\(R\)</span></td><td><span class="math inline">\(\Omega\)</span></td></tr><tr class="even"><td style="text-align: left;">电感</td><td><span class="math inline">\(L\)</span></td><td><span class="math inline">\(H\)</span></td></tr></tbody></table><h2 id="二直流电机系统方程">二、直流电机系统方程</h2><p>  一般来说，直流电机产生的转矩与电枢电流和磁场强度成正比。在这个例子中，我们将假设磁场是恒定的，因此，电机转矩只与电枢电流<spanclass="math inline">\(i\)</span>正比于一个常数因子<spanclass="math inline">\(K_t\)</span>，如下面的等式所示。这被称为电枢控制的电机。<span class="math display">\[T = {K_t}i\]</span>   对于反电势<spanclass="math inline">\(e\)</span>而言，其值的大小与转轴的速度以一常系数<spanclass="math inline">\(K_e\)</span>成比例。 <span class="math display">\[e = {K_e}\dot \theta\]</span>   转轴的摩擦力矩的大小与转轴的速度以一常系数<spanclass="math inline">\(K_b\)</span>成比例。 <span class="math display">\[f = {K_b}\dot \theta\]</span>   根据牛顿第二定律和基尔霍夫电压定律推导出以下模型方程。 <spanclass="math display">\[J\ddot \theta  + f = {K_t}i\]</span></p><p>$$ L\frac{{\partial i}}{{\partial t}} + Ri = V - {K_e}\dot \theta$$ </p><h3 id="传递函数">(1)传递函数</h3><p>  应用拉普拉斯变换，上述模型方程可以用拉普拉斯变量<spanclass="math inline">\(s\)</span>表示。 <span class="math display">\[s(Js + {K_b})\theta (s) = {K_t}T(s)\]</span></p><p><span class="math display">\[(Ls + R)I(s) = V(s) - {K_e}s\theta (s)\]</span></p><p>  通过消除上述两个方程之间的<spanclass="math inline">\(I(s)\)</span>，我们得到以下开环传递函数，当转速被作为输出，电枢电压被作为输入，可得如下方程：<span class="math display">\[ P(s) = \frac{{\dot \theta (s)}}{{V(s)}} = \frac{{{K_t}}}{{(Js + {K_b})(Ls + R) + {K_t}{K_e}}}\begin{array}{*{20}{c}}{}&{}&{}\end{array}[\frac{{rad/s}}{V}]$$ &amp;emsp;&amp;emsp;然而，一般情况，我们将把位置视为输出。我们可以通过对速度积分得到位置，因此，我们只需要将上面的传递函数除以$s$。\]</span> \frac{{\theta (s)}}{{V(s)}} = \frac{{{K_t}}}{{s(Js + {K_b})(Ls + R) + {K_t}{K_e}}}\begin{array}{*{20}{c}}{}&{}&{}\end{array}[\frac{{rad}}{V}]$$ </p><h3 id="状态空间">(2)状态空间</h3><p>  通过选取电机位置、电机转速和电枢电流作为状态变量，可以将上述微分方程表示为状态空间形式。同样，电枢电压<spanclass="math inline">\(V\)</span>被视为输入，旋转位置<spanclass="math inline">\(\theta\)</span>被选择为输出。 $$ \frac{d}{{dt}}\left[ {\begin{array}{*{20}{c}}\theta \\{\dot \theta }\\i\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}0&1&0\\0&{ - \frac{{{K_b}}}{J}}&{\frac{{{K_t}}}{J}}\\0&{ - \frac{{{K_e}}}{L}}&{ - \frac{R}{L}}\end{array}} \right]\left[ {\begin{array}{*{20}{c}}\theta \\{\dot \theta }\\i\end{array}} \right] + \left[ {\begin{array}{*{20}{c}}0\\0\\{\frac{1}{L}}\end{array}} \right]V$$ </p><h3 id="系统框图">(3)系统框图</h3><p>  在下图中，电气特性传递函数中<spanclass="math inline">\(L=0.017H,R=11.5\Omega\)</span>，在负载特性传递函数中<spanclass="math inline">\(J=0.036kg \cdot {m^2},K_b=0N \cdot m \cdots\)</span>，电机转矩常数<span class="math inline">\(K_t=13.1(N \cdotm)/A\)</span>，反电势系数<spanclass="math inline">\(K_e=10.695V/(rad/s)\)</span>。</p><p><img src="https://s1.ax1x.com/2022/11/14/zkT5m8.png" alt="控制框图"  /></p><h3 id="控制器设计要求">(4)控制器设计要求</h3><p>我们将希望能够非常精确地定位电机，因此电机位置的稳态误差应该为零，当给定一个命令的位置。我们也希望由恒定阶跃引起的稳态误差为零。另一个性能要求是，电机到达其最终位置非常快，没有过度超调。在这种情况下，我们希望系统的稳定时间为40毫秒（由工作要求决定自行调整，并进行调试参数），超调量小于16%。</p><p>如果我们用单位阶跃输入来模拟参考输入，那么电机位置输出应该有如下要求:</p><ul><li>调整时间小于40ms</li><li>超调小于16%</li><li>无稳态误差</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>控制</category>
+      
+      <category>直流电机</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>直流电机</tag>
+      
+      <tag>传递函数</tag>
+      
+      <tag>状态空间方程</tag>
+      
+      <tag>系统框图</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>大端模式与小端模式</title>
     <link href="/%E5%A4%A7%E5%B0%8F%E7%AB%AF%E6%A8%A1%E5%BC%8F/%E5%A4%A7%E7%AB%AF%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%B0%8F%E7%AB%AF%E6%A8%A1%E5%BC%8F/"/>
     <url>/%E5%A4%A7%E5%B0%8F%E7%AB%AF%E6%A8%A1%E5%BC%8F/%E5%A4%A7%E7%AB%AF%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%B0%8F%E7%AB%AF%E6%A8%A1%E5%BC%8F/</url>
