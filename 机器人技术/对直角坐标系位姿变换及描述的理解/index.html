@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/2022/03/14/三维坐标系变换-093117.jpg">
 <meta property="article:published_time" content="2022-02-22T02:31:53.000Z">
-<meta property="article:modified_time" content="2022-10-24T14:34:50.847Z">
+<meta property="article:modified_time" content="2022-11-16T07:59:27.084Z">
 <meta property="article:author" content="ChenZhao">
 <meta property="article:tag" content="位姿描述">
 <meta property="article:tag" content="坐标系变换">
@@ -387,7 +387,7 @@ q = w + \vec n = w + {q_1}i + {q_2}j + {q_3}k
   四元数中的每个数都是经过“处理”的轴和角，轴角描述的四个量并不是一个空间下的东西，首先<span
 class="math inline">\(\left[ {\begin{array}{*{20}{c}}
 x&amp;y&amp;z\end{array}} \right]\)</span>是一个3维坐标下的矢量，而<span
-class="math inline">\(\theta\)</span>则是极坐标下的角度，简单的将他们组合到一起并不能保证他们插值结果的稳定性，因为他们无法归一化，所以不能保证最终插值后得到的矢量长度（经过旋转变换后两点之间的距离）相等，而四元数在是在一个统一的4维空间中，方便归一化来插值，又能方便的得到轴、角这样用于3D信息数据，所以用四元数再合适不过了。相比于矩阵，四元素也只要存储4个浮点数，优势很明显。</p>
+class="math inline">\(\theta\)</span>则是极坐标下的角度，简单的将他们组合到一起并不能保证他们插值结果的稳定性，因为他们无法归一化，所以不能保证最终插值后得到的矢量长度（经过旋转变换后两点之间的距离）相等，而四元数在是在一个统一的4维空间中，方便归一化来插值，又能方便的得到轴、角这样用于3D信息数据，所以用四元数再合适不过了。相比于矩阵，四元数也只要存储4个浮点数，优势很明显。</p>
 <h5 id="b.四元数使用">   b.四元数使用</h5>
 <p>  四元数的共轭：<span class="math inline">\({q^*} = w - \vec n = w -
 {q_1}i - {q_2}j - {q_3}k\)</span></p>
