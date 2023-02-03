@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/_posts/Qt程序发布与打包/Qt程序打包发布-20220510205639.jpg">
 <meta property="article:published_time" content="2022-05-10T09:22:57.000Z">
-<meta property="article:modified_time" content="2022-10-18T09:07:45.000Z">
+<meta property="article:modified_time" content="2023-02-03T12:55:16.052Z">
 <meta property="article:author" content="ChenZhao">
 <meta property="article:tag" content="Qt">
 <meta property="article:tag" content="程序打包发布">
@@ -174,7 +174,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('https://s1.ax1x.com/2023/01/02/pSPVr1e.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -250,7 +250,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2022年10月18日 下午
+                  本文最后更新于：2023年2月3日 晚上
                 
               </p>
             
@@ -280,7 +280,7 @@ windeployqt.exe，该文件位于 Qt 安装目录的编译套件目录的 bin
 目录中，以我本地为例<b>D:.2\5.14.2_64</b>，如果需要在当前操作系统的任意目录下都可以访问
 windeployqt.exe，则需要将此路径设置到环境变量中。</p>
 <p>  将Release版本可执行文件复制到一个新的空的文件夹中，在文件夹中按住Shift+右键，打开PowerShell，输入以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># LordCard.exe 是可执行程序的名字</span><br><span class="hljs-comment"># windeployqt.exe 的后缀 .exe 可以省略不写</span><br>windeployqt.exe Landlors.exe<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># LordCard.exe 是可执行程序的名字</span><br><span class="hljs-comment"># windeployqt.exe 的后缀 .exe 可以省略不写</span><br>windeployqt.exe Landlors.exe<br></code></pre></div></td></tr></table></figure>
 <p>  使用这种方式 Qt
 会将一些用不到的动态库也拷贝到当前的目录中，如果确定用不到可以手动将其删除，如果不在意这些，完全可以不用理会，更倾向选择后者。现在一个绿色免安装版的程序就得到了，可以将这个目录打个压缩包发送给自己的小伙伴，但是这种方式终究比较
 low，我们可以将这个目录中的文件制作成一个安装包，这样就类似于我们在网上下载的安装包程序一样了。</p>
