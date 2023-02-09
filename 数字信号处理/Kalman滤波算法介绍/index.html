@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://c2.im5i.com/2023/02/03/nqe6z.jpeg">
 <meta property="article:published_time" content="2023-02-03T12:04:41.000Z">
-<meta property="article:modified_time" content="2023-02-03T13:09:16.935Z">
+<meta property="article:modified_time" content="2023-02-04T08:59:19.138Z">
 <meta property="article:author" content="ChenZhao">
 <meta property="article:tag" content="卡尔曼滤波">
 <meta property="article:tag" content="Kalman">
@@ -312,7 +312,7 @@ mjx-container[display="true"] + br {
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      982 字
+      1.4k 字
     </span>
   
 
@@ -321,7 +321,7 @@ mjx-container[display="true"] + br {
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9 分钟
+      12 分钟
     </span>
   
 
@@ -362,7 +362,7 @@ mjx-container[display="true"] + br {
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年2月3日 晚上
+                  本文最后更新于：2023年2月4日 下午
                 
               </p>
             
@@ -377,6 +377,18 @@ filter的应用十分广泛，提供了可以真正实用的针对<strong>有限
 <p>参考文章</p>
 <p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/23971601/answer/46480923">如何通俗并尽可能详细地解释卡尔曼滤波？
 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.kalmanfilter.net/default.aspx">Kalman Filter
+Tutorial</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.sharetechnote.com/html/DE_Modeling_Example_ElectricCircuit.html">附件-Engineering
+Math | ShareTechnote</a></p>
+<p><a target="_blank" rel="noopener" href="https://sikasjc.github.io/2018/05/08/kalman_filter/">Kalman
+Filter 卡尔曼滤波 · Sika</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzU0NjgzMDIxMQ==&amp;mid=2247601352&amp;idx=1&amp;sn=080e64b063f9c7c9b69d8ee7c3e526d1&amp;chksm=fb54ae24cc2327325b628cbe903b3daa82f10c73c3afc470f68fc85b82b1cf5aa3c228e82246&amp;scene=27">图解卡尔曼滤波器如何工作【中文】</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bzarg.com/p/how-a-kalman-filter-works-in-pictures/#mathybits">图解卡尔曼滤波器如何工作【英文】</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/fb_941219/article/details/95340692">Kalman
+Filter_古路的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.visiondummy.com/2014/04/geometric-interpretation-covariance-matrix">协方差矩阵的几何解释</a></p>
+<p><a target="_blank" rel="noopener" href="https://courses.engr.illinois.edu/ece420/sp2017/UnderstandingKalmanFilter.pdf">通过简单的推导理解Kalman滤波算法</a></p>
 </blockquote>
 <h2 id="一kalman滤波器">一、Kalman滤波器</h2>
 <p>  Kalman Filter
@@ -389,15 +401,18 @@ Filter
 的巨大成功归功于其小的计算需求，优雅的递归属性以及作为具有高斯误差统计的一维线性系统的最优估计器的状态。</p>
 <p>  Kalman Filter
 只能减小均值为0的测量噪声带来的影响。只要噪声期望为0，那么不管方差多大，只要迭代次数足够多，那效果都很好。反之，噪声期望不为0，那么估计值就还是与实际值有偏差。</p>
-<h3 id="二级标题">(1)二级标题</h3>
-<h4 id="三级标题">1.三级标题</h4>
-<h5 id="a四级标题">(a)四级标题</h5>
-<h5 id="b四级标题">(b)四级标题</h5>
-<h5 id="c四级标题">(c)四级标题</h5>
-<h5 id="d四级标题">(d)四级标题</h5>
-<h4 id="三级标题-1">2.三级标题</h4>
-<h4 id="三级标题-2">3.三级标题</h4>
-<h4 id="三级标题-3">4.三级标题</h4>
+<h3 id="假设条件">(1)假设条件</h3>
+<p>  理论上，使用kalman滤波器需要满足三个重要假设：</p>
+<ul>
+<li>系统的动力学模型和量测模型都必须为<strong>线性</strong>。</li>
+<li>动力学模型是比较<strong>准确</strong>的，符合实际系统的行为。</li>
+<li>动力学模型中的噪音和观测噪音都是<strong>零均值</strong>且<strong>方差已知</strong>的<strong>白噪声</strong>。</li>
+</ul>
+<h3 id="应用举例及算法介绍">(2)应用举例及算法介绍</h3>
+<p>  以移动机器人匀速运动为例介绍卡尔曼滤波器的原理，终极任务是预测机器人的状态<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="1.294ex" height="1.937ex" role="img" focusable="false" viewBox="0 -845 572 856"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mover"><g data-mml-node="mi"><path data-c="1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></g><g data-mml-node="mo" transform="translate(313.8,31) translate(-250 0)"><path data-c="20D7" d="M377 694Q377 702 382 708T397 714Q404 714 409 709Q414 705 419 690Q429 653 460 633Q471 626 471 615Q471 606 468 603T454 594Q411 572 379 531Q377 529 374 525T369 519T364 517T357 516Q350 516 344 521T337 536Q337 555 384 595H213L42 596Q29 605 29 615Q29 622 42 635H401Q377 673 377 694Z"></path></g></g></g></g></g></svg></mjx-container></span>，其中包括位置<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.439ex" xmlns="http://www.w3.org/2000/svg" width="1.138ex" height="1.439ex" role="img" focusable="false" viewBox="0 -442 503 636"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g></g></g></svg></mjx-container></span>与速度<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="1.097ex" height="1.027ex" role="img" focusable="false" viewBox="0 -443 485 454"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D463" d="M173 380Q173 405 154 405Q130 405 104 376T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Q21 294 29 316T53 368T97 419T160 441Q202 441 225 417T249 361Q249 344 246 335Q246 329 231 291T200 202T182 113Q182 86 187 69Q200 26 250 26Q287 26 319 60T369 139T398 222T409 277Q409 300 401 317T383 343T365 361T357 383Q357 405 376 424T417 443Q436 443 451 425T467 367Q467 340 455 284T418 159T347 40T241 -11Q177 -11 139 22Q102 54 102 117Q102 148 110 181T151 298Q173 362 173 380Z"></path></g></g></g></svg></mjx-container></span>，可表示为： <span class="math display"><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -2.149ex" xmlns="http://www.w3.org/2000/svg" width="7.838ex" height="5.43ex" role="img" focusable="false" viewBox="0 -1450 3464.6 2400"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mover"><g data-mml-node="mi"><path data-c="1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></g><g data-mml-node="mo" transform="translate(313.8,31) translate(-250 0)"><path data-c="20D7" d="M377 694Q377 702 382 708T397 714Q404 714 409 709Q414 705 419 690Q429 653 460 633Q471 626 471 615Q471 606 468 603T454 594Q411 572 379 531Q377 529 374 525T369 519T364 517T357 516Q350 516 344 521T337 536Q337 555 384 595H213L42 596Q29 605 29 615Q29 622 42 635H401Q377 673 377 694Z"></path></g></g></g><g data-mml-node="mo" transform="translate(849.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mrow" transform="translate(1905.6,0)"><g data-mml-node="mo" transform="translate(0 -0.5)"><path data-c="5B" d="M247 -949V1450H516V1388H309V-887H516V-949H247Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(528,0)"><g data-mml-node="mtable"><g data-mml-node="mtr" transform="translate(0,700)"><g data-mml-node="mtd"><g data-mml-node="mi"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g></g></g><g data-mml-node="mtr" transform="translate(0,-700)"><g data-mml-node="mtd" transform="translate(9,0)"><g data-mml-node="mi"><path data-c="1D463" d="M173 380Q173 405 154 405Q130 405 104 376T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Q21 294 29 316T53 368T97 419T160 441Q202 441 225 417T249 361Q249 344 246 335Q246 329 231 291T200 202T182 113Q182 86 187 69Q200 26 250 26Q287 26 319 60T369 139T398 222T409 277Q409 300 401 317T383 343T365 361T357 383Q357 405 376 424T417 443Q436 443 451 425T467 367Q467 340 455 284T418 159T347 40T241 -11Q177 -11 139 22Q102 54 102 117Q102 148 110 181T151 298Q173 362 173 380Z"></path></g></g></g></g></g><g data-mml-node="mo" transform="translate(1031,0) translate(0 -0.5)"><path data-c="5D" d="M11 1388V1450H280V-949H11V-887H218V1388H11Z"></path></g></g></g></g></svg></mjx-container></span></p>
+<h4 id="三级标题">2.三级标题</h4>
+<h4 id="三级标题-1">3.三级标题</h4>
+<h4 id="三级标题-2">4.三级标题</h4>
 <h3 id="级标题">(2)2级标题</h3>
 <h3 id="级标题-1">(3)2级标题</h3>
 <h3 id="级标题-2">(4)2级标题</h3>
