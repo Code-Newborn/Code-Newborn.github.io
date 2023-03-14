@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Code-Newborn/PicBed@main/img/_posts/Qt程序发布与打包/Qt程序打包发布-20220510205639.jpg">
 <meta property="article:published_time" content="2022-05-10T09:22:57.000Z">
-<meta property="article:modified_time" content="2023-02-03T12:55:16.052Z">
+<meta property="article:modified_time" content="2023-02-19T03:54:20.390Z">
 <meta property="article:author" content="ChenZhao">
 <meta property="article:tag" content="Qt">
 <meta property="article:tag" content="程序打包发布">
@@ -250,7 +250,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年2月3日 晚上
+                  本文最后更新于：2023年2月19日 中午
                 
               </p>
             
@@ -279,6 +279,9 @@ id="二可执行文件部署工具windeployqt">二、可执行文件部署工具
 windeployqt.exe，该文件位于 Qt 安装目录的编译套件目录的 bin
 目录中，以我本地为例<b>D:.2\5.14.2_64</b>，如果需要在当前操作系统的任意目录下都可以访问
 windeployqt.exe，则需要将此路径设置到环境变量中。</p>
+<p>  另外使用过程中有出现过<code>程序入口无法定位到动态链接库，无法载入QtCore.dll</code>的情况，将环境变量按如下排列，并重启电脑解决。</p>
+<p><img src="https://s1.ax1x.com/2023/02/19/pSLorb6.png" srcset="/img/loading.gif" lazyload
+alt="环境变量排列" /></p>
 <p>  将Release版本可执行文件复制到一个新的空的文件夹中，在文件夹中按住Shift+右键，打开PowerShell，输入以下命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># LordCard.exe 是可执行程序的名字</span><br><span class="hljs-comment"># windeployqt.exe 的后缀 .exe 可以省略不写</span><br>windeployqt.exe Landlors.exe<br></code></pre></div></td></tr></table></figure>
 <p>  使用这种方式 Qt
