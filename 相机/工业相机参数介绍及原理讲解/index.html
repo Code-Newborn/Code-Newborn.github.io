@@ -1,0 +1,902 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ChenZhao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="工业相机广泛应用于工业自动化和机器人领域。用于控制系统的相机通常需要高分辨率。它必须将图像数据快速传输到控制系统。工业生产应用需要机器视觉，机器视觉是计算机视觉在制造业中的应用，它允许控制系统看到现实中正在发生的事情的真实画面，而工业相机正充当这样的传感器角色。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="工业相机参数介绍及原理讲解">
+<meta property="og:url" content="https://www.cznewborn.com/%E7%9B%B8%E6%9C%BA/%E5%B7%A5%E4%B8%9A%E7%9B%B8%E6%9C%BA%E5%8F%82%E6%95%B0%E4%BB%8B%E7%BB%8D%E5%8F%8A%E5%8E%9F%E7%90%86%E8%AE%B2%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Leia Blog">
+<meta property="og:description" content="工业相机广泛应用于工业自动化和机器人领域。用于控制系统的相机通常需要高分辨率。它必须将图像数据快速传输到控制系统。工业生产应用需要机器视觉，机器视觉是计算机视觉在制造业中的应用，它允许控制系统看到现实中正在发生的事情的真实画面，而工业相机正充当这样的传感器角色。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2023/07/08/pCgNx0S.png">
+<meta property="article:published_time" content="2023-04-22T13:21:30.127Z">
+<meta property="article:modified_time" content="2023-07-08T13:38:45.290Z">
+<meta property="article:author" content="ChenZhao">
+<meta property="article:tag" content="工业相机">
+<meta property="article:tag" content="镜头">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s1.ax1x.com/2023/07/08/pCgNx0S.png">
+  
+  
+  <title>工业相机参数介绍及原理讲解 - Leia Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.cznewborn.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":6},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","app_key":"LUzOsNy6KL0b2iyCMMlIstrJ","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Leia Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://w.wallhaven.cc/full/we/wallhaven-weye17.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="工业相机参数介绍及原理讲解">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-04-22 21:21" pubdate>
+        2023年4月22日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      8.7k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      73 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">工业相机参数介绍及原理讲解</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2023年7月8日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="工业相机参数介绍及原理讲解">工业相机参数介绍及原理讲解</h1>
+<p>  工业相机是一种特殊类型的相机，适合在恶劣的条件下工作(高温、高压和振动)。它们用于控制生产周期、跟踪生产线上的目标单位、检测超小零件等。因此，一般来说，它们的应用范围很广。</p>
+<p>  工业用相机因其高可靠性而与普通日常相机有很大不同。这种设备通常有坚固的外壳，保护内部机制免受湿度、灰尘、有害气体和其他环境因素的影响。工业相机的制造商使用最耐用的材料进行生产(金属，有时是增强塑料)，并且由于它的加固设计，通常还能抵抗机械冲击和振动。具有高保护水平的相机能在-40至+70°C甚至更宽的温度范围内工作，有时工业摄像机也直接用于温度检查。</p>
+<p>  工业相机广泛应用于工业自动化和机器人领域。用于控制系统的相机通常需要高分辨率。它必须将图像数据快速传输到控制系统。工业生产应用需要机器视觉，机器视觉是计算机视觉在制造业中的应用，它允许控制系统看到现实中正在发生的事情的真实画面，而工业相机正充当这样的传感器角色。</p>
+<blockquote>
+<p>参考</p>
+<p><a
+target="_blank" rel="noopener" href="https://eltra-trade.com/blog/what-is-industrial-camera">WhatareIndustrialcameras?Maintypesandimageprocessing</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/cbltech/p/16164911.html">工业相机基础知识详述——焦平面，像平面，弥散圆，光圈，分辨率，景深，接口，靶面尺寸-立业安邦-博客园(cnblogs.com)</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/523013499?utm_id=0">镜头的成像原理及特性-知乎(zhihu.com)</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_69449221/article/details/127014687">工业相机成像过程及相关参数_工业相机的工作过程-CSDN博客</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.zhihu.com/question/299247177">凸透镜成像和小孔成像的原理分别是什么？有哪些区别和联系？-知乎(zhihu.com)</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.idongde.com/q/2248c90021611be8.shtml">为什么有的人说照相机是小孔成像，有的人说是凸透镜成像？？-懂得(idongde.com)</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.pomeas.cn/blog/product-news/optics-product-news/286.html">工业相机有哪些类型？-普密斯(pomeas.cn)</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.zhihu.com/question/46451404/answer/1571652999">工业镜头如何选型？选择工业镜头攻略</a></p>
+<p><a
+target="_blank" rel="noopener" href="http://www.gvtec.com.cn/h-nd-15.html">工业相机和工业镜头的选型实例-上海陆华光电科技有限公司(gvtec.com.cn)</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.sensemoment.com/fenxiang/97.html">深眸分享--工业相机镜头的选型-深眸科技(sensemoment.com)</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34910922/article/details/121618548">相机成像原理-CSDN博客</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.sukhamburg.com/support/technotes/linescancamera/choosinglens/overview.html">ChoosinganAppropriateCameraLens-anoverview(sukhamburg.com)</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://docs.opencv.org/3.4/d9/d0c/group__calib3d.html">OpenCV:
+Camera Calibration and 3D Reconstruction</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/407077651">相机畸变模型和标定问题小记
+- 知乎 (zhihu.com)</a></p>
+</blockquote>
+<h2 id="一工业相机类型">一、工业相机类型</h2>
+<p>  工业相机在机器视觉、工业制造、图像处理等方面应用广泛，是其中的重要组件。在工业视觉检测系统搭建中，工业相机的选型是关键的一环。任何东西都有一定的标准进行分类，工业相机是工业视觉检测系统中的核心组件，按照不同的分类标准，可以分为多个类型。</p>
+<h3 id="靶面类型">(1)靶面类型</h3>
+<p>  按照靶面类型不同，可以分为面阵相机和线阵相机：面阵相机是指可以一次性采集获取图像的工业相机，在形状、尺寸、位置等检测应用中广泛应用。线阵相机是指采用线阵图像传感器的工业相机，可以用于金属、塑料、纤维等印刷缺陷检测。</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.voltrium.com.sg/en/line-scan-cameras-vs-area-scan-cameras/">ShouldYouGoforanAreaScanoraLineScanCamera?(voltrium.com.sg)</a></p>
+<h3 id="芯片类型">(2)芯片类型</h3>
+<p>  按照芯片类型不同可以分为CCD相机和CMOS相机：CCD工业相机具有体积小重量轻、低功耗、响应速度快、像素集成度高等优势，CMOS工业相机具有高速成像、高帧率、高性价比等优势。</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.flir.com/support-center/iis/machine-vision/knowledge-base/key-differences-between-ccd-and-cmos-imaging-sensors/">KeydifferencesbetweenCCDandCMOSimagingsensors|TeledyneFLIR</a></p>
+<h3 id="图像颜色">(3)图像颜色</h3>
+<p>  按照输出图像颜色不同可以分为黑白相机和彩色相机：相同分辨率下，黑白工业相机相比彩色工业相机精度更高，检测图像边缘时，黑白工业相机成像效果更好。如果需要处理项目与图像颜色有关，彩色工业相机效果更佳。</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.red.com/red-101/color-monochrome-camera-sensors">COLORVS.MONOCHROMESENSORS</a></p>
+<p>  工业相机按照分类标准不同，还有多种类型。工业相机的选型是机器视觉项目搭建时的重要环节，除了需要了解工业相机的类型及功能，相机价格和厂家售后等需要同时考虑，才能选择出更合适的工业相机。</p>
+<h2 id="二工业相机参数">二、工业相机参数</h2>
+<p>  工业相机的应用范围很广，可以应用于工业自动化、机器人、交通控制、医药、生物科学、工业生产、安防等领域。选择合适的工业相机以满足工作需求，就需要了解工业相机参数以及其数值会影响相机的哪方面性能。</p>
+<h3 id="分辨率">(1)分辨率</h3>
+<p>  相机的传感器sensor是有许多像元按照矩阵的形式排列而成，分辨率就是以水平方向和垂直方向的像元个数来表示的。分辨率越高，成像后的图像像素数就越高，图像就越清晰。常用的工业面阵相机分辨率有130万、200万、500万等；对于线阵相机而言，分辨率就是传感器水平方向上的像素数，常见有1K、2K、6K等。</p>
+<p>  在相机分辨率的选型上，要根据工作需求而定，并不一定是分辨率越高就越好，分辨率高带来的图像数据量就大，后期的算法处理复杂度就高，而且一般分辨率大的相机，帧率一般都不会太高。</p>
+<h3 id="帧率面阵相机行频线阵相机">(2)帧率[面阵相机]/行频[线阵相机]</h3>
+<p>  最大帧率表示的是面阵工业相机每秒能够采集并输出的最大帧数，这往往和传感器芯片和数据输出接口带宽有关。根据项目需求，对于拍摄运动物体，建议选取高帧率相机，具体帧率数要根据拍摄精度来确定。</p>
+<p>  帧率是相对于面阵工业相机来说的，单位是fps，如181fps，即相机每秒内最多可采集181帧图像。</p>
+<p>  行频是相对于线阵工业相机来说的，单位是kHz，如80kHz，即相机每秒内最多可采集80000行图像数据</p>
+<h3 id="像元尺寸">(3)像元尺寸</h3>
+<p>  像元尺寸和像元数（分辨率）共同决定了相机靶面的大小，通常工业相机像元尺寸为2μm~14μm。</p>
+<p>  像元尺寸从某种程度上反映了芯片的对光的响应能力，一般情况下，像元尺寸越大，能够接收到的光子数量越多，在同样的光照条件和曝光时间内产生的电荷数量越多。</p>
+<h3 id="像素深度位深">(4)像素深度（位深）</h3>
+<p>  像素深度是指每位像素数据的位数，通常用多少比特位表示。一般，每个像素的比特位数多，表达图像细节的能力强，这个像素的灰阶值更加丰富、分得更细，像素的灰阶深度就更深，但同时数据量也越大，影响系统的图像处理速度，因此也需慎重选择。</p>
+<p>  常见的是8bit、10bit、12bit。分辨率和像素深度共同决定了图像的大小。例如对于像素深度为8bit的500万像素，则整张图片应该有2560×2048×8/8/1024/1024=5MB。</p>
+<h3 id="曝光时间">(5)曝光时间</h3>
+<p>  曝光时间是为了将光投射到照相感光材料的感光面上，快门所要打开的时间；视感光材料的感光度和对感光面上的照度而定；曝光时间长，进光量就越大，适合光线条件较差的情况；曝光时间短则适合光线比较好的情况。曝光时间调整会影响帧率。</p>
+<h3 id="焦距">(6)焦距</h3>
+<p>  焦距就是从镜头的中心点到焦平面上所形成的清晰影像之间的距离，注意区分相机的焦距与单片凸透镜的焦距是两个概念，因为相机上安装的镜头是多片薄的凸透镜组成，单片凸透镜的焦距是平行光线汇聚到一点，这点到凸透镜中心的距离。焦距的大小决定着视角大小，焦距数值小，视角大，所观察的范围也大；焦距数值大，视角小，观察范围小。</p>
+<h3 id="传感器尺寸靶面尺寸">(7)传感器尺寸（靶面尺寸）</h3>
+<p>  工业相机参数列表中一般将传感器尺寸参数描述为靶面尺寸：1/n"，这里指的是传感器（工作区域为矩形）对角线长度为1/n英寸，但这里英寸和mm的换算关系并不是1英寸=25.4mm，而是=16mm。下面列举了一些常用的靶面尺寸：</p>
+<table>
+<thead>
+<tr class="header">
+<th>靶面尺寸(1/n")</th>
+<th>宽(mm)</th>
+<th>高(mm)</th>
+<th>对角线(mm)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1.1英寸</td>
+<td>12</td>
+<td>12</td>
+<td>17</td>
+</tr>
+<tr class="even">
+<td>1英寸</td>
+<td>12.7</td>
+<td>9.6</td>
+<td>16</td>
+</tr>
+<tr class="odd">
+<td>2/3英寸</td>
+<td>8.8</td>
+<td>6.6</td>
+<td>11</td>
+</tr>
+<tr class="even">
+<td>1/1.8英寸</td>
+<td>7.2</td>
+<td>5.4</td>
+<td>9</td>
+</tr>
+<tr class="odd">
+<td>1/2英寸</td>
+<td>6.4</td>
+<td>4.8</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td>1/3英寸</td>
+<td>4.8</td>
+<td>3.6</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td>1/4英寸</td>
+<td>3.2</td>
+<td>2.4</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<h3 id="光学放大倍数光学倍率">(8)光学放大倍数（光学倍率）</h3>
+<p>光学放大倍率=传感器（V）/视场（V）</p>
+<h3 id="单像素精度">(9)单像素精度</h3>
+<p>单像素精度=视野长度/传感器长度方向有效像素个数</p>
+<h3 id="接口类型">(10)接口类型</h3>
+<p>工业相机通常有三个基础的接口：电源接口、数据接口与镜头接口。</p>
+<h4 id="电源接口">1.电源接口</h4>
+<p>相机电源输入接口。</p>
+<h4 id="数据接口">2.数据接口</h4>
+<p>按照接口标准不同，工业相机常用的数据接口有GigE、CameraLink、USB3.0、CoaXPress等类型。</p>
+<h4 id="镜头接口">3.镜头接口</h4>
+<p>工业相机镜头接口种类很多，常用的一般有C接口、CS接口、F接口、M42接口、M72接口等。</p>
+<h2
+id="三工业相机及工业镜头的选型过程">三、工业相机及工业镜头的选型过程</h2>
+<p>  </p>
+<p><strong>方法/步骤1:</strong></p>
+<p>  首先，要确定工业相机的接口、靶面尺寸和分辨率大小。打比方是2/3"工业相机，C接口，5百万像素；那么我们可以先确定需要的工业镜头是C接口，最少支持2/3",5百万像素以上。</p>
+<p><strong>方法/步骤2:</strong></p>
+<p>  其次，确定所要达到的视野范围(<span
+class="math inline">\(\text{FOV}\)</span>)和工作距离(<span
+class="math inline">\(WD\)</span>)，然后根据这两个要求和已知的靶面尺寸计算出工业镜头的焦距(<span
+class="math inline">\(f\)</span>)。其计算公式为： $$ 
+\begin{align}
+ &  f=WD*\text{Sensor}\left(\mathbf{Width}\ or\ \mathbf{Height} \right)/\text{FOV}\left(\mathbf{Width}\ or\ \mathbf{Height} \right)\\ 
+ & \text{FOV}\left(\mathbf{Width}\ or\ \mathbf{Height} \right)=WD*\text{Sensor}\left(\mathbf{Width}\ or\ \mathbf{Height} \right)/f\\
+ & \text{FOV}\left(\mathbf{Width}\ or\ \mathbf{Height} \right)=\text{Sensor}\left(\mathbf{Width}\ or\ \mathbf{Height} \right)/\text{Magnification}\\
+ & WD=f*\text{FOV}\left(\mathbf{Width}\ or\ \mathbf{Height} \right)/\text{Sensor}\left(\mathbf{Width}\ or\ \mathbf{Height} \right)\\
+ & \text{Magnification}=\text{Sensor}\left(\mathbf{Width}\ or\ \mathbf{Height} \right)/\text{FOV}\left(\mathbf{Width}\ or\ \mathbf{Height} \right)\\
+\end{align}
+$$ 
+<strong>方法/步骤3:</strong>   打比方视野<span
+class="math inline">\(\text{FOV}\)</span>是100*100mm,<span
+class="math inline">\(WD\)</span>是500mm;那么我们先从工作距离确定<strong><a
+href="https://link.zhihu.com/?target=http%3A//www.dzoptics.com/">工业镜头</a></strong>的焦距<span
+class="math inline">\(f\)</span>要在50mm以下（工业镜头的命名方式<strong>DZO</strong>-5018M,前面字母表示<strong><a
+href="https://link.zhihu.com/?target=http%3A//www.dzoptics.com/">DZO</a></strong>品牌，50表示焦距50mm,18表示最大光圈值），市场上工业镜头焦距一般是12mm,16mm,20mm,25mm,35mm,50mm,75mm。再结合相机靶面的大小来确定哪个型号，工业镜头的焦距越小，视场角就越大，视野也就相应的更大。如果靶面为2/3"可以选择35mm焦距的工业镜头；靶面1/2"则需要25mm焦距的工业镜头，或者更小....以此类推。</p>
+<h2 id="四工业相机成像原理">四、工业相机成像原理</h2>
+<p>  相机图像拍摄的过程实际上是一个光学成像的过程。相机的成像过程涉及到四个坐标系：世界坐标系、相机坐标系、图像坐标系、像素坐标系以及这四个坐标系的转换。相机透镜成像基本原理如下图所示：</p>
+<p><img src="https://s1.ax1x.com/2023/07/08/pCgGJv8.png" srcset="/img/loading.gif" lazyload
+alt="相机成像原理" /></p>
+<h3 id="简化相机成像模型">(1)简化相机成像模型</h3>
+<p>  相机的镜头是一组透镜，当平行于主光轴的光线穿过透镜时，会聚到一点上，这个点叫做焦点，焦点到透镜中心的距离叫做焦距<span
+class="math inline">\(f\)</span>。数字相机的镜头相当于一个凸透镜，感光元件就处在这个凸透镜的焦点附近，将焦距近似为凸透镜中心到感光元件的距离时就成为小孔成像模型。小孔成像模型如下图所示：</p>
+<p><img src="https://s1.ax1x.com/2023/07/08/pCgG2b4.png" srcset="/img/loading.gif" lazyload
+alt="针孔相机模型" /></p>
+<p>  基于上图，当相距<span class="math inline">\(s\)</span>和焦距<span
+class="math inline">\(f\)</span>相等的时候，便是相机的成像模型。小孔成像模型是相机成像采用最多的模型。在此模型下，物体的空间坐标和图像坐标之间是线性的关系，因而对像素坐标的求解就归结到求解线性方程组上。</p>
+<p>  对于针孔相机模型，如下图所示（其中<span
+class="math inline">\(f\)</span>为相机焦距），对于真实世界中的空间点<span
+class="math inline">\(P_w(X_w，Y_w，Z_w)\)</span>，其对应的相机坐标系坐标为<span
+class="math inline">\(P_c(X_c，Y_c，Z_c）\)</span>，对应的图像坐标系坐标为<span
+class="math inline">\(P(x,y)\)</span>,对应的像素坐标为<span
+class="math inline">\(p(u，v)\)</span>。</p>
+<p><img src="https://s1.ax1x.com/2023/07/08/pCgGqqe.png" srcset="/img/loading.gif" lazyload /></p>
+<p><strong>世界坐标系</strong>：是客观三维世界的绝对坐标系，也称客观坐标系。</p>
+<p><strong>相机坐标系</strong>：以相机的光心为坐标原点，<span
+class="math inline">\(X\)</span>轴和<span
+class="math inline">\(Y\)</span>轴分别平行于图像坐标系的<span
+class="math inline">\(X\)</span>轴和<span
+class="math inline">\(Y\)</span>轴，相机的光轴为<span
+class="math inline">\(Z\)</span>轴。</p>
+<p><strong>图像坐标系</strong>：以图像平面的中心为坐标原点，<span
+class="math inline">\(X\)</span>轴和<span
+class="math inline">\(Y\)</span>轴分别平行于图像平面的两条垂直边，用<span
+class="math inline">\((x,y)\)</span>表示其坐标值。图像坐标系是用物理单位（例如毫米）表示像素在图像中的位置。</p>
+<p><strong>像素坐标系</strong>：以图像平面的左上角顶点为原点，<span
+class="math inline">\(X\)</span>轴和<span
+class="math inline">\(Y\)</span>轴分别平行于图像坐标系的X轴和Y轴，用<span
+class="math inline">\((u,v)\)</span>表示其坐标值,单位是像素。</p>
+<h3 id="单点无畸变相机成像模型">(2)单点无畸变相机成像模型</h3>
+<h4 id="世界坐标系-相机坐标系">1. 世界坐标系-&gt;相机坐标系</h4>
+<p>  从世界坐标系到相机坐标系，涉及到旋转和平移（其实所有的运动也可以用旋转矩阵和平移向量来描述）。绕着不同的坐标轴旋转不同的角度，得到相应的旋转矩阵，如下图所示</p>
+<p><img src="https://s1.ax1x.com/2023/07/08/pCgJaQK.png" srcset="/img/loading.gif" lazyload
+alt="世界坐标系至相机坐标系" /></p>
+<p>  于是可以得到<span
+class="math inline">\(P\)</span>点在相机坐标系中的坐标：</p>
+<p><img src="https://s1.ax1x.com/2023/07/08/pCgJBee.png" srcset="/img/loading.gif" lazyload alt="相机坐标系" style="zoom: 50%;" /></p>
+<p>  其中<span class="math inline">\(R\)</span>，<span
+class="math inline">\(T\)</span>为相机外参。写成齐次坐标的方式是为了方便矩阵运算。其中<span
+class="math inline">\(R\)</span>为3×3矩阵，<span
+class="math inline">\(T\)</span>为3×1向量，<span
+class="math inline">\(0_{3}^{T}\)</span>为1×3向量，1为常数项。</p>
+<h4 id="相机坐标系-图像坐标系">2. 相机坐标系-&gt;图像坐标系</h4>
+<p>  真实世界中的某点会投影在相机的成像平面上，利用针孔成像原理，空间任意一点<span
+class="math inline">\(P_c\)</span>与图像点<span
+class="math inline">\(p\)</span>之间的关系，<span
+class="math inline">\(P_c\)</span>与相机光心<span
+class="math inline">\(O_c\)</span>的连线为<span
+class="math inline">\(O_cP_c\)</span>，与像面的交点<span
+class="math inline">\(p\)</span>即为空间点<span
+class="math inline">\(P_c\)</span>在图像平面上的投影。</p>
+<p><img src="https://s1.ax1x.com/2023/07/08/pCgJTFs.png" srcset="/img/loading.gif" lazyload /></p>
+<p>  该过程为透视投影，利用相似三角形关系可得： <span
+class="math display">\[ 
+\frac{\text{x}}{{{x}_{c}}}=\frac{y}{{{y}_{c}}}=\frac{z}{{{z}_{c}}}=\frac{f}{s}
+$$ 
+&amp;emsp;&amp;emsp;其中$f$为焦距，$z$轴方向上$s$为$P_c$点到光心的距离，一般称为比例因子，展开可得：
+\]</span> 
+s\cdot x={{x}_{c}}\cdot f,\quad s\cdot y={{y}_{c}}\cdot f,\quad s\cdot z={{z}_{c}}\cdot f
+$$    写成矩阵形式，则投影关系为： $$ 
+\text{s}\cdot \left[ \begin{array}{*{35}{l}}
+   x  \\
+   y  \\
+   1  \\
+\end{array} \right]=\left[ \begin{array}{*{35}{l}}
+   f & 0 & 0 & 0  \\
+   0 & f & 0 & 0  \\
+   0 & 0 & 1 & 0  \\
+\end{array} \right]\left[ \begin{matrix}
+   {{x}_{c}}  \\
+   {{y}_{c}}  \\
+   {{z}_{c}}  \\
+   1  \\
+\end{matrix} \right]
+$$ 
+  其中，<span class="math inline">\(s\)</span>为比例因子（<span
+class="math inline">\(s\)</span>不为0），<span
+class="math inline">\(f\)</span>为有效焦距（光心到图像平面的距离），<span
+class="math inline">\((x,y,z,1)\)</span>是空间点<span
+class="math inline">\(P\)</span>在坐标系<span
+class="math inline">\(oxyz\)</span>中的齐次坐标，<span
+class="math inline">\((x,y,1)\)</span>是像点<span
+class="math inline">\(p\)</span>在图像坐标系<span
+class="math inline">\(OXY\)</span>中的齐次坐标。</p>
+<h4 id="图像坐标系-像素平面坐标系">3. 图像坐标系-&gt;像素平面坐标系</h4>
+<p>  像素坐标系和图像坐标系都在成像平面上，只是各自的原点和度量单位不一样。图像坐标系的原点为相机光轴与成像平面的交点，通常情况下是成像平面的中点或者叫<strong>principal
+point</strong>。图像坐标系的单位是<span
+class="math inline">\(mm\)</span>，属于物理单位，而像素坐标系的单位是pixel，我们平常描述一个像素点都是几行几列。所以这二者之间的转换如下：</p>
+<p><img src="https://s1.ax1x.com/2023/07/08/pCgYpk9.png" srcset="/img/loading.gif" lazyload alt="像素单位转化" style="zoom:80%;" /></p>
+<p>  其中<span class="math inline">\(dx\)</span>和<span
+class="math inline">\(dy\)</span>表示每一列和每一行分别代表多少<span
+class="math inline">\(mm\)</span>，即<span class="math inline">\(1\
+pixel=dx\ mm\)</span>。</p>
+<h4 id="理想的世界坐标-像素坐标系整体转换">4.
+理想的世界坐标-&gt;像素坐标系整体转换：</h4>
+<p>  由以下关系<strong>世界坐标系-&gt;相机坐标系、相机坐标系-&gt;图像坐标系、图像坐标系-&gt;像素平面坐标系</strong>可整理得：</p>
+<p><img src="https://s1.ax1x.com/2023/07/08/pCgY3X8.png" srcset="/img/loading.gif" lazyload style="zoom:80%;" /></p>
+<p>  单点无畸变的相机成像模型如下：</p>
+<p><img src="https://s1.ax1x.com/2023/07/08/pCgYJ0g.png" srcset="/img/loading.gif" lazyload alt="理想无畸变成像模型" style="zoom:80%;" /></p>
+<p>  其中，<span
+class="math inline">\((X_w,Y_w,Z_w)\)</span>为世界坐标系下一点的物理坐标，<span
+class="math inline">\((u,v)\)</span>为该点对应的在像素坐标系下的像素坐标，<span
+class="math inline">\(s\)</span>为尺度因子（该点在相机轴距方向上与成像平面的距离）。
+<span class="math display">\[ 
+\left[ \begin{matrix}
+   \frac{1}{dx} & 0 & {{\mu }_{0}}  \\
+   0 & \frac{1}{dy} & {{v}_{0}}  \\
+   0 & 0 & 1  \\
+\end{matrix} \right]\left[ \begin{matrix}
+   f & 0 & 0 & 0  \\
+   0 & f & 0 & 0  \\
+   0 & 0 & 1 & 0  \\
+\end{matrix} \right]=\left[ \begin{matrix}
+   \frac{f}{dx} & 0 & {{\mu }_{0}} & 0  \\
+   0 & \frac{f}{dy} & {{v}_{0}} & 0  \\
+   0 & 0 & 1 & 0  \\
+\end{matrix} \right]
+$$ 
+&amp;emsp;&amp;emsp;$A$称为相机的内参矩阵，内参矩阵取决于相机的内部参数。其中，$f$为焦距，$dx$、$dy$分别表示$x$，$y$方向上的一个像素在相机感光板上的物理长度（即一个像素在感光板上是多少毫米），分别表示相机感光板中心在像素坐标系下的坐标。
+\]</span> 
+\left[\begin{array}{ll}
+R & T \\
+0_3^T & 1
+\end{array}\right]
+$$    <span
+class="math inline">\(A\)</span>称为相机的外参矩阵，外参矩阵取决于相机坐标系和世界坐标系的相对位置，<span
+class="math inline">\(R\)</span>表示旋转矩阵，<span
+class="math inline">\(T\)</span>表示平移矢量。</p>
+<h3 id="镜头畸变修正模型">(3)镜头畸变修正模型</h3>
+<p>  真实透镜通常有一定的畸变，主要是径向畸变和轻微的切向畸变，因此，需将上述模型进行扩展。</p>
+<p>  将相机模型整理得： <span class="math display">\[
+
+\text{s}\left[ \begin{matrix}
+   \mu   \\
+   \nu   \\
+   1  \\
+\end{matrix} \right]=\left[ \begin{matrix}
+   \frac{f}{dx} & 0 & {{\mu }_{0}} & 0  \\
+   0 & \frac{f}{dy} & {{v}_{0}} & 0  \\
+   0 & 0 & 1 & 0  \\
+\end{matrix} \right]\left[ \begin{matrix}
+   R & T  \\
+   0_{3}^{T} & 1  \\
+\end{matrix} \right]\left[ \begin{matrix}
+   {{x}_{w}}  \\
+   {{y}_{w}}  \\
+   {{z}_{w}}  \\
+   1  \\
+\end{matrix} \right]
+$$ 
+&amp;emsp;&amp;emsp;其中$\text{s}=Z_c$，进一步化简得：
+\]</span> 
+\text{ }\left[ \begin{matrix}
+   \mu   \\
+   \nu   \\
+   1  \\
+\end{matrix} \right]=\left[ \begin{matrix}
+   {{f}_{x}} & 0 & {{u}_{0}} & 0  \\
+   0 & {{f}_{y}} & {{v}_{0}} & 0  \\
+   0 & 0 & 1 & 0  \\
+\end{matrix} \right]\left[ \begin{matrix}
+   \frac{{{X}_{c}}}{{{Z}_{c}}}  \\
+   \frac{{{Y}_{c}}}{{{Z}_{c}}}  \\
+   1  \\
+   1  \\
+\end{matrix} \right]=\left[ \begin{matrix}
+   {{f}_{x}}\frac{{{X}_{c}}}{{{Z}_{c}}}+{{u}_{0}}  \\
+   {{f}_{y}}\frac{{{Y}_{c}}}{{{Z}_{c}}}+{{v}_{0}}  \\
+   1  \\
+\end{matrix} \right]=\left[ \begin{matrix}
+   {{f}_{x}}\cdot x'+{{u}_{0}}  \\
+   {{f}_{y}}\cdot y'+{{v}_{0}}  \\
+   1  \\
+\end{matrix} \right]
+$$    其中<span
+class="math inline">\(x&#39;\)</span>和<span
+class="math inline">\(y&#39;\)</span>为归一化后的相机坐标系坐标，并且<span
+class="math inline">\({ {f}_{x} }=\frac{f}{dx}\)</span>，<span
+class="math inline">\({ {f}_{y}
+}=\frac{f}{dy}\)</span>，由于镜头会造成畸变，所以需要对<span
+class="math inline">\(x&#39;\)</span>和<span
+class="math inline">\(y&#39;\)</span>进行修正，修正为<span
+class="math inline">\(x&#39;&#39;\)</span>和<span
+class="math inline">\(y&#39;&#39;\)</span>： $$ 
+\left\{ \begin{array}{*{35}{l}}
+   x''=x'\left( 1+{{k}_{1}}{{r}^{2}}+{{k}_{2}}{{r}^{4}}+{{k}_{3}}{{r}^{6}} \right)+2{{p}_{1}}\cdot x'\cdot y'+{{p}_{2}}\left( {{r}^{2}}+2x{{'}^{2}} \right)  \\
+   y\text{ }\!\!'\!\!\text{  }\!\!'\!\!\text{ }=y'\left( 1+{{k}_{1}}{{r}^{2}}+{{k}_{2}}{{r}^{4}}+{{k}_{3}}{{r}^{6}} \right)+2{{p}_{2}}\cdot x'\cdot y'+{{p}_{1}}\left( {{r}^{2}}+2y{{'}^{2}} \right)  \\
+\end{array} \right.
+$$ 
+  其中<span class="math inline">\(r^2=x^{\prime 2}+y^{\prime
+2}\)</span>，径向畸变参数为 <span
+class="math inline">\(k1\)</span>，<span
+class="math inline">\(k2\)</span>，<span
+class="math inline">\(k3\)</span>，切向畸变系数<span
+class="math inline">\(p_1\)</span>，<span
+class="math inline">\(p_2\)</span>。此外还有更高阶的系数，在此不扩展讲述，此畸变模型与Matlab工具箱中的畸变校正模型一致。</p>
+<p>  径向畸变示意图如下：</p>
+<p><img src="https://s1.ax1x.com/2023/07/08/pCgNLlt.png" srcset="/img/loading.gif" lazyload
+alt="径向畸变" /></p>
+<p>  切向畸变示意图如下：</p>
+<p><img src="https://s1.ax1x.com/2023/07/08/pCgNXOf.png" srcset="/img/loading.gif" lazyload
+alt="切向畸变" /></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%9B%B8%E6%9C%BA/">相机</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%B7%A5%E4%B8%9A%E7%9B%B8%E6%9C%BA/">工业相机</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%95%9C%E5%A4%B4/">镜头</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/Kalman%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D/">
+                        <span class="hidden-mobile">Kalman滤波算法介绍</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","appKey":"LUzOsNy6KL0b2iyCMMlIstrJ","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="/js/DynamicLine.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
