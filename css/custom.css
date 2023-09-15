@@ -14,6 +14,6 @@
 
 /*INFO 内容里列表*/
 .post-content li {
-  margin-top: 3;
-  margin-bottom: 3;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
