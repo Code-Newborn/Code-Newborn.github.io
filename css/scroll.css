@@ -1,5 +1,5 @@
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 100px;
   height: 6px;
 }
 ::-webkit-scrollbar-thumb {
