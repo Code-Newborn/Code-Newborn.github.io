@@ -7,5 +7,5 @@
 }
 
 .post-content hr {
-  height: 0.5; /*将高度设为0*/
+  height: 0; /*将高度设为0*/
 }
