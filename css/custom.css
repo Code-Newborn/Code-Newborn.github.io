@@ -8,7 +8,7 @@
 
 .post-content hr {
   height: 1px; /*将高度设为0*/
-  margin: 20px 0; /*设置间距*/
+  margin: 10px 0; /*设置间距*/
 }
 
 .post-content .ul li{
