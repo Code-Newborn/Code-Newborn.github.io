@@ -14,6 +14,6 @@
 
 /*INFO 内容里列表*/
 .post-content .ul li{
-  height:2.5;
-  margin:1 0;
+  height:50px;
+  margin:100px 0;
 }
