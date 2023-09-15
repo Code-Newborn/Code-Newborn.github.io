@@ -6,12 +6,14 @@
   text-align: justify; /*文本对齐方式*/
 }
 
+/*INFO 下划线设置*/
 .post-content hr {
   height: 1px; /*将高度设为0*/
   margin: 10px 0; /*设置间距*/
 }
 
+/*INFO 内容里列表*/
 .post-content .ul li{
-  height:30px;
-  margin:20px 0;
+  height:1;
+  margin:1 0;
 }
