@@ -1,8 +1,8 @@
 /* valine技术支持 标识隐藏 */
 .vpower.txt-right{
-	display: none;
+	/*display: none;*/
 }
 
-.input.vnick.vinput{
+.vheader.item3{
 	background-color: rgb(222, 0, 0);
 }
