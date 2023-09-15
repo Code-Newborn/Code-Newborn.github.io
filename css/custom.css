@@ -1,6 +1,6 @@
 /*INFO 段落行间距设置*/
 .post-content p {
-  letter-spacing:2px;
+  letter-spacing:10px;
   line-height: 2.5; /*行间距为字体大小的2.5倍*/
   margin-top: 0px; /*段前距离*/
   margin-bottom: 0px; /*段后距离*/
