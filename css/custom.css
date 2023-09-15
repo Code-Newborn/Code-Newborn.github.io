@@ -7,5 +7,6 @@
 }
 
 .post-content hr {
-  height: 0; /*将高度设为0*/
+  height: 1px; /*将高度设为0*/
+  margin: 20px 0; /*设置间距*/
 }
