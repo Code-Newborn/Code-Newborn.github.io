@@ -5,3 +5,9 @@
   margin-bottom: 0px; /*段后距离*/
   text-align: justify; /*文本对齐方式*/
 }
+
+.post-content hr {
+  height: 0; /*将高度设为0*/
+  border-top: 1px solid #000; /*上边框设为实线*/
+  margin: 20px 0; /*设置间距*/
+}
