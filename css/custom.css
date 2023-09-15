@@ -23,3 +23,9 @@
   margin-top: 0px;
   margin-bottom: 0px;
 }
+
+.mjx-container[jax="CHTML"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
