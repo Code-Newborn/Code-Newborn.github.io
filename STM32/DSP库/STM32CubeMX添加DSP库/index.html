@@ -33,25 +33,25 @@
   <meta name="author" content="ChenZhao">
   <meta name="keywords" content="">
   
-    <meta name="description" content="XXXXXXXXXXXXXXXXXXX">
+    <meta name="description" content="STM32中添加DSP库主要用于数据的计算和处理，如复数，矩阵，三角函数，插值、求最大值求最小值、FIR滤波器和FFT等。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="粒子滤波算法">
-<meta property="og:url" content="https://www.cznewborn.com/%E6%AF%8D%E5%88%86%E7%B1%BB2/%E5%AD%90%E5%88%86%E7%B1%BB3/%E7%B2%92%E5%AD%90%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:title" content="STM32CubeMX添加DSP库">
+<meta property="og:url" content="https://www.cznewborn.com/STM32/DSP%E5%BA%93/STM32CubeMX%E6%B7%BB%E5%8A%A0DSP%E5%BA%93/index.html">
 <meta property="og:site_name" content="Leia Blog">
-<meta property="og:description" content="XXXXXXXXXXXXXXXXXXX">
+<meta property="og:description" content="STM32中添加DSP库主要用于数据的计算和处理，如复数，矩阵，三角函数，插值、求最大值求最小值、FIR滤波器和FFT等。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s1.ax1x.com/2023/08/11/pPmjalR.png">
-<meta property="article:published_time" content="2023-07-20T08:26:35.000Z">
-<meta property="article:modified_time" content="2023-09-14T14:49:35.445Z">
+<meta property="og:image" content="https://z1.ax1x.com/2023/10/02/pPL78i9.png">
+<meta property="article:published_time" content="2023-10-02T09:45:34.000Z">
+<meta property="article:modified_time" content="2023-10-02T13:53:02.650Z">
 <meta property="article:author" content="ChenZhao">
-<meta property="article:tag" content="tag1">
-<meta property="article:tag" content="tag2">
-<meta property="article:tag" content="tag3">
+<meta property="article:tag" content="DSP">
+<meta property="article:tag" content="STM32">
+<meta property="article:tag" content="STM32CubeMX">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s1.ax1x.com/2023/08/11/pPmjalR.png">
+<meta name="twitter:image" content="https://z1.ax1x.com/2023/10/02/pPL78i9.png">
   
   
-  <title>粒子滤波算法 - Leia Blog</title>
+  <title>STM32CubeMX添加DSP库 - Leia Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -99,7 +99,119 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.0.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
 <body>
@@ -204,7 +316,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="粒子滤波算法">
+            <span class="h2" id="subtitle" title="STM32CubeMX添加DSP库">
               
             </span>
 
@@ -214,8 +326,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2023-07-20 16:26" pubdate>
-        2023年7月20日 下午
+      <time datetime="2023-10-02 17:45" pubdate>
+        2023年10月2日 下午
       </time>
     </span>
   
@@ -225,7 +337,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      332 字
+      1.5k 字
     </span>
   
 
@@ -234,7 +346,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3 分钟
+      13 分钟
     </span>
   
 
@@ -271,52 +383,72 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">粒子滤波算法</h1>
+            <h1 style="display: none">STM32CubeMX添加DSP库</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年9月14日 晚上
+                  本文最后更新于：2023年10月2日 晚上
                 
               </p>
             
             <div class="markdown-body">
-              <h1 id="文章标题">文章标题</h1>
-<p>  文章的前情摘要xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-<p><a
-target="_blank" rel="noopener" href="https://blog.shipengx.com/archives/f3c9e219.html">从贝叶斯滤波到粒子滤波
-| 朝花夕拾 (shipengx.com)</a></p>
-<h2 id="一1级标题">一、1级标题</h2>
-<p>  引言一</p>
-<h3 id="二级标题">(1)二级标题</h3>
-<h4 id="三级标题">1.三级标题</h4>
-<h5 id="a四级标题">(a)四级标题</h5>
-<h5 id="b四级标题">(b)四级标题</h5>
-<h5 id="c四级标题">(c)四级标题</h5>
-<h5 id="d四级标题">(d)四级标题</h5>
-<h4 id="三级标题-1">2.三级标题</h4>
-<h4 id="三级标题-2">3.三级标题</h4>
-<h4 id="三级标题-3">4.三级标题</h4>
-<h3 id="级标题">(2)2级标题</h3>
-<h3 id="级标题-1">(3)2级标题</h3>
-<h3 id="级标题-2">(4)2级标题</h3>
-<h2 id="二1级标题">二、1级标题</h2>
-<p>  引言二</p>
-<h3 id="级标题-3">(1)2级标题</h3>
-<h3 id="级标题-4">(2)2级标题</h3>
-<h3 id="级标题-5">(3)2级标题</h3>
-<h3 id="级标题-6">(4)2级标题</h3>
-<h2 id="三1级标题">三、1级标题</h2>
-<p>  引言三</p>
-<h3 id="级标题-7">(1)2级标题</h3>
-<h3 id="级标题-8">(2)2级标题</h3>
-<h3 id="级标题-9">(3)2级标题</h3>
-<h3 id="级标题-10">(4)2级标题</h3>
-<h2 id="四1级标题">四、1级标题</h2>
-<p>  引言四</p>
-<h3 id="级标题-11">(1)2级标题</h3>
-<h3 id="级标题-12">(2)2级标题</h3>
-<h3 id="级标题-13">(3)2级标题</h3>
-<h3 id="级标题-14">(4)2级标题</h3>
+              <h1 id="stm32cubemx添加dsp库">STM32CubeMX添加DSP库</h1>
+<p>  数字信号处理（Digital Signal
+Processing，简称DSP）是一门涉及许多学科而又广泛应用于许多领域的新兴学科，通过利用计算机或专用处理设备，以数字形式对信号进行采集、变换、滤波、估值、增强、压缩、识别等处理，以得到符合人们需要的信号形式。</p>
+<blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_62076047/article/details/130470951">STM32中DSP库简单理解和使用_stm32dsp库-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34022877/article/details/117855263">STM32
+DSP库的快速添加 基于cubemx
+调用，使用DSP库_arm_const_structs.h在cubemx_四臂西瓜的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/casoyi/article/details/129736188">【stm32开发笔记】基于HAL库的STM32F4添加DSP库_Casoyi_的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.iotword.com/13483.html">简单理解和使用STM32中的DSP库-物联沃-IOTWORD物联网</a></p>
+</blockquote>
+<h2 id="一通过stm32cubemx添加dsp库">一、通过STM32CubeMX添加DSP库</h2>
+<p>  在STM32CubeMX中的Software Packs Component
+Selector选择勾选DSP库，如需下载请选择下载。</p>
+<p><img src="https://z1.ax1x.com/2023/10/02/pPLhk5t.png" srcset="/img/loading.gif" lazyload alt="下载DSP库"></p>
+<p><img src="https://z1.ax1x.com/2023/10/02/pPL4Lp6.png" srcset="/img/loading.gif" lazyload alt="勾选DSP库"></p>
+<p>  Generate生成项目文件</p>
+<h2 id="二选择合适lib和添加">二、选择合适lib和添加</h2>
+<p>  工程项目分组<code>Drivers/CIMSIS</code>中添加lib文件，文件夹路径<code>./Drivers/CMSIS/DSP/Lib/ARM/arm_cortexM7lfdp_math.lib</code></p>
+<table>
+<thead>
+<tr class="header">
+<th>文件名</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>arm_cortexM7l_math.lib</td>
+<td>Cortex-M7，小端序</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>arm_cortexM7lfsp_math.lib</td>
+<td>Cortex-M7，小端序，单精度浮点单元</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>arm_cortexM7lfdp_math.lib</td>
+<td>Cortex-M7，小端序，双精度浮点单元</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="三添加宏和包含头文件">三、添加宏和包含头文件</h2>
+<p><img src="https://z1.ax1x.com/2023/10/02/pPL5eBQ.png" srcset="/img/loading.gif" lazyload alt="添加宏"></p>
+<p><img src="https://z1.ax1x.com/2023/10/02/pPL5m7j.png" srcset="/img/loading.gif" lazyload alt="头文件路径添加"></p>
+<p>  在使用DSP库的文件中包含头文件<code>#include arm_math.h</code></p>
+<p>  配置浮点硬件运算（Floating Point
+Hardware）为对应的双精度浮点<code>Double Precision</code></p>
+<p><img src="https://z1.ax1x.com/2023/10/02/pPL53cT.png" srcset="/img/loading.gif" lazyload alt="配置浮点硬件运算"></p>
+<h2 id="四代码测试">四、代码测试</h2>
+<p>  在移植了ucosiii系统后的项目中进行测试</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-comment">/* 实现LED0每500ms反转一次 */</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">SetLed</span><span class="hljs-params">(<span class="hljs-type">void</span> *p_arg)</span><br>{<br>    OS_ERR err;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>)<br>    {<br>        task1_count += <span class="hljs-number">1</span>;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"task1正在运行！！！\r\n"</span>);<br><br>        data = arm_cos_f32(PI / <span class="hljs-number">3</span>); <span class="hljs-comment">// DSP库 余弦计算测试</span><br><br>        LED2_sta = !LED2_sta;<br><br>        LED2(LED2_sta);<br>        OSTimeDly(<span class="hljs-number">500</span>, OS_OPT_TIME_DLY, &amp;err);<br>    }<br>}<br><br><span class="hljs-comment">/* 检测按键输入，挂起和恢复任务 */</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">ScanKey</span><span class="hljs-params">(<span class="hljs-type">void</span> *p_arg)</span><br>{<br>    OS_ERR err;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>)<br>    {<br>        task2_count += <span class="hljs-number">1</span>;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"task2正在运行！！！\r\n"</span>);<br><br>        data = arm_sin_f32(PI / <span class="hljs-number">4</span>); <span class="hljs-comment">// DSP库 正弦计算测试</span><br><br>        key = KEY_Scan(<span class="hljs-number">0</span>);<br>        <span class="hljs-keyword">if</span> (key == KEY1_PRES)<br>        {<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"挂起task1\r\n"</span>);<br>            OSTaskSuspend(&amp;task1_tcb, &amp;err);<br>        }<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (key == KEY2_PRES)<br>        {<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"恢复task1\r\n"</span>);<br>            OSTaskResume(&amp;task1_tcb, &amp;err);<br>        }<br><br>        OSTimeDly(<span class="hljs-number">10</span>, OS_OPT_TIME_DLY, &amp;err);<br>    }<br>}<br></code></pre></div></td></tr></table></figure>
+<p><img src="https://z1.ax1x.com/2023/10/02/pPL5zvT.png" srcset="/img/loading.gif" lazyload alt="代码测试"></p>
 
             </div>
             <hr>
@@ -326,17 +458,9 @@ target="_blank" rel="noopener" href="https://blog.shipengx.com/archives/f3c9e219
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E6%AF%8D%E5%88%86%E7%B1%BB1/">母分类1</a>
+                      <a class="hover-with-bg" href="/categories/STM32/">STM32</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E6%AF%8D%E5%88%86%E7%B1%BB1/%E5%AD%90%E5%88%86%E7%B1%BB1/">子分类1</a>
-                    
-                      <a class="hover-with-bg" href="/categories/%E6%AF%8D%E5%88%86%E7%B1%BB1/%E5%AD%90%E5%88%86%E7%B1%BB1/%E5%AD%90%E5%AD%90%E5%88%86%E7%B1%BB1/">子子分类1</a>
-                    
-                      <a class="hover-with-bg" href="/categories/%E6%AF%8D%E5%88%86%E7%B1%BB1/%E5%AD%90%E5%88%86%E7%B1%BB2/">子分类2</a>
-                    
-                      <a class="hover-with-bg" href="/categories/%E6%AF%8D%E5%88%86%E7%B1%BB2/">母分类2</a>
-                    
-                      <a class="hover-with-bg" href="/categories/%E6%AF%8D%E5%88%86%E7%B1%BB2/%E5%AD%90%E5%88%86%E7%B1%BB3/">子分类3</a>
+                      <a class="hover-with-bg" href="/categories/STM32/DSP%E5%BA%93/">DSP库</a>
                     
                   </div>
                 
@@ -344,11 +468,11 @@ target="_blank" rel="noopener" href="https://blog.shipengx.com/archives/f3c9e219
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/tag1/">tag1</a>
+                      <a class="hover-with-bg" href="/tags/DSP/">DSP</a>
                     
-                      <a class="hover-with-bg" href="/tags/tag2/">tag2</a>
+                      <a class="hover-with-bg" href="/tags/STM32/">STM32</a>
                     
-                      <a class="hover-with-bg" href="/tags/tag3/">tag3</a>
+                      <a class="hover-with-bg" href="/tags/STM32CubeMX/">STM32CubeMX</a>
                     
                   </div>
                 
@@ -365,18 +489,12 @@ target="_blank" rel="noopener" href="https://blog.shipengx.com/archives/f3c9e219
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E6%AF%8D%E5%88%86%E7%B1%BB2/%E5%AD%90%E5%88%86%E7%B1%BB3/%E7%94%B5%E6%9C%BA/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">电机</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/%E6%AF%8D%E5%88%86%E7%B1%BB2/%E5%AD%90%E5%88%86%E7%B1%BB3/%E5%BE%AE%E5%88%86%E8%B7%9F%E8%B8%AA%E5%99%A8/">
-                        <span class="hidden-mobile">微分跟踪器</span>
+                      <a href="/RTOS/ucosIII/STM32%E7%A7%BB%E6%A4%8DUCOS/">
+                        <span class="hidden-mobile">STM32移植UCOSIII</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
