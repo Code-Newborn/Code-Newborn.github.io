@@ -299,7 +299,7 @@ html {
 }
 html,
 body {
-  font-family: var(--font-family-sans-serif);
+  font-family: Times New Roman, serif;;
 }
 html,
 body,
@@ -893,7 +893,7 @@ label {
 .markdown-body {
   font-size: 1rem;
   line-height: 1.6;
-  font-family: var(--font-family-sans-serif);
+  font-family: Times New Roman, serif;;
   margin-bottom: 2rem;
   color: var(--post-text-color);
 }
@@ -1374,8 +1374,8 @@ mjx-container svg:focus,
 .post-content,
 post-custom {
   box-sizing: border-box;
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 5% /*INFO 内容左边距*/;
+  padding-right: 5% /*INFO 内容右边距*/;
 }
 @media (max-width: 767px) {
   .post-content,
@@ -1584,7 +1584,7 @@ post-custom {
   font-size: 0.8rem;
   color: var(--post-text-color);
   opacity: 0.65;
-  line-height: 1;
+  line-height: 0.8;
   margin: -0.75rem auto 2rem;
   text-align: center;
 }
