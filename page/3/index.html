@@ -77,7 +77,119 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.0.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
 <body>
@@ -210,6 +322,126 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8A%80%E6%9C%AF/%E5%AF%B9%E7%9B%B4%E8%A7%92%E5%9D%90%E6%A0%87%E7%B3%BB%E4%BD%8D%E5%A7%BF%E5%8F%98%E6%8D%A2%E5%8F%8A%E6%8F%8F%E8%BF%B0%E7%9A%84%E7%90%86%E8%A7%A3/" target="_self">
+          <img src="https://s1.ax1x.com/2023/02/03/pSsoRa9.png" srcset="/img/loading.gif" lazyload alt="对直角坐标系位姿变换及描述的理解">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8A%80%E6%9C%AF/%E5%AF%B9%E7%9B%B4%E8%A7%92%E5%9D%90%E6%A0%87%E7%B3%BB%E4%BD%8D%E5%A7%BF%E5%8F%98%E6%8D%A2%E5%8F%8A%E6%8F%8F%E8%BF%B0%E7%9A%84%E7%90%86%E8%A7%A3/" target="_self">
+          对直角坐标系位姿变换及描述的理解
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8A%80%E6%9C%AF/%E5%AF%B9%E7%9B%B4%E8%A7%92%E5%9D%90%E6%A0%87%E7%B3%BB%E4%BD%8D%E5%A7%BF%E5%8F%98%E6%8D%A2%E5%8F%8A%E6%8F%8F%E8%BF%B0%E7%9A%84%E7%90%86%E8%A7%A3/" target="_self">
+          
+          了解直角坐标系在空间中的位姿变换，是为了方便获取物体在三维空间中的位置和姿态，对于已知两物体之间相对的位姿（例如旋转向量和平移向量），如何求得两物体间的变换过程（平移和旋转的过程）是非常重要的，或者说已知变换过程，求出变换后两物体相对的位姿。
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-22 10:31" pubdate>
+              2022-02-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8A%80%E6%9C%AF/">机器人技术</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%BD%8D%E5%A7%BF%E6%8F%8F%E8%BF%B0/">位姿描述</a>
+            
+              <a href="/tags/%E5%9D%90%E6%A0%87%E7%B3%BB%E5%8F%98%E6%8D%A2/">坐标系变换</a>
+            
+              <a href="/tags/%E5%9B%9B%E5%85%83%E6%95%B0/">四元数</a>
+            
+              <a href="/tags/%E6%AC%A7%E6%8B%89%E8%A7%92/">欧拉角</a>
+            
+              <a href="/tags/%E6%97%8B%E8%BD%AC%E5%90%91%E9%87%8F/">旋转向量</a>
+            
+              <a href="/tags/%E8%BD%B4%E8%A7%92/">轴角</a>
+            
+              <a href="/tags/%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5/">旋转矩阵</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/Hexo%E5%8D%9A%E5%AE%A2/Hexo%20+%20NexT%EF%BC%88%E6%88%96Fluid%EF%BC%89%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%8A%80%E5%B7%A7/" target="_self">
+          <img src="https://s1.ax1x.com/2023/03/20/ppNl3YF.png" srcset="/img/loading.gif" lazyload alt="Hexo + NexT（或Fluid）主题美化技巧">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/Hexo%E5%8D%9A%E5%AE%A2/Hexo%20+%20NexT%EF%BC%88%E6%88%96Fluid%EF%BC%89%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%8A%80%E5%B7%A7/" target="_self">
+          Hexo + NexT（或Fluid）主题美化技巧
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/Hexo%E5%8D%9A%E5%AE%A2/Hexo%20+%20NexT%EF%BC%88%E6%88%96Fluid%EF%BC%89%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%8A%80%E5%B7%A7/" target="_self">
+          
+          Hexo + NexT（或Fluid）主题美化技巧 1. 网站界面 (1)更改网站底部年份和版权信息之间的图标（NexT，Fluid）   在NexT主题配置文件中找到Footer Settings修改配置项如下： 123456789101112footer:  # Specify the year when the site was setup. If not defined, cu
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-16 16:56" pubdate>
+              2022-02-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Hexo/">Hexo</a>
+            
+              <a href="/tags/NexT%E4%B8%BB%E9%A2%98/">NexT主题</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
 
   <div class="row mx-auto index-card">
     
