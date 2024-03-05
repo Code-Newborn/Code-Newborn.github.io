@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.cznewborn.com/%E7%A1%AC%E4%BB%B6/MOS/%E5%AD%90%E5%AD%90%E5%88%86%E7%B1%BB1/%E8%AE%A4%E8%AF%86MOS%E7%AE%A1/</loc>
+    <loc>https://www.cznewborn.com/%E7%A1%AC%E4%BB%B6/%E5%9C%BA%E6%95%88%E5%BA%94%E6%99%B6%E4%BD%93%E7%AE%A1/%E8%AE%A4%E8%AF%86MOS%E7%AE%A1/</loc>
     
     <lastmod>2024-03-05</lastmod>
     
@@ -821,6 +821,27 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://www.cznewborn.com/tags/PMOS/</loc>
+    <lastmod>2024-03-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.cznewborn.com/tags/MOSFET/</loc>
+    <lastmod>2024-03-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.cznewborn.com/tags/NMOS/</loc>
+    <lastmod>2024-03-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -1097,14 +1118,7 @@
   </url>
   
   <url>
-    <loc>https://www.cznewborn.com/categories/%E7%A1%AC%E4%BB%B6/MOS/</loc>
-    <lastmod>2024-03-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.cznewborn.com/categories/%E7%A1%AC%E4%BB%B6/MOS/%E5%AD%90%E5%AD%90%E5%88%86%E7%B1%BB1/</loc>
+    <loc>https://www.cznewborn.com/categories/%E7%A1%AC%E4%BB%B6/%E5%9C%BA%E6%95%88%E5%BA%94%E6%99%B6%E4%BD%93%E7%AE%A1/</loc>
     <lastmod>2024-03-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
