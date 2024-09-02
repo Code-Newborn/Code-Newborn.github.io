@@ -856,6 +856,34 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://www.cznewborn.com/tags/USB/</loc>
+    <lastmod>2024-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.cznewborn.com/tags/FREERTOS/</loc>
+    <lastmod>2024-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.cznewborn.com/tags/FATFS/</loc>
+    <lastmod>2024-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.cznewborn.com/tags/AI/</loc>
+    <lastmod>2024-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
