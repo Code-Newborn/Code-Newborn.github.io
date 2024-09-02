@@ -33,16 +33,16 @@
   <meta name="author" content="ChenZhao">
   <meta name="keywords" content="">
   
-    <meta name="description" content="XXXXXXXXXXXX，封面图片比例2.35：1">
+    <meta name="description" content="‌STM32CubeMX‌是由ST公司开发的图形化代码自动生成工具，旨在帮助开发者快速生成初始化代码，如配置GPIO、时钟树、中间件等，从而使用户能够专注于业务代码的开发。这个工具通过提供一个直观的图形界面，使得开发者能够轻松地配置STM32微控制器和微处理器，以及为Arm Cortex-M内核或面向Arm Cortex-A内核的特定Linux设备树生成相应的初始化C代码。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="STM32CubeMX配置详解">
 <meta property="og:url" content="https://www.cznewborn.com/STM32/STM32CubeMX/HAL/STM32CubeMX%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/index.html">
 <meta property="og:site_name" content="Leia Blog">
-<meta property="og:description" content="XXXXXXXXXXXX，封面图片比例2.35：1">
+<meta property="og:description" content="‌STM32CubeMX‌是由ST公司开发的图形化代码自动生成工具，旨在帮助开发者快速生成初始化代码，如配置GPIO、时钟树、中间件等，从而使用户能够专注于业务代码的开发。这个工具通过提供一个直观的图形界面，使得开发者能够轻松地配置STM32微控制器和微处理器，以及为Arm Cortex-M内核或面向Arm Cortex-A内核的特定Linux设备树生成相应的初始化C代码。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.miji.bid/2024/02/14/3466989befb222b29fe5669b4ce7431f.jpeg">
 <meta property="article:published_time" content="2023-10-21T02:59:06.000Z">
-<meta property="article:modified_time" content="2024-02-14T13:21:40.511Z">
+<meta property="article:modified_time" content="2024-09-02T12:50:50.000Z">
 <meta property="article:author" content="ChenZhao">
 <meta property="article:tag" content="tag1">
 <meta property="article:tag" content="tag2">
@@ -225,7 +225,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.2k 字
+      7.2k 字
     </span>
   
 
@@ -234,7 +234,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11 分钟
+      61 分钟
     </span>
   
 
@@ -275,7 +275,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2024年2月14日 晚上
+                  本文最后更新于：2024年9月2日 晚上
                 
               </p>
             
@@ -304,52 +304,157 @@ Cortex-M内核，中断向量表是处理器中的一组特殊地址，存储着
 src="https://i.miji.bid/2024/02/14/a2c0c84440cd1d9f794d30d21c10e576.png" srcset="/img/loading.gif" lazyload
 alt="NVIC" /></p>
 <h3 id="priority-group优先级分组">(1)Priority Group优先级分组</h3>
-<p>  STM32使用4个bit位来分组，设置用几个bit来区分抢占优先级和响应优先级；</p>
-<h4 id="三级标题">1.三级标题</h4>
-<h5 id="a四级标题">(a)四级标题</h5>
-<h5 id="b四级标题">(b)四级标题</h5>
-<h5 id="c四级标题">(c)四级标题</h5>
-<h5 id="d四级标题">(d)四级标题</h5>
-<h4 id="三级标题-1">2.三级标题</h4>
-<h4 id="三级标题-2">3.三级标题</h4>
-<h4 id="三级标题-3">4.三级标题</h4>
-<h3 id="级标题">(2)2级标题</h3>
-<h3 id="级标题-1">(3)2级标题</h3>
-<h3 id="级标题-2">(4)2级标题</h3>
+<p>  STM32使用4个bit位来分组，设置用几个bit来区分抢占优先级和响应优先级，优先级数值越小，优先级别越高；</p>
+<p>  <strong>判断中断的优先级，先看抢占优先级，抢占优先级高的中断优先级别高。抢占优先级相同的情况下，响应优先高的中断优先级别高。抢占优先级和响应优先级相同的情况下，根据中断向量表确定。</strong></p>
+<h3 id="non-maskable-interrupt不可屏蔽中断">(2)Non maskable
+interrupt不可屏蔽中断</h3>
+<p>  "Non maskable
+interrupt"（NMI）是一种硬件中断，它不能被屏蔽，并且具有最高的优先级。在STM32微控制器中，如果NMI发生，即使中断屏蔽寄存器（PRIMASK,
+FAULTMASK 或
+BASEPRI）设置为禁止其他中断，NMI也会被处理。如果STM32CubeMX在配置过程中或在程序运行时报告NMI错误，这通常表明有硬件问题，如电源不稳定、时钟问题或硬件故障。</p>
+<h3 id="hard-fault-interrupt硬故障中断">(3)Hard fault
+interrupt硬故障中断</h3>
+<p>  "Hard fault interrupt" 是指在使用 STM32CubeMX 配置并编程 STM32
+微控制器时，系统遇到了一个严重的错误，导致了硬件故障中断。这种中断是一个严重错误，通常是由于程序试图访问一个非法的内存地址或者对硬件执行了不合法的操作而引起的。</p>
+<h3 id="memory-management-fault内存管理故障">(4)Memory management
+fault内存管理故障</h3>
+<p>  "Memory management fault"
+是一个硬件或操作系统层面的错误，通常与内存访问不当有关。在STM32微控制器的情况下，这可能是由于以下原因造成的：</p>
+<ol type="1">
+<li>非法内存访问：程序试图访问一个它没有权限的内存区域，或者试图写入只读内存区域。</li>
+<li>堆栈溢出：递归调用太深导致堆栈溢出，或者分配了太多内存。</li>
+<li>内存损坏：硬件故障或内存本身损坏。</li>
+<li>内存管理配置错误：例如使用了错误的内存区域作为堆或栈。</li>
+</ol>
+<h3
+id="pre-fetch-fault-memory-access-fault预读取故障内存访问故障">(5)Pre-fetch
+fault, Memory access fault预读取故障、内存访问故障</h3>
+<p>  "Pre-fetch fault, Memory access
+fault"是存储器访问错误，通常指的是程序尝试访问一个无效的内存地址，或者是由于程序的预取指令出现问题。这可能是由于程序指针错误、数组越界、硬件配置错误或者是软件逻辑错误导致的。</p>
+<h3
+id="undefined-instruction-or-illegal-state未定义指令或非法状态">(6)Undefined
+instruction or illegal state未定义指令或非法状态</h3>
+<p>  "Undefined instruction or illegal state"
+错误通常表示你的程序尝试执行了一个不存在的指令或处于不正确的处理器状态。在STM32微控制器上，这可能是因为尝试执行特定于某种处理器架构但不支持当前硬件的指令，或者是因为硬件故障、电源不稳定或者在错误的模式下运行了程序。</p>
+<h3
+id="system-service-call-via-swi-instruction通过swi指令调用系统服务">(7)System
+service call via SWI instruction通过SWI指令调用系统服务</h3>
+<p>  SWI（Software Interrupt）指令用于触发系统服务调用（System Service
+Call，SysCall）。当使用SWI指令时，微控制器会跳转到一个预定义的地址，通常是一个中断处理程序，这个处理程序可以执行一些特定的系统服务。</p>
+<p>如果你在使用STM32CubeMX时遇到了有关System service call via SWI
+instruction的问题，这可能是因为以下原因：</p>
+<ol type="1">
+<li>配置错误：在STM32CubeMX中配置了错误的中断向量或者服务调用设置。</li>
+<li>固件版本问题：你可能使用了一个不支持SWI指令的固件版本。</li>
+<li>代码生成问题：在生成初始化代码时，可能没有正确地设置中断向量表或者服务调用处理程序</li>
+</ol>
+<h3 id="debug-monitor调试监视器">(8)Debug monitor调试监视器</h3>
+<p>  "Debug
+monitor"中断通常指的是调试监视器中断，它是一种用于调试目的的中断。当发生调试相关的事件时，例如：调试器访问了一个无效的存储区域，或者是调试器发送了一个无效的指令，这个中断会被触发。</p>
+<p>  如果你在中断向量表中看到这个中断，并且它被错误地触发，可能是因为以下原因：</p>
+<ol type="1">
+<li>调试器配置错误：检查你的调试器设置是否正确配置。</li>
+<li>软件中断：如果你的代码中故意设置了这个中断，那么这可能是合法的行为。</li>
+<li>硬件故障：可能存在硬件问题，导致调试器与MCU通信异常。</li>
+</ol>
+<h3
+id="pendable-request-for-system-service可挂起的系统服务请求">(9)Pendable
+request for system service可挂起的系统服务请求</h3>
+<p>  "Pendable request for system
+service"中断通常是指一个可挂起的系统服务请求。这个中断是一个特殊的中断，它允许高优先级的任务在一些条件下请求低优先级任务的执行，而不需要进行任务调度。这种请求可以用于实现系统任务的紧急执行。</p>
+<h3 id="time-base-system-tick-timer时间基准系统滴答计时器">(10)Time
+base: System tick timer时间基准：系统滴答计时器</h3>
+<p>  “Time base: System tick
+timer”通常指的是用于实现操作系统或其他需要时钟节拍服务的软件的系统时钟定时器中断。这个中断是STM32微控制器用来定期通知操作系统或其他任务执行定时任务的一种机制。</p>
+<p>具体来说，系统时钟定时器通常配置为在一个固定的时间间隔触发中断，这个间隔称为“系统时钟周期”（SysTick周期）。操作系统或其他软件可以设置这个周期的长度，以便执行各种任务，如任务调度、时间管理等。</p>
+<p>在STM32CubeMX中，你可以配置这个中断的触发频率，以及是否使能这个中断。如果启用了这个中断，那么在每个系统时钟周期结束时，控制器都会产生一个中断，这样操作系统或其他软件就可以执行它的处理函数。</p>
+<p>如果你正在使用操作系统，比如FreeRTOS，那么这个中断通常会被用来执行任务调度。如果你不使用操作系统，那么你可以选择禁用这个中断，或者使用它来执行你自己的定时任务。</p>
+<p>在代码生成设置中，如果你启用了操作系统支持，STM32CubeMX会自动生成相关的中断服务例程（ISR），以及配置系统时钟定时器的代码。你只需要调用操作系统的API函数，如<code>osSystick_Handler()</code>，来处理中断。</p>
+<p>如果你不使用操作系统，你可以自己实现系统时钟定时器中断服务例程，并在其中执行你的定时任务。</p>
 <h2 id="二rcc复位与时钟控制">二、RCC复位与时钟控制</h2>
 <p>  STM32的时钟部分是其操作的核心，处理器的稳定工作也离不开时钟，它负责为微控制器提供时钟信号以驱动CPU、外设和总线。</p>
 <p><img
 src="https://i.miji.bid/2024/02/14/2003e2094cc4eefd6deb34d6955f6f26.png" srcset="/img/loading.gif" lazyload
 alt="RCC" /></p>
-<h3 id="high-speed-clock-hse-高速外部时钟">(1)High Speed Clock (HSE)
-高速外部时钟</h3>
+<h3 id="high-speed-clock-hse-low-speed-clock-lse-高低速外部时钟">(1)High
+Speed Clock (HSE) / Low Speed Clock (LSE) 高/低速外部时钟</h3>
 <h4 id="bypass-clock-source">1.BYPASS Clock Source</h4>
-<p>旁路时钟源，为有源晶振</p>
+<p>  旁路时钟源，为有源晶振</p>
 <h4 id="crystalceramic-resonator">2.Crystal/Ceramic Resonator</h4>
-<p>晶体/陶瓷谐振器，为无源晶振</p>
-<h3 id="low-speed-clock-lse-低速外部时钟">(2)Low Speed Clock (LSE)
-低速外部时钟</h3>
-<h4 id="bypass-clock-source-1">1.BYPASS Clock Source</h4>
-<p>旁路时钟源，为有源晶振</p>
-<h4 id="crystalceramic-resonator-1">2.Crystal/Ceramic Resonator</h4>
-<p>晶体/陶瓷谐振器，为无源晶振</p>
-<h3 id="master-clock-output-1">(3)Master Clock Output 1</h3>
-<p>用来选择是否使能 RCC_MCO_1 引脚时钟输出</p>
-<h3 id="master-clock-output-2">(4)Master Clock Output 2</h3>
+<p>  晶体/陶瓷谐振器，为无源晶振</p>
+<h3 id="master-clock-output-1-master-clock-output-2">(2)Master Clock
+Output 1 / Master Clock Output 2</h3>
+<p>  <strong>功能是选择是否使能MCO1引脚时钟输出。</strong>‌
+当使能MCO1时，它允许用户通过特定的引脚输出时钟信号，这通常用于外部设备的同步或作为其他电路的时钟源。MCO1和MCO2是STM32微控制器提供的两个时钟输出功能，它们可以用于驱动外部设备，如网络模块或其他需要精确时钟信号的硬件。</p>
 <p>用来选择是否使能 RCC_MCO_2 引脚时钟输出</p>
-<h3 id="级标题-3">(5)2级标题</h3>
-<h2 id="三1级标题">三、1级标题</h2>
-<p>  引言三</p>
-<h3 id="级标题-4">(1)2级标题</h3>
-<h3 id="级标题-5">(2)2级标题</h3>
-<h3 id="级标题-6">(3)2级标题</h3>
-<h3 id="级标题-7">(4)2级标题</h3>
-<h2 id="四1级标题">四、1级标题</h2>
-<p>  引言四</p>
-<h3 id="级标题-8">(1)2级标题</h3>
-<h3 id="级标题-9">(2)2级标题</h3>
-<h3 id="级标题-10">(3)2级标题</h3>
-<h3 id="级标题-11">(4)2级标题</h3>
+<h3 id="power-regulator-voltage-scale电源调节器电压范围">(3)Power
+Regulator Voltage Scale电源调节器电压范围</h3>
+<p>  Power Regulator Voltage
+Scale的设置对于控制MCU（微控制器）的频率和性能至关重要。这个设置决定了MCU的工作电压和电流的调节方式，进而影响MCU的<strong>最大工作频率</strong>和功耗。具体来说，通过调整Power
+Regulator Voltage Scale，可以优化MCU的性能和功耗之间的平衡。</p>
+<h2 id="三sys-mode-and-configuration模式和配置">三、SYS Mode and
+Configuration模式和配置</h2>
+<p>  SYS的模式与配置(SYS Mode and
+Configuration)界面中是一些有关系统的配置参数，如调试(Debug)的方式、系统唤醒模式的选择、时间基准的选择等。</p>
+<p><img
+src="https://ice.frostsky.com/2024/09/02/303ab608c4da44c4c23c11554873934a.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="debug调试模式">(1)Debug调试模式</h3>
+<p>  SYS项的Debug配置允许用户选择不同的调试模式，这些模式包括SW串行模式、4针脚的JTAG模式、5针脚的JTAG模式以及其他一些带Trace的调试模式。对于一般的开发用途，推荐选择SW串行模式，因为它占用引脚最少，足以进行调试。选择Debug模式后，STM32CubeMX会自动使能相关的引脚。</p>
+<h3 id="system-wake-up系统唤醒">(2)System Wake-Up系统唤醒</h3>
+<p>  System
+Wake-Up是一个重要的功能，它允许用户设置一个或多个引脚作为唤醒源。当这些引脚被激活（例如，通过外部信号触发），MCU可以从低功耗模式（如睡眠模式或停止模式）中被唤醒，恢复到正常的工作状态。这种机制对于需要长时间待机或节能的应用来说非常有用，因为它可以在不消耗过多电能的情况下，对外部事件或信号做出快速响应。</p>
+<h3 id="timebase-source时间基准源">(3)Timebase source时间基准源</h3>
+<p>  Timebase source←systick
+指的是系统定时器（SysTick）被用作时间基准源。SysTick是一个在Cortex-M内核中的一个定时器，用于提供系统的时基，例如操作系统的时钟节拍或者基于操作系统的异步任务调度。</p>
+<h2 id="四middleware-software-pack中间件及软件包">四、Middleware &amp;
+Software Pack中间件及软件包</h2>
+<p>  软件包（Software
+Packs）是ST提供的一系列库和中间件，用于提高开发人员的生产力，简化应用程序开发。中间件（Middleware）是连接不同软件组件的组件，它提供了一个接口，使得开发人员可以更容易地集成第三方软件或者服务。</p>
+<h3 id="fatfs">(1)FATFS</h3>
+<p>  <strong>FATFS是一个文件系统，专门为小型嵌入式系统设计，具有以下特点和功能</strong>‌：</p>
+<ol type="1">
+<li>‌<strong>免费开源</strong>‌：FATFS是一个免费开源的FAT文件系统模块，专门为小型嵌入式系统设计。它完全用标准C语言编写，具有良好的平台独立性。</li>
+<li>‌<strong>支持多种FAT格式</strong>‌：支持FAT12、FAT16、FAT32和exFAT（R0.12及以后版本），这使得它能够适应不同的存储需求和兼容不同的存储介质。</li>
+<li>‌<strong>支持多种存储媒介</strong>‌：FATFS支持多个存储媒介，包括SD卡、SPI
+Flash等，这使得它非常适合在嵌入式系统中使用。</li>
+<li>‌<strong>良好的兼容性</strong>‌：FATFS与Windows文件系统兼容，这使得在嵌入式系统中使用FATFS时，可以更容易地管理和迁移文件。</li>
+<li>‌<strong>易于移植</strong>‌：FATFS的代码量少，效率高，且易于移植到不同的硬件平台上。这包括需要修改的底层接口文件和一般不需要修改的文件系统层文件。</li>
+<li>‌<strong>强大的功能</strong>‌：支持长文件名、多种编码页面、RTOS等，提供了丰富的配置选项，满足各种应用场景的需求。</li>
+<li>‌<strong>应用接口</strong>‌：FATFS提供了一个应用接口，包括打开、关闭、读取、写入文件等基本操作，使得在应用层使用FATFS变得简单直观。</li>
+</ol>
+<p>  在STM32CubeMX中，通过简单的配置，开发者可以将FATFS文件系统挂载到SD卡或其他存储介质上，从而实现文件的创建、打开、写入、读取和关闭等操作。这大大简化了在嵌入式系统中实现文件系统的过程，使得开发者能够更专注于应用层的开发‌。</p>
+<h3 id="freertos">(2)FREERTOS</h3>
+<p>  <strong>FreeRTOS是一个实时操作系统（RTOS），它允许开发者在STM32微控制器上创建多任务环境，从而实现复杂的控制逻辑和高效的任务管理。</strong>‌</p>
+<p>在STM32CubeMX中使用FreeRTOS的基本步骤包括：</p>
+<ol type="1">
+<li>‌<strong>选择STM32微控制器型号</strong>‌：首先，需要选择适合项目的STM32微控制器型号。</li>
+<li>‌<strong>配置系统时钟和外设</strong>‌：在"Configuration"选项卡中，根据项目需求配置系统时钟和外设，如时钟源、时钟频率、GPIO引脚等。</li>
+<li>‌<strong>启用FreeRTOS</strong>‌：在“Middleware”选项卡中选择“FreeRTOS”并启用它。可以配置FreeRTOS的堆栈大小、任务优先级等参数。</li>
+<li>‌<strong>添加任务</strong>‌：在FreeRTOS配置后，可以在"Tasks"选项卡中添加任务，设置任务的名称、栈大小、优先级等信息。</li>
+<li>‌<strong>生成代码</strong>‌：完成配置后，通过STM32CubeMX生成FreeRTOS集成的STM32项目代码。</li>
+<li>‌<strong>编写任务函数</strong>‌：在生成的代码中找到相应任务的函数，并编写任务的具体实现。</li>
+<li>‌<strong>编译和烧录</strong>‌：使用IDE（如STM32CubeIDE、Keil、IAR等）打开生成的代码项目，编译代码并将其烧录到STM32微控制器上。</li>
+</ol>
+<p>  使用STM32CubeMX配置FreeRTOS时，可以选择外部晶振作为高速时钟，设置系统配置，包括调试选项以便于后续的仿真调试。由于FreeRTOS基于系统定时器，因此需要创建一个定时器（如TIM16）来进行计时。此外，还需要配置系统时钟树、设置工程名称和路径、工具链，以及添加必要的库和自动生成代码文件。如果需要使用串口打印数据，可以配置串口，并设置串口的波特率。</p>
+<h3 id="usb-device">(3)USB-DEVICE</h3>
+<p>  <strong>USB设备库和中间件，使得开发者能够轻松地将STM32微控制器配置为USB设备，支持多种USB类，如CDC、HID、MSC等，从而扩展了微控制器的应用范围。</strong>STM32CubeMX的USB设备库支持多种USB版本，包括USB1.1和USB2.0，并且随着技术的发展，也开始支持USB3.0。STM32F103等型号的MCU内置了USB从控制器，支持USB2.0规范，但只能作为USB设备使用，不能作为主机。USB接口采用差分电压方式进行数据传输，通过D+和D-两根线实现。STM32CubeMX的USB模块与PC主机之间的数据传输是通过共享专用数据缓冲区完成的，该缓冲区的大小由使用的端点数目和每个端点的最大数据分组大小决定，每个端点最大可使用512字节缓冲区，最多可用于16个单向或8个双向端点。</p>
+<h3 id="usb-host">(4)USB-HOST</h3>
+<p>  <strong>USB-HOST功能‌允许用户将STM32微控制器配置为USB主机，使其能够与USB设备进行通信。</strong>这一功能对于需要实现USB设备连接和控制的应用来说非常有用。通过STM32CubeMX的USB-HOST配置，用户可以选择不同的USB类（如Mass
+Storage Class、Communication
+Class等），并根据具体需求进行配置，以实现特定的通信协议。例如，通过配置为Mass
+Storage Host
+Class，STM32可以作为一个USB主机，与U盘等大容量存储设备进行通信，从而实现文件的读写操作。此外，通过配置为Communication
+Class，STM32可以作为USB主机，与EC20模块等通信设备进行通信，实现数据的传输和指令的控制。</p>
+<p>  在STM32CubeMX中配置USB-HOST时，用户需要进行一系列的设置，包括选择适当的USB类、配置时钟频率、设置GPIO引脚等。这些配置将生成相应的初始化代码，用户可以在此基础上进行进一步的应用开发，实现特定的功能。例如，通过配置USB-HOST为Mass
+Storage Host
+Class，并使用FatFs文件系统，用户可以实现U盘的读写操作。通过配置为Communication
+Class，并使用特定的库（如usb-host-cdc库），可以实现与EC20模块的通信，通过AT指令进行控制。</p>
+<h3 id="x-cube-ai">(4)X-CUBE-AI</h3>
+<p>  ‌<strong>X-CUBE-AI是STMicroelectronics为STM32生态系统提供的一个AI扩展包，旨在简化AI模型的部署过程。</strong>‌
+它能够自动转换预训练的人工智能模型，并在用户项目中生成针对STM32优化的库，从而使得AI技术的应用更加便捷和高效。X-CUBE-AI的更新版本，如v7.1.0，引入了多项改进，以进一步提升用户体验和模型部署的效率。</p>
+<h3 id="x-cube-algobuild">(4)X-CUBE-ALGOBUILD</h3>
+<p>  <strong>X-CUBE-ALGOBUILD软件包为开发人员提供了易于使用的图形界面和算法库，使得开发人员能够快速地将算法集成到STM32微控制器中。</strong>这个软件包特别适用于需要快速原型设计和算法验证的应用，如机器学习、深度学习、信号处理等领域的算法实现。通过X-CUBE-ALGOBUILD，开发人员可以更加专注于算法的设计和优化，而不必过多关注底层硬件的实现细节，从而提高了开发效率和算法的可移植性。</p>
+<p>  此外，X-CUBE-ALGOBUILD还支持多种算法和数学运算，包括但不限于FFT]、FIR/IIR滤波器、矩阵运算等，这些功能对于需要进行复杂数学计算和信号处理的嵌入式系统应用尤为重要。通过这个软件包，开发人员可以更加便捷地实现这些算法，并将其部署到STM32微控制器上，实现高性能的计算和处理任务。</p>
 
             </div>
             <hr>
