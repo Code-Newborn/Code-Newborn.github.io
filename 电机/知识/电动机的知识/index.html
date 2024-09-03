@@ -42,7 +42,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://ice.frostsky.com/2024/09/03/2929c75b3f2a4f9f285f9d788defd749.jpeg">
 <meta property="article:published_time" content="2023-07-22T06:52:04.000Z">
-<meta property="article:modified_time" content="2024-09-03T03:42:58.000Z">
+<meta property="article:modified_time" content="2024-09-03T05:11:12.000Z">
 <meta property="article:author" content="ChenZhao">
 <meta property="article:tag" content="直流电机">
 <meta property="article:tag" content="空心杯电机">
@@ -390,7 +390,7 @@ mjx-container[display="true"] + br {
             
               <p class="note note-info">
                 
-                  本文最后更新于：2024年9月3日 中午
+                  本文最后更新于：2024年9月3日 下午
                 
               </p>
             
@@ -468,7 +468,7 @@ Magnet Synchronous Motor）</p>
 <p>  与简易正弦波控制不同，复杂的正弦控制目标为电机相电流，建立电流环，通过直接控制相电流的相位与幅值达到控制电机的目的。由于电机相电流为正弦信号，因此需要进行电流的解耦操作，较为复杂，常见的为磁场定向控制（FOC）及直接转矩控制（DTC）等。</p>
 <p><img src="https://ice.frostsky.com/2024/09/02/49ec40f64ae27989cb23cc705141622f.jpeg" srcset="/img/loading.gif" lazyload alt="正弦波驱动信号"></p>
 <h3 id="bldc和pmsm的区别">(3)BLDC和PMSM的区别</h3>
-<h4 id="反电动势">1.反电动势</h4>
+<h4 id="反电动势bemf">1.反电动势(bEMF)</h4>
 <p>  PMSM具有正弦波反电势，而BLDCM具有梯形波反电势。BLDC的驱动常见的是梯形换相，因此永磁体磁场向量和定子磁场向量总不能完全重合，存在一定的前后夹角，这也就是BLDC力矩波动和噪声的理论来源。而PMSM可以应用FOC的控制方式做到尽量重合，比BLDC的力矩波动和噪声都小，效率也更高。当然，BLDC可以仿照这样的方式，在二二通电的线圈中，根据HALL位置信息，先角度估算，在这二个通电的线圈中构造出正弦波，来进行FOC控制方式。这时算法相对复杂，对单片机的要求就高一些了，常见的8位机很少能做到的。</p>
 <h4 id="定子绕组分布">2.定子绕组分布</h4>
 <p>  PMSM采用短距分布绕组，有时也采用分数槽或正弦绕组，以
