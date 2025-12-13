@@ -1,0 +1,688 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta name="baidu-site-verification" content="codeva-9XPZaiy24f" />
+  <meta name="google-site-verification" content="iKfk41-7IB31giGsS85H53G6zjnznJUfmfawPXmej9U" />
+  <script>
+  (function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://cznewborn.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+  </script>
+
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ChenZhao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="大小端模式是计算机系统在存储多字节数据时对字节顺序的不同组织方式，其中“大端模式”将高位字节存放在低地址，“小端模式”则将低位字节放在低地址；这两种模式影响跨平台数据交换、网络通信协议解析以及底层编程中的字节序处理。在实际开发中需要特别注意不同硬件架构（例如 x86 为小端，部分嵌入式或网络协议常用大端）的差异，以及序列化、文件读写、网络传输时的字节序统一问题；同时在接口对接、二进制协议设计、跨语">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大端模式与小端模式">
+<meta property="og:url" content="https://www.cznewborn.com/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/%E5%AD%97%E8%8A%82%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/%E5%A4%A7%E7%AB%AF%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%B0%8F%E7%AB%AF%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Leia Blog">
+<meta property="og:description" content="大小端模式是计算机系统在存储多字节数据时对字节顺序的不同组织方式，其中“大端模式”将高位字节存放在低地址，“小端模式”则将低位字节放在低地址；这两种模式影响跨平台数据交换、网络通信协议解析以及底层编程中的字节序处理。在实际开发中需要特别注意不同硬件架构（例如 x86 为小端，部分嵌入式或网络协议常用大端）的差异，以及序列化、文件读写、网络传输时的字节序统一问题；同时在接口对接、二进制协议设计、跨语">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2022/10/27/xh1Ez8.png">
+<meta property="article:published_time" content="2022-10-26T13:41:05.000Z">
+<meta property="article:modified_time" content="2025-12-08T16:45:20.461Z">
+<meta property="article:author" content="ChenZhao">
+<meta property="article:tag" content="大端模式">
+<meta property="article:tag" content="小端模式">
+<meta property="article:tag" content="MSB">
+<meta property="article:tag" content="LSB">
+<meta property="article:tag" content="字节序">
+<meta property="article:tag" content="比特序">
+<meta property="article:tag" content="IIC通信">
+<meta property="article:tag" content="串口通信">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/10/27/xh1Ez8.png">
+  
+  
+  <title>大端模式与小端模式 - Leia Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/indeximg-hover.css">
+<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/scroll.css">
+<link rel="stylesheet" href="/css/valine.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.cznewborn.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":6},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","app_key":"LUzOsNy6KL0b2iyCMMlIstrJ","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Leia Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://s1.ax1x.com/2023/01/02/pSPVr1e.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="大端模式与小端模式">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-10-26 21:41" pubdate>
+        2022年10月26日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.5k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      21 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">大端模式与小端模式</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2025年12月9日 凌晨
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1
+id="大小端模式msb和lsb字节序和比特序">大小端模式、MSB和LSB、字节序和比特序</h1>
+<p>  大小端模式是计算机系统在存储多字节数据时对字节顺序的不同组织方式，其中“大端模式”将高位字节存放在低地址，“小端模式”则将低位字节放在低地址；这两种模式影响跨平台数据交换、网络通信协议解析以及底层编程中的字节序处理。在实际开发中需要特别注意不同硬件架构（例如
+x86
+为小端，部分嵌入式或网络协议常用大端）的差异，以及序列化、文件读写、网络传输时的字节序统一问题；同时在接口对接、二进制协议设计、跨语言调用时必须明确双方的字节序，否则将导致数据解析错误或运行异常。</p>
+<p><img src="https://s1.ax1x.com/2022/10/27/xh1ARf.png" srcset="/img/loading.gif" lazyload alt="大端模式与小端模式的区别" style="zoom:80%;" /></p>
+<p><img src="https://s1.ax1x.com/2022/10/27/xh1kJP.png" srcset="/img/loading.gif" lazyload alt="大端模式与小端模式的存储方式" style="zoom:80%;" /></p>
+<h2
+id="一大端模式与小端模式字节序">一、大端模式与小端模式（字节序）</h2>
+<p>  计算机中的内存、硬盘等存储设备，尽管存储系统是16位、32位或64位的，但数据仍然是按照字节为单位来存储的。所以其二进制数据位在内存中存储时有两种存放方式：高字节存放在低地址，所谓大端模式；高字节存放在高地址，所谓小端模式。大端模式和小端是实际的字节顺序和存储的地址顺序对应关系的两种模式。</p>
+<blockquote>
+<p>大端模式：高位字节存放在低地址中，低位字节存放在高地址中。<strong>最直观的字节序</strong>。</p>
+</blockquote>
+<p><strong>使用大端模式的平台：Keil C51 </strong></p>
+<blockquote>
+<p>小端模式：高位字节存放在高地址中，低位字节存放在低地址中。<strong>最符合人的思维的字节序</strong>，</p>
+</blockquote>
+<p><strong>使用小端模式的平台：x86、ARM、Keil MDK、DSP</strong></p>
+<p>用下图表示更加容易理解。以<code>unsigned int value = 0x12345678</code>为例，分别按照大端模式和小端模式存放在芯片中。记住！！！内存的读写永远从低地址开始读/写。高低位字节以人的阅读习惯定义，从左到右为高位字节到低位字节，例如数字：两千三百七十一（2371），高位是2低位是1。同样的道理去理解字节数据。</p>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 26%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr>
+<th></th>
+<th>低地址</th>
+<th></th>
+<th></th>
+<th>高地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>内存地址</td>
+<td>0x00000001</td>
+<td>0x00000002</td>
+<td>0x00000003</td>
+<td>0x00000004</td>
+</tr>
+<tr>
+<td>大端模式</td>
+<td>0x12（高位字节）</td>
+<td>0x34</td>
+<td>0x56</td>
+<td>0x78（低位字节）</td>
+</tr>
+<tr>
+<td>小端模式</td>
+<td>0x78（低位字节）</td>
+<td>0x56</td>
+<td>0x34</td>
+<td>0x12（高位字节）</td>
+</tr>
+</tbody>
+</table>
+<p>其分辨大小端模式的主要作用是弄清楚字节数据是如何翻译成变量数据的，例如4字节数据转Float数据。</p>
+<h3 id="测试大小端">(1)测试大小端</h3>
+<p>  Union共用体，也叫联合体，在一个“联合”内可以定义多种不同的数据类型，
+一个被说明为该“联合”类型的变量中，允许装入该“联合”所定义的任何一种数据，这些数据共享同一段内存，以达到节省空间的目的。<strong>union变量所占用的内存长度等于最长的成员的内存长度。</strong></p>
+<p>  sizeof(union
+test)的值为4。因为共用体将一个char类型的mark、一个long类型的num变量和一个float类型的score变量存放在同一个地址开始的内存单元中，而char类型和long类型所占的内存字节数是不一样的，但是在union中都是从同一个地址存放的，也就是使用的覆盖技术，这三个变量互相覆盖，而这种使几个不同的变量共占同一段内存的结构，称为“共用体”类型的结构。</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">// 联合体 union</span><br><span class="hljs-keyword">union</span> <span class="hljs-title class_">test</span><br>&#123;<br>     <span class="hljs-type">char</span> mark;<br>     <span class="hljs-type">long</span> num;<br>     <span class="hljs-type">float</span> score;<br>&#125;;<br></code></pre></div></td></tr></table></figure>
+<p><a
+target="_blank" rel="noopener" href="https://www.tutorialspoint.com/online_cpp_compiler.php">C++在线编辑器</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">union</span> <span class="hljs-title class_">test</span><br>&#123;<br>    <span class="hljs-type">char</span> mark[<span class="hljs-number">4</span>];   <span class="hljs-comment">// 4字节</span><br>    <span class="hljs-type">long</span> num;       <span class="hljs-comment">// </span><br>    <span class="hljs-type">float</span> score;<br>&#125; a;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    a.score = <span class="hljs-number">10.0</span>;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;high address byte: %x \n&quot;</span>,a.mark[<span class="hljs-number">3</span>]);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%x \n&quot;</span>,a.mark[<span class="hljs-number">2</span>]);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%x \n&quot;</span>,a.mark[<span class="hljs-number">1</span>]);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;low address byte: %x \n&quot;</span>,a.mark[<span class="hljs-number">0</span>]);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d \n&quot;</span>,<span class="hljs-built_in">sizeof</span>(<span class="hljs-type">long</span>));<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<p>而<strong>union中的所有成员起始地址都是一样的，所以&amp;test.mark、&amp;a.num和&amp;a.score的值都是一样的。</strong></p>
+<p>  例如在串口传输帧信息时：首先将float数据转化为4字节，然后将数据添加组装至帧信息中，最后发送出去。以浮点数10.0f（0x41200000）为例，首先将其转化为4字节，高地址字节为0x41，低地址字节为0x00，然后将其添加至帧信息中，以低地址先写入的原则按顺序写入0x00，0x00，0x20，0x41，若在小端模式的平台上翻译此4字节数据，则同样要以这样的地址顺序存储data[0]:0x00，data[1]:0x00，data[2]:0x20，data[3]:0x41。</p>
+<h2 id="二lsb与msb比特序">二、LSB与MSB（比特序）</h2>
+<p>  最高有效位（Most Significant
+Bit，MSB）指的是一个n位二进制数字中的n-1位，具有最高的权值2^(n-1)。
+有时也指Most Significant Byte，指多字节序列中具有最大权重的字节。</p>
+<p>  最低有效位（Least Significant
+Bit，LSB）指的是一个n位二进制数字中的0位，具有最低的权值2^0。有时也指Least
+Significant Byte，指多字节序列中具有最小权重的字节。</p>
+<p>所以<code>0x12345678</code>的最高有效字节就是<code>0x12</code>，最低有效字节就是<code>0x78</code>！</p>
+<h3 id="高位先行和低位先行">(1)高位先行和低位先行</h3>
+<p>  高位先行即在传输一个字节的时候先传输高位字节MSB；低位先行即在传输一个字节的时候先传输低位LSB。高位先行和低位先行是针对串行数据传输方式来说的。常见的串行传输方式有串口(UART）、I2C、SPI等，其Bit流传输方式是由其传输协议决定，此章节内容与上述的大小端模式切不可混淆，此章所讲是指比特序，而大小端模式讲的是字节序。</p>
+<p>串口传输方式是低位先行，芯片在通过TX引脚发送数据时，依次发送<code>位0</code>、<code>位1</code>……<code>位7</code>。（<a
+target="_blank" rel="noopener" href="https://www.circuitbasics.com/basics-uart-communication/">UART
+通信协议基础</a>）</p>
+<p>IIC的传输方式是高位先行，MSB
+在前，依次发送<code>位7</code>、<code>位6</code>……<code>位0</code>。（<a
+target="_blank" rel="noopener" href="https://www.circuitbasics.com/basics-of-the-i2c-communication-protocol/">I2C
+通信协议基础</a>）</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/">计算机系统</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/%E5%AD%97%E8%8A%82%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">字节数据存储</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E7%AB%AF%E6%A8%A1%E5%BC%8F/">大端模式</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%B0%8F%E7%AB%AF%E6%A8%A1%E5%BC%8F/">小端模式</a>
+                    
+                      <a class="hover-with-bg" href="/tags/MSB/">MSB</a>
+                    
+                      <a class="hover-with-bg" href="/tags/LSB/">LSB</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%97%E8%8A%82%E5%BA%8F/">字节序</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%AF%94%E7%89%B9%E5%BA%8F/">比特序</a>
+                    
+                      <a class="hover-with-bg" href="/tags/IIC%E9%80%9A%E4%BF%A1/">IIC通信</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1/">串口通信</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E6%8E%A7%E5%88%B6/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BADC-Motor%E4%BD%8D%E7%BD%AE%E6%8E%A7%E5%88%B6%E6%A8%A1%E5%9E%8B/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">直流电机DC-Motor位置控制模型</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/Matlab/Matlab%E4%B8%AD%E5%8F%8C%E7%9B%AE%E6%A0%87%E5%AE%9A%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E/">
+                        <span class="hidden-mobile">Matlab双目标定</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","appKey":"LUzOsNy6KL0b2iyCMMlIstrJ","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        鄂ICP备2023014081号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="/js/DynamicLine.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,948 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta name="baidu-site-verification" content="codeva-9XPZaiy24f" />
+  <meta name="google-site-verification" content="iKfk41-7IB31giGsS85H53G6zjnznJUfmfawPXmej9U" />
+  <script>
+  (function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://cznewborn.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+  </script>
+
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ChenZhao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="电动机（Motor）是把电能转换成机械能的一种设备。它是利用通电线圈（也就是定子绕组）产生旋转磁场并作用于转子（如鼠笼式闭合铝框）形成磁电动力旋转扭矩。电动机按使用电源不同分为直流电动机和交流电动机，电力系统中的电动机大部分是交流电机，可以是同步电机或者是异步电机（电机定子磁场转速与转子旋转转速不保持同步速）。电动机主要由定子与转子组成，通电导线在磁场中受力运动的方向跟电流方向和磁感线（磁场方向）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电动机的知识">
+<meta property="og:url" content="https://www.cznewborn.com/%E7%A7%91%E6%99%AE%E8%AE%A4%E8%AF%86/%E7%94%B5%E5%8A%A8%E6%9C%BA%E7%9A%84%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="Leia Blog">
+<meta property="og:description" content="电动机（Motor）是把电能转换成机械能的一种设备。它是利用通电线圈（也就是定子绕组）产生旋转磁场并作用于转子（如鼠笼式闭合铝框）形成磁电动力旋转扭矩。电动机按使用电源不同分为直流电动机和交流电动机，电力系统中的电动机大部分是交流电机，可以是同步电机或者是异步电机（电机定子磁场转速与转子旋转转速不保持同步速）。电动机主要由定子与转子组成，通电导线在磁场中受力运动的方向跟电流方向和磁感线（磁场方向）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ice.frostsky.com/2024/09/03/2929c75b3f2a4f9f285f9d788defd749.jpeg">
+<meta property="article:published_time" content="2023-07-22T06:52:04.000Z">
+<meta property="article:modified_time" content="2025-12-08T16:45:20.463Z">
+<meta property="article:author" content="ChenZhao">
+<meta property="article:tag" content="直流电机">
+<meta property="article:tag" content="空心杯电机">
+<meta property="article:tag" content="交流电机">
+<meta property="article:tag" content="步进电机">
+<meta property="article:tag" content="有刷电机">
+<meta property="article:tag" content="无刷电机">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://ice.frostsky.com/2024/09/03/2929c75b3f2a4f9f285f9d788defd749.jpeg">
+  
+  
+  <title>电动机的知识 - Leia Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/indeximg-hover.css">
+<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/scroll.css">
+<link rel="stylesheet" href="/css/valine.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.cznewborn.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":6},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","app_key":"LUzOsNy6KL0b2iyCMMlIstrJ","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Leia Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://s1.ax1x.com/2023/01/02/pSPVr1e.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="电动机的知识">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-07-22 14:52" pubdate>
+        2023年7月22日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      10k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      85 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">电动机的知识</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2025年12月9日 凌晨
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="电动机的知识">电动机的知识</h1>
+<p>  <strong>电动机</strong>（electric
+motor）又称<strong>马达</strong>，也简称<strong>电机</strong>或音译<strong>电马达</strong>，是使用电力的发动机，泛指任何可以将电能转化成机械能并做功产生动能来驱动其他装置的电气设备。</p>
+<p>  电动机的基本原理是<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/佛來明右手定則">Fleming右手定则</a>，当一导线置放于磁场内，若导线通上电流，则导线会切割<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/磁場線">磁场线</a>使导线产生移动。电流进入线圈产生磁场，利用电流的磁效应，使电磁铁在固定的磁铁内连续转动的装置，可以将电能转换成动能。与永久磁铁或由另一组线圈所产生的磁场互相作用产生动力。</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/电动机">电动机 -
+维基百科，自由的百科全书 (wikipedia.org)</a></p>
+<p><a target="_blank" rel="noopener" href="http://m.yingbiyou.com/Types-of-Motor.html">电机分类中英文对照-完整版(含思维导图)
+(yingbiyou.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/74854139">直流电机和交流电机有什么不同
+- 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="http://c.gongkong.com/maxsine/a93171.html">伺服电机测试流程分析-武汉迈信
+(gongkong.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.yggtwdj.cn/h-nd-43.html">无刷直流电动机的方波与正弦波驱动
+(yggtwdj.cn)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/tardis/bd/art/203129604?source_id=1001">同步电机与异步电机区别
+(zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/tardis/bd/art/350892308?source_id=1001">史上最全面的电动机类型解说
+干货 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/457629439">电机分类及常用的电机介绍 -
+知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/270527076">电机（一）——电机分类概述 -
+知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/189230621">不看后悔！最全的电机分类，看这一篇就够了！
+- 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jiangtexs.net/hynews/1882.html">伺服电机驱动器是什么？详解伺服电机驱动器的原理及作用-江西电机
+(jiangtexs.net)</a></p>
+<p><a target="_blank" rel="noopener" href="http://m.szczkjgs.com/news_show.asp?x_id=177422">电机控制之方波驱动无刷直流电机（BLDC）与正弦波驱动无刷直流电机（PMSM）的详细对比
+(szczkjgs.com)</a></p>
+<p><a target="_blank" rel="noopener" href="http://m.szczkjgs.com/news_show_174531.htm">直流无刷电机的正弦波控制介绍
+(szczkjgs.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/crjmail/article/details/129177134">BLDC和PMSM的区别_pmsm和bldc的区别-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.moons.com.cn/article/cn-techschool-stepmotor-00064">步进电机步距角及计算公式
+– 旋转步进电机 - 鸣志官网 (moons.com.cn)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.pengky.cn/dianjixilie022/7-kjdh-jiaoliujijiegou/kjdh-jiaoliujijiegou.html">异步电动机结构－电动机系列课件－鹏芃科艺
+(pengky.cn)</a></p>
+</blockquote>
+<h2 id="一电动机的分类">一、电动机的分类</h2>
+<p>  电机的分类方式有不同的分类逻辑。可以按照工作电源种类来分，可以按照功能用途来分，可以按照工作原理来分，还可以按照结构来分。</p>
+<p><img src="https://s11.ax1x.com/2023/10/10/pPzmExe.png" srcset="/img/loading.gif" lazyload alt="电动机的分类"></p>
+<h3 id="按照工作电源分类">(1)按照工作电源分类</h3>
+<p>  按照工作电源的种类，电动机分为<strong>交流电动机</strong>和<strong>直流电动机</strong>两个大类。</p>
+<h4 id="直流电动机按照换向器分类">1.直流电动机按照换向器分类</h4>
+<h5 id="a有刷直流电机">(a)有刷直流电机</h5>
+<p>  由于电刷和机械换向器的存在，有刷电机的结构复杂，可靠性差，故障多，维护工作量大，寿命短，换向火花易产生电磁干扰。</p>
+<h5 id="b无刷直流电机">(b)无刷直流电机</h5>
+<p>  无刷直流电机(BLDC)以电子换向器取代了机械换向器，所以无刷直流电机既具有直流电机良好的调速性能等特点，又具有交流电机结构简单、无换向火花、运行可靠和易于维护等优点。</p>
+<h5 id="c空心杯直流电机">(c)空心杯直流电机</h5>
+<p>  空心杯电动机在结构上突破了传统电机的转子结构形式，采用的是无铁芯转子，也叫空心杯型转子。这种转子结构彻底消除了由于铁芯形成涡流而造成的电能损耗，同时其重量和转动惯量大幅降低，从而减少了转子自身的机械能损耗。由于转子的结构变化而使电动机的运转特性得到了极大改善，不但具有突出的节能特点，更为重要的是具备了铁芯电动机所无法达到的控制和拖动特性。空心杯电机属于直流、永磁、伺服微特电机。</p>
+<p><img src="https://s11.ax1x.com/2023/10/10/pPzVFPS.jpg" srcset="/img/loading.gif" lazyload alt="空心杯直流电机"></p>
+<h4 id="交流电动机按照同步异步分类">2.交流电动机按照同步异步分类</h4>
+<p>  同步电机和异步电机最大的区别，通俗的理解就在于<strong>它们的转子速度与定子旋转磁场是否一致，电机的转子速度与定子旋转磁场相同，叫同步电机，反之，则叫异步电机</strong>。</p>
+<h5 id="a同步交流电动机">(a)同步交流电动机</h5>
+<p>  同步电机的转子结构相对复杂，有直流励磁绕组，因此需要外加励磁电源，通过滑环引入电流。因此同步电机的结构相对比较复杂，造价、维修费用也相对较高。</p>
+<h5 id="b异步交流电动机">(b)异步交流电动机</h5>
+<p>  异步电机的转子是短路的绕组，靠电磁感应产生电流，依靠旋转磁场拖动转子绕组进行旋转。</p>
+<h4 id="特种电动机分类">3.特种电动机分类</h4>
+<p><img src="https://s11.ax1x.com/2023/10/10/pPzNP3j.png" srcset="/img/loading.gif" lazyload alt="特种电动机分类"></p>
+<h2 id="二无刷直流电动机的方波与正弦波驱动">二、无刷直流电动机的方波与正弦波驱动</h2>
+<p>  采用电子换向取代机械换向的BLDCM（Brushless Direct Currennt
+Motor），绕组电流除了与传统的直流电机一样接近方波以外，还可以是正弦波，都是有直流电机的特性，都属于无刷直流电机。二种驱动方式的机械特性和转矩特性相接近，但运行平衡性、调速范围和噪声等则很不一样。正弦波驱动要好得多。目前正弦波驱动的直流电动机多用于要求高的伺服系统，价格甚高，这不会影响正弦波驱动应是BLDCM的重要发展方向。</p>
+<h3 id="方波控制bldc">(1)方波控制（BLDC）</h3>
+<p>  通过霍尔传感器获得电机转子的位置，然后根据转子的位置在360°的电气周期内，进行6次换向（每60°换向一次）。每个换向位置电机输出特定方向的转矩，因此可以说方波控制的位置精度是电气60°。由于在这种方式控制下，电机的相电流波形接近方波，所以称为方波控制。</p>
+<p><img src="https://s41.ax1x.com/2025/12/08/pZnTEXd.png" srcset="/img/loading.gif" lazyload alt="方波驱动信号"></p>
+<h3 id="正弦波控制pmsm">(2)正弦波控制（PMSM）</h3>
+<p>  直流无刷电机的正弦波控制即通过对电机绕组施加一定的电压，使电机绕组中产生正弦电流，通过控制正弦电流的幅值及相位达到控制电机转矩的目的。与传统的方波控制相比，电机相电流为正弦，且连续变化，无换相电流突变，因此电机运行噪声低。根据控制的复杂程度，<strong>直流无刷电机的正弦波控制可分为：简易正弦波控制与复杂正弦波控制。</strong>PMSM是永磁同步电机（Permanent
+Magnet Synchronous Motor）</p>
+<h4 id="简易正弦波控制">1.简易正弦波控制</h4>
+<p>  对电机绕组施加一定的电压，使电机相电压为正弦波，由于电机绕组为感性负载，因此电机相电流也为正弦波。通过控制电机相电压的幅值以及相位来控制电流的相位以及幅值，为电压环控制，实现较为简单。</p>
+<h4 id="复杂正弦波控制">2.复杂正弦波控制</h4>
+<p>  与简易正弦波控制不同，复杂的正弦控制目标为电机相电流，建立电流环，通过直接控制相电流的相位与幅值达到控制电机的目的。由于电机相电流为正弦信号，因此需要进行电流的解耦操作，较为复杂，常见的为磁场定向控制（FOC）及直接转矩控制（DTC）等。</p>
+<p><img src="https://ice.frostsky.com/2024/09/02/49ec40f64ae27989cb23cc705141622f.jpeg" srcset="/img/loading.gif" lazyload alt="正弦波驱动信号"></p>
+<h3 id="bldc和pmsm的区别">(3)BLDC和PMSM的区别</h3>
+<h4 id="反电动势bemf">1.反电动势(bEMF)</h4>
+<p>  PMSM具有正弦波反电势，而BLDCM具有梯形波反电势。BLDC的驱动常见的是梯形换相，因此永磁体磁场向量和定子磁场向量总不能完全重合，存在一定的前后夹角，这也就是BLDC力矩波动和噪声的理论来源。而PMSM可以应用FOC的控制方式做到尽量重合，比BLDC的力矩波动和噪声都小，效率也更高。当然，BLDC可以仿照这样的方式，在二二通电的线圈中，根据HALL位置信息，先角度估算，在这二个通电的线圈中构造出正弦波，来进行FOC控制方式。这时算法相对复杂，对单片机的要求就高一些了，常见的8位机很少能做到的。</p>
+<h4 id="定子绕组分布">2.定子绕组分布</h4>
+<p>  PMSM采用短距分布绕组，有时也采用分数槽或正弦绕组，以
+进一步减小纹波转矩。而BLDCM采用整距集中绕组。首先PMSM起源于绕线式同步电机，它用永磁体代替了绕线式同步电机的激磁绕组，它的一个显著特点是反电势波形是正弦波，与感应电机非常相似。在转子上有永磁体，定子上有三相绕组。而BLDC起源于永磁直流电机它将永磁直流电机结构进行“里外翻”，取消了换相器和电刷，依靠电子换相电路进行换相。转子上有永磁体，定子上有三相绕组。</p>
+<h4 id="运行电流不同">3.运行电流不同</h4>
+<p>  为产生恒定电磁转矩，PMSM需要正弦波定子电流；BLDCM需要矩形波电流。永磁体形状不同，PMSM永磁体形状呈抛物线形，在气隙中产生的磁密尽量呈正弦波分布；BLDCM永磁体形状呈瓦片形，在气隙中产生的磁密呈梯形波分布。</p>
+<h4 id="运行方式不同">4.运行方式不同</h4>
+<p>  PMSM采用三相同时工作，每相电流相差120°电角度，要求有位置传感器。BLDCM采用绕组两两导通，每相导通120°电角度，每60°电角度换相，只需要换相点位置检测。</p>
+<p>正是这些不同之处，使得在对PMSM和BLDCM的控制方法、控制策略和控制电路上有很大的差别。</p>
+<h2 id="三步进电机">三、步进电机</h2>
+<p>  步进电机是一种将电脉冲信号转换成相应角位移或线位移的电动机。每输入一个脉冲信号，转子就转动一个角度或前进一步，其输出的角位移或线位移与输入的脉冲数成正比，转速与脉冲频率成正比。因此，步进电动机又称脉冲电动机。作为一种控制用的特种电机，步进电机无法直接接到直流或交流电源上工作，必须使用专用的步进电机驱动器。单片机通过软件来控制步进电机，更好地挖掘出了电机的潜力。因此，用单片机控制步进电机已经成为了一种必然的趋势，也符合数字化的时代趋势。</p>
+<p><img src="https://s41.ax1x.com/2025/12/08/pZnTe0I.jpg" srcset="/img/loading.gif" lazyload alt="步进电机"></p>
+<h3 id="步进电机参数">(1)步进电机参数</h3>
+<h4 id="技术参数">1.‌技术参数‌</h4>
+<h5 id="a步距角step-angle">(a)‌<strong>步距角（Step Angle）</strong>‌</h5>
+<p>  指电机每接收一个脉冲，转子转动的角度。反应式步进电机的步距角通常为1.8度或0.9度。</p>
+<h5 id="c相数number-of-phases">(c)相数（Number of Phases）</h5>
+<p>  电机内部的线圈分组，常见的有两相和三相步进电机。</p>
+<h5 id="d拍数number-of-pulses-per-revolution">(d)拍数（Number of Pulses
+per Revolution）</h5>
+<p>  电机完成一圈所需的最小脉冲数。</p>
+<h5 id="b定位转矩detent-torque">(b)定位转矩（Detent Torque）</h5>
+<p>  电机在不加电流时，定子齿对转子齿的吸引力。</p>
+<h5 id="e静转矩holding-torque">(e)<strong>静转矩（Holding
+Torque）</strong>‌</h5>
+<p>  电机在静止状态下，能够保持其位置的最大力矩。</p>
+<h5 id="f驱动电路细分值microstepping-resolution">(f)‌驱动电路细分值（Microstepping
+Resolution）</h5>
+<p>  通过驱动器实现的步进电机的细分控制，可以提高电机的运行性能和平滑度。</p>
+<h4 id="性能参数">2.‌性能参数</h4>
+<h5 id="a最大静转矩maximum-static-torque">(a)‌‌<strong>最大静转矩（Maximum
+Static Torque）</strong></h5>
+<p>  电机在静止状态下能承受的最大力矩。</p>
+<h5 id="c启动频率starting-frequency">(c)启动频率（Starting
+Frequency）</h5>
+<p>  电机在不失步的情况下能够直接启动的最高频率。</p>
+<h5 id="d运行频率operating-frequency">(d)运行频率（Operating
+Frequency）</h5>
+<p>  电机能够连续运行而不失步的最高频率。</p>
+<h5 id="b步距误差step-error">(b)步距误差（Step Error）</h5>
+<p>  实际步距角与理论步距角的差异，反映电机的精度。</p>
+<h5 id="e低频振荡low-frequency-oscillation">(e)‌<strong>低频振荡（Low-frequency
+Oscillation）</strong></h5>
+<p>  在低频运行时，电机可能出现的振荡现象。</p>
+<h5 id="f最大相电压和最大相电流maximum-phase-voltage-and-current">(f)‌‌<strong>最大相电压和最大相电流（Maximum
+Phase Voltage and Current）</strong></h5>
+<p>  电机每相绕组允许的最大电压和电流。</p>
+<h4 id="参数计算">3.‌参数计算</h4>
+<h5 id="a步距角计算">(a)步距角计算</h5>
+<p>  步进电机步距角是步进电机的一个属性，决定了其运动的基础，而步距角取决于电机上的磁极总数。</p>
+<p><img src="https://s41.ax1x.com/2025/12/08/pZnTm7t.png" srcset="/img/loading.gif" lazyload alt="步距角计算"></p>
+<p>  <strong>步距角计算公式</strong>是将360°除以电机所有相的磁极总数，用以下步距角计算公式表示：
+<span class="math display"><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="16.019ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 7080.3 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">步</text></g><g data-mml-node="mi" transform="translate(900,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">距</text></g><g data-mml-node="mi" transform="translate(1800,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">角</text></g><g data-mml-node="mo" transform="translate(2977.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g></g></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(3755.8,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="msup"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mn"><path data-c="33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path data-c="36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z" transform="translate(500,0)"></path><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(1000,0)"></path></g></g></g><g data-mml-node="mo" transform="translate(1533,413) scale(0.707)"><path data-c="2218" d="M55 251Q55 328 112 386T249 444T386 388T444 249Q444 171 388 113T250 55Q170 55 113 112T55 251ZM245 403Q188 403 142 361T96 250Q96 183 141 140T250 96Q284 96 313 109T354 135T375 160Q403 197 403 250Q403 313 360 358T245 403Z"></path></g></g></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(1936.6,0)"><g data-mml-node="mrow"><g data-mml-node="mo"><path data-c="2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(500,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mpadded"><g data-mml-node="mphantom"></g></g></g></g><g data-mml-node="mo" transform="translate(500,0) translate(0 250)"></g></g></g><g data-mml-node="mi" transform="translate(2436.6,0)"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path></g></g></g></g></svg></mjx-container></span> 其中磁极总数(<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0" xmlns="http://www.w3.org/2000/svg" width="2.009ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 888 683"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path></g></g></g></svg></mjx-container></span>)通过将每相的磁极数 (<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0" xmlns="http://www.w3.org/2000/svg" width="5.717ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 2527 683"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path></g><g data-mml-node="mi" transform="translate(888,0)"><path data-c="1D443" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z"></path></g><g data-mml-node="mi" transform="translate(1639,0)"><path data-c="1D43B" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 219 683Q260 681 355 681Q389 681 418 681T463 682T483 682Q499 682 499 672Q499 670 497 658Q492 641 487 638H485Q483 638 480 638T473 638T464 637T455 637Q416 636 405 634T387 623Q384 619 355 500Q348 474 340 442T328 395L324 380Q324 378 469 378H614L615 381Q615 384 646 504Q674 619 674 627T617 637Q594 637 587 639T580 648Q580 650 582 660Q586 677 588 679T604 682Q609 682 646 681T740 680Q802 680 835 681T871 682Q888 682 888 672Q888 645 876 638H874Q872 638 869 638T862 638T853 637T844 637Q805 636 794 634T776 623Q773 618 704 340T634 58Q634 51 638 51Q646 48 692 46H723Q729 38 729 37T726 19Q722 6 716 0H701Q664 2 567 2Q533 2 504 2T458 2T437 1Q420 1 420 10Q420 15 423 24Q428 43 433 45Q437 46 448 46H454Q481 46 514 49Q520 50 522 50T528 55T534 64T540 82T547 110T558 153Q565 181 569 198Q602 330 602 331T457 332H312L279 197Q245 63 245 58Q245 51 253 49T303 46H334Q340 38 340 37T337 19Q333 6 327 0H312Q275 2 178 2Q144 2 115 2T69 2T48 1Q31 1 31 10Q31 12 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path></g></g></g></svg></mjx-container></span>) 乘以相数 (<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0" xmlns="http://www.w3.org/2000/svg" width="3.708ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 1639 683"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D443" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z"></path></g><g data-mml-node="mi" transform="translate(751,0)"><path data-c="1D43B" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 219 683Q260 681 355 681Q389 681 418 681T463 682T483 682Q499 682 499 672Q499 670 497 658Q492 641 487 638H485Q483 638 480 638T473 638T464 637T455 637Q416 636 405 634T387 623Q384 619 355 500Q348 474 340 442T328 395L324 380Q324 378 469 378H614L615 381Q615 384 646 504Q674 619 674 627T617 637Q594 637 587 639T580 648Q580 650 582 660Q586 677 588 679T604 682Q609 682 646 681T740 680Q802 680 835 681T871 682Q888 682 888 672Q888 645 876 638H874Q872 638 869 638T862 638T853 637T844 637Q805 636 794 634T776 623Q773 618 704 340T634 58Q634 51 638 51Q646 48 692 46H723Q729 38 729 37T726 19Q722 6 716 0H701Q664 2 567 2Q533 2 504 2T458 2T437 1Q420 1 420 10Q420 15 423 24Q428 43 433 45Q437 46 448 46H454Q481 46 514 49Q520 50 522 50T528 55T534 64T540 82T547 110T558 153Q565 181 569 198Q602 330 602 331T457 332H312L279 197Q245 63 245 58Q245 51 253 49T303 46H334Q340 38 340 37T337 19Q333 6 327 0H312Q275 2 178 2Q144 2 115 2T69 2T48 1Q31 1 31 10Q31 12 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path></g></g></g></svg></mjx-container></span>) 来计算： <span class="math display"><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -0.186ex" xmlns="http://www.w3.org/2000/svg" width="17.217ex" height="1.731ex" role="img" focusable="false" viewBox="0 -683 7610 765"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path></g><g data-mml-node="mo" transform="translate(1165.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mi" transform="translate(2221.6,0)"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path></g><g data-mml-node="mi" transform="translate(3109.6,0)"><path data-c="1D443" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z"></path></g><g data-mml-node="mi" transform="translate(3860.6,0)"><path data-c="1D43B" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 219 683Q260 681 355 681Q389 681 418 681T463 682T483 682Q499 682 499 672Q499 670 497 658Q492 641 487 638H485Q483 638 480 638T473 638T464 637T455 637Q416 636 405 634T387 623Q384 619 355 500Q348 474 340 442T328 395L324 380Q324 378 469 378H614L615 381Q615 384 646 504Q674 619 674 627T617 637Q594 637 587 639T580 648Q580 650 582 660Q586 677 588 679T604 682Q609 682 646 681T740 680Q802 680 835 681T871 682Q888 682 888 672Q888 645 876 638H874Q872 638 869 638T862 638T853 637T844 637Q805 636 794 634T776 623Q773 618 704 340T634 58Q634 51 638 51Q646 48 692 46H723Q729 38 729 37T726 19Q722 6 716 0H701Q664 2 567 2Q533 2 504 2T458 2T437 1Q420 1 420 10Q420 15 423 24Q428 43 433 45Q437 46 448 46H454Q481 46 514 49Q520 50 522 50T528 55T534 64T540 82T547 110T558 153Q565 181 569 198Q602 330 602 331T457 332H312L279 197Q245 63 245 58Q245 51 253 49T303 46H334Q340 38 340 37T337 19Q333 6 327 0H312Q275 2 178 2Q144 2 115 2T69 2T48 1Q31 1 31 10Q31 12 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path></g><g data-mml-node="mo" transform="translate(4970.8,0)"><path data-c="D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path></g><g data-mml-node="mi" transform="translate(5971,0)"><path data-c="1D443" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z"></path></g><g data-mml-node="mi" transform="translate(6722,0)"><path data-c="1D43B" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 219 683Q260 681 355 681Q389 681 418 681T463 682T483 682Q499 682 499 672Q499 670 497 658Q492 641 487 638H485Q483 638 480 638T473 638T464 637T455 637Q416 636 405 634T387 623Q384 619 355 500Q348 474 340 442T328 395L324 380Q324 378 469 378H614L615 381Q615 384 646 504Q674 619 674 627T617 637Q594 637 587 639T580 648Q580 650 582 660Q586 677 588 679T604 682Q609 682 646 681T740 680Q802 680 835 681T871 682Q888 682 888 672Q888 645 876 638H874Q872 638 869 638T862 638T853 637T844 637Q805 636 794 634T776 623Q773 618 704 340T634 58Q634 51 638 51Q646 48 692 46H723Q729 38 729 37T726 19Q722 6 716 0H701Q664 2 567 2Q533 2 504 2T458 2T437 1Q420 1 420 10Q420 15 423 24Q428 43 433 45Q437 46 448 46H454Q481 46 514 49Q520 50 522 50T528 55T534 64T540 82T547 110T558 153Q565 181 569 198Q602 330 602 331T457 332H312L279 197Q245 63 245 58Q245 51 253 49T303 46H334Q340 38 340 37T337 19Q333 6 327 0H312Q275 2 178 2Q144 2 115 2T69 2T48 1Q31 1 31 10Q31 12 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path></g></g></g></svg></mjx-container></span></p>
+<h5 id="b-细分步距角">(b) 细分步距角</h5>
+<p>  步进电机的步距角可以通过细分功能进行调节，细分后的步距角计算方法是将电机固有步距角除以细分数。例如，如果一台步进电机的固有步距角为1.8°，设置为4细分，那么其细分后的步距角为1.8°/4=0.45°。这种细分功能通过驱动器实现，常见的细分倍数包括1/2、1/4、1/8、1/16、1/32、1/64或1/5、1/10、1/20等。通过细分，可以减小步进电机的步距角，从而使电机运行更加平稳，减少振动和噪音，提高位置控制的精度‌</p>
+<h3 id="步进电机加减速过程控制">(2)步进电机加减速过程控制</h3>
+<p>  在启动或加速时如果步进脉冲变化太快，转子由于惯性而跟随不上电信号的变化，产生堵转或失步在停止或减速时由于同样原因则可能产生超步。为防止堵转、失步和超步，提高工作频率，要对步进电机进行升降速控制。<strong>步进电机的转速取决于脉冲频率、转子齿数和拍数。其角速度与脉冲频率成正比</strong>，而且在时间上与脉冲同步。因而在转子齿数和运行拍数一定的情况下，只要控制脉冲频率即可获得所需速度。由于步进电机是借助它的同步力矩而启动的，<strong>为了不发生失步，启动频率是不高的</strong>。特别是随着功率的增加，转子直径增大，惯量增大，启动频率和最高运行频率可能相差十倍之多。</p>
+<p>  步进电机的输出力矩随着脉冲频率的上升而下降，<strong>启动频率越高，启动力矩就越小，带动负载的能力越差，启动时会造成失步</strong>，而在停止时又会发生过冲。要使步进电机快速的达到所要求的速度又不失步或过冲，其关键在于使加速过程中，加速度所要求的力矩既能充分利用各个运行频率下步进电机所提供的力矩，又不能超过这个力矩。因此，<strong>步进电机的运行一般要经过加速、匀速、减速三个阶段</strong>，要求加减速过程时间尽量的短，恒速时间尽量长。特别是在要求快速响应的工作中，从起点到终点运行的时间要求最短，这就必须要求<strong>加速、减速的过程最短，而恒速时的速度最高</strong>。</p>
+<ol type="1">
+<li><p><strong>加速度和减速度设定</strong>：首先，需要设置步进电机的加速度和减速度参数。加速度是指电机在单位时间内增加的速度，减速度是指电机在单位时间内减少的速度。这些参数可以通过控制器或驱动器上的参数设置进行调整。</p></li>
+<li><p><strong>脉冲频率控制</strong>：步进电机的加减速运动通常是通过改变脉冲信号的频率来控制的。在加速阶段，脉冲频率逐渐增加；在减速阶段，脉冲频率逐渐减小。通过逐渐增加或减小脉冲信号的频率，可以实现步进电机的平滑加减速运动。</p></li>
+<li><p><strong>加减速曲线</strong>：步进电机加减速运动可以使用不同的曲线进行控制，常见的有线性加速（速度随时间线性增加）、S型加减速（速度逐渐增加或减小）等。这些曲线可以使步进电机在运动过程中达到平稳、准确的加减速效果。</p></li>
+<li><p><strong>控制算法</strong>：控制器或驱动器通常采用特定的控制算法来实现步进电机的加减速运动控制。常见的控制算法包括开环控制、闭环控制等，通过对脉冲信号的生成和调整，实现步进电机的精确控制。</p></li>
+</ol>
+<p>  步进电机的加减速控制在实际应用中可能会受到一些限制，如负载惯性、电机本身特性等因素的影响。因此，在设计步进电机系统时，需要综合考虑这些因素，并选择合适的驱动器和控制方法来实现理想的加减速控制效果。</p>
+<h3 id="步进电机细分驱动">(3)步进电机细分驱动</h3>
+<p>  步进电机由于受到自身制造工艺的限制，如步距角的大小由转子齿数和运行拍数决定，但转子齿数和运行拍数是有限的，因此步进电机的步距角一般较大并且是固定的，步进的分辨率低、缺乏灵活性、在低频运行时振动，噪音比其他微电机都高，使物理装置容易疲劳或损坏。</p>
+<p>  步进电机‌细分驱动技术是一种通过控制各相绕组中的电流，使它们按一定的规律上升或下降，从而在零电流到最大电流之间形成多个稳定的中间电流状态的技术。这种技术通过改变合成磁场的夹角，将步进电机的步距角细分为多个小步，从而提高步进电机的转角精度和运行平稳性。</p>
+<p>  步进电机的转动是通过脉冲电压完成的，每次输入脉冲切换时，不是将绕组电流全部通入或关断，而是仅改变对应绕组中额定电流的一部分。通过控制绕组中电流的数值，可以控制转子的步距角大小。细分驱动电路通过改变A、B相电流的大小来改变合成磁场的夹角，从而将一个步距角细分为多个小步。这种控制方式使得步进电机的运动近似于匀速运动，并且能够在任何位置停步。</p>
+<ul>
+<li>‌<strong>提高精度</strong>‌：通过细分驱动技术，步进电机的步距角可以变得更小，从而提高其控制精度。</li>
+<li>‌<strong>减少振动和噪音</strong>‌：细分驱动技术可以显著减少或消除步进电机在低频运行时产生的振动和噪音。</li>
+<li>‌<strong>改善低频特性</strong>‌：采用细分驱动技术可以大大改善步进电机的低频特性，使其在低速运行时更加平稳。</li>
+</ul>
+<h2 id="四空心杯电机">四、空心杯电机</h2>
+<p>  空心杯电动机在结构上突破了传统电机的转子结构形式，采用的是无铁芯转子，也叫空心杯型转子。这种转子结构彻底消除了由于铁芯形成涡流而造成的电能损耗，同时其重量和转动惯量大幅降低，从而减少了转子自身的机械能损耗。空心杯电机属于直流、永磁、伺服微特电机。空心杯电机分为有刷和无刷两种，有刷空心杯电机转子无铁芯，无刷空心杯电机定子无铁芯。绕组采用三角形接法。</p>
+<p><img src="https://s41.ax1x.com/2025/12/08/pZnTA6H.jpg" srcset="/img/loading.gif" lazyload alt="空心杯电机"></p>
+<h2 id="五交流电机">五、交流电机</h2>
+<p>  交流电动机是一种将交流电的电能转变为机械能的装置。交流电机与相比，由于没有换向器（见直流电机的换向），因此结构简单，制造方便，比较牢固，容易做成高转速、高电压、大电流、大容量的电机。交流电机功率的覆盖范围很大，从几瓦到几十万千瓦、甚至上百万千瓦。</p>
+<p>  交流电动机主要由一个用以产生磁场的电磁铁绕组或分布的定子绕组和一个旋转电枢或转子组成。电动机利用通电线圈在磁场中受力转动的现象而制成的。交流电动机分为同步交流电动机和感应电动机两种。</p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/同步交流电动机vs异步交流电动机转子.jpg" srcset="/img/loading.gif" lazyload alt="同步交流电动机vs异步交流电动机转子"></p>
+<h3 id="同步交流电动机永磁">(1)同步交流电动机（永磁）</h3>
+<p>  低速的大型设备采用同步电动机时，这一优点尤为突出。此外，同步电动机的转速完全决定于电源频率。频率一定时，电动机的转速也就一定，它不随负载而变。这一特点在某些传动系统，特别是多机同步传动系统和精密调速稳速系统中具有重要意义。同步电动机的运行稳定性也比较高。同步电动机一般是在过励状态下运行，其过载能力比相应的异步电动机大。异步电动机的转矩与电压平方成正比，而同步电动机的转矩决定于电压和电机励磁电流所产生的内电动势的乘积，即仅与电压的一次方成比例。</p>
+<p><img src="https://ice.frostsky.com/2024/09/03/58c2deff8443cd1b88bd20e1c8098af8.jpeg" srcset="/img/loading.gif" lazyload alt="永磁同步交流电动机" style="zoom: 67%;"></p>
+<h4 id="主要参数">1.主要参数</h4>
+<p>  同步交流电动机的主要参数包括额定功率、额定电压、额定电流、额定频率、功率因数、转速、极数、空载电流、轴承类型、轴承寿命等。</p>
+<ul>
+<li>‌<strong>额定功率（PM）</strong>‌：表示电机在额定运行条件下能够持续输出的机械功率，单位通常为千瓦（kW）或兆瓦（MW）。</li>
+<li>‌<strong>额定电压（额定电压）</strong>‌：电机在额定运行条件下所需的电压，通常指线电压，单位为伏特（V）或千伏（kV）。</li>
+<li>‌<strong>额定电流（额定电流）</strong>‌：电机在额定运行条件下流经电机的电流，单位为安培（A）。</li>
+<li>‌<strong>额定频率（f）</strong>‌：电力系统中的交流电频率，通常为50Hz或60Hz，这决定了电机转子的旋转速度。</li>
+<li>‌<strong>功率因数</strong>‌：表示电机实际消耗的功率与视在功率之比，反映了电机的效率。</li>
+<li>‌<strong>转速</strong>‌：电机转子每分钟旋转的圈数，与电机的极数和电源频率有关。</li>
+<li>‌<strong>极数</strong>‌：电机转子的极数，决定了电机的磁场结构和转速。</li>
+<li>‌<strong>空载电流</strong>‌：电机在无负载情况下的电流消耗。</li>
+<li>‌<strong>轴承类型</strong>‌：电机使用的轴承类型，影响电机的运行稳定性和寿命。</li>
+<li>‌<strong>轴承寿命</strong>‌：轴承能够持续运行的时间或转数，反映了电机的耐用性。</li>
+</ul>
+<p>这些参数共同决定了同步交流电动机的性能和适用范围，对于电机的设计和应用至关重要‌。</p>
+<h4 id="调速方式">2.调速方式</h4>
+<p>  同步电动机转子的转速与供电电源的频率之间满足严格的同步关系，所以同步电动机调速最常用的方法就是变频调速。在具有三相变频器供电的场合，改变供电电源的频率，就可以使转子的转速连续、平滑地调节。由于同步电动机在励磁方式有别于感应电机，所以同步电动机变频调速的控制要求与感应电机略有不同。同步电动机的变频调速可分为<strong>他控式变频</strong>和<strong>自控式变频</strong>两大类。</p>
+<p>  ‌同步交流电动机的转速公式为： <span class="math display"><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -1.991ex" xmlns="http://www.w3.org/2000/svg" width="9.864ex" height="5.115ex" role="img" focusable="false" viewBox="0 -1381 4360.1 2261"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mn" transform="translate(633,-150) scale(0.707)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g></g><g data-mml-node="mo" transform="translate(1314.3,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mfrac" transform="translate(2370.1,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(220,676)"><g data-mml-node="mn"><path data-c="36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(500,0)"></path></g><g data-mml-node="mi" transform="translate(1000,0)"><path data-c="1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path></g></g><g data-mml-node="mi" transform="translate(743.5,-686)"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g><rect width="1750" height="60" x="120" y="220"></rect></g></g></g></svg></mjx-container></span></p>
+<ul>
+<li><span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.339ex" xmlns="http://www.w3.org/2000/svg" width="2.345ex" height="1.339ex" role="img" focusable="false" viewBox="0 -442 1036.6 592"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mn" transform="translate(633,-150) scale(0.707)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g></g></g></svg></mjx-container></span>表示同步转速，即电动机定子的旋转磁场的转速。</li>
+<li><span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.464ex" xmlns="http://www.w3.org/2000/svg" width="1.244ex" height="2.059ex" role="img" focusable="false" viewBox="0 -705 550 910"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path></g></g></g></svg></mjx-container></span>表示电源频率，对于我国的工频，一般为50Hz。</li>
+<li><span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.439ex" xmlns="http://www.w3.org/2000/svg" width="1.138ex" height="1.439ex" role="img" focusable="false" viewBox="0 -442 503 636"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g></g></g></svg></mjx-container></span>表示磁极对数，即电动机的磁极数量。</li>
+</ul>
+<h5 id="a他控式变频">(a)他控式变频</h5>
+<p>  他控式变频调速是利用独立的变频器给同步电动机定子三相绕组供电的调速方法，通过直接改变变频装置的输出频率调节电动机的转速，是一种频率开环控制方式。采用这种方法调速时，加速与减速不能太快，否则会造成同步电动机的不稳定或失步。</p>
+<h5 id="b自控式变频">(b)自控式变频</h5>
+<p>  自控变频方式中所用的变频装置是非独立的，其输出电流（电压）的频率和相位受反映转子磁极空间位置的转子位置信号控制，是一种定子绕组供电电源的频率和相位自动跟踪转子磁极空间位置的闭环控制方式。</p>
+<h5 id="c他控与自控比较">(c)他控与自控比较</h5>
+<p>  他控变频时，当频率给定值一定，变频器的输出频率恒定，此时电机的运行情况与恒频电源供电时无异，也会产生恒频电源供电时的振荡、失步等现象。而自控变频中由于电动机输入电流的频率始终和转子的转速保持同步，不会出现振荡和失步，因此永磁同步伺服电动机通常采用自控变频方式。</p>
+<h3 id="异步交流电动机感应">(2)异步交流电动机（感应）</h3>
+<p>  通过定子产生的旋转磁场（其转速为同步转速<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.339ex" xmlns="http://www.w3.org/2000/svg" width="2.345ex" height="1.339ex" role="img" focusable="false" viewBox="0 -442 1036.6 592"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mn" transform="translate(633,-150) scale(0.707)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g></g></g></svg></mjx-container></span>）与转子绕组的相对运动，转子绕组切割磁感线产生感应电动势，从而使转子绕组中产生感应电流。转子绕组中的感应电流与磁场作用，产生电磁转矩，使转子旋转。由于当转子转速逐渐接近同步转速时，感应电流逐渐减小，所产生的电磁转矩也相应减小，当异步电动机工作在电动机状态时，转子转速小于同步转速。为了描述转子转速<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 600 453"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container></span>与同步转速<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.339ex" xmlns="http://www.w3.org/2000/svg" width="2.345ex" height="1.339ex" role="img" focusable="false" viewBox="0 -442 1036.6 592"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mn" transform="translate(633,-150) scale(0.707)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g></g></g></svg></mjx-container></span>之间的差别，引入转差率（<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.439ex" xmlns="http://www.w3.org/2000/svg" width="3.654ex" height="2.009ex" role="img" focusable="false" viewBox="0 -694 1615 888"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g><g data-mml-node="mi" transform="translate(469,0)"><path data-c="1D459" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"></path></g><g data-mml-node="mi" transform="translate(767,0)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mi" transform="translate(1112,0)"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g></g></g></svg></mjx-container></span>）。</p>
+<p><img src="https://ice.frostsky.com/2024/09/03/e5fb47aa03e01fbba4c7b24237cf37d5.jpeg" srcset="/img/loading.gif" lazyload alt="感应异步交流电动机" style="zoom:67%;"></p>
+<h4 id="主要参数-1">1.主要参数</h4>
+<p>  异步交流电动机的主要参数包括型号、功率、电压、电流、频率、接法、工作方式、功率因数、绝缘等级、额定转速。‌</p>
+<ul>
+<li>‌<strong>型号</strong>‌：表征电动机的类型、性能、用途、结构等特征，由产品代号、规格代号、技术参数代号三部分组成。例如，某电动机型号为“Y250M2-4”，其中Y代表异步电动机，250表示中心高，M为中机座，2表示2号铁心长度，4表示磁极数。</li>
+<li><strong>功率</strong>‌：指额定功率，表示电动机在额定电压下的转轴输出功率。</li>
+<li><strong>电压</strong>‌：指额定电压，表示电动机正常工作时加在定子绕组线端的电压，有220V、380V等多种等级。</li>
+<li><strong>电流</strong>‌：指额定电流，表示电动机在额定工作状态下运行时流过定子绕组的线电流。</li>
+<li><strong>频率</strong>‌：指额定频率，表示电动机允许接入的交流电源频率，通常为50Hz。</li>
+<li><strong>接法</strong>‌：指电动机定子绕组的连接方式，通常有“Y”接法和“△”两种接法。</li>
+<li><strong>工作方式</strong>‌：表示电动机工作特征，可分为连续、短时、断续三种。</li>
+<li><strong>功率因数</strong>‌：指电动机在额定工作状态下运行的输出有功功率与输入视在功率的百分比。</li>
+<li>‌<strong>绝缘等级</strong>‌：指电动机绕组在正常状态下工作时允许超出的环境温度电工基础值。</li>
+<li><strong>额定转速</strong>‌：指电动机在额定工作条件下转子每分钟的转数。</li>
+</ul>
+<p>  这些参数共同决定了异步交流电动机的性能和适用范围，对于正确选择和使用电动机至关重要‌。</p>
+<h4 id="调速方式-1">2.调速方式</h4>
+<p>  异步交流电动机的转速公式：</p>
+<p><span class="math display"><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -1.991ex" xmlns="http://www.w3.org/2000/svg" width="17.23ex" height="5.115ex" role="img" focusable="false" viewBox="0 -1381 7615.4 2261"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(877.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mfrac" transform="translate(1933.6,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(220,676)"><g data-mml-node="mn"><path data-c="36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(500,0)"></path></g><g data-mml-node="mi" transform="translate(1000,0)"><path data-c="1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path></g></g><g data-mml-node="mi" transform="translate(743.5,-686)"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g><rect width="1750" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" transform="translate(4145.8,0)"><path data-c="22C5" d="M78 250Q78 274 95 292T138 310Q162 310 180 294T199 251Q199 226 182 208T139 190T96 207T78 250Z"></path></g><g data-mml-node="mrow" transform="translate(4646,0)"><g data-mml-node="mo"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(389,0)"><g data-mml-node="mn"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="mo" transform="translate(722.2,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mi" transform="translate(1722.4,0)"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g></g><g data-mml-node="mo" transform="translate(2580.4,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></g></svg></mjx-container></span></p>
+<ul>
+<li><p><span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 600 453"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container></span>代表电动机的实际转速。</p></li>
+<li><p>‌<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.464ex" xmlns="http://www.w3.org/2000/svg" width="1.244ex" height="2.059ex" role="img" focusable="false" viewBox="0 -705 550 910"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path></g></g></g></svg></mjx-container></span>
+是电源频率，通常在非变频调速的应用场合中，电源频率f为恒定的（例如50Hz）。</p></li>
+<li><p>‌<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.439ex" xmlns="http://www.w3.org/2000/svg" width="1.138ex" height="1.439ex" role="img" focusable="false" viewBox="0 -442 503 636"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(503,0)"><g data-mml-node="mo"><path data-c="200C" d=""></path></g></g></g></g></svg></mjx-container></span>
+是极对数，表示电动机的极数的一半。例如，一个6极的电动机，其极对数p为3。</p></li>
+<li><p><span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.023ex" xmlns="http://www.w3.org/2000/svg" width="1.061ex" height="1.023ex" role="img" focusable="false" viewBox="0 -442 469 452"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mo"><path data-c="200C" d=""></path></g></g><g data-mml-node="mi"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g></g></g></svg></mjx-container></span>​是转差率，表示电动机的实际转速与同步转速之间的差异。转差率通常在10%以内。</p></li>
+</ul>
+<p>  由异步电动机的转速表达式可知：要调节异步电动机的转速，可采用<strong>改变电源频率<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.464ex" xmlns="http://www.w3.org/2000/svg" width="1.244ex" height="2.059ex" role="img" focusable="false" viewBox="0 -705 550 910"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path></g></g></g></svg></mjx-container></span>、极对数<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.439ex" xmlns="http://www.w3.org/2000/svg" width="1.138ex" height="1.439ex" role="img" focusable="false" viewBox="0 -442 503 636"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g></g></g></svg></mjx-container></span>以及转差率<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.023ex" xmlns="http://www.w3.org/2000/svg" width="1.061ex" height="1.023ex" role="img" focusable="false" viewBox="0 -442 469 452"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g></g></g></svg></mjx-container></span>等三种方法</strong>来实现。</p>
+<h5 id="a变频调速">(a)变频调速</h5>
+<p>  这种调速方式主要改变交流异步电动机的同步转速，按照变频方式主要有直接变频和间接变频两种方式。特点是调速范围大；特性硬；精度高；附加损耗小，调速效率高；应用范围广泛，非常适合交流笼型异步电动机等优点。让交流异步电动机有了媲美直流电机的调速性能，成为当下<strong>异步电机主要的调速方式</strong>。</p>
+<h5 id="b变极调速">(b)变极调速</h5>
+<p>  这种调速方式<strong>只适用于笼型异步电动机</strong>，主要是通过<strong>改变定子绕组的接线方式，改变电机磁极对数</strong>，达到改变同步转速的目的。这种调速方式具有<strong>较硬的机械特性</strong>，稳定性好；无转差损耗，效率高；接线简单、控制方便、价格低。缺点是有级调速，级差较大，不能获得平滑调速。可以与调压调速、电磁转差离合器配合使用，获得较高效率的平滑调速特性。适用于不需要无级调速的生产机械，如金属切削机床、升降机、起重设备、风机、水泵等。</p>
+<h5 id="c-转子串电阻调速">(c) 转子串电阻调速</h5>
+<p>  这种调速方式<strong>只适用于绕线式交流异步电动机</strong>，通过改变绕线式异步电动机<strong>转子串入附加电阻值</strong>，来改变电机的转差率，进而改变电机转速。此方法设备简单，控制方便，但转差功率以发热的形式消耗在电阻上。属有级调速，机械特性较软。这种方式在势能负载上使用较多，比如桥式吊车的大、小车和卷扬控制都是采用这种方式。</p>
+<h5 id="d串级调速">(d)串级调速</h5>
+<p>  串级调速是<strong>将异步电机与可控硅串接在一起</strong>，通过<strong>控制可控硅的导通角</strong>来改变电机的输入电压和电流，从而实现电机的变速。串级调速可以实现较大范围的平滑调速，调速效率高，但需要复杂的控制系统，成本较高。串级调速是一种适用于绕线式交流异步电动机的高效调速方式，它通过改变转差率来实现调速目的，具有效率高、调速平滑、成本低廉等优点，同时也能将转差损耗回馈再利用，但在实际应用中需要<strong>注意其功率因数和谐波影响等问题</strong>。</p>
+<h5 id="e定子调压调速">(e)定子调压调速</h5>
+<p>  定子调压调速‌是通过<strong>改变电动机的定子电压</strong>来实现的，这种方法可以<strong>得到一组不同的机械特性曲线，从而获得不同的转速</strong>。调压调速的主要装置是一个能提供电压变化的电源。目前常用的调压方式有串联饱和电抗器、自耦变压器以及晶闸管调压等几种，其中<strong>晶闸管调压方式被认为是最佳的</strong>。调压调速的优点包括线路简单、易实现自动控制，但缺点是转差功率以发热形式消耗在转子电阻中，效率较低，一般适用于100KW以下的生产机械。</p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/%E6%AD%A3%E5%BC%A6%E6%B3%A2%E9%A9%B1%E5%8A%A8%E4%BF%A1%E5%8F%B7.jpg" srcset="/img/loading.gif" lazyload alt="异步交流电机-机械特性曲线"></p>
+<h3 id="异步电机和同步电机的区别对比">(3)异步电机和同步电机的区别对比</h3>
+<h4 id="转速特性">1.转速特性</h4>
+<p><strong>异步电机：</strong>转子转速总是低于定子磁场的同步转速，存在转差。</p>
+<p><strong>同步电机：</strong>转子转速与定子磁场同步，无转差。</p>
+<h4 id="起动方式">2.起动方式</h4>
+<p><strong>异步电机：</strong>靠转子切割定子旋转磁场自行启动。</p>
+<p><strong>同步电机：</strong>需要额外的启动装置或外力使转子达到同步转速后并网运行。</p>
+<h4 id="调速性能">3.调速性能</h4>
+<p><strong>异步电机：</strong>调速性能较差，主要依靠变极调速、变频调速。</p>
+<p><strong>同步电机：</strong>调速性能优异，转速严格跟随电源频率变化。</p>
+<h4 id="功率因数">4.功率因数</h4>
+<p><strong>异步电机：</strong>功率因数随负载变化，一般为0.7-0.9。</p>
+<p><strong>同步电机：</strong>功率因数可调，通常可以达到1。</p>
+<h4 id="适用场合">5.适用场合</h4>
+<p><strong>异步电机：</strong>结构简单，价格低廉，适用于通用领域，如风扇、泵、压缩机等。适用于一般工业和民用场合，成本低，结构简单。</p>
+<p><strong>同步电机：</strong>调速精度高，效率高，适用于高性能传动场合如电动汽车、机器人、精密机械等。适用于高性能、高精度的工业驱动和发电设备。</p>
+<p>  异步电机和同步电机各有优缺点。异步电机结构简单、成本低，但调速性能较差，适用于通用应用；同步电机调速精度高、效率高，但结构复杂、成本高，适用于高性能传动场合。电机选型时需要综合考虑具体应用场景的负载特性、效率、功率因数和调速范围等因素，才能充分发挥电机的最大效能。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%A7%91%E6%99%AE%E8%AE%A4%E8%AF%86/">科普认识</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA/">直流电机</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%A9%BA%E5%BF%83%E6%9D%AF%E7%94%B5%E6%9C%BA/">空心杯电机</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BA%A4%E6%B5%81%E7%94%B5%E6%9C%BA/">交流电机</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/">步进电机</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9C%89%E5%88%B7%E7%94%B5%E6%9C%BA/">有刷电机</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%97%A0%E5%88%B7%E7%94%B5%E6%9C%BA/">无刷电机</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%8B%9F%E5%90%88%E7%9A%84%E7%90%86%E8%A7%A3/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">最小二乘拟合的理解</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E7%AE%97%E6%B3%95/%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/%E7%B2%92%E5%AD%90%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/">
+                        <span class="hidden-mobile">粒子滤波算法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","appKey":"LUzOsNy6KL0b2iyCMMlIstrJ","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        鄂ICP备2023014081号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="/js/DynamicLine.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,743 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta name="baidu-site-verification" content="codeva-9XPZaiy24f" />
+  <meta name="google-site-verification" content="iKfk41-7IB31giGsS85H53G6zjnznJUfmfawPXmej9U" />
+  <script>
+  (function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://cznewborn.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+  </script>
+
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ChenZhao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="粒子滤波算法是一种基于贝叶斯概率理论的滤波方法，广泛应用于非线性、非高斯系统的滤波和状态估计。在实际应用中，粒子滤波算法被广泛应用于机器人定位、目标跟踪、图像处理等领域。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="粒子滤波算法">
+<meta property="og:url" content="https://www.cznewborn.com/%E7%AE%97%E6%B3%95/%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/%E7%B2%92%E5%AD%90%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Leia Blog">
+<meta property="og:description" content="粒子滤波算法是一种基于贝叶斯概率理论的滤波方法，广泛应用于非线性、非高斯系统的滤波和状态估计。在实际应用中，粒子滤波算法被广泛应用于机器人定位、目标跟踪、图像处理等领域。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s11.ax1x.com/2023/10/03/pPOJaw9.png">
+<meta property="article:published_time" content="2023-07-20T08:26:35.000Z">
+<meta property="article:modified_time" content="2025-12-08T16:45:20.465Z">
+<meta property="article:author" content="ChenZhao">
+<meta property="article:tag" content="Matlab">
+<meta property="article:tag" content="非线性滤波">
+<meta property="article:tag" content="滤波">
+<meta property="article:tag" content="蒙特卡洛">
+<meta property="article:tag" content="粒子滤波">
+<meta property="article:tag" content="重采样">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s11.ax1x.com/2023/10/03/pPOJaw9.png">
+  
+  
+  <title>粒子滤波算法 - Leia Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/indeximg-hover.css">
+<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/scroll.css">
+<link rel="stylesheet" href="/css/valine.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.cznewborn.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":6},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","app_key":"LUzOsNy6KL0b2iyCMMlIstrJ","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Leia Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://s1.ax1x.com/2023/01/02/pSPVr1e.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="粒子滤波算法">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-07-20 16:26" pubdate>
+        2023年7月20日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.9k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      25 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">粒子滤波算法</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2025年12月9日 凌晨
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="粒子滤波算法">粒子滤波算法</h1>
+<p>  粒子滤波（PF：Particle Filter）的思想基于蒙特卡洛方法（Monte Carlo
+methods），它是利用粒子集来表示概率，可以用在任何形式的状态空间模型上。其核心思想是通过从后验概率中抽取的随机状态粒子来表达其分布，是一种顺序重要性采样法（Sequential
+Importance Sampling）。</p>
+<p>  简单来说，粒子滤波法是指通过寻找一组在状态空间传播的随机样本对概率密度函数进行近似，以样本均值代替积分运算，从而获得状态最小方差分布的过程。这里的样本即指粒子，当样本数量<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0" xmlns="http://www.w3.org/2000/svg" width="2.009ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 888 683"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path></g></g></g></svg></mjx-container>时可以逼近任何形式的概率密度分布。尽管算法中的慨率分布只是真实分布的一种近似，但由于非参数化的特点，它<strong><u>摆脱了解决非线性滤波问题时随机量必须满足高斯分布的制约</u></strong>，能表达比高斯模型更广泛的分布，也对变量参数的非线性特性有更强的建模能力。因此，粒子滤波能够比较精确地表达基于观测量和控制量的后验概率分布，可以用于解决SLAM问题。</p>
+<blockquote>
+<p>参考</p>
+<p><a target="_blank" rel="noopener" href="https://blog.shipengx.com/archives/f3c9e219.html">从贝叶斯滤波到粒子滤波
+| 朝花夕拾 (shipengx.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/424178237">车辆（十）——粒子滤波
+- 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/OEMT_301/article/details/103789392">粒子滤波算法理解及实现-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_27923041/article/details/56008756">粒子滤波（Particle
+filter）算法简介及MATLAB实现_粒子滤波算法-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://jamesss.blog.csdn.net/article/details/131603040">粒子滤波（Particle
+Filtering）简介_饕子的博客-CSDN博客</a></p>
+</blockquote>
+<p><img src="https://s11.ax1x.com/2023/10/02/pPL7hdg.png" srcset="/img/loading.gif" lazyload alt="粒子滤波算法流程"></p>
+<h2 id="一算法流程">一、算法流程</h2>
+<h3 id="初始阶段">(1)初始阶段</h3>
+<p>  在开始滤波过程之前，需要对粒子集合进行初始化。通常可以采用在给定初值处均匀分布或其他分布形式来生成一组粒子，表示系统的初始状态。（本例中采用高斯分布初始化粒子）</p>
+<h3 id="预测阶段">(2)预测阶段</h3>
+<p>  根据系统模型，对每个粒子进行状态转移预测，以得到下一时刻的粒子。</p>
+<h3 id="更新阶段">(3)更新阶段</h3>
+<p>  根据系统模型得到预测值，根据测量结果获得观测数据，以观测值为均值的高斯分布进行每个粒子权重的计算，并进行归一化处理。权重表示了每个粒子与观测数据的一致程度。</p>
+<h3 id="重采样阶段">(4)重采样阶段</h3>
+<p>  根据粒子的权重，进行重采样操作（本例中采用独立随机采样，类似轮盘赌），增加高权重的粒子并减少低权重的粒子。重采样操作能够增加高权重粒子的数量，提高估计的准确性，可以通过设置阈值以决定是否进行重采样。</p>
+<h3 id="滤波输出">(5)滤波输出</h3>
+<p>  每一次迭代都会根据系统模型和观测模型，进行状态的预测和更新，从而逐渐减小估计误差。</p>
+<h2 id="二算法思想">二、算法思想</h2>
+<h3 id="均值估计">(1)均值估计</h3>
+<p>粒子滤波利用粒子集合的均值来作为滤波器的估计值，前提是粒子集合的分布很好地“覆盖“真实值。</p>
+<h3 id="权重计算">(2)权重计算</h3>
+<p>根据权重大小能实现”优质“粒子的大量复制，对”劣质“粒子实现淘汰制，是粒子滤波算法的核心。</p>
+<h2 id="三代码测试">三、代码测试</h2>
+<p>软件Matlab2018a</p>
+<figure class="highlight matlab"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs matlab"><span class="hljs-comment">% SIR(Sampling Importance Resampling)粒子滤波的应用</span><br>clear all<br>close all<br>clc<br><br><span class="hljs-comment">% 初始化</span><br>x_init = <span class="hljs-number">0.1</span>; <span class="hljs-comment">% 初始值</span><br>x_N = <span class="hljs-number">1</span>; <span class="hljs-comment">% 模型噪声的协方差</span><br>x_R = <span class="hljs-number">1</span>; <span class="hljs-comment">% 测量噪声的协方差</span><br>T = <span class="hljs-number">75</span>; <span class="hljs-comment">% 共进行75次</span><br>N = <span class="hljs-number">1000</span>; <span class="hljs-comment">% 粒子数，越大效果越好，计算量也越大</span><br><br><span class="hljs-comment">% 将我们的初始先验粒子分布初始化为真实初始值周围的高斯分布</span><br><br>V = <span class="hljs-number">2</span>; <span class="hljs-comment">% 初始粒子高斯分布的方差</span><br>X_ParticleModel = <span class="hljs-built_in">zeros</span>(N, <span class="hljs-number">75</span>); <span class="hljs-comment">% 沿模型演化获得的粒子值</span><br>X_Particle = <span class="hljs-built_in">zeros</span>(N, <span class="hljs-number">75</span>); <span class="hljs-comment">% 重采样后获得的粒子值</span><br>Z_ParticleModel = <span class="hljs-built_in">zeros</span>(N, <span class="hljs-number">75</span>); <span class="hljs-comment">% 粒子值测量获得的演化序列</span><br>Particle_Probility = <span class="hljs-built_in">zeros</span>(N, <span class="hljs-number">75</span>); <span class="hljs-comment">% 粒子权重演化序列</span><br>Particle_NormProbility = <span class="hljs-built_in">zeros</span>(N, T); <span class="hljs-comment">% 粒子归一化权重演化序列</span><br><br>X_Value = <span class="hljs-built_in">zeros</span>(<span class="hljs-number">1</span>, T); <span class="hljs-comment">% 沿模型演化获得的实际值</span><br>X_EstValue = <span class="hljs-built_in">zeros</span>(<span class="hljs-number">1</span>, T); <span class="hljs-comment">% 粒子滤波后的估计值</span><br>Z_Value = <span class="hljs-built_in">zeros</span>(<span class="hljs-number">1</span>, T); <span class="hljs-comment">% 实际值对应的测量值</span><br><br><span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span> = <span class="hljs-number">1</span>:N<br>    X_ParticleModel(<span class="hljs-built_in">i</span>, <span class="hljs-number">1</span>) = x_init + <span class="hljs-built_in">sqrt</span>(V) * <span class="hljs-built_in">randn</span>(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>); <span class="hljs-comment">% 在初值x=0.1的高斯分布，随机产生初始的N个粒子</span><br><span class="hljs-keyword">end</span><br>X_Value(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>) = x_init;<br>X_EstValue(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>) = x_init;<br><br><span class="hljs-keyword">for</span> t = <span class="hljs-number">2</span>:T<br>    <span class="hljs-comment">% 实际值与观测值在程序中进行虚拟生成，真实环境下实际值无法获取，观测值可以通过测量获得</span><br>    <span class="hljs-comment">% 实际值，系统模型（含高斯不确定量）</span><br>    X_Value(<span class="hljs-number">1</span>, t) = <span class="hljs-number">0.5</span> * X_Value(<span class="hljs-number">1</span>, t<span class="hljs-number">-1</span>) + <span class="hljs-number">25</span> * X_Value(<span class="hljs-number">1</span>, t<span class="hljs-number">-1</span>) / (<span class="hljs-number">1</span> + X_Value(<span class="hljs-number">1</span>, t<span class="hljs-number">-1</span>)^<span class="hljs-number">2</span>) + <span class="hljs-number">8</span> * <span class="hljs-built_in">cos</span>(<span class="hljs-number">1.2</span>*(t - <span class="hljs-number">1</span>)) + <span class="hljs-built_in">sqrt</span>(x_N) * <span class="hljs-built_in">randn</span>;<br>    <span class="hljs-comment">% 观测值，测量模型，含高斯测量误差</span><br>    Z_Value(<span class="hljs-number">1</span>, t) = X_Value(<span class="hljs-number">1</span>, t)^<span class="hljs-number">2</span> / <span class="hljs-number">20</span> + <span class="hljs-built_in">sqrt</span>(x_R) * <span class="hljs-built_in">randn</span>;<br>    <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span> = <span class="hljs-number">1</span>:N<br>        <span class="hljs-comment">% 粒子预测值</span><br>        X_ParticleModel(<span class="hljs-built_in">i</span>, t) = <span class="hljs-number">0.5</span> * X_ParticleModel(<span class="hljs-built_in">i</span>, t<span class="hljs-number">-1</span>) + <span class="hljs-number">25</span> * X_ParticleModel(<span class="hljs-built_in">i</span>, t<span class="hljs-number">-1</span>) / (<span class="hljs-number">1</span> + X_ParticleModel(<span class="hljs-built_in">i</span>, t<span class="hljs-number">-1</span>)^<span class="hljs-number">2</span>) + <span class="hljs-number">8</span> * <span class="hljs-built_in">cos</span>(<span class="hljs-number">1.2</span>*(t - <span class="hljs-number">1</span>)) + <span class="hljs-built_in">sqrt</span>(x_N) * <span class="hljs-built_in">randn</span>;<br>        <span class="hljs-comment">% 粒子观测值</span><br>        Z_ParticleModel(<span class="hljs-built_in">i</span>, t) = X_ParticleModel(<span class="hljs-built_in">i</span>, t)^<span class="hljs-number">2</span> / <span class="hljs-number">20</span>;<br>        <span class="hljs-comment">% 粒子观测值的权重</span><br>        Particle_Probility(<span class="hljs-built_in">i</span>, t) = (<span class="hljs-number">1</span> / <span class="hljs-built_in">sqrt</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*x_R)) * <span class="hljs-built_in">exp</span>(-(Z_Value(<span class="hljs-number">1</span>, t) - Z_ParticleModel(<span class="hljs-built_in">i</span>, t))^<span class="hljs-number">2</span>/(<span class="hljs-number">2</span> * x_R));<br>    <span class="hljs-keyword">end</span><br>    Particle_NormProbility(:, t) = Particle_Probility(:, t) ./ sum(Particle_Probility(:, t)); <span class="hljs-comment">% 归一化权重</span><br>    <span class="hljs-comment">% 重采样（独立随机采样）</span><br>    <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span> = <span class="hljs-number">1</span>:N<br>        <span class="hljs-comment">% 粒子权重大的会有大概率进行保留复制，权重小的粒子数量少</span><br>        X_Particle(<span class="hljs-built_in">i</span>, t) = X_ParticleModel(<span class="hljs-built_in">find</span>(<span class="hljs-built_in">rand</span> &lt;= cumsum(Particle_NormProbility(:, t)),<span class="hljs-number">1</span>), t);<br>    <span class="hljs-keyword">end</span><br>    <br>    <span class="hljs-comment">% 状态估计，重采样以后，每个粒子的权重都变成了1/N，用所有粒子的采样值均值估计真实值</span><br>    X_EstValue(<span class="hljs-number">1</span>, t) = <span class="hljs-built_in">mean</span>(X_Particle(:, t));<br><span class="hljs-keyword">end</span><br><br><br>t = <span class="hljs-number">1</span>:T;<br><span class="hljs-built_in">figure</span>(<span class="hljs-number">1</span>);<br><span class="hljs-built_in">plot</span>(t, X_Value(<span class="hljs-number">1</span>, :), <span class="hljs-string">'.-b'</span>, t, X_EstValue(<span class="hljs-number">1</span>, :), <span class="hljs-string">'-.r'</span>, <span class="hljs-string">'linewidth'</span>, <span class="hljs-number">3</span>);<br>set(gca, <span class="hljs-string">'FontSize'</span>, <span class="hljs-number">12</span>);<br>set(gcf, <span class="hljs-string">'Color'</span>, <span class="hljs-string">'White'</span>);<br>xlabel(<span class="hljs-string">'Step'</span>);<br>ylabel(<span class="hljs-string">'Value'</span>);<br><span class="hljs-built_in">legend</span>(<span class="hljs-string">'真实值'</span>, <span class="hljs-string">'估计值'</span>);<br></code></pre></div></td></tr></table></figure>
+<p><img src="https://s11.ax1x.com/2023/10/03/pPOJsSK.png" srcset="/img/loading.gif" lazyload alt="粒子滤波效果"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95/%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/">滤波算法</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Matlab/">Matlab</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9D%9E%E7%BA%BF%E6%80%A7%E6%BB%A4%E6%B3%A2/">非线性滤波</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%BB%A4%E6%B3%A2/">滤波</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B/">蒙特卡洛</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%B2%92%E5%AD%90%E6%BB%A4%E6%B3%A2/">粒子滤波</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%87%8D%E9%87%87%E6%A0%B7/">重采样</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E7%A7%91%E6%99%AE%E8%AE%A4%E8%AF%86/%E7%94%B5%E5%8A%A8%E6%9C%BA%E7%9A%84%E7%9F%A5%E8%AF%86/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">电动机的知识</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E6%8E%A7%E5%88%B6/%E6%8E%A7%E5%88%B6%E7%AE%97%E6%B3%95/%E8%B7%9F%E8%B8%AA%E5%BE%AE%E5%88%86%E5%99%A8/">
+                        <span class="hidden-mobile">跟踪微分器</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","appKey":"LUzOsNy6KL0b2iyCMMlIstrJ","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        鄂ICP备2023014081号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="/js/DynamicLine.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,1088 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta name="baidu-site-verification" content="codeva-9XPZaiy24f" />
+  <meta name="google-site-verification" content="iKfk41-7IB31giGsS85H53G6zjnznJUfmfawPXmej9U" />
+  <script>
+  (function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://cznewborn.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+  </script>
+
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ChenZhao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在STM32微控制器上实现实时操作系统（RTOS）可以提供更高级别的任务管理和调度功能，以增强系统的并发性和响应性。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STM32移植UCOSIII">
+<meta property="og:url" content="https://www.cznewborn.com/STM32/STM32%E7%A7%BB%E6%A4%8DUCOS/index.html">
+<meta property="og:site_name" content="Leia Blog">
+<meta property="og:description" content="在STM32微控制器上实现实时操作系统（RTOS）可以提供更高级别的任务管理和调度功能，以增强系统的并发性和响应性。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s11.ax1x.com/2023/10/02/pPLy8df.png">
+<meta property="article:published_time" content="2023-10-02T08:17:11.000Z">
+<meta property="article:modified_time" content="2025-12-08T16:45:20.459Z">
+<meta property="article:author" content="ChenZhao">
+<meta property="article:tag" content="STM32H743">
+<meta property="article:tag" content="ucosIII">
+<meta property="article:tag" content="RTOS">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s11.ax1x.com/2023/10/02/pPLy8df.png">
+  
+  
+  <title>STM32移植UCOSIII - Leia Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/indeximg-hover.css">
+<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/scroll.css">
+<link rel="stylesheet" href="/css/valine.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.cznewborn.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":6},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","app_key":"LUzOsNy6KL0b2iyCMMlIstrJ","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Leia Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://s1.ax1x.com/2023/01/02/pSPVr1e.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="STM32移植UCOSIII">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-10-02 16:17" pubdate>
+        2023年10月2日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      11k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      92 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">STM32移植UCOSIII</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2025年12月9日 凌晨
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="stm32移植ucosiii">STM32移植UCOSIII</h1>
+<p>  早期嵌入式Q开发没有嵌入式操作系统的概念，直接操作裸机，在裸机上写程序，比如用51单片机基本就没有操作系统的概念。通常把程序分为两部分：前台系统和后台系统。传统简单的小系统通常是前后台系统，这样的程序包括一个死循环和若干个中断服务程序：应用程序是一个无限循环，循环中调用API函数完成所需的操作，这个大循环就叫做后台系统。中断服务程序用于处理系统的异步事件，也就是前台系统。前台是中断级，后台是任务级。</p>
+<p>  在前后台系统下，所有的任务的优先级是平等的，且是以FIFO的方式排列。也就是说，后面的任务必须等待前面的任务都完成之后才可以执行。<strong><u>在前后台系统下，实时性非常差，而且随着任务数量的增多，实时性会愈差。</u></strong>就好像我们上课时突然内急（优先级很高)，需要立刻去WC，但是却不得不等到下课（优先级不高）。这种情况下在程序上表现出来可能就是数据丢失，或者响应慢（比如步进电机过冲）等效果了。尽管也可以利用定时器等手段去手动分配时间片来增强实时性，但这样的方法容易造成程序的高度耦合，与程序开发的“高内聚，低耦合”相悖，这样的代码肯定是很难管理和维护的。</p>
+<p>  <strong><u>而在RTOS实时操作系统下进行程序开发，每个任务都是独立运行的一个有限次或无限次循环，一般情况下不会互相影响（除非栈溢出等因素），因而很容易管理和维护。</u></strong>每个任务都可以设置优先级，RTOS的内核大多都是可抢占式的。高优先级的任务一但就绪就可以夺走低优先级任务的CPU使用权，实时性相比于前后台系统大幅度提高。而且RTOS会提供一些内核对象供用户使用，比如信号量，常用作任务同步和共享资源保护等。</p>
+<p>  uC/OS-Ⅲ（Micro C OS Three微型的 C
+语言编写的操作系统第3版）是一个可升级的，可固化的，基于优先级的实时内核，属于一种RTOS实时操作系统。它对任务的个数无限制。uC/OS-Ⅲ是一个第3代的系统内核，支持现代的实时内核所期待的大部分功能。例如资源管理，同步，任务间的通信等等。然而，uC/OS-Ⅲ提供的特色功能在其它的实时内核中是找不到的，比如说完备的运行时间测量性能，直接地发送信号或者消息到任务，任务可以同时等待多个内核对象等。</p>
+<blockquote>
+<p>参考</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sudaroot/article/details/119174009">STM32CubeIDE
+复制工程使用CubeMX配置生成后src文件夹内容被删除（移除）_sudaroot的博客-CSDN博客</a></p>
+<p>[<a target="_blank" rel="noopener" href="https://doc.embedfire.com/rtos/ucos/zh/latest/index.html">野火]uCOS-III内核实现与应用开发实战指南—基于STM32</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/weston-embedded">Weston Embedded
+Solutions · GitHub</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.openedv.com/docs/book-videos/zdyzshipin/4free/newUCOS-III.html">2023年新版手把手教你学UCOS-III
+— 正点原子资料下载中心 1.0.0 文档 (openedv.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1kc411N7aV?p=6&amp;vd_source=d39e11bb4fa8b6ef63cf42c61ba11cd9">第6讲
+UCOSIII移植_哔哩哔哩_bilibili</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv7618532/">使用RTOS做单片机开发有什么优势
+- 哔哩哔哩 (bilibili.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/37179323">RTOS实时操作系统杂谈
+- 知乎 (zhihu.com)</a></p>
+</blockquote>
+<h2 id="一ucosⅲ源码下载">一、ucosⅢ源码下载</h2>
+<p>uc-OS3源码：<a target="_blank" rel="noopener" href="https://github.com/weston-embedded/uC-OS3/tree/v3.08.01">weston-embedded/uC-OS3
+at v3.08.01 (github.com)</a></p>
+<p>uc-LIB源码：<a target="_blank" rel="noopener" href="https://github.com/weston-embedded/uC-LIB/tree/v1.39.01">weston-embedded/uC-LIB
+at v1.39.01 (github.com)</a></p>
+<p>uc-CPU源码：<a target="_blank" rel="noopener" href="https://github.com/weston-embedded/uC-CPU/tree/v1.32.01">weston-embedded/uC-CPU
+at v1.32.01 (github.com)</a></p>
+<h2 id="二ucosⅲ源码结构">二、ucosⅢ源码结构</h2>
+<p><img src="https://z1.ax1x.com/2023/10/02/pPLtOht.png" srcset="/img/loading.gif" lazyload alt="ucosⅢ源码架构"></p>
+<h2 id="三工程添加4个分组官方源码文件">三、工程添加4个分组【官方源码文件】</h2>
+<table>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 45%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr>
+<th>Keil工程分组</th>
+<th>添加文件</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td><strong>（19个文件）</strong></td>
+</tr>
+<tr>
+<td>uC_OS3/OS</td>
+<td>./uC_OS3/uC-OS3/Cfg/Template/os_app_hooks.c</td>
+<td>包含了8 个空的能被uC/OS-III 调用的hook0 函数。</td>
+</tr>
+<tr>
+<td></td>
+<td>./uC_OS3/uC-OS3/Ports/ARM-Cortex-M/ARMv7-M/ARM/os_cpu_a.asm</td>
+<td>包含了汇编语言定义的函数。至少需包含OSCtxSW()，OSIntCtxSW()，OSStartHighRdy()的定义</td>
+</tr>
+<tr>
+<td></td>
+<td>./uC_OS3/uC-OS3/Ports/ARM-Cortex-M/ARMv7-M/os_cpu_c.c</td>
+<td>包含了C 代码编写的hook
+函数以及初始化任务创建时堆栈框架的相关代码</td>
+</tr>
+<tr>
+<td></td>
+<td>./uC_OS3/uC-OS3/Source/os_cfg_app.c</td>
+<td>申明变量和数组（基于OS_CFG_APP.H 中的变量类型）</td>
+</tr>
+<tr>
+<td></td>
+<td>./uC_OS3/uC-OS3/Source/os_core.c</td>
+<td>包含uC/OS-III
+的核心函数如OSInit()，OSSchedule()，OSIntExit()等等</td>
+</tr>
+<tr>
+<td></td>
+<td>./uC_OS3/uC-OS3/Source/os_dbg.c</td>
+<td>申明了关于内核调试器或uC/Probe 的常量</td>
+</tr>
+<tr>
+<td></td>
+<td>./uC_OS3/uC-OS3/Source/os_flag.c</td>
+<td>包含了时间管理相关的代码</td>
+</tr>
+<tr>
+<td></td>
+<td>./uC_OS3/uC-OS3/Source/os_mem.c</td>
+<td>包含了uC/OS-III 内存管理相关代码</td>
+</tr>
+<tr>
+<td></td>
+<td>./uC_OS3/uC-OS3/Source/os_msg.c</td>
+<td>包含了消息处理相关代码</td>
+</tr>
+<tr>
+<td></td>
+<td>./uC_OS3/uC-OS3/Source/os_mutex.c</td>
+<td>包含了与互斥信号量相关的代码</td>
+</tr>
+<tr>
+<td></td>
+<td>./uC_OS3/uC-OS3/Source/os_prio.c</td>
+<td>包含了管理任务优先级相关的代码。这个文件可以被改为同等功能的汇编语言写的文件（如果CPU
+支持位设置，位清除指令，计数清零指令）以提高性能。</td>
+</tr>
+<tr>
+<td></td>
+<td>./uC_OS3/uC-OS3/Source/os_q.c</td>
+<td>包含了管理消息队列相关的代码</td>
+</tr>
+<tr>
+<td></td>
+<td>./uC_OS3/uC-OS3/Source/os_sem.c</td>
+<td>包含了管理与资源、同步相关的信号量代码</td>
+</tr>
+<tr>
+<td></td>
+<td>./uC_OS3/uC-OS3/Source/os_stat.c</td>
+<td>包含了与统计任务相关的代码</td>
+</tr>
+<tr>
+<td></td>
+<td>./uC_OS3/uC-OS3/Source/os_task.c</td>
+<td>包含了与管理任务相关的代码如OSTaskCreate()，OSTaskDel()，OSTaskChangePrio()等函数</td>
+</tr>
+<tr>
+<td></td>
+<td>./uC_OS3/uC-OS3/Source/os_tick.c</td>
+<td>包含了与任务延时，任务停止相关的代码</td>
+</tr>
+<tr>
+<td></td>
+<td>./uC_OS3/uC-OS3/Source/os_time.c</td>
+<td>包含了任务定时相关的代码</td>
+</tr>
+<tr>
+<td></td>
+<td>./uC_OS3/uC-OS3/Source/os_tmr.c</td>
+<td>包含了管理软件定时器相关的代码</td>
+</tr>
+<tr>
+<td></td>
+<td>./uC_OS3/uC-OS3/Source/os_var.c</td>
+<td>包含了uC/OS-III 的全局变量，这些变量都是用于管理uC/OS-III
+的，不应该被用户的代码访问</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><strong>（2个文件）</strong></td>
+</tr>
+<tr>
+<td>uC_OS3/BSP</td>
+<td>./uC_OS3/uC-CPU/BSP/Template/bsp_cpu.c</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>./uC_OS3/uC-OS3/Template/bsp_os_dt.c</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><strong>（3个文件）</strong></td>
+</tr>
+<tr>
+<td>uC_OS3/CPU</td>
+<td>./uC_OS3/uC-CPU/ARM-Cortex-M/ARMv7-M/cpu_c.c</td>
+<td>特定CPU 架构的C语言代码。一般来说，如果函数能用C 编写就用C
+编写，除非用汇编编写能够产生更高的性</td>
+</tr>
+<tr>
+<td></td>
+<td>./uC_OS3/uC-CPU/ARM-Cortex-M/ARMv7-M/ARM/cpu_a.asm</td>
+<td>包含了汇编语言编写的函数用于关中断，开中断，计数清零（如果CPU
+支持这条汇编指令的话），其它CPU
+相关的只能用汇编编写的函数。这个文件也包含开启caches，设置MPUs 和MMU
+等等。</td>
+</tr>
+<tr>
+<td></td>
+<td>./uC_OS3/uC-CPU/cpu_core.c</td>
+<td>适应于所有架构 CPU 的代码。包含了测量 CPU
+关中断时间相关函数的代码。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><strong>（4个文件）</strong></td>
+</tr>
+<tr>
+<td>uC_OS3/LIB</td>
+<td>./uC_OS3/uC-LIB/lib_ascii.c</td>
+<td>包含将一些标准库函数（如 tolower()、toupper()、isalpha()、isdigit()
+等）分别替换为 uC/LIB 对应函数
+ASCII_ToLower()、ASCII_ToUpper()、ASCII_IsAlpha() 和ASCII_IsDig()
+的源代码。</td>
+</tr>
+<tr>
+<td></td>
+<td>./uC_OS3/uC-LIB/lib_math.c</td>
+<td>包含将一些标准库函数（如 rand()、srand()等）分别替换为 uC/LIB
+对应函数 Math_Rand()、Math_SetSeed()的源代码</td>
+</tr>
+<tr>
+<td></td>
+<td>./uC_OS3/uC-LIB/lib_mem.c</td>
+<td>包含将一些标准库函数，（如 memclr()、memset()、memcpy()、memcmp()
+等）分别替换为 uC/LIB 对应函数Mem_Clr()、Mem_Set()、Mem_Copy
+()、Mem_Cmp() 的源代码</td>
+</tr>
+<tr>
+<td></td>
+<td>./uC_OS3/uC-LIB/lib_str.c</td>
+<td>包含将一些标准库函数，（如strlen()、strcpy()、strcat()、strcmp()等）分别替换为
+uC/LIB 对应函数Str_Len()、Str_Copy()、Str_Cat()、Str_Cmp()的源代码</td>
+</tr>
+</tbody>
+</table>
+<h2 id="四添加头文件路径">四、添加头文件路径</h2>
+<table>
+<thead>
+<tr>
+<th>包含头文件文件夹路径</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.._OS3-CPU</td>
+</tr>
+<tr>
+<td>.._OS3-CPU-Cortex-M-M</td>
+</tr>
+<tr>
+<td>.._OS3-CPU</td>
+</tr>
+<tr>
+<td>.._OS3-LIB</td>
+</tr>
+<tr>
+<td>.._OS3-LIB</td>
+</tr>
+<tr>
+<td>.._OS3-OS3</td>
+</tr>
+<tr>
+<td>.._OS3-OS3-Cortex-M-M</td>
+</tr>
+<tr>
+<td>.._OS3-OS3</td>
+</tr>
+</tbody>
+</table>
+<h2 id="五修改system文件正点原子自定义文件">五、修改System文件【正点原子自定义文件】</h2>
+<p>直接拷贝正点原子项目中的文件，添加进项目分组即可</p>
+<table>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 81%">
+</colgroup>
+<thead>
+<tr>
+<th>头文件</th>
+<th>源文件</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uart.h</td>
+<td>uart.c</td>
+<td>调试用串口函数定义（相应修改为cubemx代码结构，可删除）</td>
+</tr>
+<tr>
+<td>sys.h</td>
+<td>sys.c</td>
+<td>系统配置定义（相应修改为cubemx代码结构，去除配置系统时钟函数）</td>
+</tr>
+<tr>
+<td>delay.h</td>
+<td>delay.c</td>
+<td>延时函数定义（相应修改为cubemx代码结构）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="六替换中断服务函数">六、替换中断服务函数</h2>
+<p>startup_stm32h743xx.s文件中的PendSV_Handler替换成OS_CPU_PendSVHandler</p>
+<h2 id="七修改配置文件">七、修改配置文件</h2>
+<p>使用正点原子配置文件（内容替换 或 按如下配置）</p>
+<table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 37%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr>
+<th>文件</th>
+<th>修改内容</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>./uC_OS3/uC-CPU/Cfg/Template/cpu_cfg.h</td>
+<td><strong>#define CPU_CFG_NAME_EN DEF_ENABLED #define CPU_CFG_TS_32_EN
+DEF_ENABLED 开启Configure CPU count leading zeros bits 开启Configure CPU
+count trailing zeros bits 开启#define CPU_CFG_ENDIAN_TYPE
+CPU_ENDIAN_TYPE_LITTLE 开启#define CPU_CFG_NVIC_PRIO_BITS
+4u</strong></td>
+<td><strong>启用CPU 主机名 启用 32 位 CPU 时间戳功能
+定义前导零位计数函数。 定义尾零位计数函数 重写 cpu.h 中定义的默认 CPU
+端位类型为小端 确定可编程中断优先级[7:4]</strong></td>
+</tr>
+<tr>
+<td>/uC_OS3/uC-LIB/Cfg/Template/lib_cfg.h</td>
+<td><strong>#define LIB_MEM_CFG_HEAP_SIZE 0u</strong></td>
+<td><strong>禁用堆分配功能</strong></td>
+</tr>
+<tr>
+<td>./uC_OS3/uC-OS3/Cfg/Template/os_cfg_app.h</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>./uC_OS3/uC-OS3/Cfg/Template/os_cfg.h</td>
+<td><strong>#define OS_CFG_APP_HOOKS_EN 0u #define OS_CFG_TS_EN 1u
+#define OS_CFG_PRIO_MAX 32u #define OS_CFG_TASK_REG_TBL_SIZE 0u #define
+OS_CFG_TASK_STK_REDZONE_EN 1u</strong></td>
+<td><strong>禁用应用程序特定的钩子 启用时间标记
+定义任务优先级的最大数量32 任务专用寄存器数量0
+启用堆栈红区，以便在调试时检测堆栈溢出</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="八添加自定义功能代码">八、添加自定义功能代码</h2>
+<h3 id="stm32cubemx配置说明更详细的配置自行上网查询">（1）STM32CubeMX配置说明（更详细的配置自行上网查询）</h3>
+<ul>
+<li>复制工程前后或使用图形化配置前记得先把文件夹下的<code>.mxproject</code>文件删除即可</li>
+<li>外部有源晶振BYPASS Clock Source</li>
+<li>外部无源晶振Crystal/Ceramic Resonator</li>
+<li>功率调节器电压级别Power Regulator Voltage Scale限制最高工作频率</li>
+<li>IO引脚为黄色表示未激活，需要进行相应配置</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>GPIO默认电平设置</th>
+<th>说明（一般在检测输入信号时设置）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No pull--up and no pull-down</td>
+<td>不使用内部电阻（用于输出模式）</td>
+</tr>
+<tr>
+<td>pull-up</td>
+<td>上拉电阻，初始化为高电平</td>
+</tr>
+<tr>
+<td>pull-down</td>
+<td>下拉电阻，初始化为低电平</td>
+</tr>
+</tbody>
+</table>
+<h3 id="led灯功能代码">（2）LED灯功能代码</h3>
+<h4 id="文件led.h">1.文件led.h</h4>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> _LED_H</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> _LED_H</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">"./SYSTEM/sys/sys.h"</span></span><br><br><span class="hljs-keyword">extern</span> <span class="hljs-type">uint8_t</span> key;<br><span class="hljs-keyword">extern</span> <span class="hljs-type">uint8_t</span> LED2_sta;<br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> LED2(n) (n ? HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET) : HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET)) <span class="hljs-comment">// 设置LED状态</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> LED2_Toggle (HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_1))                                                                     <span class="hljs-comment">// LED1输出电平翻转</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br><br></code></pre></div></td></tr></table></figure>
+<h4 id="文件led.c">2.文件led.c</h4>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">"led.h"</span></span><br><br><span class="hljs-type">uint8_t</span> key;<br><span class="hljs-type">uint8_t</span> LED2_sta = <span class="hljs-number">0</span>;<br><br></code></pre></div></td></tr></table></figure>
+<h3 id="key按键功能代码">（3）Key按键功能代码</h3>
+<h4 id="文件key.h">1.文件key.h</h4>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> _KEY_H</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> _KEY_H</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">"./SYSTEM/sys/sys.h"</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> KEY1 HAL_GPIO_ReadPin(GPIOE, GPIO_PIN_3) <span class="hljs-comment">// KEY1按键PE3</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> KEY2 HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_5) <span class="hljs-comment">// KEY2按键PC5</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> KEY1_PRES 1 <span class="hljs-comment">// KEY1按下后返回值</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> KEY2_PRES 2 <span class="hljs-comment">// KEY2按下后返回值</span></span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">KEY_Init</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>;            <span class="hljs-comment">// 按键IO初始化函数</span><br><span class="hljs-type">uint8_t</span> <span class="hljs-title function_">KEY_Scan</span><span class="hljs-params">(<span class="hljs-type">uint8_t</span> mode)</span>; <span class="hljs-comment">// 按键扫描函数</span><br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br><br></code></pre></div></td></tr></table></figure>
+<h4 id="文件key.c">2.文件key.c</h4>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">"key.h"</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">"./SYSTEM/delay/delay.h"</span></span><br><br><span class="hljs-comment">// 按键处理函数</span><br><span class="hljs-comment">// 返回按键值</span><br><span class="hljs-comment">// mode:0,不支持连续按;1,支持连续按;</span><br><span class="hljs-comment">// 0，没有任何按键按下</span><br><span class="hljs-comment">// 1，WKUP按下 WK_UP</span><br><span class="hljs-comment">// 注意此函数有响应优先级,KEY1&gt;KEY2</span><br><br><span class="hljs-type">uint8_t</span> <span class="hljs-title function_">KEY_Scan</span><span class="hljs-params">(<span class="hljs-type">uint8_t</span> mode)</span><br>{<br>    <span class="hljs-type">static</span> <span class="hljs-type">uint8_t</span> key_up = <span class="hljs-number">1</span>; <span class="hljs-comment">// 按键松开标志</span><br>    <span class="hljs-keyword">if</span> (mode == <span class="hljs-number">1</span>)<br>        key_up = <span class="hljs-number">1</span>; <span class="hljs-comment">// 支持连按</span><br>    <span class="hljs-keyword">if</span> (key_up &amp;&amp; (KEY1 == <span class="hljs-number">0</span> || KEY2 == <span class="hljs-number">0</span>))<br>    {<br>        delay_ms(<span class="hljs-number">10</span>);<br>        key_up = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">if</span> (KEY1 == <span class="hljs-number">0</span>)<br>            <span class="hljs-keyword">return</span> KEY1_PRES;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (KEY2 == <span class="hljs-number">0</span>)<br>            <span class="hljs-keyword">return</span> KEY2_PRES;<br>    }<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (KEY1 == <span class="hljs-number">1</span> &amp;&amp; KEY2 == <span class="hljs-number">1</span>)<br>        key_up = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; <span class="hljs-comment">// 无按键按下</span><br>}<br><br></code></pre></div></td></tr></table></figure>
+<h3 id="uc_os3用户代码">（4）uC_OS3用户代码</h3>
+<h4 id="文件uc_os3.h">1.文件uC_OS3.h</h4>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> __UC_OS3_H__</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> __UC_OS3_H__</span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">uc_os3</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>;<br><br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br><br></code></pre></div></td></tr></table></figure>
+<h4 id="文件uc_os3.c">2.文件uC_OS3.c</h4>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">"uC_OS3.h"</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">"./SYSTEM/sys/sys.h"</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">"usart.h"</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">"led.h"</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">"key.h"</span></span><br><br><span class="hljs-comment">/*uC/OS-III*********************************************************************************************/</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">"os.h"</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">"cpu.h"</span></span><br><span class="hljs-comment">/******************************************************************************************************/</span><br><span class="hljs-comment">/*uC/OS-III配置*/</span><br><br><span class="hljs-comment">/* START_TASK 任务 配置</span><br><span class="hljs-comment"> * 包括: 任务优先级 任务栈大小 任务控制块 任务栈 任务函数</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> START_TASK_PRIO 5</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> START_TASK_STACK_SIZE 256</span><br>CPU_STK start_task_stack[START_TASK_STACK_SIZE];<br>OS_TCB start_task_tcb;<br><span class="hljs-type">void</span> <span class="hljs-title function_">start_task</span><span class="hljs-params">(<span class="hljs-type">void</span> *p_arg)</span>;<br><br><span class="hljs-comment">/* TASK1 任务 配置</span><br><span class="hljs-comment"> * 包括: 任务优先级 任务栈大小 任务控制块 任务栈 任务函数</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> TASK1_PRIO 4</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> TASK1_STACK_SIZE 256</span><br>CPU_STK SetLed_task1_stack[TASK1_STACK_SIZE];<br>OS_TCB task1_tcb;<br><span class="hljs-type">void</span> <span class="hljs-title function_">SetLed</span><span class="hljs-params">(<span class="hljs-type">void</span> *p_arg)</span>;<br><br><span class="hljs-comment">/* TASK2 任务 配置</span><br><span class="hljs-comment"> * 包括: 任务优先级 任务栈大小 任务控制块 任务栈 任务函数</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> TASK2_PRIO 3</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> TASK2_STACK_SIZE 256</span><br>CPU_STK ScanKey_task2_stack[TASK2_STACK_SIZE];<br>OS_TCB task2_tcb;<br><span class="hljs-type">void</span> <span class="hljs-title function_">ScanKey</span><span class="hljs-params">(<span class="hljs-type">void</span> *p_arg)</span>;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">uc_os3</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span><br>{<br>    OS_ERR err;<br><br>    <span class="hljs-comment">// 初始化uC/OS-III</span><br>    OSInit(&amp;err);<br>    OSTaskCreate((OS_TCB *)&amp;start_task_tcb,<br>                 (CPU_CHAR *)<span class="hljs-string">"start_task"</span>,<br>                 (OS_TASK_PTR)start_task,<br>                 (<span class="hljs-type">void</span> *)<span class="hljs-number">0</span>,<br>                 (OS_PRIO)START_TASK_PRIO,<br>                 (CPU_STK *)&amp;start_task_stack[<span class="hljs-number">0</span>],<br>                 (CPU_STK_SIZE)START_TASK_STACK_SIZE / <span class="hljs-number">10</span>,<br>                 (CPU_STK_SIZE)START_TASK_STACK_SIZE,<br>                 (OS_MSG_QTY)<span class="hljs-number">0</span>,<br>                 (OS_TICK)<span class="hljs-number">0</span>,<br>                 (<span class="hljs-type">void</span> *)<span class="hljs-number">0</span>,<br>                 (OS_OPT)(OS_OPT_TASK_STK_CHK | OS_OPT_TASK_STK_CLR),<br>                 (OS_ERR *)&amp;err);<br>    <span class="hljs-keyword">if</span> (err != OS_ERR_NONE)<br>    {<br>        <span class="hljs-comment">// The task didn't get created. Look up the value of the error code ...</span><br>        <span class="hljs-comment">// ... in OS.H for the meaning of the error</span><br>    }<br>    OSStart(&amp;err); <span class="hljs-comment">// 开始任务调度</span><br>}<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">start_task</span><span class="hljs-params">(<span class="hljs-type">void</span> *p_arg)</span><br>{<br>    OS_ERR err;<br>    CPU_SR_ALLOC();<br>    CPU_Init();<br><br><span class="hljs-meta">#<span class="hljs-keyword">if</span> OS_CFG_STAT_TASK_EN &gt; 0u <span class="hljs-comment">// 开启统计任务</span></span><br>    OSStatTaskCPUUsageInit(&amp;err);<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">ifdef</span> CPU_CFG_INT_DIS_MEAS_EN <span class="hljs-comment">// 如果使能了测量中断关闭时间</span></span><br>    CPU_IntDisMeasMaxCurReset();<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">if</span> OS_CFG_SCHED_ROUND_ROBIN_EN                 <span class="hljs-comment">// 当使用时间片轮转的时候</span></span><br>    OSSchedRoundRobinCfg(DEF_ENABLED, <span class="hljs-number">1</span>, &amp;err); <span class="hljs-comment">// 使能时间片轮转调度功能,设置默认的时间片长度</span><br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br><br>    CPU_CRITICAL_ENTER(); <span class="hljs-comment">/* 进入临界区 */</span><br>    <span class="hljs-comment">/* 创建task1 */</span><br>    <span class="hljs-comment">// task1_stack = mymalloc(SRAMIN, TASK1_STACK_SIZE * sizeof(CPU_STK));</span><br>    OSTaskCreate((OS_TCB *)&amp;task1_tcb,<br>                 (CPU_CHAR *)<span class="hljs-string">"SetLed"</span>,<br>                 (OS_TASK_PTR)SetLed,<br>                 (<span class="hljs-type">void</span> *)<span class="hljs-number">0</span>,<br>                 (OS_PRIO)TASK1_PRIO,<br>                 (CPU_STK *)SetLed_task1_stack,<br>                 (CPU_STK_SIZE)TASK1_STACK_SIZE / <span class="hljs-number">10</span>,<br>                 (CPU_STK_SIZE)TASK1_STACK_SIZE,<br>                 (OS_MSG_QTY)<span class="hljs-number">0</span>,<br>                 (OS_TICK)<span class="hljs-number">0</span>,<br>                 (<span class="hljs-type">void</span> *)<span class="hljs-number">0</span>,<br>                 (OS_OPT)(OS_OPT_TASK_STK_CHK | OS_OPT_TASK_STK_CLR),<br>                 (OS_ERR *)&amp;err);<br><br>    <span class="hljs-comment">/* 创建task2 */</span><br>    <span class="hljs-comment">// task2_stack = mymalloc(SRAMIN, TASK2_STACK_SIZE * sizeof(CPU_STK));</span><br>    OSTaskCreate((OS_TCB *)&amp;task2_tcb,<br>                 (CPU_CHAR *)<span class="hljs-string">"ScanKey"</span>,<br>                 (OS_TASK_PTR)ScanKey,<br>                 (<span class="hljs-type">void</span> *)<span class="hljs-number">0</span>,<br>                 (OS_PRIO)TASK2_PRIO,<br>                 (CPU_STK *)ScanKey_task2_stack,<br>                 (CPU_STK_SIZE)TASK2_STACK_SIZE / <span class="hljs-number">10</span>,<br>                 (CPU_STK_SIZE)TASK2_STACK_SIZE,<br>                 (OS_MSG_QTY)<span class="hljs-number">0</span>,<br>                 (OS_TICK)<span class="hljs-number">0</span>,<br>                 (<span class="hljs-type">void</span> *)<span class="hljs-number">0</span>,<br>                 (OS_OPT)(OS_OPT_TASK_STK_CHK | OS_OPT_TASK_STK_CLR),<br>                 (OS_ERR *)&amp;err);<br><br>    CPU_CRITICAL_EXIT(); <span class="hljs-comment">/* 退出临界区 */</span><br>    OSTaskDel((OS_TCB *)<span class="hljs-number">0</span>, &amp;err);<br>}<br><br><span class="hljs-comment">/* 实现LED0每500ms反转一次 */</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">SetLed</span><span class="hljs-params">(<span class="hljs-type">void</span> *p_arg)</span><br>{<br>    OS_ERR err;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>)<br>    {<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"task1正在运行！！！\r\n"</span>);<br>        LED2_sta = !LED2_sta;<br><br>        LED2(LED2_sta);<br>        OSTimeDly(<span class="hljs-number">500</span>, OS_OPT_TIME_DLY, &amp;err);<br>    }<br>}<br><br><span class="hljs-comment">/* 检测按键输入，挂起和恢复任务 */</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">ScanKey</span><span class="hljs-params">(<span class="hljs-type">void</span> *p_arg)</span><br>{<br>    OS_ERR err;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>)<br>    {<br>        <span class="hljs-comment">// printf("task3正在运行！！！\r\n");</span><br>        key = KEY_Scan(<span class="hljs-number">0</span>);<br>        <span class="hljs-keyword">if</span> (key == KEY1_PRES)<br>        {<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"挂起task1\r\n"</span>);<br>            OSTaskSuspend(&amp;task1_tcb, &amp;err);<br>        }<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (key == KEY2_PRES)<br>        {<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"恢复task1\r\n"</span>);<br>            OSTaskResume(&amp;task1_tcb, &amp;err);<br>        }<br><br>        OSTimeDly(<span class="hljs-number">10</span>, OS_OPT_TIME_DLY, &amp;err);<br>    }<br>}<br><br></code></pre></div></td></tr></table></figure>
+<h3 id="main函数内容">（5）main函数内容</h3>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * @brief  The application entry point.</span><br><span class="hljs-comment"> * @retval int</span><br><span class="hljs-comment"> */</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span><br>{<br>  <span class="hljs-comment">/* USER CODE BEGIN 1 */</span><br><br>  <span class="hljs-comment">/* USER CODE END 1 */</span><br><br>  <span class="hljs-comment">/* MCU Configuration--------------------------------------------------------*/</span><br><br>  <span class="hljs-comment">/* Reset of all peripherals, Initializes the Flash interface and the Systick. */</span><br>  HAL_Init();<br><br>  <span class="hljs-comment">/* USER CODE BEGIN Init */</span><br><br>  <span class="hljs-comment">/* USER CODE END Init */</span><br><br>  <span class="hljs-comment">/* Configure the system clock */</span><br>  SystemClock_Config();<br><br>  <span class="hljs-comment">/* USER CODE BEGIN SysInit */</span><br><br>  <span class="hljs-comment">/* USER CODE END SysInit */</span><br><br>  <span class="hljs-comment">/* Initialize all configured peripherals */</span><br>  MX_GPIO_Init();<br>  MX_DMA_Init();<br>  MX_QUADSPI_Init();<br>  MX_DCMI_Init();<br>  <span class="hljs-comment">// MX_SDMMC1_SD_Init();</span><br>  MX_SPI2_Init();<br>  MX_USART1_UART_Init();<br>  <span class="hljs-comment">/* USER CODE BEGIN 2 */</span><br><br>  <span class="hljs-comment">/* USER CODE END 2 */</span><br><br>  <span class="hljs-comment">/* Infinite loop */</span><br>  uc_os3();<br><br></code></pre></div></td></tr></table></figure>
+<h2 id="九关于实时操作系统的两个误区">九、关于实时操作系统的两个误区：</h2>
+<h3 id="误区一一定能提高系统响应速度">（1）误区一：一定能提高系统响应速度？</h3>
+<p>  不一定。因为实时操作系统本身引入了执行开销，所以对于小型应用来说，有RTOS的性能也许不如无操作系统的情况。实时操作系统的优势最能体现在中大型系统中，当任务间存在复杂的耦合和依赖关系，并且应用程序经常要长时间等待外部资源时。</p>
+<h3 id="误区二一定可以保证系统实时性">（2）误区二：一定可以保证系统实时性？</h3>
+<p>  不一定。相对来说，使用实时系统可以改善系统的实时性。但是实时操作系统只是作为工具存在的，如果需要提供实时性保障，还需要使用实时系统理论对任务的可调度性和响应时间进行分析，才可以得到科学、系统的响应性保障。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/STM32/">STM32</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/STM32H743/">STM32H743</a>
+                    
+                      <a class="hover-with-bg" href="/tags/ucosIII/">ucosIII</a>
+                    
+                      <a class="hover-with-bg" href="/tags/RTOS/">RTOS</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/STM32/STM32CubeMX%E6%B7%BB%E5%8A%A0DSP%E5%BA%93/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">STM32CubeMX添加DSP库</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%8B%9F%E5%90%88%E7%9A%84%E7%90%86%E8%A7%A3/">
+                        <span class="hidden-mobile">最小二乘拟合的理解</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","appKey":"LUzOsNy6KL0b2iyCMMlIstrJ","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        鄂ICP备2023014081号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="/js/DynamicLine.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

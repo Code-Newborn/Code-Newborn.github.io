@@ -1,0 +1,750 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta name="baidu-site-verification" content="codeva-9XPZaiy24f" />
+  <meta name="google-site-verification" content="iKfk41-7IB31giGsS85H53G6zjnznJUfmfawPXmej9U" />
+  <script>
+  (function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://cznewborn.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+  </script>
+
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ChenZhao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在 Linux 系统的日常使用与维护过程中，系统升级、驱动配置、软件安装及参数调整等操作往往伴随着一定风险。一旦关键系统文件被误修改或更新过程出现异常，轻则影响系统稳定性，重则导致系统无法正常启动。为降低此类风险、提升系统的可恢复性，有必要引入一种可靠的系统级备份与回滚机制。Timeshift 正是在这一背景下广泛应用的系统快照工具，它通过对操作系统关键状态进行周期性或手动快照保存，使系统在发生故">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在 Ubuntu 下将 U 盘格式化并专门用于 Timeshift 备份快照">
+<meta property="og:url" content="https://www.cznewborn.com/Ubuntu/%E5%9C%A8-Ubuntu-%E4%B8%8B%E5%B0%86-U-%E7%9B%98%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%B9%B6%E4%B8%93%E9%97%A8%E7%94%A8%E4%BA%8E-Timeshift-%E5%A4%87%E4%BB%BD%E5%BF%AB%E7%85%A7/index.html">
+<meta property="og:site_name" content="Leia Blog">
+<meta property="og:description" content="在 Linux 系统的日常使用与维护过程中，系统升级、驱动配置、软件安装及参数调整等操作往往伴随着一定风险。一旦关键系统文件被误修改或更新过程出现异常，轻则影响系统稳定性，重则导致系统无法正常启动。为降低此类风险、提升系统的可恢复性，有必要引入一种可靠的系统级备份与回滚机制。Timeshift 正是在这一背景下广泛应用的系统快照工具，它通过对操作系统关键状态进行周期性或手动快照保存，使系统在发生故">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/_posts/%E5%9C%A8-Ubuntu-%E4%B8%8B%E5%B0%86-U-%E7%9B%98%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%B9%B6%E4%B8%93%E9%97%A8%E7%94%A8%E4%BA%8E-Timeshift-%E5%A4%87%E4%BB%BD%E5%BF%AB%E7%85%A7/2025-12-13-21-17-13-timeshift-linux-system-restore-tool.jpg">
+<meta property="article:published_time" content="2025-12-13T12:40:28.000Z">
+<meta property="article:modified_time" content="2025-12-13T13:23:42.208Z">
+<meta property="article:author" content="ChenZhao">
+<meta property="article:tag" content="Ubuntu">
+<meta property="article:tag" content="Timeshift">
+<meta property="article:tag" content="U盘">
+<meta property="article:tag" content="ext4">
+<meta property="article:tag" content="快照">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/_posts/%E5%9C%A8-Ubuntu-%E4%B8%8B%E5%B0%86-U-%E7%9B%98%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%B9%B6%E4%B8%93%E9%97%A8%E7%94%A8%E4%BA%8E-Timeshift-%E5%A4%87%E4%BB%BD%E5%BF%AB%E7%85%A7/2025-12-13-21-17-13-timeshift-linux-system-restore-tool.jpg">
+  
+  
+  <title>在 Ubuntu 下将 U 盘格式化并专门用于 Timeshift 备份快照 - Leia Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/indeximg-hover.css">
+<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/scroll.css">
+<link rel="stylesheet" href="/css/valine.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.cznewborn.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":6},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","app_key":"LUzOsNy6KL0b2iyCMMlIstrJ","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Leia Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://s1.ax1x.com/2023/01/02/pSPVr1e.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="在 Ubuntu 下将 U 盘格式化并专门用于 Timeshift 备份快照">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2025-12-13 20:40" pubdate>
+        2025年12月13日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      14 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">在 Ubuntu 下将 U 盘格式化并专门用于 Timeshift 备份快照</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2025年12月13日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="在-ubuntu-下将-u-盘格式化并专门用于-timeshift-备份快照">在
+Ubuntu 下将 U 盘格式化并专门用于 Timeshift 备份快照</h1>
+<p>  在 Linux
+系统的日常使用与维护过程中，系统升级、驱动配置、软件安装及参数调整等操作往往伴随着一定风险。一旦关键系统文件被误修改或更新过程出现异常，轻则影响系统稳定性，重则导致系统无法正常启动。为降低此类风险、提升系统的可恢复性，有必要引入一种可靠的系统级备份与回滚机制。Timeshift
+正是在这一背景下广泛应用的系统快照工具，它通过对操作系统关键状态进行周期性或手动快照保存，使系统在发生故障时能够迅速恢复至先前的稳定状态，从而显著提高
+Linux 系统的安全性与运维效率。</p>
+<p>  以下步骤适用于 <strong>在 Ubuntu 下将 U 盘格式化并专门用于
+Timeshift
+备份快照</strong>，侧重<strong>稳定性、兼容性与可维护性</strong>。</p>
+<ul>
+<li><strong>文件系统</strong>：<code>ext4</code></li>
+<li><strong>用途匹配</strong>：Timeshift（rsync 模式）</li>
+<li><strong>优点</strong>：
+<ul>
+<li>完整支持 Linux 权限、符号链接、硬链接</li>
+<li>稳定、性能好</li>
+<li>Timeshift 官方推荐</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>⚠️ <strong>不建议</strong>：FAT32 / exFAT / NTFS
+这些文件系统可能导致快照失败、权限异常或性能问题。</p>
+</blockquote>
+<h2 id="一图形界面方式最简单推荐">一、图形界面方式（最简单，推荐）</h2>
+<h3 id="插入-u-盘">1. 插入 U 盘</h3>
+<p>确保系统已识别：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">lsblk</span><br></code></pre></div></td></tr></table></figure>
+<p>确认设备名（如 <code>/dev/sdb</code>）。</p>
+<h3 id="打开磁盘disks">2. 打开“磁盘”（Disks）</h3>
+<p>路径：</p>
+<figure class="highlight"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs">应用 → 磁盘（Disks）<br></code></pre></div></td></tr></table></figure>
+<h3 id="删除旧分区">3. 删除旧分区</h3>
+<ul>
+<li>左侧选择你的 U 盘（注意容量，避免选错系统盘）</li>
+<li>点击分区区域</li>
+<li>点击 <strong>齿轮 → 删除分区</strong></li>
+</ul>
+<h3 id="新建分区">4. 新建分区</h3>
+<ul>
+<li><p>点击 <strong>“+”</strong></p></li>
+<li><p>分区大小：默认全部</p></li>
+<li><p>文件系统：<strong>Ext4</strong></p></li>
+<li><p>卷标（建议）：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">timeshift</span><br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h3 id="挂载点设置推荐">5. 挂载点设置（推荐）</h3>
+<ul>
+<li><p>齿轮 → 编辑挂载选项</p></li>
+<li><p>关闭「用户会话默认值」</p></li>
+<li><p>设置挂载点：</p>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk"><span class="hljs-regexp">/mnt/</span>timeshift<br></code></pre></div></td></tr></table></figure></li>
+<li><p>勾选：</p>
+<ul>
+<li>开机自动挂载</li>
+<li>挂载时不显示（可选）</li>
+</ul></li>
+</ul>
+<h2 id="二命令行方式更可控">二、命令行方式（更可控）</h2>
+<blockquote>
+<p>⚠️ 请 <strong>再次确认设备名</strong>，错误操作会清空硬盘。</p>
+</blockquote>
+<h3 id="查看设备">1. 查看设备</h3>
+<figure class="highlight ebnf"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">lsblk</span><br></code></pre></div></td></tr></table></figure>
+<p>假设 U 盘是 <code>/dev/sdb</code></p>
+<h3 id="卸载如已挂载">2. 卸载（如已挂载）</h3>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">sudo umount <span class="hljs-regexp">/dev/</span>sdb*<br></code></pre></div></td></tr></table></figure>
+<h3 id="创建分区表">3. 创建分区表</h3>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">sudo parted <span class="hljs-regexp">/dev/</span>sdb --script mklabel gpt<br></code></pre></div></td></tr></table></figure>
+<h3 id="创建分区">4. 创建分区</h3>
+<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">sudo</span> parted /dev/sdb --script mkpart primary ext4 <span class="hljs-number">0</span>% <span class="hljs-number">100</span>%<br></code></pre></div></td></tr></table></figure>
+<h3 id="格式化-ext4">5. 格式化 ext4</h3>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">sudo mkfs.ext4 -L timeshift <span class="hljs-regexp">/dev/</span>sdb1<br></code></pre></div></td></tr></table></figure>
+<h3 id="创建挂载点并挂载">6. 创建挂载点并挂载</h3>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">sudo mkdir -p <span class="hljs-regexp">/mnt/</span>timeshift<br>sudo mount <span class="hljs-regexp">/dev/</span>sdb1 <span class="hljs-regexp">/mnt/</span>timeshift<br></code></pre></div></td></tr></table></figure>
+<h3 id="设置开机自动挂载可选但推荐">7.
+设置开机自动挂载（可选但推荐）</h3>
+<p>获取 UUID：</p>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">blkid <span class="hljs-regexp">/dev/</span>sdb1<br></code></pre></div></td></tr></table></figure>
+<p>编辑 <code>/etc/fstab</code>：</p>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">sudo nano <span class="hljs-regexp">/etc/</span>fstab<br></code></pre></div></td></tr></table></figure>
+<p>添加一行：</p>
+<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">UUID</span>=xxxx-xxxx  /mnt/timeshift  ext4  defaults,nofail  <span class="hljs-number">0</span>  <span class="hljs-number">2</span><br></code></pre></div></td></tr></table></figure>
+<h2 id="三timeshift-中的设置">三、Timeshift 中的设置</h2>
+<h3 id="启动-timeshift">1. 启动 Timeshift</h3>
+<figure class="highlight ebnf"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">sudo timeshift-gtk</span><br></code></pre></div></td></tr></table></figure>
+<h3 id="配置要点">2. 配置要点</h3>
+<ul>
+<li><p><strong>模式</strong>：rsync</p></li>
+<li><p><strong>备份位置</strong>：</p>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk"><span class="hljs-regexp">/mnt/</span>timeshift<br></code></pre></div></td></tr></table></figure></li>
+<li><p>勾选：</p>
+<ul>
+<li>系统文件</li>
+<li>可选：/home（视需求）</li>
+</ul></li>
+</ul>
+<h3 id="验证">3. 验证</h3>
+<p>创建一次手动快照，确认：</p>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk"><span class="hljs-regexp">/mnt/</span>timeshift<span class="hljs-regexp">/timeshift/</span>snapshots/<br></code></pre></div></td></tr></table></figure>
+<p>下生成目录</p>
+<h2 id="四u-盘作为-timeshift-介质的注意事项工程实践">四、U 盘作为
+Timeshift 介质的注意事项（工程实践）</h2>
+<ol type="1">
+<li><strong>寿命问题</strong>
+<ul>
+<li>普通 U 盘写入寿命有限</li>
+<li>不建议高频（如每小时）快照</li>
+<li>建议：
+<ul>
+<li>每日 / 每周</li>
+</ul></li>
+</ul></li>
+<li><strong>容量建议</strong>
+<ul>
+<li>系统盘 50–100 GB：
+<ul>
+<li>U 盘 ≥ 64 GB</li>
+</ul></li>
+<li>保留快照数 ≤ 5</li>
+</ul></li>
+<li><strong>更优方案（如条件允许）</strong>
+<ul>
+<li>USB 移动 SSD</li>
+<li>NVMe 外置盒</li>
+<li>SATA 移动硬盘</li>
+</ul></li>
+</ol>
+<h2 id="五常见问题排查">五、常见问题排查</h2>
+<h3 id="q1timeshift-看不到-u-盘">Q1：Timeshift 看不到 U 盘</h3>
+<ul>
+<li><p>确认：</p>
+<figure class="highlight 1c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs 1c">mount <span class="hljs-string">| grep timeshift</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>确认文件系统是 ext4</p></li>
+<li><p>确认使用 sudo 运行 Timeshift</p></li>
+</ul>
+<h3 id="q2提示权限问题">Q2：提示权限问题</h3>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">sudo chown -R root:root <span class="hljs-regexp">/mnt/</span>timeshift<br>sudo chmod -R <span class="hljs-number">755</span> <span class="hljs-regexp">/mnt/</span>timeshift<br></code></pre></div></td></tr></table></figure>
+<h2 id="六总结推荐配置">六、总结（推荐配置）</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>建议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文件系统</td>
+<td>ext4</td>
+</tr>
+<tr>
+<td>挂载点</td>
+<td>/mnt/timeshift</td>
+</tr>
+<tr>
+<td>Timeshift 模式</td>
+<td>rsync</td>
+</tr>
+<tr>
+<td>介质</td>
+<td>USB SSD &gt; 移动硬盘 &gt; U 盘</td>
+</tr>
+<tr>
+<td>快照频率</td>
+<td>每日 / 每周</td>
+</tr>
+</tbody>
+</table>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Ubuntu/">Ubuntu</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Ubuntu/">Ubuntu</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Timeshift/">Timeshift</a>
+                    
+                      <a class="hover-with-bg" href="/tags/U%E7%9B%98/">U盘</a>
+                    
+                      <a class="hover-with-bg" href="/tags/ext4/">ext4</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%BF%AB%E7%85%A7/">快照</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E7%A7%91%E6%99%AE%E8%AE%A4%E8%AF%86/%E8%AE%A4%E8%AF%86MOS%E7%AE%A1/">
+                        <span class="hidden-mobile">认识MOS管</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","appKey":"LUzOsNy6KL0b2iyCMMlIstrJ","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        鄂ICP备2023014081号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="/js/DynamicLine.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

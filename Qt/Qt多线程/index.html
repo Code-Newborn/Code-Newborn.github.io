@@ -1,0 +1,676 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta name="baidu-site-verification" content="codeva-9XPZaiy24f" />
+  <meta name="google-site-verification" content="iKfk41-7IB31giGsS85H53G6zjnznJUfmfawPXmej9U" />
+  <script>
+  (function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://cznewborn.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+  </script>
+
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ChenZhao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Qt多线程的开发目的是为了保证在进行耗时操作时，可以处理用户的其他输入输出。比如，如果在UI线程里面进行耗时操作，界面会不响应用户操作。以及提升程序性能。现在的电脑一般都是多核CPU，多线程并行处理事务，可以大大提升程序的性能。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Qt多线程">
+<meta property="og:url" content="https://www.cznewborn.com/Qt/Qt%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Leia Blog">
+<meta property="og:description" content="Qt多线程的开发目的是为了保证在进行耗时操作时，可以处理用户的其他输入输出。比如，如果在UI线程里面进行耗时操作，界面会不响应用户操作。以及提升程序性能。现在的电脑一般都是多核CPU，多线程并行处理事务，可以大大提升程序的性能。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.miji.bid/2024/02/14/59745551c100520f306332aa6013af3c.png">
+<meta property="article:published_time" content="2023-04-27T06:35:57.000Z">
+<meta property="article:modified_time" content="2025-12-08T16:45:20.438Z">
+<meta property="article:author" content="ChenZhao">
+<meta property="article:tag" content="QThread">
+<meta property="article:tag" content="多线程">
+<meta property="article:tag" content="并发">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.miji.bid/2024/02/14/59745551c100520f306332aa6013af3c.png">
+  
+  
+  <title>Qt多线程 - Leia Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/indeximg-hover.css">
+<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/scroll.css">
+<link rel="stylesheet" href="/css/valine.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.cznewborn.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":6},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","app_key":"LUzOsNy6KL0b2iyCMMlIstrJ","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Leia Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://s1.ax1x.com/2023/01/02/pSPVr1e.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Qt多线程">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-04-27 14:35" pubdate>
+        2023年4月27日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      8.3k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      70 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Qt多线程</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2025年12月9日 凌晨
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="qt多线程">Qt多线程</h1>
+<p>  Qt多线程的开发目的是为了保证在进行耗时操作时，可以处理用户的其他输入输出。比如，如果在UI线程里面进行耗时操作，界面会不响应用户操作。以及提升程序性能。现在的电脑一般都是多核CPU，多线程并行处理事务，可以大大提升程序的性能。</p>
+<blockquote>
+<p><a
+target="_blank" rel="noopener" href="https://www.dushibaiyu.com/2015/07/qt-signals-slots-connect.html">Qt信号槽的一些事
+| 渡世白玉 (dushibaiyu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/657581787">QtConcurrent
+线程使用说明 - 知乎 (zhihu.com)</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41504987/article/details/124438153">Qt之QtConcurrent-CSDN博客</a></p>
+</blockquote>
+<h2 id="一多线程">一、多线程</h2>
+<h3 id="信号与槽的连接方式">(1)信号与槽的连接方式</h3>
+<p>五种连接方式</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-keyword">enum</span> <span class="hljs-title class_">ConnectionType</span> &#123;<br>	AutoConnection,				<span class="hljs-comment">//默认</span><br>	DirectConnection,			<span class="hljs-comment">//立即调用</span><br>	QueuedConnection,			<span class="hljs-comment">//放在接收者队列</span><br>	BlockingQueuedConnection,	<span class="hljs-comment">//与放在接收者队列，同时阻塞发送者</span><br>	UniqueConnection = <span class="hljs-number">0x80</span>		<span class="hljs-comment">//标志位，避免重复链接</span><br>&#125;;<br></code></pre></div></td></tr></table></figure>
+<h4 id="连接方式一autoconnection">1.连接方式一：AutoConnection</h4>
+<p>  一般信号槽不会写第五个参数，其实使用的默认值，使用这个值则连接类型会在信号发送时决定。</p>
+<ul>
+<li>如果接收者和发送者在同一个线程，则自动使用Qt::DirectConnection类型。</li>
+<li>如果接收者和发送者不在一个线程，则自动使用Qt::QueuedConnection类型。</li>
+</ul>
+<h4 id="连接方式二directconnection">2.连接方式二：DirectConnection</h4>
+<p>  函数会在信号发送的时候直接被调用，槽函数运行于信号发送者所在线程，有点类似于回调函数。效果看上去就像是<strong>直接在信号发送位置调用了槽函数</strong>。这个在多线程环境下比较危险，可能会造成崩溃。</p>
+<h4 id="连接方式三queuedconnection">3.连接方式三：QueuedConnection</h4>
+<p>  槽函数在控制回到接收者所在线程的事件循环时被调用，槽函数运行于信号接收者所在线程。发送信号之后，槽函数不会立刻被调用，等到接收者的当前函数执行完毕，并进入信号接收者的事件循环后，槽函数才会被调用。多线程环境下一般用这个。</p>
+<h4
+id="连接方式四blockingqueuedconnection">4.连接方式四：BlockingQueuedConnection</h4>
+<p>  槽函数的调用时机与Qt::QueuedConnection一致，不过发送完信号后发送者所在线程会阻塞，直到槽函数运行完。<strong>使用该连接方式，接收者和发送者绝对不能在一个线程，否则程序会死锁！！！在多线程间需要同步的场合可能需要这个</strong>。</p>
+<h4 id="连接方式五uniqueconnection">4.连接方式五：UniqueConnection</h4>
+<p>  严格上来说相比上面四种连接方式，它并不算新的连接方式，而是用于修饰上面的四种连接方式。他实现的效果就是避免重复连接，因为Qt的信号槽是可以同一个信号和槽函数重复多次连接。这种通常都会是只执行一次就好，那就通过这个标志位进行修饰，达到多次连接（实际上也只是连接了一次）也只调用一次槽函数的效果。用(Qt::ConnectionType|Qt::UniqueConnection)来修饰。</p>
+<h3 id="创建多线程的两种方式">(2)创建多线程的两种方式</h3>
+<h4 id="继承qthread">1. 继承QThread</h4>
+<p>  继承 QThread 是创建线程的一个普通方法，其中创建的线程只有
+run()方法在线程里的，其他类内定义的方法都在主线程内。</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">WorkerThread</span> : <span class="hljs-keyword">public</span> QThread &#123;<br>    <span class="hljs-function">Q_OBJECT</span><br><span class="hljs-function">    <span class="hljs-type">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> </span>&#123;<br>        QString result;<br>        <span class="hljs-comment">/* ... 耗时或阻塞操作 ... */</span><br>        <span class="hljs-function">emit <span class="hljs-title">resultReady</span><span class="hljs-params">( result )</span></span>;<br>    &#125;<br>signals:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">resultReady</span><span class="hljs-params">( <span class="hljs-type">const</span> QString&amp; s )</span></span>;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">MyObject::startWorkInAThread</span><span class="hljs-params">()</span> </span>&#123;<br>    WorkerThread* workerThread = <span class="hljs-keyword">new</span> <span class="hljs-built_in">WorkerThread</span>( <span class="hljs-keyword">this</span> );<br>    <span class="hljs-built_in">connect</span>( workerThread, &amp;WorkerThread::resultReady, <span class="hljs-keyword">this</span>, &amp;MyObject::handleResults );<br>    <span class="hljs-built_in">connect</span>( workerThread, &amp;WorkerThread::finished, workerThread, &amp;QObject::deleteLater );<br>    workerThread-&gt;<span class="hljs-built_in">start</span>();<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>run函数在新线程中执行，run函数执行结束，线程结束。</li>
+<li>WorkerThread实例化的对象属于创建他的线程，而不是run函数所在线程。</li>
+<li>WorkerThread没有事件循环，除非在run()函数中调用exec();</li>
+<li>队列连接到WorkerThread的slot函数，slot函数在创建WorkerThread对象的线程中执行。</li>
+<li>直接调用WorkerThread的方法，该方法的执行线程为调用处的线程。</li>
+</ul>
+<h4 id="继承qobject">2. 继承QObject</h4>
+<p>  继承 QObject
+类的方法更加灵活，它通过QObject::moveToThread()函数，将一个
+QObeject的类转移到一个线程里执行。</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Worker</span> : <span class="hljs-keyword">public</span> QObject &#123;<br>    Q_OBJECT<br><br><span class="hljs-keyword">public</span> slots:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">doWork</span><span class="hljs-params">( <span class="hljs-type">const</span> QString&amp; parameter )</span> </span>&#123;  <span class="hljs-comment">// 工作槽函数</span><br>        QString result;<br>        <span class="hljs-comment">/* ... 耗时或阻塞操作 ... */</span><br>        <span class="hljs-function">emit <span class="hljs-title">resultReady</span><span class="hljs-params">( result )</span></span>;  <span class="hljs-comment">// 结果完成信号</span><br>    &#125;<br>signals:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">resultReady</span><span class="hljs-params">( <span class="hljs-type">const</span> QString&amp; result )</span></span>;  <span class="hljs-comment">// 结果完成信号</span><br>&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Controller</span> : <span class="hljs-keyword">public</span> QObject &#123;<br>    Q_OBJECT<br>    QThread workerThread;<br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Controller</span>() &#123;<br>        Worker* worker = <span class="hljs-keyword">new</span> Worker;<br>        worker-&gt;<span class="hljs-built_in">moveToThread</span>( &amp;workerThread );                                        <span class="hljs-comment">// 移入线程</span><br>        <span class="hljs-built_in">connect</span>( &amp;workerThread, &amp;QThread::finished, worker, &amp;QObject::deleteLater );  <span class="hljs-comment">// 线程的结束信号 绑定 工作对象的销毁槽函数</span><br>        <span class="hljs-built_in">connect</span>( <span class="hljs-keyword">this</span>, &amp;Controller::operate, worker, &amp;Worker::doWork );               <span class="hljs-comment">// 控制对象的操作信号 绑定 工作对象的工作槽函数</span><br>        <span class="hljs-built_in">connect</span>( worker, &amp;Worker::resultReady, <span class="hljs-keyword">this</span>, &amp;Controller::handleResults );    <span class="hljs-comment">// 工作对象的结果完成信号 绑定 控制对象的结果处理槽函数</span><br>        workerThread.<span class="hljs-built_in">start</span>();                                                         <span class="hljs-comment">// 线程开始</span><br>    &#125;<br>    ~<span class="hljs-built_in">Controller</span>() &#123;<br>        workerThread.<span class="hljs-built_in">quit</span>();<br>        workerThread.<span class="hljs-built_in">wait</span>();<br>    &#125;<br><span class="hljs-keyword">public</span> slots:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">handleResults</span><span class="hljs-params">( <span class="hljs-type">const</span> QString&amp; )</span></span>;  <span class="hljs-comment">// 槽函数 处理结果函数</span><br>signals:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">operate</span><span class="hljs-params">( <span class="hljs-type">const</span> QString&amp; )</span></span>;  <span class="hljs-comment">// 信号 操作信号</span><br>&#125;;<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>调用moveToThread函数的对象不能设置父对象。</li>
+<li>Worker类中的槽函数可以跟任意线程的任意信号建立连接，队列连接时，在新线程中执行。</li>
+<li>直接调用Worker类中的函数，在调用线程内执行。</li>
+<li>同时发送多个与Worker类中槽函数连接的信号，槽函数依次执行。</li>
+</ul>
+<h2 id="二线程池qthreadpool">二、线程池QThreadPool</h2>
+<p>  线程池是一种线程使用模式，它管理着一组可重用的线程，可以处理分配过来的可并发执行的任务。线程池设有最大线程数，可以避免线程数过多会导致额外的线程切换开销。线程池管理的线程具有可重用性，可以减少创建和销毁线程的次数。它的主要目的是减少程序员编写的重复代码，提高程序的效率和性能，在高并发的项目中会用到。</p>
+<h3 id="单线程代码">(1)单线程代码</h3>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QDebug&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QElapsedTimer&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( <span class="hljs-type">int</span> argc, <span class="hljs-type">char</span>* argv[] )</span> </span>&#123;<br>    QString string;<br>    string    = <span class="hljs-string">&quot;1000101010&quot;</span>;                 <span class="hljs-comment">// 创建字符串</span><br>    string    = string.<span class="hljs-built_in">repeated</span>( <span class="hljs-number">10000000</span> );  <span class="hljs-comment">// 重复10000000次</span><br>    <span class="hljs-type">int</span> count = <span class="hljs-number">0</span>;                            <span class="hljs-comment">// 计数&#x27;1&#x27;</span><br><br>    QElapsedTimer timer;<br>    timer.<span class="hljs-built_in">start</span>();  <span class="hljs-comment">// 开始计时</span><br><br>    <span class="hljs-keyword">for</span> ( <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, len = string.<span class="hljs-built_in">length</span>(); i &lt; len; ++i ) &#123;<br>        <span class="hljs-keyword">if</span> ( string[ i ] == <span class="hljs-string">&#x27;1&#x27;</span> ) &#123;<br>            count++;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-built_in">qDebug</span>() &lt;&lt; <span class="hljs-string">&quot;spend time: &quot;</span> &lt;&lt; timer.<span class="hljs-built_in">elapsed</span>() &lt;&lt; <span class="hljs-string">&quot;ms, count: &quot;</span> &lt;&lt; count;  <span class="hljs-comment">// 统计耗时</span><br>&#125;<br><br></code></pre></div></td></tr></table></figure>
+<h3 id="线程池代码">(2)线程池代码</h3>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QDebug&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QElapsedTimer&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QMutex&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QThreadPool&gt;</span></span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Counter</span> : <span class="hljs-keyword">public</span> QRunnable &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Counter</span>( <span class="hljs-type">int</span> index, <span class="hljs-type">int</span> len, QString* string, QMutex* mutex, <span class="hljs-type">int</span>* count ) &#123;  <span class="hljs-comment">// 初始化函数</span><br>        m_index  = index;<br>        m_length = len;<br>        m_string = string;<br>        m_mutex  = mutex;<br>        m_count  = count;<br>    &#125;<br><br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-type">int</span> count = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> ( <span class="hljs-type">int</span> i = m_index, end = m_index + m_length; i &lt; end; ++i ) &#123;<br>            <span class="hljs-keyword">if</span> ( ( *m_string )[ i ] == <span class="hljs-string">&#x27;1&#x27;</span> ) &#123;<br>                count++;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-comment">/* 多线程操作共享变量需要加锁 */</span><br>        m_mutex-&gt;<span class="hljs-built_in">lock</span>();<br>        *m_count += count;<br>        m_mutex-&gt;<span class="hljs-built_in">unlock</span>();<br>    &#125;<br><br>    <span class="hljs-comment">// 成员变量</span><br>    <span class="hljs-type">int</span>       m_index;<br>    <span class="hljs-type">int</span>       m_length;<br>    QString*  m_string;<br>    QMutex*   m_mutex;<br>    <span class="hljs-type">int</span>*      m_count;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( <span class="hljs-type">int</span> argc, <span class="hljs-type">char</span>* argv[] )</span> </span>&#123;<br>    QString string;<br>    string    = <span class="hljs-string">&quot;1000101010&quot;</span>;<br>    string    = string.<span class="hljs-built_in">repeated</span>( <span class="hljs-number">10000000</span> );<br>    <span class="hljs-type">int</span> count = <span class="hljs-number">0</span>;<br><br>    QElapsedTimer timer;<br>    timer.<span class="hljs-built_in">start</span>();  <span class="hljs-comment">// 开始计时</span><br><br>    <span class="hljs-keyword">auto</span> pool = QThreadPool::<span class="hljs-built_in">globalInstance</span>();  <span class="hljs-comment">// 创建全局线程池对象</span><br>    pool-&gt;<span class="hljs-built_in">setMaxThreadCount</span>( <span class="hljs-number">8</span> );               <span class="hljs-comment">// 设置最多8个线程</span><br><br>    QMutex mutex;<br>    <span class="hljs-comment">/* 分割成100块，分别计算 */</span><br>    <span class="hljs-keyword">for</span> ( <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, span = string.<span class="hljs-built_in">length</span>() / <span class="hljs-number">100</span>; i &lt; <span class="hljs-number">100</span>; i++ ) &#123;<br>        Counter* a = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Counter</span>( i * span, span, &amp;string, &amp;mutex, &amp;count );  <span class="hljs-comment">// 每个计数类对象进行计数</span><br>        a-&gt;<span class="hljs-built_in">setAutoDelete</span>( <span class="hljs-literal">true</span> );                                             <span class="hljs-comment">// 执行完后自动释放</span><br>        pool-&gt;<span class="hljs-built_in">start</span>( a );<br>    &#125;<br>    pool-&gt;<span class="hljs-built_in">waitForDone</span>();  <span class="hljs-comment">// 等待线程全部完成</span><br><br>    <span class="hljs-built_in">qDebug</span>() &lt;&lt; <span class="hljs-string">&quot;spend time: &quot;</span> &lt;&lt; timer.<span class="hljs-built_in">elapsed</span>() &lt;&lt; <span class="hljs-string">&quot;ms, count: &quot;</span> &lt;&lt; count;  <span class="hljs-comment">// 耗时统计</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>默认情况下，run函数执行完，线程对象会被线程池自动删除。可以使用setAutoDelete函数设置。</li>
+<li>QThreadPool::start()多次启动设置为autoDelete的QRunnable对象，可能导致崩溃。</li>
+</ul>
+<h2 id="三并发编程qtconcurrent">三、并发编程QtConcurrent</h2>
+<p>  QtConcurrent提供了高级api，使编写多线程程序时，不需要使用诸如互斥锁、读写锁、等待条件或信号量等低级线程安全类。每调用一次QtConcurrent::run()函数，就新建立一个线程。</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QApplication&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QDebug&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QString&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QThread&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;qtconcurrentrun.h&quot;</span></span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">A</span>() &#123;<br>        std::cout &lt;&lt; <span class="hljs-string">&quot;我是 A 的构造函数&quot;</span> &lt;&lt; std::endl;<br>    &#125;;<br><br>    <span class="hljs-function">QString <span class="hljs-title">m_func</span><span class="hljs-params">( QString name )</span> </span>&#123;<br>        m_name = name;<br>        std::cout &lt;&lt; <span class="hljs-string">&quot;我是 A 的成员函数&quot;</span> &lt;&lt; std::endl;<br>    &#125;<br>    QString m_name;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( <span class="hljs-type">int</span> argc, <span class="hljs-type">char</span>** argv )</span> </span>&#123;<br>    <span class="hljs-function">QApplication          <span class="hljs-title">app</span><span class="hljs-params">( argc, argv )</span></span>;<br>    QByteArray            bytearray = <span class="hljs-string">&quot;hello world&quot;</span>;<br>    A*                    a         = <span class="hljs-keyword">new</span> <span class="hljs-built_in">A</span>();<br>    QFuture&lt; QString &gt;    fut1      = QtConcurrent::<span class="hljs-built_in">run</span>( bytearray, &amp;QByteArray::split, <span class="hljs-string">&#x27;,&#x27;</span> );    <span class="hljs-comment">// 1.调用QByteArray的常量成员函数split(),传递常量引用，bytearray</span><br>    QFuture&lt; QByteArray &gt; fut2      = QtConcurrent::<span class="hljs-built_in">run</span>( a, &amp;A::m_func, <span class="hljs-built_in">QString</span>( <span class="hljs-string">&quot;Thread 2&quot;</span> ) );  <span class="hljs-comment">// 2.非常量成员函数运行在一个新的线程，传递指针</span><br><br>    QString result1 = fut1.<span class="hljs-built_in">result</span>();<br>    QString result2 = fut2.<span class="hljs-built_in">result</span>();<br><br>    fut1.<span class="hljs-built_in">waitForFinished</span>();<br>    fut2.<span class="hljs-built_in">waitForFinished</span>();<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>Concurrent run，在线程池内起一个线程来执行一个函数。</li>
+</ul>
+<h3 id="并行处理一批数据map">(1)并行处理一批数据map</h3>
+<h4 id="更改原数据qtconcurrentmap">1. 更改原数据QtConcurrent::map</h4>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">toUpper</span><span class="hljs-params">( QString&amp; str )</span> </span>&#123;<br>    str = str.<span class="hljs-built_in">toUpper</span>();<br>&#125;<br>QStringList strWords;<br>strWords &lt;&lt; <span class="hljs-string">&quot;Apple&quot;</span><br>         &lt;&lt; <span class="hljs-string">&quot;Banana&quot;</span><br>         &lt;&lt; <span class="hljs-string">&quot;cow&quot;</span><br>         &lt;&lt; <span class="hljs-string">&quot;dog&quot;</span><br>         &lt;&lt; <span class="hljs-string">&quot;Egg&quot;</span>;<br><span class="hljs-keyword">auto</span> future = QtConcurrent::<span class="hljs-built_in">map</span>( strWords, toUpper );<br>future.<span class="hljs-built_in">waitForFinished</span>();<br><span class="hljs-comment">// strWords = &#123;&quot;APPLE&quot;, &quot;BANANA&quot;, &quot;COW&quot;, &quot;DOG&quot;, &quot;EGG&quot;&#125;</span><br></code></pre></div></td></tr></table></figure>
+<h4 id="不改变原数据返回处理结果qtconcurrentmap">2.
+不改变原数据，返回处理结果QtConcurrent::map</h4>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-function">QString <span class="hljs-title">toUpper</span><span class="hljs-params">( <span class="hljs-type">const</span> QString&amp; str )</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> str.<span class="hljs-built_in">toUpper</span>();<br>&#125;<br>QStringList strWords;<br>strWords &lt;&lt; <span class="hljs-string">&quot;Apple&quot;</span><br>         &lt;&lt; <span class="hljs-string">&quot;Banana&quot;</span><br>         &lt;&lt; <span class="hljs-string">&quot;cow&quot;</span><br>         &lt;&lt; <span class="hljs-string">&quot;dog&quot;</span><br>         &lt;&lt; <span class="hljs-string">&quot;Egg&quot;</span>;<br><span class="hljs-keyword">auto</span> future = QtConcurrent::<span class="hljs-built_in">mapped</span>( strWords, toUpper );<br>future.<span class="hljs-built_in">waitForFinished</span>();<br><span class="hljs-built_in">qDebug</span>() &lt;&lt; future.<span class="hljs-built_in">results</span>();<br><span class="hljs-comment">// 输出：(&quot;APPLE&quot;, &quot;BANANA&quot;, &quot;COW&quot;, &quot;DOG&quot;, &quot;EGG&quot;)</span><br></code></pre></div></td></tr></table></figure>
+<h4 id="处理后的结果还需要进行处理qtconcurrentmappedreduced">3.
+处理后的结果还需要进行处理QtConcurrent::mappedReduced</h4>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-function">QString <span class="hljs-title">toUpper</span><span class="hljs-params">( <span class="hljs-type">const</span> QString&amp; str )</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> str.<span class="hljs-built_in">toUpper</span>();<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">reduceFun</span><span class="hljs-params">( QList&lt; QString &gt;&amp; dictionary, <span class="hljs-type">const</span> QString&amp; string )</span> </span>&#123;<br>    dictionary.<span class="hljs-built_in">push_back</span>( <span class="hljs-built_in">QString</span>( <span class="hljs-string">&quot;result: &quot;</span> ) + string );<br>&#125;<br><br>QStringList strWords;<br>strWords &lt;&lt; <span class="hljs-string">&quot;Apple&quot;</span><br>         &lt;&lt; <span class="hljs-string">&quot;Banana&quot;</span><br>         &lt;&lt; <span class="hljs-string">&quot;cow&quot;</span><br>         &lt;&lt; <span class="hljs-string">&quot;dog&quot;</span><br>         &lt;&lt; <span class="hljs-string">&quot;Egg&quot;</span>;<br><span class="hljs-keyword">auto</span> future = QtConcurrent::<span class="hljs-built_in">mappedReduced</span>( strWords, toUpper, reduceFun );<br>future.<span class="hljs-built_in">waitForFinished</span>();<br><span class="hljs-built_in">qDebug</span>() &lt;&lt; future.<span class="hljs-built_in">result</span>();<br><span class="hljs-comment">// 输出：(&quot;result: BANANA&quot;, &quot;result: APPLE&quot;, &quot;result: COW&quot;, &quot;result: DOG&quot;, &quot;result: EGG&quot;)</span><br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>注意，上述代码输出结果的顺序与原数据的顺序已经不一样了。mappedReduced
+函数的逻辑是：启动多个线程执行toUper
+对链表中的每个元素进行处理，处理后的结果再逐一交给reduceFun函数处理。reduceFun
+并不会等toUper的所有线程执行完毕后才开始执行，并且同一时刻，只有一个
+reduceFun
+线程在执行。如果需要使最后的输出结果顺序与输入相一致，就要用mappedReduced
+函数的第四个参数，赋值为QtConcurrent::OrderedReduce，
+即可保证顺序一致。</li>
+</ul>
+<h3 id="过滤操作一批数据filter">(2)过滤操作一批数据filter</h3>
+<p>  一般用于对一批数据的过滤操作。同样也包含filter, filtered,
+filteredReduce 三种用法。与Concurrent::map 类似，filter
+函数会改变原始数据，filtered 函数将处理结果保存在filtered
+函数的返回值中，filteredReduce 会将过滤后的数据再调用reduceFun
+函数处理。这里就不再进行详细赘述，可以完全参考map函数的用法使用。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Qt/">Qt</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/QThread/">QThread</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%B9%B6%E5%8F%91/">并发</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E6%8E%A7%E5%88%B6/%E6%8E%A7%E5%88%B6%E7%AE%97%E6%B3%95/%E8%B7%9F%E8%B8%AA%E5%BE%AE%E5%88%86%E5%99%A8/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">跟踪微分器</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E7%AE%97%E6%B3%95/%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/Kalman%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D/">
+                        <span class="hidden-mobile">Kalman滤波算法介绍</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","appKey":"LUzOsNy6KL0b2iyCMMlIstrJ","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        鄂ICP备2023014081号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="/js/DynamicLine.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,702 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta name="baidu-site-verification" content="codeva-9XPZaiy24f" />
+  <meta name="google-site-verification" content="iKfk41-7IB31giGsS85H53G6zjnznJUfmfawPXmej9U" />
+  <script>
+  (function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://cznewborn.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+  </script>
+
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ChenZhao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="二极管是一种电子元件，具有两个导电区域（P型和N型）。这两个区域分别对应于正电荷（空穴）和负电荷（电子）。二极管有两个端子，称为阳极（Anode）和阴极（Cathode）。它主要有两种工作状态：正向偏置和反向偏置。二极管具有单向导电性能，导通时电流方向是由阳极通过管子流向阴极。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="认识二极管">
+<meta property="og:url" content="https://www.cznewborn.com/%E7%A7%91%E6%99%AE%E8%AE%A4%E8%AF%86/%E8%AE%A4%E8%AF%86%E4%BA%8C%E6%9E%81%E7%AE%A1/index.html">
+<meta property="og:site_name" content="Leia Blog">
+<meta property="og:description" content="二极管是一种电子元件，具有两个导电区域（P型和N型）。这两个区域分别对应于正电荷（空穴）和负电荷（电子）。二极管有两个端子，称为阳极（Anode）和阴极（Cathode）。它主要有两种工作状态：正向偏置和反向偏置。二极管具有单向导电性能，导通时电流方向是由阳极通过管子流向阴极。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.miji.bid/2024/02/14/cc6830360980f51c384efe18bda847a6.png">
+<meta property="article:published_time" content="2024-01-29T11:31:56.000Z">
+<meta property="article:modified_time" content="2025-12-08T16:45:20.467Z">
+<meta property="article:author" content="ChenZhao">
+<meta property="article:tag" content="二极管">
+<meta property="article:tag" content="稳压二极管">
+<meta property="article:tag" content="TVS">
+<meta property="article:tag" content="LED">
+<meta property="article:tag" content="肖特基二极管">
+<meta property="article:tag" content="齐纳二极管">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.miji.bid/2024/02/14/cc6830360980f51c384efe18bda847a6.png">
+  
+  
+  <title>认识二极管 - Leia Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/indeximg-hover.css">
+<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/scroll.css">
+<link rel="stylesheet" href="/css/valine.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.cznewborn.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":6},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","app_key":"LUzOsNy6KL0b2iyCMMlIstrJ","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Leia Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://s1.ax1x.com/2023/01/02/pSPVr1e.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="认识二极管">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2024-01-29 19:31" pubdate>
+        2024年1月29日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.8k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      24 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">认识二极管</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2025年12月9日 凌晨
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="认识二极管diode">认识二极管（Diode）</h1>
+<p>  二极管是一种电子元件，具有两个导电区域（P型和N型）。这两个区域分别对应于正电荷（空穴）和负电荷（电子）。二极管有两个端子，称为阳极（Anode）和阴极（Cathode）。它主要有两种工作状态：正向偏置和反向偏置。二极管具有单向导电性能，导通时电流方向是由阳极通过管子流向阴极。</p>
+<blockquote>
+<p>参考：</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.build-electronic-circuits.com/what-is-a-diode/">What
+is a Diode? A Guide For Beginners
+(build-electronic-circuits.com)</a></p>
+</blockquote>
+<h2 id="一二极管种类">一、二极管种类</h2>
+<p>  二极管有许多不同的类型，根据其用途和特性可以进行分类。例如整流二极管、齐纳二极管、肖特基二极管、发光二极管等。</p>
+<h3 id="发光二极管light-emitting-diode">(1)发光二极管Light-Emitting
+Diode</h3>
+<p><img
+src="https://i.miji.bid/2024/02/14/91dadd800a7c836efa34abab1a7d50ab.png" srcset="/img/loading.gif" lazyload
+alt="Light-Emitting Diode" /></p>
+<h4 id="工作原理">1.工作原理</h4>
+<p>  发光二极管（LED，Light Emitting
+Diode）是一种能够将电能转换为可见光的半导体器件。它是一种二极管，根据注入的电流的方向，LED可以发光。LED的发光原理是通过注入外部电流，使半导体材料中的电子和空穴结合而释放能量，产生光子。这个过程称为电致发光。</p>
+<h4 id="参数选型型号vlmo2100">2.参数选型（型号VLMO2100）</h4>
+<p><img
+src="https://i.miji.bid/2024/02/14/ae2d55d4082ec1e83cfcd7125c9ed05f.png" srcset="/img/loading.gif" lazyload
+alt="发光二极管选型" /></p>
+<h5 id="a发光颜色">(a)发光颜色</h5>
+<p>  LED可提供的颜色多种多样，包括红色、绿色、蓝色以及它们的组合。选择适当的颜色取决于应用的需要。</p>
+<h5 id="b发光强度">(b)发光强度</h5>
+<p>  发光二极管的发光强度通常以亮度来衡量，单位是流明（lm）或毫流明（mcd）。根据应用的要求，选择合适的亮度级别。</p>
+<h5 id="c工作电流">(c)工作电流</h5>
+<p>  指LED在正常工作条件下所需的电流。合适的工作电流取决于LED的型号和亮度需求。</p>
+<h5 id="d正向电压">(d)正向电压</h5>
+<p>  LED的正向电压是指在正向电流下的电压降。确保所选LED的工作电压与电路中的电源电压匹配。</p>
+<h5 id="e工作温度范围">(e)<strong>工作温度范围</strong></h5>
+<p>  确保所选LED的工作温度范围适用于应用环境。某些LED可能在极端高温或低温条件下表现更好。</p>
+<h3 id="整流二极管rectifier-diodes">(2)整流二极管Rectifier Diodes</h3>
+<p><img
+src="https://i.miji.bid/2024/02/14/6d51a6593dc29e86a9ef993d47a3d49a.png" srcset="/img/loading.gif" lazyload
+alt="Rectifier Diodes" /></p>
+<h4 id="工作原理-1">1.工作原理</h4>
+<p>  向二级管施加正向电压时，形成导电通道，电流通过。向二级管施加反向电压时，电流几乎无法通过，整流二极管处于截止状态。这种特性使得整流二极管在电源电路中用于将交流电信号转换为直流电信号，是整流电路的关键元件之一。整流二极管的选择和应用需要考虑其正向导通压降、反向击穿电压等参数，以确保其在具体应用中能够稳定工作。</p>
+<h4 id="参数选型型号bas116t">2.参数选型（型号BAS116T）</h4>
+<p><img
+src="https://i.miji.bid/2024/02/14/b6c06158cf8a86df37dc0429d2374c96.png" srcset="/img/loading.gif" lazyload
+alt="整流二极管选型" /></p>
+<h5 id="a正向导通压降">(a)正向导通压降</h5>
+<p>  在正向导通状态下，整流二极管会有一个正向导通电压降。这个值是电流通过时的电压降，通常在几百毫伏（mV）到数伏（V）之间，取决于具体的二极管类型。</p>
+<h5 id="b反向击穿电压">(b)反向击穿电压</h5>
+<p>  整流二极管在反向电压下会有一个击穿电压，即超过这个电压，二极管就会处于反向击穿状态。在正常工作中，应该避免超过这个击穿电压，以防损坏二极管。</p>
+<h5 id="c反向漏电流">(c)反向漏电流</h5>
+<p>  即使在反向电压下，整流二极管也会有一小部分的漏电流。这个漏电流通常是微安级别，但在某些应用中需要特别小的漏电流。</p>
+<h5 id="d反向恢复时间">(d)反向恢复时间</h5>
+<p>  整流二极管的反向恢复时间是指其从导通到截止的切换速度。这对于高频应用或需要快速切换的应用很重要。</p>
+<h3 id="齐纳二极管zener-diodes稳压二极管">(3)齐纳二极管Zener
+Diodes（稳压二极管）</h3>
+<p><img
+src="https://i.miji.bid/2024/02/14/357f8c3f9babfbeb357c76fd4766c96c.png" srcset="/img/loading.gif" lazyload
+alt="Zener Diodes" /></p>
+<h4 id="工作原理-2">1.工作原理</h4>
+<p>  齐纳二极管是一种特殊类型的二极管，主要用于提供稳定的电压。与一般的二极管不同，齐纳二极管在<strong>反向击穿电压下工作时，会保持相对稳定的电压</strong>。这种特性使齐纳二极管成为电压调节器和稳压电源电路中的重要组件。</p>
+<h4 id="参数选型型号bzt52c2v0">2.参数选型（型号BZT52C2V0）</h4>
+<p><img
+src="https://i.miji.bid/2024/02/14/28c301339f353bd5cdb147edfe1b8d18.png" srcset="/img/loading.gif" lazyload
+alt="齐纳二极管选型" /></p>
+<h5 id="a齐纳电压">(a)齐纳电压</h5>
+<p>  Zener Diode 在反向击穿时维持的稳定电压值。选择 Zener Diode
+时，应根据应用的需要选取合适的齐纳电压，确保它能够提供所需的稳定电压。</p>
+<h5 id="b最大正向电流">(b)最大正向电流</h5>
+<p>Zener Diode 在正向电流方向上的最大额定电流。确保所选 Zener Diode
+的最大正向电流能够满足实际应用的需求。</p>
+<h5 id="c最大反向电流">(c)最大反向电流</h5>
+<p>  在反向击穿时，Zener Diode 允许的最大反向电流。这个参数对于确保
+Zener Diode 在反向工作时的稳定性很重要。</p>
+<h3 id="肖特基二极管schottky-diodes">(4)肖特基二极管Schottky Diodes</h3>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="https://i.miji.bid/2024/02/14/f7cf6e2c43cc5745db1ca58c88ff6e12.png" srcset="/img/loading.gif" lazyload height="190" alt = "肖特基二极管应用电路"/></div><div class="group-image-wrap"><img src="https://i.miji.bid/2024/02/14/b88e7eddfcf443635dccb3d11a79440f.png" srcset="/img/loading.gif" lazyload height="190" alt = "肖特基二极管-伏安特性曲线"/></div></div></div>
+<h4 id="工作原理-3">1.工作原理</h4>
+<p>  肖特基二极管（Schottky
+Diode）是一种特殊类型的二极管，其工作原理与普通的PN结二极管有所不同。肖特基二极管是由金属（M）与半导体（usually
+N-type）形成的一个异质结构，取代了普通二极管中的P型半导体。肖特基二极管的开关速度远快于普通二极管，因为它不需要在PN结中等待少数载流子的漂移和扩散。这导致了较短的反向恢复时间。肖特基二极管在正向偏置时的电压降相对较低，这使得肖特基二极管在一些应用中能够提供更快的开关速度和更低的功耗。</p>
+<h4 id="参数选型型号ss32">2.参数选型（型号SS32）</h4>
+<p><img
+src="https://i.miji.bid/2024/02/14/509288ce6ebaa4d612d3608a815d079a.png" srcset="/img/loading.gif" lazyload
+alt="肖特基二极管选型" /></p>
+<h5 id="a正向电压降">(a)正向电压降</h5>
+<p>  由于肖特基二极管的特殊性质，它在反向电压下的击穿电压较低，因此在设计电路时需要注意反向电压不要超过其额定值，以免损坏二极管。</p>
+<h5 id="b最大反向电流">(b)最大反向电流</h5>
+<p>  反向漏电流参数可能是肖特基二极管的一个问题。研究发现，温度升高会显著增加反向漏电流参数。通常情况下，二极管结温每升高
+25°C，相同反向偏置水平下的反向电流就会增加一个数量级。</p>
+<h3
+id="瞬态抑制二极管transient-voltage-suppression-diode">(5)瞬态抑制二极管Transient
+Voltage Suppression Diode</h3>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="https://i.miji.bid/2024/02/14/6d7b0d7379e04742ba3fa66db3e6c9d9.jpeg" srcset="/img/loading.gif" lazyload height="260" alt = "瞬态抑制二极管应用电路"/></div><div class="group-image-wrap"><img src="https://i.miji.bid/2024/02/14/972630922bec86867779b62ac7b2f2d4.jpeg" srcset="/img/loading.gif" lazyload height="260" alt = "瞬态抑制二极管-伏安特性曲线"/></div></div></div>
+<h4 id="工作原理-4">1.工作原理</h4>
+<p>  瞬态抑制二极管，通常称为TVS二极管（Transient Voltage Suppressor
+Diode），是一种专门设计用于抑制电路中瞬态过电压的二极管。这些瞬态过电压可能由于电感耦合、电源开关、静电放电、或其他瞬时事件引起。在正常工作状态下，TVS二极管处于高阻抗状态，对正常工作电压几乎不起作用。在这种状态下，电路的运行不受影响。当瞬态过电压超过TVS二极管的击穿电压（Breakdown
+Voltage）时，二极管会迅速切换到低阻抗状态。这导致二极管变成一个低阻抗的通路，允许过电压电流通过。TVS二极管在低阻抗状态下吸收和消耗过电压能量，将过电压引导到地，从而保护电路中的其他元件。这使得TVS二极管起到了瞬态过电压保护的作用。</p>
+<h4 id="参数选型型号smaj5.0a">2.参数选型（型号SMAJ5.0A）</h4>
+<p><img
+src="https://i.miji.bid/2024/02/14/84a57a5b5e942c92aef077b75d7860f7.png" srcset="/img/loading.gif" lazyload
+alt="瞬态抑制二极管选型" /></p>
+<h5 id="a击穿电压">(a)击穿电压</h5>
+<p>  TVS二极管的最重要参数之一。它表示在什么电压下，二极管会从高阻抗状态迅速切换到低阻抗状态。选择时确保其击穿电压高于被保护电路的最大工作电压。</p>
+<h5 id="b钳位电压">(b)钳位电压</h5>
+<p>  “钳位电压”（Clamping
+Voltage）是指在电路中出现瞬态电压时，TVS二极管开始工作并限制电压到一个相对恒定的值。钳位电压是一个关键的参数，表示TVS二极管在瞬态事件期间允许的最大电压。</p>
+<h5 id="c关断电压">(c)关断电压</h5>
+<p>  Stand-Off
+Voltage（承受电压）通常指的是二极管在正常工作状态下能够承受的最大电压，而不进入导通状态。在Stand-Off
+Voltage以下，TVS二极管应该处于高阻抗状态，不导通电流。</p>
+<h5 id="d反向漏电流">(d)反向漏电流</h5>
+<p>  在反向偏置时，TVS二极管的反向漏电流。一些应用要求较小的反向漏电流，特别是在需要保护高阻抗电路的情况下。</p>
+<h5 id="e最大脉冲功率">(e)最大脉冲功率</h5>
+<p>  表示TVS二极管可以吸收的最大脉冲功率。确保所选二极管的最大脉冲功率能够处理特定应用中的脉冲能量。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%A7%91%E6%99%AE%E8%AE%A4%E8%AF%86/">科普认识</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BA%8C%E6%9E%81%E7%AE%A1/">二极管</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%A8%B3%E5%8E%8B%E4%BA%8C%E6%9E%81%E7%AE%A1/">稳压二极管</a>
+                    
+                      <a class="hover-with-bg" href="/tags/TVS/">TVS</a>
+                    
+                      <a class="hover-with-bg" href="/tags/LED/">LED</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%82%96%E7%89%B9%E5%9F%BA%E4%BA%8C%E6%9E%81%E7%AE%A1/">肖特基二极管</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%BD%90%E7%BA%B3%E4%BA%8C%E6%9E%81%E7%AE%A1/">齐纳二极管</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E7%9B%B8%E6%9C%BA/%E5%B7%A5%E4%B8%9A%E7%9B%B8%E6%9C%BA%E5%8F%82%E6%95%B0%E4%BB%8B%E7%BB%8D%E5%8F%8A%E5%8E%9F%E7%90%86%E8%AE%B2%E8%A7%A3/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">工业相机参数介绍及原理讲解</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/STM32/STM32CubeMX%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/">
+                        <span class="hidden-mobile">STM32CubeMX配置详解</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"fgaUlM9tpzalN2J6sOooSVc0-gzGzoHsz","appKey":"LUzOsNy6KL0b2iyCMMlIstrJ","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        鄂ICP备2023014081号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="/js/DynamicLine.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
