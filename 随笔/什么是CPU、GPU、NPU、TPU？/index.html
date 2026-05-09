@@ -33,20 +33,21 @@
   <meta name="author" content="ChenZhao">
   <meta name="keywords" content="">
   
-    <meta name="description" content="XXXXXXXXXXXX，封面图片比例2.35：1">
+    <meta name="description" content="随着人工智能、大模型与高性能计算的发展，传统 CPU 已难以满足海量并行计算需求，GPU、NPU、TPU 等专用处理器逐渐成为智能计算的核心。不同处理器在架构设计、并行能力、功耗控制及应用场景上存在显著差异：CPU 擅长通用逻辑控制，GPU 强于大规模并行运算，NPU 面向端侧 AI 推理优化，而 TPU 则专为深度学习训练与推理设计。本文将系统解析 CPU、GPU、NPU 与 TPU 的基本原理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="什么是CPU、GPU、NPU、TPU？">
 <meta property="og:url" content="https://www.cznewborn.com/%E9%9A%8F%E7%AC%94/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/index.html">
 <meta property="og:site_name" content="Leia Blog">
-<meta property="og:description" content="XXXXXXXXXXXX，封面图片比例2.35：1">
+<meta property="og:description" content="随着人工智能、大模型与高性能计算的发展，传统 CPU 已难以满足海量并行计算需求，GPU、NPU、TPU 等专用处理器逐渐成为智能计算的核心。不同处理器在架构设计、并行能力、功耗控制及应用场景上存在显著差异：CPU 擅长通用逻辑控制，GPU 强于大规模并行运算，NPU 面向端侧 AI 推理优化，而 TPU 则专为深度学习训练与推理设计。本文将系统解析 CPU、GPU、NPU 与 TPU 的基本原理">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/https/picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/_posts/%25E4%25BB%2580%25E4%25B9%2588%25E6%2598%25AFCPU%25E3%2580%2581GPU%25E3%2580%2581NPU%25E3%2580%2581TPU%25EF%25BC%259F/2026-05-09-10-40-15-2026-05-09-10-40-09-Understanding%20CPU%20vs%20GPU%20vs%20TPU%20vs%20NPU%20in%20Modern%20Al%20Systems.png">
 <meta property="article:published_time" content="2026-05-09T02:35:50.000Z">
-<meta property="article:modified_time" content="2026-05-09T02:40:34.569Z">
+<meta property="article:modified_time" content="2026-05-09T08:29:33.002Z">
 <meta property="article:author" content="ChenZhao">
-<meta property="article:tag" content="tag1">
-<meta property="article:tag" content="tag2">
-<meta property="article:tag" content="tag3">
+<meta property="article:tag" content="CPU">
+<meta property="article:tag" content="GPU">
+<meta property="article:tag" content="NPU">
+<meta property="article:tag" content="TPU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/https/picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/_posts/%25E4%25BB%2580%25E4%25B9%2588%25E6%2598%25AFCPU%25E3%2580%2581GPU%25E3%2580%2581NPU%25E3%2580%2581TPU%25EF%25BC%259F/2026-05-09-10-40-15-2026-05-09-10-40-09-Understanding%20CPU%20vs%20GPU%20vs%20TPU%20vs%20NPU%20in%20Modern%20Al%20Systems.png">
   
@@ -225,7 +226,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      305 字
+      6.2k 字
     </span>
   
 
@@ -234,7 +235,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3 分钟
+      52 分钟
     </span>
   
 
@@ -275,50 +276,580 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2026年5月9日 上午
+                  本文最后更新于：2026年5月9日 下午
                 
               </p>
             
             <div class="markdown-body">
-              <h1 id="文章标题">文章标题</h1>
-<p>  文章的前情摘要xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+              <h1 id="什么是cpugpunputpu">什么是CPU、GPU、NPU、TPU？</h1>
+<p>  随着人工智能、大模型与高性能计算的发展，传统 CPU
+已难以满足海量并行计算需求，GPU、NPU、TPU
+等专用处理器逐渐成为智能计算的核心。不同处理器在架构设计、并行能力、功耗控制及应用场景上存在显著差异：CPU
+擅长通用逻辑控制，GPU 强于大规模并行运算，NPU 面向端侧 AI 推理优化，而
+TPU 则专为深度学习训练与推理设计。本文将系统解析 CPU、GPU、NPU 与 TPU
+的基本原理、性能特点及典型应用，帮助读者理解 AI
+时代异构计算的发展趋势。</p>
 <blockquote>
 <p>参考：</p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.qnap.com/en/cpu-gpu-npu-tpu-what-are-they/">CPU、GPU、NPU、TPU：它们是什么？|QNAP博客</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://resources.l-p.com/knowledge-center/cpu-vs-gpu-vs-tpu-vs-npu-architecture-comparison-explained">Understanding
+CPU vs GPU vs TPU vs NPU in Modern AI Systems</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://resources.l-p.com/knowledge-center/cpu-vs-gpu-vs-tpu-vs-npu-architecture-comparison-explained">Understanding
+CPU vs GPU vs TPU vs NPU in Modern AI Systems</a></p>
 </blockquote>
-<h2 id="一1级标题">一、1级标题</h2>
-<p>  引言一</p>
-<p><img src="" srcset="/img/loading.gif" lazyload
-alt="Understanding CPU vs GPU vs TPU vs NPU in Modern Al Systems" /></p>
-<h3 id="二级标题">(1)二级标题</h3>
-<h4 id="三级标题">1.三级标题</h4>
-<h5 id="a四级标题">(a)四级标题</h5>
-<h5 id="b四级标题">(b)四级标题</h5>
-<h5 id="c四级标题">(c)四级标题</h5>
-<h5 id="d四级标题">(d)四级标题</h5>
-<h4 id="三级标题-1">2.三级标题</h4>
-<h4 id="三级标题-2">3.三级标题</h4>
-<h4 id="三级标题-3">4.三级标题</h4>
-<h3 id="级标题">(2)2级标题</h3>
-<h3 id="级标题-1">(3)2级标题</h3>
-<h3 id="级标题-2">(4)2级标题</h3>
-<h2 id="二1级标题">二、1级标题</h2>
-<p>  引言二</p>
-<h3 id="级标题-3">(1)2级标题</h3>
-<h3 id="级标题-4">(2)2级标题</h3>
-<h3 id="级标题-5">(3)2级标题</h3>
-<h3 id="级标题-6">(4)2级标题</h3>
-<h2 id="三1级标题">三、1级标题</h2>
-<p>  引言三</p>
-<h3 id="级标题-7">(1)2级标题</h3>
-<h3 id="级标题-8">(2)2级标题</h3>
-<h3 id="级标题-9">(3)2级标题</h3>
-<h3 id="级标题-10">(4)2级标题</h3>
-<h2 id="四1级标题">四、1级标题</h2>
-<p>  引言四</p>
-<h3 id="级标题-11">(1)2级标题</h3>
-<h3 id="级标题-12">(2)2级标题</h3>
-<h3 id="级标题-13">(3)2级标题</h3>
-<h3 id="级标题-14">(4)2级标题</h3>
+<h2 id="一什么是cpu">一、什么是CPU？</h2>
+<p>  CPU（中央处理器）是计算机和智能设备中的核心运算与控制单元，被称为电子系统的“大脑”。它负责执行程序指令、处理数据并协调各硬件工作，是决定设备运行性能与响应速度的关键核心。</p>
+<h5 align="center">
+当前顶级CPU代表型号（仅供参考）
+</h5>
+<table>
+<tr>
+<td align="center">
+<img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/_posts/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/2026-05-09-15-56-53-AMD%20Ryzen%209%209950X3D.jpg" srcset="/img/loading.gif" lazyload width="300"><br>AMD
+Ryzen 9 9950X3D
+</td>
+<td align="center">
+<img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/_posts/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/2026-05-09-15-57-47-Intel%20Core%20i9-14900KS.jpg" srcset="/img/loading.gif" lazyload width="300"><br>Intel
+Core i9-14900KS
+</td>
+<td align="center">
+<img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/_posts/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/2026-05-09-15-58-22-AMD%20EPYC%209005%20Turin.jpg" srcset="/img/loading.gif" lazyload width="300"><br>AMD
+EPYC Turin
+</td>
+</tr>
+<tr>
+<td align="center">
+<img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/_posts/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/2026-05-09-16-10-03-Intel%20Xeon%206980P.jpg" srcset="/img/loading.gif" lazyload width="300"><br>Intel
+Xeon 6980P
+</td>
+<td align="center">
+<img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/_posts/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/2026-05-09-16-10-43-AMD%20EPYC%209654%20Genoa.jpg" srcset="/img/loading.gif" lazyload width="300"><br>AMD
+EPYC Genoa
+</td>
+<td align="center">
+<img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/_posts/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/2026-05-09-16-11-24-Apple%20A18%20Pro.jpeg" srcset="/img/loading.gif" lazyload width="300"><br>Apple
+A18 Pro
+</td>
+</tr>
+</table>
+<h3 id="cpu-的基本原理">(1) CPU 的基本原理</h3>
+<p>CPU（Central Processing
+Unit，中央处理器）是电子设备中的核心控制单元，负责读取并执行程序指令，同时完成数据运算、任务调度和系统控制。它的工作过程主要包括“取指令—分析指令—执行指令”三个步骤，并以极高速度不断循环。CPU内部通常包含运算单元、控制单元、寄存器以及高速缓存等模块，用于提升数据处理效率。现代CPU还通过多核心、超线程、流水线和分支预测等技术进一步提高计算性能。CPU最大的特点是通用性强，能够处理复杂逻辑、系统控制和多任务协同，因此被称为整个计算机系统的“大脑”。</p>
+<h3 id="cpu-的典型型号与应用">(2) CPU 的典型型号与应用</h3>
+<p>目前主流 CPU
+广泛应用于个人电脑、服务器、手机以及嵌入式设备等领域。</p>
+<p>在桌面计算领域，Intel Core i9-14900K 和 AMD Ryzen 9 9950X
+常用于高性能游戏、视频剪辑和工程开发。</p>
+<p>在服务器领域，Intel Xeon Platinum 8592+ 与 AMD EPYC 9754
+被广泛应用于云计算、大数据和数据中心。</p>
+<p>在移动终端领域，Apple A18 Pro 与 Qualcomm Snapdragon 8 Gen 4
+常用于智能手机和平板设备。</p>
+<p>此外，STM32H743
+等嵌入式处理器则大量应用于机器人、无人机、工业控制和自动化系统。</p>
+<h3 id="cpu-的性能特点">(3) CPU 的性能特点</h3>
+<p>CPU
+属于典型的通用处理器，其优势在于逻辑处理能力强、响应速度快以及系统控制能力优秀，特别适合运行操作系统、复杂程序和串行任务。相比
+GPU、NPU 等专用加速器，CPU
+的核心数量通常较少，但单核心性能更强，因此更适合复杂逻辑判断与低延迟任务处理。</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 53%" />
+<col style="width: 36%" />
+<col style="width: 9%" />
+</colgroup>
+<thead>
+<tr>
+<th>国产CPU</th>
+<th>对标 Intel 型号（仅供参考）</th>
+<th>主要应用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.loongson.cn/product/show?id=10">龙芯
+3A5000</a></td>
+<td>Intel Core i3-8109U 左右</td>
+<td>国产桌面PC</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.loongson.cn/product/show?id=26">龙芯
+3A6000</a></td>
+<td>Intel Core i5-10400 ~ Intel Core i5-11600</td>
+<td>信创桌面</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.loongson.cn/product/show?id=41">龙芯
+3C6000</a></td>
+<td>Intel Xeon Silver 4314</td>
+<td>服务器</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.phytium.com.cn/homepage/production/3/">飞腾
+FT-2000+</a></td>
+<td>Intel Xeon E5</td>
+<td>服务器/政企</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.phytium.com.cn/homepage/production/1/">飞腾
+腾锐D2000</a></td>
+<td>Intel Core i5-7500 左右</td>
+<td>国产PC</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.phytium.com.cn/homepage/production/4/">飞腾
+腾云S2500</a></td>
+<td>Intel Xeon Gold 6138 左右</td>
+<td>数据中心</td>
+</tr>
+<tr>
+<td><a
+target="_blank" rel="noopener" href="https://www.hisilicon.com/cn/products/kunpeng/huawei-kunpeng/huawei-kunpeng-920">华为
+鲲鹏920</a></td>
+<td>Intel Xeon Platinum 8260 左右</td>
+<td>云计算</td>
+</tr>
+<tr>
+<td><a
+target="_blank" rel="noopener" href="https://www.hygon.cn/product/productlist?category=category2">海光
+C86 3250</a></td>
+<td>Intel Xeon Silver</td>
+<td>信创服务器</td>
+</tr>
+<tr>
+<td><a
+target="_blank" rel="noopener" href="https://www.hygon.cn/product/productlist?category=category2">海光
+7000系列</a></td>
+<td>Intel Xeon Ice Lake</td>
+<td>数据中心</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.zhaoxin.com/qt.aspx?nid=3&amp;typeid=129">兆芯
+KX-6000</a></td>
+<td>Intel Core i5-7400</td>
+<td>国产桌面</td>
+</tr>
+<tr>
+<td><a
+target="_blank" rel="noopener" href="https://www.zhaoxin.com/prod_view.aspx?nid=3&amp;typeid=593&amp;id=2757">兆芯
+KX-7000</a></td>
+<td>Intel Core i3-10100 ~ Intel Core i5-10400</td>
+<td>国产PC</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://www.swcpu.cn/show-130-261-1.html">申威
+SW26010</a></td>
+<td>Intel Xeon Phi 7290</td>
+<td>超级计算机</td>
+</tr>
+</tbody>
+</table>
+<h2 id="二什么是gpu">二、什么是GPU？</h2>
+<p>  GPU（图形处理器）最初主要用于图像显示与游戏渲染，但随着人工智能和大数据计算的发展，其强大的并行计算能力逐渐成为
+AI 训练和高性能计算的重要基础。如今，GPU
+已广泛应用于游戏、视频处理、自动驾驶以及大模型训练等领域。</p>
+<h5 align="center">
+当前顶级GPU代表型号（仅供参考）
+</h5>
+<table>
+<tr>
+<td align="center">
+<img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/_posts/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/2026-05-09-16-13-47-NVIDIA%20B200%20Blackwell.jpeg" srcset="/img/loading.gif" lazyload width="300"><br>NVIDIA
+B200 Blackwell
+</td>
+<td align="center">
+<img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/_posts/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/2026-05-09-16-16-27-NVIDIA%20H200.jpg" srcset="/img/loading.gif" lazyload width="300"><br>NVIDIA
+H200
+</td>
+<td align="center">
+<img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/_posts/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/2026-05-09-16-16-52-NVIDIA%20RTX%205090.jpg" srcset="/img/loading.gif" lazyload width="300"><br>NVIDIA
+RTX 5090
+</td>
+</tr>
+<tr>
+<td align="center">
+<img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/_posts/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/2026-05-09-16-17-10-NVIDIA%20RTX%206000%20Ada.png" srcset="/img/loading.gif" lazyload width="300"><br>NVIDIA
+RTX 6000 Ada
+</td>
+<td align="center">
+<img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/_posts/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/2026-05-09-16-17-30-AMD%20Instinct%20MI325X.png" srcset="/img/loading.gif" lazyload width="300"><br>AMD
+Instinct MI325X
+</td>
+<td align="center">
+<img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/_posts/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/2026-05-09-16-18-02-A%E7%B3%BB%E5%88%97%E8%8A%AF%E7%89%87.jpg" srcset="/img/loading.gif" lazyload width="300"><br>Apple
+A18 Pro GPU
+</td>
+</tr>
+</table>
+<h3 id="gpu的基本原理">(1) GPU的基本原理</h3>
+<p>GPU（Graphics Processing
+Unit，图形处理器）是一种专门面向大规模并行计算设计的处理器。与 CPU
+少核心、高控制能力的结构不同，GPU
+内部通常集成大量计算核心，可同时处理海量相似计算任务，因此特别适合图像渲染、矩阵运算和深度学习中的神经网络计算。GPU
+最初用于 3D
+图形显示和视频处理，后来因其在向量与矩阵计算上的高效率，被广泛应用于人工智能训练、高性能计算和科学仿真等领域。现代
+GPU 通常需要 CPU 进行任务调度与控制，两者协同完成复杂计算任务。</p>
+<h3 id="gpu-的典型型号与应用">(2) GPU 的典型型号与应用</h3>
+<p>目前 GPU 已广泛应用于消费电子、专业图形工作站和 AI
+数据中心等领域。</p>
+<p>在消费级市场中，NVIDIA GeForce RTX 4090 和 AMD Radeon RX 7900 XTX
+常用于高端游戏、3D 建模和视频渲染。</p>
+<p>在人工智能与云计算领域，NVIDIA H100 Tensor Core GPU 和 NVIDIA A100
+Tensor Core GPU 被广泛用于大模型训练、AI 推理及超级计算中心。</p>
+<p>此外，手机芯片中的 GPU 也承担图形显示和移动端 AI 加速任务，例如 Apple
+A18 Pro 和 Qualcomm Snapdragon 8 Gen 4 中均集成高性能图形单元。</p>
+<h3 id="gpu-的性能特点">(3) GPU 的性能特点</h3>
+<p>GPU
+最大的特点是并行计算能力极强，能够同时处理大量重复性数据运算，因此在图像渲染、视频处理、深度学习和科学计算等领域性能远高于
+CPU。相比 CPU 强调复杂逻辑控制和低延迟响应，GPU
+更注重高吞吐量计算，适合矩阵运算和海量数据处理任务。不过，GPU
+的控制与逻辑处理能力相对较弱，通常需要 CPU 负责系统调度和任务管理。</p>
+<table>
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 38%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr>
+<th>国产 GPU</th>
+<th>对标 NVIDIA 型号（仅供参考）</th>
+<th>主要方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.mthreads.com/product/S80">摩尔线程 MTT
+S80</a></td>
+<td>NVIDIA GeForce RTX 3060 ~ NVIDIA GeForce RTX 3070</td>
+<td>游戏与桌面图形</td>
+</tr>
+<tr>
+<td><a
+target="_blank" rel="noopener" href="https://www.innosilicon.com.cn/gpu/fenghua1">芯动风华1号</a></td>
+<td>NVIDIA GeForce GTX 1650</td>
+<td>国产桌面显卡</td>
+</tr>
+<tr>
+<td><a
+target="_blank" rel="noopener" href="https://www.xyingba.com/products/jingjiaweijm9xilie/">景嘉微
+JM9系列</a></td>
+<td>NVIDIA GeForce GTX 1050 左右</td>
+<td>信创与工业图形</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/9895604">壁仞
+BR100</a></td>
+<td>NVIDIA A100 Tensor Core GPU</td>
+<td>AI 训练</td>
+</tr>
+<tr>
+<td><a
+target="_blank" rel="noopener" href="https://www.metax-tech.com/prod.html?cid=107&amp;id=21">沐曦
+C500</a></td>
+<td>NVIDIA A100 Tensor Core GPU</td>
+<td>AI 训练与高性能计算</td>
+</tr>
+<tr>
+<td><a
+target="_blank" rel="noopener" href="https://www.iluvatar.com/productDetails?fullCode=cpjs-yj-xlxl-tg100">天数智芯
+天垓100</a></td>
+<td>NVIDIA V100 Tensor Core GPU</td>
+<td>AI 训练</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://mc.dfrobot.com.cn/thread-341452-1-1.html">海光
+深算DCU</a></td>
+<td>AMD Instinct MI100 / NVIDIA A100 Tensor Core GPU</td>
+<td>通用计算与 AI</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.enflame-tech.com/news/2023-07-07-1">燧原
+云燧T20</a></td>
+<td>NVIDIA T4 Tensor Core GPU</td>
+<td>AI 推理</td>
+</tr>
+<tr>
+<td><a
+target="_blank" rel="noopener" href="https://www.cambricon.com/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=406">寒武纪
+MLU370</a></td>
+<td>NVIDIA A30 Tensor Core GPU</td>
+<td>AI 推理与训练</td>
+</tr>
+</tbody>
+</table>
+<h2 id="三什么是npu">三、什么是NPU？</h2>
+<p>  NPU（神经网络处理器）是专门为人工智能计算设计的处理器，主要用于加速深度学习和神经网络推理。相比
+CPU 和 GPU，NPU 更强调 AI
+运算效率与低功耗，已广泛应用于手机、自动驾驶、智能安防以及边缘 AI
+设备等领域。</p>
+<table>
+<tr>
+<td align="center">
+<img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/_posts/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/2026-05-09-16-24-59-Apple%20Neural%20Engine%20inside%20M4.jpg" srcset="/img/loading.gif" lazyload width="300"><br>Apple
+Neural Engine
+</td>
+<td align="center">
+<img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/_posts/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/2026-05-09-16-25-42-Qualcomm%20Hexagon%20NPU.webp" srcset="/img/loading.gif" lazyload width="300"><br>Qualcomm
+Hexagon NPU
+</td>
+<td align="center">
+<img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/_posts/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/2026-05-09-16-27-02-Google%20TPU%20v5p.png" srcset="/img/loading.gif" lazyload width="300"><br>Google
+TPU v5p
+</td>
+</tr>
+<tr>
+<td align="center">
+<img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/_posts/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/2026-05-09-16-26-33-Google%20TPU%208i%20%E5%92%8C8t.png" srcset="/img/loading.gif" lazyload width="300"><br>Google
+TPU 8t and 8i
+</td>
+<td align="center">
+<img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/_posts/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/2026-05-09-16-27-25-Huawei%20Ascend%20910B.jpg" srcset="/img/loading.gif" lazyload width="300"><br>Huawei
+Ascend 910B
+</td>
+<td align="center">
+<img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/_posts/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/2026-05-09-16-28-15-NVIDIA%20DRIVE%20Thor.jpg" srcset="/img/loading.gif" lazyload width="300"><br>NVIDIA
+DRIVE Thor
+</td>
+</tr>
+</table>
+<h3 id="npu的基本原理">(1) NPU的基本原理</h3>
+<p>NPU（Neural Processing
+Unit，神经网络处理器）是一种针对人工智能神经网络运算专门优化的处理器，其核心目标是高效完成矩阵乘法、卷积计算和向量运算等
+AI 核心任务。相比 CPU 强调通用控制能力、GPU 强调大规模并行计算，NPU
+更关注神经网络推理效率与能耗优化。NPU 内部通常采用专用 AI
+指令集、张量计算单元以及低精度计算架构，可大幅提升深度学习推理速度，并降低功耗。目前，NPU
+已成为智能手机、边缘计算设备、机器人和自动驾驶系统中的重要 AI
+加速核心。</p>
+<h3 id="npu的典型型号与应用">(2) NPU的典型型号与应用</h3>
+<p>目前 NPU 已广泛应用于手机 SoC、AI 加速卡和边缘智能设备。</p>
+<p>在移动端领域，Apple A18 Pro Neural Engine、Huawei Ascend Da Vinci NPU
+以及 Qualcomm Hexagon NPU 主要用于 AI
+拍照、语音识别和本地大模型推理。</p>
+<p>在数据中心领域，Huawei Ascend 910B 和 寒武纪 MLU370 常用于 AI
+训练和推理服务器。</p>
+<p>此外，NPU 也广泛用于智能安防、工业视觉、自动驾驶以及机器人控制等边缘
+AI 场景。</p>
+<h3 id="npu-的性能特点">(3) NPU 的性能特点</h3>
+<p>NPU 最大的特点是“高 AI
+运算效率与低功耗”。由于其专门针对神经网络结构优化，因此在 AI
+推理任务中，NPU 的能效通常远高于 CPU 和
+GPU，特别适合移动设备和边缘计算场景。相比 GPU 强调通用并行计算，NPU
+更聚焦 AI 专用算子加速，例如卷积、Transformer 和矩阵乘法等。不过，NPU
+的通用性相对较弱，通常只能高效执行特定 AI 模型，因此仍需 CPU
+负责系统控制、GPU 负责部分高性能并行任务。在现代 AI 系统中，CPU、GPU 与
+NPU 往往协同工作，共同完成复杂智能计算任务。</p>
+<table>
+<colgroup>
+<col style="width: 61%" />
+<col style="width: 27%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr>
+<th>国产 NPU</th>
+<th>对标产品（仅供参考）</th>
+<th>主要方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a
+target="_blank" rel="noopener" href="https://ai.gitee.com/docs/compute/clusters_gpu/ascend_gpu#1-%E4%BA%A7%E5%93%81%E6%A6%82%E8%BF%B0ascend-910b">华为昇腾
+910B</a></td>
+<td>NVIDIA A100 Tensor Core GPU</td>
+<td>AI训练</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.huajietech.cn/help/ascend-310b.html">华为昇腾
+310B</a></td>
+<td>NVIDIA T4 Tensor Core GPU</td>
+<td>AI推理</td>
+</tr>
+<tr>
+<td><a
+target="_blank" rel="noopener" href="https://www.cambricon.com/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=406">寒武纪
+MLU370</a></td>
+<td>NVIDIA A30 Tensor Core GPU</td>
+<td>AI训练/推理</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://news.qq.com/rain/a/20250826A08Y4I00">寒武纪
+MLU590</a></td>
+<td>NVIDIA A100 Tensor Core GPU</td>
+<td>大模型训练</td>
+</tr>
+<tr>
+<td><a
+target="_blank" rel="noopener" href="https://www.horizon.auto/solutions/horizon-journey/horizon-journey6">地平线征程6</a></td>
+<td>NVIDIA Orin</td>
+<td>自动驾驶</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.blacksesame.com/zh/huashan-a1000/">黑芝麻
+A1000</a></td>
+<td>NVIDIA Xavier</td>
+<td>智能汽车</td>
+</tr>
+<tr>
+<td><a
+target="_blank" rel="noopener" href="https://www.rock-chips.com/a/cn/product/RK35xilie/2022/0926/1656.html">瑞芯微
+RK3588</a></td>
+<td>Qualcomm Hexagon NPU</td>
+<td>边缘AI</td>
+</tr>
+<tr>
+<td><a
+target="_blank" rel="noopener" href="https://www.allwinnertech.com/index.php?c=product&amp;a=index&amp;id=117">全志V853</a></td>
+<td>Google Edge TPU</td>
+<td>智能视觉</td>
+</tr>
+</tbody>
+</table>
+<h2 id="四什么是tpu">四、什么是TPU？</h2>
+<p>  TPU（张量处理器）是一种专门面向人工智能深度学习设计的 AI
+加速芯片，最早由 <a
+target="_blank" rel="noopener" href="https://cloud.google.com/tpu?utm_source=chatgpt.com">Google</a>
+提出。相比 CPU 和 GPU，TPU 更强调大规模张量运算效率，在大模型训练、云端
+AI 推理和数据中心计算中具有极高性能与能效优势。</p>
+<h3 id="tpu的基本原理">(1) TPU的基本原理</h3>
+<p>TPU（Tensor Processing
+Unit，张量处理器）是一种专门针对深度学习张量运算优化的 AI
+加速处理器，其核心目标是高效完成矩阵乘法、卷积和 Transformer
+等神经网络计算。TPU 内部通常采用大规模矩阵计算阵列（Systolic
+Array，脉动阵列）结构，可在极短时间内完成海量张量运算，因此特别适合深度学习训练与推理任务。相比
+CPU 强调通用控制能力、GPU 强调并行计算能力，TPU 更专注于 AI
+神经网络中的高密度矩阵计算，可显著提升 AI 模型训练速度并降低能耗。目前
+TPU 已广泛用于大模型、搜索引擎、语音识别以及云端 AI 服务等领域。</p>
+<h3 id="tpu的典型型号与应用">(2) TPU的典型型号与应用</h3>
+<p>TPU 最具代表性的产品来自 <a
+target="_blank" rel="noopener" href="https://cloud.google.com/tpu?utm_source=chatgpt.com">Google
+TPU</a> 系列，包括 Google TPU v4、Google TPU v5e 以及 Google TPU v5p
+等型号，主要用于 Gemini、大模型训练以及 Google 云 AI 服务。</p>
+<p>在边缘 AI 领域，Google Edge TPU 常用于智能摄像头、机器人和 IoT
+设备。</p>
+<p>TPU 目前主要部署于大型数据中心和云计算平台，通过成千上万个 TPU
+芯片组成 AI 超级计算集群，为大模型训练和高并发 AI 推理提供算力支持。</p>
+<h3 id="tpu-的性能特点">(3) TPU 的性能特点</h3>
+<p>TPU 最大的特点是针对 AI
+张量运算进行了高度专用化优化，因此在深度学习训练和推理中的能效比通常高于传统
+GPU。其脉动阵列结构能够高效完成矩阵乘法与 Transformer
+计算，非常适合大模型训练、自然语言处理和计算机视觉等任务。相比 GPU
+更强调通用并行计算，TPU 更聚焦 AI 专用工作负载，因此在 Google TensorFlow
+等生态下具有极高性能。不过，TPU 的通用性较弱，对特定 AI
+框架依赖较强，通常主要部署于大型云平台与数据中心。简单来说，GPU
+更像“通用 AI 工厂”，而 TPU 更像“专门为深度学习打造的超级 AI 引擎”。</p>
+<h1 id="中国制造的-tpu-类-tpu-芯片">中国制造的 TPU / 类 TPU 芯片</h1>
+<p>由于 “TPU” 本身是 Google 提出的专有名称，因此国内更多称为：</p>
+<ul>
+<li>AI 加速器；</li>
+<li>张量处理器；</li>
+<li>AI 训练芯片；</li>
+<li>类 TPU 架构芯片。</li>
+</ul>
+<p>目前较接近 TPU 架构路线的国产产品包括：</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 52%" />
+<col style="width: 37%" />
+<col style="width: 9%" />
+</colgroup>
+<thead>
+<tr>
+<th>国产芯片</th>
+<th>对标产品</th>
+<th>主要方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a
+target="_blank" rel="noopener" href="https://ai.gitee.com/docs/compute/clusters_gpu/ascend_gpu#1-%E4%BA%A7%E5%93%81%E6%A6%82%E8%BF%B0ascend-910b">华为昇腾
+910B</a></td>
+<td>Google TPU v4 / NVIDIA A100 Tensor Core GPU</td>
+<td>大模型训练</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://news.qq.com/rain/a/20250826A08Y4I00">寒武纪
+MLU590</a></td>
+<td>Google TPU v4</td>
+<td>AI训练</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.prnasia.com/story/324976-1.shtml">燧原
+云燧T21</a></td>
+<td>Google TPU v5e</td>
+<td>AI训练/推理</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://wallstreetcn.com/articles/3767433">天数智芯
+天垓200</a></td>
+<td>NVIDIA A100 Tensor Core GPU</td>
+<td>AI训练</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/9895604">壁仞
+BR100</a></td>
+<td>Google TPU v4</td>
+<td>通用AI计算</td>
+</tr>
+<tr>
+<td><a
+target="_blank" rel="noopener" href="https://developer.aliyun.com/article/719252">阿里含光800</a></td>
+<td>Google Edge TPU</td>
+<td>云端推理</td>
+</tr>
+<tr>
+<td><a
+target="_blank" rel="noopener" href="https://www.kunlunxin.com/product/2873.html">昆仑芯2代</a></td>
+<td>Google TPU v4</td>
+<td>AI训练/推理</td>
+</tr>
+</tbody>
+</table>
+<h2 id="算力指标衡量">算力指标衡量</h2>
+<h3 id="tops">(1) TOPS</h3>
+<p>TOPS（Tera Operations Per Second）是衡量 AI
+芯片计算能力的重要指标，表示处理器每秒可执行多少“万亿次运算”。其中，1
+TOPS 等于每秒 1 万亿次操作，常用于衡量 NPU、TPU、GPU 等 AI
+加速芯片在神经网络推理中的性能水平。TOPS 数值越高，通常意味着芯片处理 AI
+模型、图像识别、语音识别和大模型推理的速度越快。不过，TOPS
+并不完全等于真实 AI
+性能，因为实际效率还会受到内存带宽、数据传输、软件生态以及模型结构等因素影响。因此，TOPS
+更像是 AI 芯片的“理论算力指标”，而不是最终实际应用性能。</p>
+<h3 id="tflops">(2) TFLOPS</h3>
+<p>TFLOPS（Tera Floating Point Operations Per
+Second）是衡量处理器浮点计算能力的重要指标，表示芯片每秒可执行多少“万亿次浮点运算”。其中，1
+TFLOPS 等于每秒 1 万亿次浮点计算，常用于衡量 CPU、GPU、TPU
+等处理器在科学计算、图形渲染和 AI
+训练中的理论性能。例如，大模型训练中的矩阵运算通常会使用 FP32、FP16 或
+BF16 等浮点精度，因此 GPU 参数中常会标注 TFLOPS 指标。</p>
+<p>TOPS 与 TFLOPS 的核心区别在于“运算类型不同”。TFLOPS
+主要统计浮点数计算能力，强调高精度数学运算，常用于 GPU、超级计算机和 AI
+训练性能描述；而 TOPS 更偏向整数或低精度 AI 推理运算，常用于 NPU、边缘
+AI 芯片和移动端 AI 加速器。简单来说，TFLOPS
+更适合衡量“高精度计算能力”，而 TOPS 更适合衡量“AI
+推理吞吐能力”。不过，两者都属于理论算力指标，实际性能还会受到内存带宽、功耗、软件优化和模型结构等因素影响。</p>
+<h3 id="ips">(3) IPS</h3>
+<p>IPS（Inference Per Second）通常指“每秒推理次数”，是衡量 AI 芯片或 AI
+系统实际推理性能的重要指标，用来表示设备每秒能够完成多少次完整 AI
+模型推理任务。</p>
+<p>相比 TOPS、TFLOPS 这类“理论算力指标”，IPS
+更接近真实应用性能，因为它直接反映了模型运行后的实际处理能力。例如：</p>
+<ul>
+<li>一个摄像头 AI 芯片：
+<ul>
+<li>100 IPS</li>
+<li>表示每秒可完成 100 次目标识别。</li>
+</ul></li>
+<li>一个大模型服务器：
+<ul>
+<li>20 IPS</li>
+<li>表示每秒可完成 20 次完整大模型回答。</li>
+</ul></li>
+</ul>
 
             </div>
             <hr>
@@ -336,11 +867,13 @@ alt="Understanding CPU vs GPU vs TPU vs NPU in Modern Al Systems" /></p>
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/tag1/">tag1</a>
+                      <a class="hover-with-bg" href="/tags/CPU/">CPU</a>
                     
-                      <a class="hover-with-bg" href="/tags/tag2/">tag2</a>
+                      <a class="hover-with-bg" href="/tags/GPU/">GPU</a>
                     
-                      <a class="hover-with-bg" href="/tags/tag3/">tag3</a>
+                      <a class="hover-with-bg" href="/tags/NPU/">NPU</a>
+                    
+                      <a class="hover-with-bg" href="/tags/TPU/">TPU</a>
                     
                   </div>
                 
