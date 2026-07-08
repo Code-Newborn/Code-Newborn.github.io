@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.cznewborn.com/%E9%9A%8F%E7%AC%94/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/</loc>
-    <lastmod>2026-05-09</lastmod>
+    <loc>https://www.cznewborn.com/%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86%E5%BA%93/%E5%A4%A7%E5%B0%8F%E7%AB%AF%E6%A8%A1%E5%BC%8F%E3%80%81MSB%E5%92%8CLSB%E3%80%81%E5%AD%97%E8%8A%82%E5%BA%8F%E5%92%8C%E6%AF%94%E7%89%B9%E5%BA%8F/</loc>
+    <lastmod>2026-07-08</lastmod>
   </url>
   <url>
     <loc>https://www.cznewborn.com/%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8A%80%E6%9C%AF/%E5%AF%B9%E7%9B%B4%E8%A7%92%E5%9D%90%E6%A0%87%E7%B3%BB%E4%BD%8D%E5%A7%BF%E5%8F%98%E6%8D%A2%E5%8F%8A%E6%8F%8F%E8%BF%B0%E7%9A%84%E7%90%86%E8%A7%A3/</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-07-07</lastmod>
+  </url>
+  <url>
+    <loc>https://www.cznewborn.com/%E9%9A%8F%E7%AC%94/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/</loc>
+    <lastmod>2026-05-09</lastmod>
   </url>
   <url>
     <loc>https://www.cznewborn.com/Ubuntu/%E5%9C%A8-Ubuntu-%E4%B8%8B%E5%B0%86-U-%E7%9B%98%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%B9%B6%E4%B8%93%E9%97%A8%E7%94%A8%E4%BA%8E-Timeshift-%E5%A4%87%E4%BB%BD%E5%BF%AB%E7%85%A7/</loc>
@@ -49,15 +53,7 @@
     <lastmod>2025-12-08</lastmod>
   </url>
   <url>
-    <loc>https://www.cznewborn.com/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/%E5%AD%97%E8%8A%82%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/%E5%A4%A7%E7%AB%AF%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%B0%8F%E7%AB%AF%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2025-12-08</lastmod>
-  </url>
-  <url>
     <loc>https://www.cznewborn.com/CMake/Visual-Studio/%E5%88%A9%E7%94%A8Cmake%E9%80%9A%E8%BF%87Visual-Studio2019%E7%BC%96%E8%AF%91Opencv4-1-0-contrib-nonfree/</loc>
-    <lastmod>2025-12-08</lastmod>
-  </url>
-  <url>
-    <loc>https://www.cznewborn.com/AI%E5%B7%A5%E5%85%B7/%E5%80%BC%E5%BE%97%E5%85%B3%E6%B3%A8%E7%9A%84-12%E2%80%9315-%E6%AC%BE-AI-%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2025-12-08</lastmod>
   </url>
   <url>
@@ -65,15 +61,19 @@
     <lastmod>2025-12-08</lastmod>
   </url>
   <url>
+    <loc>https://www.cznewborn.com/AI%E5%B7%A5%E5%85%B7/%E5%80%BC%E5%BE%97%E5%85%B3%E6%B3%A8%E7%9A%84-12%E2%80%9315-%E6%AC%BE-AI-%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2025-12-08</lastmod>
+  </url>
+  <url>
     <loc>https://www.cznewborn.com/STM32/STM32CubeMX%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/</loc>
     <lastmod>2025-12-08</lastmod>
   </url>
   <url>
-    <loc>https://www.cznewborn.com/STM32/STM32CubeMX%E6%B7%BB%E5%8A%A0DSP%E5%BA%93/</loc>
+    <loc>https://www.cznewborn.com/Qt/Qt%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
     <lastmod>2025-12-08</lastmod>
   </url>
   <url>
-    <loc>https://www.cznewborn.com/Qt/Qt%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+    <loc>https://www.cznewborn.com/STM32/STM32CubeMX%E6%B7%BB%E5%8A%A0DSP%E5%BA%93/</loc>
     <lastmod>2025-12-08</lastmod>
   </url>
   <url>
@@ -85,11 +85,11 @@
     <lastmod>2025-12-08</lastmod>
   </url>
   <url>
-    <loc>https://www.cznewborn.com/Matlab/MATLAB-Filter-Designer-%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B%EF%BC%88filterDesigner-fdatool%EF%BC%89/</loc>
+    <loc>https://www.cznewborn.com/%E7%AE%97%E6%B3%95/%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/Kalman%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D/</loc>
     <lastmod>2025-12-08</lastmod>
   </url>
   <url>
-    <loc>https://www.cznewborn.com/%E7%AE%97%E6%B3%95/%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/Kalman%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D/</loc>
+    <loc>https://www.cznewborn.com/Matlab/MATLAB-Filter-Designer-%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B%EF%BC%88filterDesigner-fdatool%EF%BC%89/</loc>
     <lastmod>2025-12-08</lastmod>
   </url>
   <url>
