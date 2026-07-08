@@ -42,7 +42,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s1.ax1x.com/2022/10/27/xh1Ez8.png">
 <meta property="article:published_time" content="2022-10-26T13:41:05.000Z">
-<meta property="article:modified_time" content="2026-07-08T07:39:25.292Z">
+<meta property="article:modified_time" content="2026-07-08T07:43:30.706Z">
 <meta property="article:author" content="ChenZhao">
 <meta property="article:tag" content="字节序">
 <meta property="article:tag" content="计算机组成原理">
@@ -101,7 +101,119 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.0.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
 <body>
@@ -285,12 +397,8 @@
               <p>大小端模式是计算机系统在存储多字节数据时对字节顺序的不同组织方式，其中"大端模式"将高位字节存放在低地址，"小端模式"则将低位字节放在低地址；这两种模式影响跨平台数据交换、网络通信协议解析以及底层编程中的字节序处理。在实际开发中需要特别注意不同硬件架构（例如
 x86
 为小端，部分嵌入式或网络协议常用大端）的差异，以及序列化、文件读写、网络传输时的字节序统一问题；同时在接口对接、二进制协议设计、跨语言调用时必须明确双方的字节序，否则将导致数据解析错误或运行异常。</p>
-<p><img
-src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E5%A4%A7%E5%B0%8F%E7%AB%AF%E6%A8%A1%E5%BC%8F%E3%80%81MSB%E5%92%8CLSB%E3%80%81%E5%AD%97%E8%8A%82%E5%BA%8F%E5%92%8C%E6%AF%94%E7%89%B9%E5%BA%8F/IMG-%E5%A4%A7%E5%B0%8F%E7%AB%AF%E6%A8%A1%E5%BC%8F%E3%80%81MSB%E5%92%8CLSB%E3%80%81%E5%AD%97%E8%8A%82%E5%BA%8F%E5%92%8C%E6%AF%94%E7%89%B9%E5%BA%8F_19E58C0E73F1D632B4C7908070AFF8AA_20260707160109649.png" srcset="/img/loading.gif" lazyload
-alt="xh1ARf" /></p>
-<p><img
-src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E5%A4%A7%E5%B0%8F%E7%AB%AF%E6%A8%A1%E5%BC%8F%E3%80%81MSB%E5%92%8CLSB%E3%80%81%E5%AD%97%E8%8A%82%E5%BA%8F%E5%92%8C%E6%AF%94%E7%89%B9%E5%BA%8F/IMG-%E5%A4%A7%E5%B0%8F%E7%AB%AF%E6%A8%A1%E5%BC%8F%E3%80%81MSB%E5%92%8CLSB%E3%80%81%E5%AD%97%E8%8A%82%E5%BA%8F%E5%92%8C%E6%AF%94%E7%89%B9%E5%BA%8F_55FF7254185B9839B83608DCD7D90401_20260707160109653.png" srcset="/img/loading.gif" lazyload
-alt="xh1kJP" /></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E5%A4%A7%E5%B0%8F%E7%AB%AF%E6%A8%A1%E5%BC%8F%E3%80%81MSB%E5%92%8CLSB%E3%80%81%E5%AD%97%E8%8A%82%E5%BA%8F%E5%92%8C%E6%AF%94%E7%89%B9%E5%BA%8F/IMG-%E5%A4%A7%E5%B0%8F%E7%AB%AF%E6%A8%A1%E5%BC%8F%E3%80%81MSB%E5%92%8CLSB%E3%80%81%E5%AD%97%E8%8A%82%E5%BA%8F%E5%92%8C%E6%AF%94%E7%89%B9%E5%BA%8F_19E58C0E73F1D632B4C7908070AFF8AA_20260707160109649.png" srcset="/img/loading.gif" lazyload alt="xh1ARf"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E5%A4%A7%E5%B0%8F%E7%AB%AF%E6%A8%A1%E5%BC%8F%E3%80%81MSB%E5%92%8CLSB%E3%80%81%E5%AD%97%E8%8A%82%E5%BA%8F%E5%92%8C%E6%AF%94%E7%89%B9%E5%BA%8F/IMG-%E5%A4%A7%E5%B0%8F%E7%AB%AF%E6%A8%A1%E5%BC%8F%E3%80%81MSB%E5%92%8CLSB%E3%80%81%E5%AD%97%E8%8A%82%E5%BA%8F%E5%92%8C%E6%AF%94%E7%89%B9%E5%BA%8F_55FF7254185B9839B83608DCD7D90401_20260707160109653.png" srcset="/img/loading.gif" lazyload alt="xh1kJP"></p>
 <h1 id="大端模式与小端模式字节序">大端模式与小端模式（字节序）</h1>
 <p>计算机中的内存、硬盘等存储设备，尽管存储系统是16位、32位或64位的，但数据仍然是以字节为单位来存储的。所以其二进制数据位在内存中存储时有两种存放方式：高字节存放在低地址，所谓大端模式；高字节存放在高地址，所谓小端模式。大端模式和小端模式是实际的字节顺序和存储的地址顺序对应关系的两种模式。</p>
 <blockquote>
@@ -306,11 +414,11 @@ alt="xh1kJP" /></p>
 为例，分别按照大端模式和小端模式存放在芯片中。记住！！！内存的读写永远从低地址开始读/写。高低位字节以人的阅读习惯定义，从左到右为高位字节到低位字节，例如数字：两千三百七十一（2371），高位是2低位是1。同样的道理去理解字节数据。</p>
 <table>
 <colgroup>
-<col style="width: 13%" />
-<col style="width: 26%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 26%" />
+<col style="width: 13%">
+<col style="width: 26%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 26%">
 </colgroup>
 <thead>
 <tr>
@@ -350,32 +458,25 @@ alt="xh1kJP" /></p>
 <p>Union共用体，也叫联合体，在一个"联合"内可以定义多种不同的数据类型，一个被说明为该"联合"类型的变量中，允许装入该"联合"所定义的任何一种数据，这些数据共享同一段内存，以达到节省空间的目的。<strong>union变量所占用的内存长度等于最长的成员的内存长度。</strong></p>
 <p>sizeof(union
 test)的值为4。因为共用体将一个char类型的mark、一个long类型的num变量和一个float类型的score变量存放在同一个地址开始的内存单元中，而char类型和long类型所占的内存字节数是不一样的，但是在union中都是从同一个地址存放的，也就是使用的覆盖技术，这三个变量互相覆盖，而这种使几个不同的变量共占同一段内存的结构，称为"共用体"类型的结构。</p>
-<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">// 联合体 union</span><br><span class="hljs-keyword">union</span> <span class="hljs-title class_">test</span><br>&#123;<br>     <span class="hljs-type">char</span> mark;<br>     <span class="hljs-type">long</span> num;<br>     <span class="hljs-type">float</span> score;<br>&#125;;<br></code></pre></div></td></tr></table></figure>
-<p><a
-target="_blank" rel="noopener" href="https://www.tutorialspoint.com/online_cpp_compiler.php">C++在线编辑器</a></p>
-<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">union</span> <span class="hljs-title class_">test</span><br>&#123;<br>    <span class="hljs-type">char</span> mark[<span class="hljs-number">4</span>];   <span class="hljs-comment">// 4字节</span><br>    <span class="hljs-type">long</span> num;       <span class="hljs-comment">// </span><br>    <span class="hljs-type">float</span> score;<br>&#125; a;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    a.score = <span class="hljs-number">10.0</span>;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;high address byte: %x \n&quot;</span>,a.mark[<span class="hljs-number">3</span>]);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%x \n&quot;</span>,a.mark[<span class="hljs-number">2</span>]);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%x \n&quot;</span>,a.mark[<span class="hljs-number">1</span>]);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;low address byte: %x \n&quot;</span>,a.mark[<span class="hljs-number">0</span>]);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d \n&quot;</span>,<span class="hljs-built_in">sizeof</span>(<span class="hljs-type">long</span>));<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">// 联合体 union</span><br><span class="hljs-keyword">union</span> <span class="hljs-title class_">test</span><br>{<br>     <span class="hljs-type">char</span> mark;<br>     <span class="hljs-type">long</span> num;<br>     <span class="hljs-type">float</span> score;<br>};<br></code></pre></div></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.tutorialspoint.com/online_cpp_compiler.php">C++在线编辑器</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">union</span> <span class="hljs-title class_">test</span><br>{<br>    <span class="hljs-type">char</span> mark[<span class="hljs-number">4</span>];   <span class="hljs-comment">// 4字节</span><br>    <span class="hljs-type">long</span> num;       <span class="hljs-comment">// </span><br>    <span class="hljs-type">float</span> score;<br>} a;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>{<br>    a.score = <span class="hljs-number">10.0</span>;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"high address byte: %x \n"</span>,a.mark[<span class="hljs-number">3</span>]);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%x \n"</span>,a.mark[<span class="hljs-number">2</span>]);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%x \n"</span>,a.mark[<span class="hljs-number">1</span>]);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"low address byte: %x \n"</span>,a.mark[<span class="hljs-number">0</span>]);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d \n"</span>,<span class="hljs-built_in">sizeof</span>(<span class="hljs-type">long</span>));<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></div></td></tr></table></figure>
 <p>而<strong>union中的所有成员起始地址都是一样的，所以&amp;a.mark、&amp;a.num和&amp;a.score的值都是一样的。</strong></p>
 <p>例如在串口传输帧信息时：首先将float数据转化为4字节，然后将数据添加组装至帧信息中，最后发送出去。以浮点数10.0f（0x41200000）为例，首先将其转化为4字节，高地址字节为0x41，低地址字节为0x00，然后将其添加至帧信息中，以低地址先写入的原则按顺序写入0x00，0x00，0x20，0x41，若在小端模式的平台上翻译此4字节数据，则同样要以这样的地址顺序存储
 <code>data[0]:0x00</code>，<code>data[1]:0x00</code>，<code>data[2]:0x20</code>，<code>data[3]:0x41</code>。</p>
 <h1 id="lsb与msb比特序">LSB与MSB（比特序）</h1>
-<p>最高有效位（Most Significant Bit，MSB）指的是一个<span
-class="math inline">\(n\)</span>位二进制数字中的<span
-class="math inline">\(n-1\)</span>位，具有最高的权值 <span
-class="math inline">\(2^{n-1}\)</span>。有时也指Most Significant
+<p>最高有效位（Most Significant Bit，MSB）指的是一个<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 600 453"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container></span>位二进制数字中的<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.186ex" xmlns="http://www.w3.org/2000/svg" width="5.254ex" height="1.692ex" role="img" focusable="false" viewBox="0 -666 2322.4 748"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(822.2,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mn" transform="translate(1822.4,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g></g></svg></mjx-container></span>位，具有最高的权值 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0" xmlns="http://www.w3.org/2000/svg" width="4.323ex" height="1.887ex" role="img" focusable="false" viewBox="0 -833.9 1910.9 833.9"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mn"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="TeXAtom" transform="translate(533,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(600,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mn" transform="translate(1378,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g></g></g></g></svg></mjx-container></span>。有时也指Most Significant
 Byte，指多字节序列中具有最大权重的字节。</p>
-<p>最低有效位（Least Significant Bit，LSB）指的是一个<span
-class="math inline">\(n\)</span>位二进制数字中的0位，具有最低的权值
-<span class="math inline">\(2^0\)</span>。有时也指Least Significant
+<p>最低有效位（Least Significant Bit，LSB）指的是一个<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 600 453"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container></span>位二进制数字中的0位，具有最低的权值
+<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0" xmlns="http://www.w3.org/2000/svg" width="2.119ex" height="1.887ex" role="img" focusable="false" viewBox="0 -833.9 936.6 833.9"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mn"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="mn" transform="translate(533,363) scale(0.707)"><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></g></g></g></g></svg></mjx-container></span>。有时也指Least Significant
 Byte，指多字节序列中具有最小权重的字节。</p>
 <p>所以<code>0x12345678</code>的最高有效字节就是<code>0x12</code>，最低有效字节就是<code>0x78</code>！</p>
 <h2 id="高位先行和低位先行">高位先行和低位先行</h2>
 <p>高位先行即在传输一个字节的时候先传输高位MSB；低位先行即在传输一个字节的时候先传输低位LSB。高位先行和低位先行是针对串行数据传输方式来说的。常见的串行传输方式有串口（UART）、I2C、SPI等，其Bit流传输方式是由其传输协议决定的，此章节内容与上述的大小端模式切不可混淆，此章所讲是指比特序，而大小端模式讲的是字节序。</p>
-<p>串口传输方式是低位先行，芯片在通过TX引脚发送数据时，依次发送<code>位0</code>、<code>位1</code>……<code>位7</code>。（<a
-target="_blank" rel="noopener" href="https://www.circuitbasics.com/basics-uart-communication/">UART
+<p>串口传输方式是低位先行，芯片在通过TX引脚发送数据时，依次发送<code>位0</code>、<code>位1</code>……<code>位7</code>。（<a target="_blank" rel="noopener" href="https://www.circuitbasics.com/basics-uart-communication/">UART
 通信协议基础</a>）</p>
 <p>IIC的传输方式是高位先行，MSB
-在前，依次发送<code>位7</code>、<code>位6</code>……<code>位0</code>。（<a
-target="_blank" rel="noopener" href="https://www.circuitbasics.com/basics-of-the-i2c-communication-protocol/">I2C
+在前，依次发送<code>位7</code>、<code>位6</code>……<code>位0</code>。（<a target="_blank" rel="noopener" href="https://www.circuitbasics.com/basics-of-the-i2c-communication-protocol/">I2C
 通信协议基础</a>）</p>
 
             </div>
