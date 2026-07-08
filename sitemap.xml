@@ -137,7 +137,7 @@
   </url>
   
   <url>
-    <loc>https://www.cznewborn.com/AI%E5%B7%A5%E5%85%B7/%E5%80%BC%E5%BE%97%E5%85%B3%E6%B3%A8%E7%9A%84-12%E2%80%9315-%E6%AC%BE-AI-%E5%B7%A5%E5%85%B7/</loc>
+    <loc>https://www.cznewborn.com/STM32/STM32%E7%A7%BB%E6%A4%8DUCOS/</loc>
     
     <lastmod>2025-12-08</lastmod>
     
@@ -146,7 +146,7 @@
   </url>
   
   <url>
-    <loc>https://www.cznewborn.com/STM32/STM32%E7%A7%BB%E6%A4%8DUCOS/</loc>
+    <loc>https://www.cznewborn.com/AI%E5%B7%A5%E5%85%B7/%E5%80%BC%E5%BE%97%E5%85%B3%E6%B3%A8%E7%9A%84-12%E2%80%9315-%E6%AC%BE-AI-%E5%B7%A5%E5%85%B7/</loc>
     
     <lastmod>2025-12-08</lastmod>
     
@@ -164,7 +164,7 @@
   </url>
   
   <url>
-    <loc>https://www.cznewborn.com/STM32/STM32CubeMX%E6%B7%BB%E5%8A%A0DSP%E5%BA%93/</loc>
+    <loc>https://www.cznewborn.com/Qt/Qt%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
     
     <lastmod>2025-12-08</lastmod>
     
@@ -173,7 +173,7 @@
   </url>
   
   <url>
-    <loc>https://www.cznewborn.com/Qt/Qt%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+    <loc>https://www.cznewborn.com/STM32/STM32CubeMX%E6%B7%BB%E5%8A%A0DSP%E5%BA%93/</loc>
     
     <lastmod>2025-12-08</lastmod>
     
@@ -349,6 +349,13 @@
   </url>
   
   <url>
+    <loc>https://www.cznewborn.com/tags/Github/</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.cznewborn.com/tags/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/</loc>
     <lastmod>2026-07-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -384,27 +391,6 @@
   </url>
   
   <url>
-    <loc>https://www.cznewborn.com/tags/Github/</loc>
-    <lastmod>2026-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.cznewborn.com/tags/%E5%8F%8C%E7%9B%AE%E6%A0%87%E5%AE%9A/</loc>
-    <lastmod>2026-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.cznewborn.com/tags/StereoCalibrate/</loc>
-    <lastmod>2026-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.cznewborn.com/tags/%E9%AB%98%E9%80%9A/</loc>
     <lastmod>2026-07-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -427,6 +413,20 @@
   
   <url>
     <loc>https://www.cznewborn.com/tags/FIR/</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.cznewborn.com/tags/%E5%8F%8C%E7%9B%AE%E6%A0%87%E5%AE%9A/</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.cznewborn.com/tags/StereoCalibrate/</loc>
     <lastmod>2026-07-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -517,27 +517,6 @@
   </url>
   
   <url>
-    <loc>https://www.cznewborn.com/tags/STM32H743/</loc>
-    <lastmod>2026-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.cznewborn.com/tags/ucosIII/</loc>
-    <lastmod>2026-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.cznewborn.com/tags/RTOS/</loc>
-    <lastmod>2026-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.cznewborn.com/tags/USB/</loc>
     <lastmod>2026-07-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -567,6 +546,27 @@
   
   <url>
     <loc>https://www.cznewborn.com/tags/AI/</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.cznewborn.com/tags/STM32H743/</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.cznewborn.com/tags/ucosIII/</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.cznewborn.com/tags/RTOS/</loc>
     <lastmod>2026-07-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -867,20 +867,6 @@
   </url>
   
   <url>
-    <loc>https://www.cznewborn.com/tags/Pytorch/</loc>
-    <lastmod>2026-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.cznewborn.com/tags/OpenCV/</loc>
-    <lastmod>2026-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.cznewborn.com/tags/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA/</loc>
     <lastmod>2026-07-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -917,6 +903,20 @@
   
   <url>
     <loc>https://www.cznewborn.com/tags/%E6%97%A0%E5%88%B7%E7%94%B5%E6%9C%BA/</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.cznewborn.com/tags/Pytorch/</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.cznewborn.com/tags/OpenCV/</loc>
     <lastmod>2026-07-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1198,14 +1198,14 @@
   </url>
   
   <url>
-    <loc>https://www.cznewborn.com/categories/%E7%AE%97%E6%B3%95/</loc>
+    <loc>https://www.cznewborn.com/categories/%E7%A7%91%E6%99%AE%E8%AE%A4%E8%AF%86/</loc>
     <lastmod>2026-07-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.cznewborn.com/categories/%E7%A7%91%E6%99%AE%E8%AE%A4%E8%AF%86/</loc>
+    <loc>https://www.cznewborn.com/categories/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2026-07-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
