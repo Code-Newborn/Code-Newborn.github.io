@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.cznewborn.com/%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86%E5%BA%93/Kalman%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D/</loc>
+    
+    <lastmod>2026-07-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.cznewborn.com/%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86%E5%BA%93/%E5%A4%A7%E5%B0%8F%E7%AB%AF%E6%A8%A1%E5%BC%8F%E3%80%81MSB%E5%92%8CLSB%E3%80%81%E5%AD%97%E8%8A%82%E5%BA%8F%E5%92%8C%E6%AF%94%E7%89%B9%E5%BA%8F/</loc>
     
     <lastmod>2026-07-08</lastmod>
@@ -192,15 +201,6 @@
   
   <url>
     <loc>https://www.cznewborn.com/Matlab/MATLAB-Filter-Designer-%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B%EF%BC%88filterDesigner-fdatool%EF%BC%89/</loc>
-    
-    <lastmod>2025-12-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.cznewborn.com/%E7%AE%97%E6%B3%95/%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/Kalman%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D/</loc>
     
     <lastmod>2025-12-08</lastmod>
     
