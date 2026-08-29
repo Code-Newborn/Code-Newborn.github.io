@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Git 配置及命令</title>
+    <title>Git配置及命令</title>
     <url>/none/Git%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h1 id="git-常见命令">Git 常见命令</h1>
 <h2 id="配置全局-name-和-email">【配置全局 name 和 email】</h2>
@@ -93,7 +93,6 @@ reset HEAD^）</h2>
         <category>none</category>
       </categories>
       <tags>
-        <tag>XXX</tag>
         <tag>none</tag>
       </tags>
   </entry>
