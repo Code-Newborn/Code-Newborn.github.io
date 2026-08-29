@@ -30,3 +30,8 @@
   text-align: center;
   margin: 1em 0;
 }
+
+/* Fluid：仅普通正文段落首行缩进 2 个汉字 */
+.markdown-body > p {
+  text-indent: 2em;
+}
