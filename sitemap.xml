@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.cznewborn.com/XXX-none/Git%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%91%BD%E4%BB%A4/</loc>
+    
+    <lastmod>2026-08-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.cznewborn.com/%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86%E5%BA%93/%E8%B7%9F%E8%B8%AA%E5%BE%AE%E5%88%86%E5%99%A8/</loc>
     
     <lastmod>2026-07-08</lastmod>
@@ -1097,6 +1106,20 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://www.cznewborn.com/tags/XXX/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.cznewborn.com/tags/none/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -1248,6 +1271,13 @@
   
   <url>
     <loc>https://www.cznewborn.com/categories/%E7%AE%97%E6%B3%95/%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.cznewborn.com/categories/XXX-none/</loc>
     <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
