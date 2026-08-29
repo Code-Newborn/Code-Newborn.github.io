@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Git 配置及命令</title>
-    <url>/XXX-none/Git%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%91%BD%E4%BB%A4/</url>
+    <url>/none/Git%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h1 id="git-常见命令">Git 常见命令</h1>
 <h2 id="配置全局-name-和-email">【配置全局 name 和 email】</h2>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">git config --global user.name <span class="hljs-string">"Code-Newborn"</span><br>git config --global user.email 12537091X@qq.com<br></code></pre></div></td></tr></table></figure>
@@ -90,7 +90,7 @@ reset HEAD^）</h2>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">git remote -v <span class="hljs-comment"># 查看远程仓库关联</span><br>git remote set-url origin &lt;新的仓库 URL&gt; <span class="hljs-comment"># 设置新的远程仓库关联</span><br></code></pre></div></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>-- XXX -- none</category>
+        <category>none</category>
       </categories>
       <tags>
         <tag>XXX</tag>
