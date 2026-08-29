@@ -40,14 +40,14 @@
 <meta property="og:site_name" content="Leia Blog">
 <meta property="og:description" content="当 Qt 程序编写完成通过 IDE 编译后就可以得到对应的可执行程序.exe，如果我们想把这个 Qt 程序给其他人使用，就需要将 Qt 程序以及所需的资源一起打包发布给别人，这样别人不需要 Qt 编译环境也可运行你的 Qt 程序。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s1.ax1x.com/2023/03/20/ppNlio8.jpg">
+<meta property="og:image" content="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/IMG-Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85_255BB3FAE0EC87A26CC94C426188572D.png">
 <meta property="article:published_time" content="2022-05-10T09:22:57.000Z">
-<meta property="article:modified_time" content="2026-08-29T13:35:24.021Z">
+<meta property="article:modified_time" content="2026-08-29T13:53:18.198Z">
 <meta property="article:author" content="ChenZhao">
 <meta property="article:tag" content="Qt">
 <meta property="article:tag" content="程序打包发布">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s1.ax1x.com/2023/03/20/ppNlio8.jpg">
+<meta name="twitter:image" content="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/IMG-Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85_255BB3FAE0EC87A26CC94C426188572D.png">
   
   
   <title>Qt 程序发布与打包 - Leia Blog</title>
@@ -422,7 +422,7 @@ windeployqt.exe，该文件位于 Qt 安装目录的编译套件目录的 bin
 目录中，以我本地为例<b>D:.2\5.14.2_64</b>，如果需要在当前操作系统的任意目录下都可以访问
 windeployqt.exe，则需要将此路径设置到环境变量中。</p>
 <p>另外使用过程中有出现过<code>程序入口无法定位到动态链接库，无法载入QtCore.dll</code>的情况，将环境变量按如下排列，并重启电脑解决。</p>
-<p><img src="IMG-Qt程序发布与打包_72831F04F8CC00818E254A3D79549794.png" srcset="/img/loading.gif" lazyload alt="pPC3eot"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/IMG-Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85_72831F04F8CC00818E254A3D79549794.png" srcset="/img/loading.gif" lazyload alt="pPC3eot"></p>
 <p>将 Release 版本可执行文件复制到一个新的空的文件夹中，在文件夹中按住
 Shift+ 右键，打开 PowerShell，输入以下命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># LordCard.exe 是可执行程序的名字</span><br><span class="hljs-comment"># windeployqt.exe 的后缀 .exe 可以省略不写</span><br>windeployqt.exe Landlors.exe<br></code></pre></div></td></tr></table></figure>
@@ -442,51 +442,51 @@ Downloads</a></p>
 </blockquote>
 <h3 id="创建向导">3.1.1 创建向导</h3>
 <p>点击 File→New，创建脚本向导文件，不要勾选创建一个新的空脚本文件。</p>
-<p><img src="IMG-Qt程序发布与打包_738E7D11210FA38DE610295BEDFC4C30.png" srcset="/img/loading.gif" lazyload alt="pPRIPaj"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/IMG-Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85_738E7D11210FA38DE610295BEDFC4C30.png" srcset="/img/loading.gif" lazyload alt="pPRIPaj"></p>
 <h3 id="填写相关的应用程序信息">3.1.2 填写相关的应用程序信息</h3>
 <p>填写程序的相关信息，包括应用程序名称、应用程序版本、应用程序发布者以及应用程序网址。</p>
-<p><img src="IMG-Qt程序发布与打包_113518EC80287E924DAA7905E3D07DEF.png" srcset="/img/loading.gif" lazyload alt="pPRIiIs"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/IMG-Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85_113518EC80287E924DAA7905E3D07DEF.png" srcset="/img/loading.gif" lazyload alt="pPRIiIs"></p>
 <h3 id="指定应用程序的安装目录相关的信息">3.1.3
 指定应用程序的安装目录相关的信息</h3>
 <p>设置应用程序安装时的默认安装路径信息。</p>
-<p><img src="IMG-Qt程序发布与打包_FE579C2BA1AECE1B9368C1FAF7E75B76.png" srcset="/img/loading.gif" lazyload alt="pPRIVzV"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/IMG-Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85_FE579C2BA1AECE1B9368C1FAF7E75B76.png" srcset="/img/loading.gif" lazyload alt="pPRIVzV"></p>
 <h3 id="选择可执行程序和相关的动态库">3.1.4
 选择可执行程序和相关的动态库</h3>
 <p>选择前述 windeployqt 所执行的文件夹路径，选择.exe
 可执行文件，选择动态库文件目录。</p>
-<p><img src="IMG-Qt程序发布与打包_B151521D8D99BE2E7AFE34D66629C367.png" srcset="/img/loading.gif" lazyload alt="pPRIMdJ"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/IMG-Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85_B151521D8D99BE2E7AFE34D66629C367.png" srcset="/img/loading.gif" lazyload alt="pPRIMdJ"></p>
 <p>由于可执行程序关系的动态库有很多，所以可以直接添加动态库的目录，选中对应的目录之后，如果里边还有子目录会弹出如下对话框，选择是即可，需要包含这些子目录。</p>
-<p><img src="IMG-Qt程序发布与打包_87EF4D6ED7B349BCD0C6C40CBB86C1C3.png" srcset="/img/loading.gif" lazyload alt="pPRI8Rx"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/IMG-Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85_87EF4D6ED7B349BCD0C6C40CBB86C1C3.png" srcset="/img/loading.gif" lazyload alt="pPRI8Rx"></p>
 <h3 id="可执行程序文件格式设置关联">3.1.5
 可执行程序文件格式设置关联</h3>
 <p>给可执行程序关联本地的某种格式的磁盘文件（比如记事本程序会自动关联本地的
 .txt
 文件），对于我的可执行程序来说无需关联，因此没有做任何设置，直接下一步。</p>
-<p><img src="IMG-Qt程序发布与打包_0580C265E42E90BFB82F65273D88FCCF.png" srcset="/img/loading.gif" lazyload alt="pPRIGz6"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/IMG-Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85_0580C265E42E90BFB82F65273D88FCCF.png" srcset="/img/loading.gif" lazyload alt="pPRIGz6"></p>
 <h3 id="创建快捷方式">3.1.6 创建快捷方式</h3>
 <p>给应用程序创建快捷方式，此处没有进行任何设置，使用的默认选项。</p>
-<p><img src="IMG-Qt程序发布与打包_A721F0F642E794DAC49B4114ED07CBE9.png" srcset="/img/loading.gif" lazyload alt="pPRIYQK"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/IMG-Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85_A721F0F642E794DAC49B4114ED07CBE9.png" srcset="/img/loading.gif" lazyload alt="pPRIYQK"></p>
 <h3 id="指定许可文件">3.1.7 指定许可文件</h3>
 <p>指定许可文件，文件中的内容会显示到安装向导的相关窗口中，可以选择不指定，直接跳过。</p>
-<p><img src="IMG-Qt程序发布与打包_8C33C9A4909F923BBC34D0F79353128E.png" srcset="/img/loading.gif" lazyload alt="pPRItsO"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/IMG-Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85_8C33C9A4909F923BBC34D0F79353128E.png" srcset="/img/loading.gif" lazyload alt="pPRItsO"></p>
 <h3 id="安装模式all-user-or-current-user">3.1.8 安装模式（All User or
 Current User）</h3>
 <p>选择安装模式（给系统的当前用户安装还是给所有用户安装），根据自己喜好指定即可。</p>
-<p><img src="IMG-Qt程序发布与打包_A4DA087FB7FB832F7BF7EA0327EB9F92.png" srcset="/img/loading.gif" lazyload alt="pPRINLD"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/IMG-Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85_A4DA087FB7FB832F7BF7EA0327EB9F92.png" srcset="/img/loading.gif" lazyload alt="pPRINLD"></p>
 <h3 id="选择安装语言">3.1.9 选择安装语言</h3>
 <p>打包工具不提供中文。</p>
-<p><img src="IMG-Qt程序发布与打包_21D33E733150D75302D398D03E222A2C.png" srcset="/img/loading.gif" lazyload alt="pPRIddH"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/IMG-Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85_21D33E733150D75302D398D03E222A2C.png" srcset="/img/loading.gif" lazyload alt="pPRIddH"></p>
 <h3 id="指定安装包文件的相关信息">3.1.10 指定安装包文件的相关信息</h3>
-<p><img src="IMG-Qt程序发布与打包_984DC933328A2CE6E81856DFF3E25B96.png" srcset="/img/loading.gif" lazyload alt="pPRIBFA"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/IMG-Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85_984DC933328A2CE6E81856DFF3E25B96.png" srcset="/img/loading.gif" lazyload alt="pPRIBFA"></p>
 <h3 id="完成打包生成安装程序">3.1.11 完成打包生成安装程序</h3>
 <p>勾选<code>Yes，use #define compiler directives</code></p>
-<p><img src="IMG-Qt程序发布与打包_B04313A961A098BB6273184CB485B10C.png" srcset="/img/loading.gif" lazyload alt="pPRIDJI"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/IMG-Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85_B04313A961A098BB6273184CB485B10C.png" srcset="/img/loading.gif" lazyload alt="pPRIDJI"></p>
 <p>编译生成的脚本文件。</p>
-<p><img src="IMG-Qt程序发布与打包_3D1D913009F96DB6CA4F841A68BC1EDF.png" srcset="/img/loading.gif" lazyload alt="pPRIrWt"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/IMG-Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85_3D1D913009F96DB6CA4F841A68BC1EDF.png" srcset="/img/loading.gif" lazyload alt="pPRIrWt"></p>
 <p>保存脚本文件生成安装包。</p>
-<p><img src="IMG-Qt程序发布与打包_EFAC1EBBC455A7CA7F5CA4DB4965DDA7.png" srcset="/img/loading.gif" lazyload alt="pPRIySP"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/IMG-Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85_EFAC1EBBC455A7CA7F5CA4DB4965DDA7.png" srcset="/img/loading.gif" lazyload alt="pPRIySP"></p>
 <p>编译完成之后，生成的安装包文件在保存脚本文件的目录中。</p>
-<p><img src="IMG-Qt程序发布与打包_7EC9DD31B0DEF1F6B5641C99C8773026.png" srcset="/img/loading.gif" lazyload alt="pPRIcy8"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/IMG-Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85_7EC9DD31B0DEF1F6B5641C99C8773026.png" srcset="/img/loading.gif" lazyload alt="pPRIcy8"></p>
 <h2 id="方式-2">3.2 方式 2</h2>
 <p>Enigma Virtual
 Box，是软件虚拟化工具，它可以将多个文件封装到应用程序主文件，从而制作成为单执行文件的绿色软件。它支持所有类型的文件格式，虚拟化后的软件不释放任何临时文件到您的硬盘，文件模拟过程仅在内存运行。</p>
@@ -497,17 +497,17 @@ Downloads</a></p>
 </blockquote>
 <h3 id="选择需要封包的主程序并设置封包后的程序另存路径">3.2.1
 选择需要封包的主程序并设置封包后的程序另存路径</h3>
-<p><img src="IMG-Qt程序发布与打包_C45AA71F0DAC7E5AF7A9A090363C4BBC.png" srcset="/img/loading.gif" lazyload alt="pPRIReg"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/IMG-Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85_C45AA71F0DAC7E5AF7A9A090363C4BBC.png" srcset="/img/loading.gif" lazyload alt="pPRIReg"></p>
 <h3 id="增加文件夹递归">3.2.2 增加文件夹[递归]</h3>
 <p>选择前述 windeployqt 所执行的文件夹路径，确定添加<b>%DEFAULT
 FOLDER%</b></p>
-<p><img src="IMG-Qt程序发布与打包_37F312B8926980747AC7C0D8A063ABC2.png" srcset="/img/loading.gif" lazyload alt="image-image-Enigma2-220145-220242"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/IMG-Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85_37F312B8926980747AC7C0D8A063ABC2.png" srcset="/img/loading.gif" lazyload alt="image-image-Enigma2-220145-220242"></p>
 <h3 id="文件选项">3.2.3 文件选项</h3>
 <p>勾选文件压缩。</p>
-<p><img src="IMG-Qt程序发布与打包_E8F6FD3B8AFC272A3EA22CE4C29800A1.png" srcset="/img/loading.gif" lazyload alt="image-Enigma3-220553"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/IMG-Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85_E8F6FD3B8AFC272A3EA22CE4C29800A1.png" srcset="/img/loading.gif" lazyload alt="image-Enigma3-220553"></p>
 <h3 id="执行封包">3.2.4 执行封包</h3>
 <p>生成单个执行文件.exe，可直接运行。</p>
-<p><img src="IMG-Qt程序发布与打包_E826BD7D704361A0A807F5CCC0526678.png" srcset="/img/loading.gif" lazyload alt="image-Enigma4-220913"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85/IMG-Qt%E7%A8%8B%E5%BA%8F%E5%8F%91%E5%B8%83%E4%B8%8E%E6%89%93%E5%8C%85_E826BD7D704361A0A807F5CCC0526678.png" srcset="/img/loading.gif" lazyload alt="image-Enigma4-220913"></p>
 
             </div>
             <hr>

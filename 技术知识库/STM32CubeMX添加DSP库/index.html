@@ -40,15 +40,15 @@
 <meta property="og:site_name" content="Leia Blog">
 <meta property="og:description" content="STM32 中添加 DSP 库主要用于数据的计算和处理，如复数，矩阵，三角函数，插值、求最大值求最小值、FIR 滤波器和 FFT 等。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s11.ax1x.com/2023/10/02/pPL78i9.png">
+<meta property="og:image" content="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/STM32CubeMX%E6%B7%BB%E5%8A%A0DSP%E5%BA%93/IMG-STM32CubeMX%E6%B7%BB%E5%8A%A0DSP%E5%BA%93_317358D446DD7B9DE6F0FB8FA0CF0312.png">
 <meta property="article:published_time" content="2023-10-02T09:45:34.000Z">
-<meta property="article:modified_time" content="2026-08-29T13:34:34.806Z">
+<meta property="article:modified_time" content="2026-08-29T13:42:25.002Z">
 <meta property="article:author" content="ChenZhao">
 <meta property="article:tag" content="DSP">
 <meta property="article:tag" content="STM32">
 <meta property="article:tag" content="STM32CubeMX">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s11.ax1x.com/2023/10/02/pPL78i9.png">
+<meta name="twitter:image" content="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/STM32CubeMX%E6%B7%BB%E5%8A%A0DSP%E5%BA%93/IMG-STM32CubeMX%E6%B7%BB%E5%8A%A0DSP%E5%BA%93_317358D446DD7B9DE6F0FB8FA0CF0312.png">
   
   
   <title>STM32CubeMX 添加 DSP 库 - Leia Blog</title>
@@ -406,8 +406,8 @@ DSP 库 - 物联沃-IOTWORD 物联网</a></p>
 <h1 id="通过-stm32cubemx-添加-dsp-库">通过 STM32CubeMX 添加 DSP 库</h1>
 <p>在 STM32CubeMX 中的 Software Packs Component Selector 选择勾选 DSP
 库，如需下载请选择下载。</p>
-<p><img src="IMG-STM32CubeMX添加DSP库_B8A2E5B4D09C8A79BC3C1597885754FD.png" srcset="/img/loading.gif" lazyload alt="pPLhk5t"></p>
-<p><img src="IMG-STM32CubeMX添加DSP库_5EDBD59C1CA0A69232536B2D55BDE7E4.png" srcset="/img/loading.gif" lazyload alt="pPL4Lp6"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/STM32CubeMX%E6%B7%BB%E5%8A%A0DSP%E5%BA%93/IMG-STM32CubeMX%E6%B7%BB%E5%8A%A0DSP%E5%BA%93_B8A2E5B4D09C8A79BC3C1597885754FD.png" srcset="/img/loading.gif" lazyload alt="pPLhk5t"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/STM32CubeMX%E6%B7%BB%E5%8A%A0DSP%E5%BA%93/IMG-STM32CubeMX%E6%B7%BB%E5%8A%A0DSP%E5%BA%93_5EDBD59C1CA0A69232536B2D55BDE7E4.png" srcset="/img/loading.gif" lazyload alt="pPL4Lp6"></p>
 <p>Generate 生成项目文件</p>
 <h1 id="选择合适-lib-和添加">选择合适 lib 和添加</h1>
 <p>工程项目分组<code>Drivers/CMSIS</code>中添加 lib
@@ -439,17 +439,17 @@ DSP 库 - 物联沃-IOTWORD 物联网</a></p>
 </tbody>
 </table>
 <h1 id="添加宏和包含头文件">添加宏和包含头文件</h1>
-<p><img src="IMG-STM32CubeMX添加DSP库_82755B7FBB5EBFC78049B207F9AA3AA5.png" srcset="/img/loading.gif" lazyload alt="pPL5eBQ"></p>
-<p><img src="IMG-STM32CubeMX添加DSP库_13FAEA7E7CB064F28323504B71A1449D.png" srcset="/img/loading.gif" lazyload alt="pPL5m7j"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/STM32CubeMX%E6%B7%BB%E5%8A%A0DSP%E5%BA%93/IMG-STM32CubeMX%E6%B7%BB%E5%8A%A0DSP%E5%BA%93_82755B7FBB5EBFC78049B207F9AA3AA5.png" srcset="/img/loading.gif" lazyload alt="pPL5eBQ"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/STM32CubeMX%E6%B7%BB%E5%8A%A0DSP%E5%BA%93/IMG-STM32CubeMX%E6%B7%BB%E5%8A%A0DSP%E5%BA%93_13FAEA7E7CB064F28323504B71A1449D.png" srcset="/img/loading.gif" lazyload alt="pPL5m7j"></p>
 <p>在使用 DSP
 库的文件中包含头文件<code>#include &lt;arm_math.h&gt;</code></p>
 <p>配置浮点硬件运算（Floating Point
 Hardware）为对应的双精度浮点<code>Double Precision</code></p>
-<p><img src="IMG-STM32CubeMX添加DSP库_E5E66B372170A29773E88613AA2C3B3E.png" srcset="/img/loading.gif" lazyload alt="pPL53cT"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/STM32CubeMX%E6%B7%BB%E5%8A%A0DSP%E5%BA%93/IMG-STM32CubeMX%E6%B7%BB%E5%8A%A0DSP%E5%BA%93_E5E66B372170A29773E88613AA2C3B3E.png" srcset="/img/loading.gif" lazyload alt="pPL53cT"></p>
 <h1 id="代码测试">代码测试</h1>
 <p>在移植了 ucosiii 系统后的项目中进行测试</p>
 <figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-comment">/* 实现 LED0 每 500ms 反转一次 */</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">SetLed</span><span class="hljs-params">(<span class="hljs-type">void</span> *p_arg)</span><br>{<br>    OS_ERR err;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>)<br>    {<br>        task1_count += <span class="hljs-number">1</span>;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"task1 正在运行！！！\r\n"</span>);<br><br>        data = arm_cos_f32(PI / <span class="hljs-number">3</span>); <span class="hljs-comment">// DSP 库 余弦计算测试</span><br><br>        LED2_sta = !LED2_sta;<br><br>        LED2(LED2_sta);<br>        OSTimeDly(<span class="hljs-number">500</span>, OS_OPT_TIME_DLY, &amp;err);<br>    }<br>}<br><br><span class="hljs-comment">/* 检测按键输入，挂起和恢复任务 */</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">ScanKey</span><span class="hljs-params">(<span class="hljs-type">void</span> *p_arg)</span><br>{<br>    OS_ERR err;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>)<br>    {<br>        task2_count += <span class="hljs-number">1</span>;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"task2 正在运行！！！\r\n"</span>);<br><br>        data = arm_sin_f32(PI / <span class="hljs-number">4</span>); <span class="hljs-comment">// DSP 库 正弦计算测试</span><br><br>        key = KEY_Scan(<span class="hljs-number">0</span>);<br>        <span class="hljs-keyword">if</span> (key == KEY1_PRES)<br>        {<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"挂起 task1\r\n"</span>);<br>            OSTaskSuspend(&amp;task1_tcb, &amp;err);<br>        }<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (key == KEY2_PRES)<br>        {<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"恢复 task1\r\n"</span>);<br>            OSTaskResume(&amp;task1_tcb, &amp;err);<br>        }<br><br>        OSTimeDly(<span class="hljs-number">10</span>, OS_OPT_TIME_DLY, &amp;err);<br>    }<br>}<br></code></pre></div></td></tr></table></figure>
-<p><img src="IMG-STM32CubeMX添加DSP库_86A5620E1FC91D48B27381134B1DF496.png" srcset="/img/loading.gif" lazyload alt="pPL5zvT"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/STM32CubeMX%E6%B7%BB%E5%8A%A0DSP%E5%BA%93/IMG-STM32CubeMX%E6%B7%BB%E5%8A%A0DSP%E5%BA%93_86A5620E1FC91D48B27381134B1DF496.png" srcset="/img/loading.gif" lazyload alt="pPL5zvT"></p>
 
             </div>
             <hr>

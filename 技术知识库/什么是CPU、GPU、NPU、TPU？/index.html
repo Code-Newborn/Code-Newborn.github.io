@@ -40,16 +40,16 @@
 <meta property="og:site_name" content="Leia Blog">
 <meta property="og:description" content="随着人工智能、大模型与高性能计算的发展，传统 CPU 已难以满足海量并行计算需求，GPU、NPU、TPU 等专用处理器逐渐成为智能计算的核心。不同处理器在架构设计、并行能力、功耗控制及应用场景上存在显著差异：CPU 擅长通用逻辑控制，GPU 强于大规模并行运算，NPU 面向端侧 AI 推理优化，而 TPU 则专为深度学习训练与推理设计。本文将系统解析 CPU、GPU、NPU 与 TPU 的基本原理">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/https/picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/_posts/%25E4%25BB%2580%25E4%25B9%2588%25E6%2598%25AFCPU%25E3%2580%2581GPU%25E3%2580%2581NPU%25E3%2580%2581TPU%25EF%25BC%259F/2026-05-09-10-40-15-2026-05-09-10-40-09-Understanding%20CPU%20vs%20GPU%20vs%20TPU%20vs%20NPU%20in%20Modern%20Al%20Systems.png">
+<meta property="og:image" content="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/IMG-%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F_F8B318851B5E46432E0C49849AC99112.png">
 <meta property="article:published_time" content="2026-05-09T02:35:50.000Z">
-<meta property="article:modified_time" content="2026-08-29T13:35:00.053Z">
+<meta property="article:modified_time" content="2026-08-29T13:51:55.922Z">
 <meta property="article:author" content="ChenZhao">
 <meta property="article:tag" content="CPU">
 <meta property="article:tag" content="GPU">
 <meta property="article:tag" content="NPU">
 <meta property="article:tag" content="TPU">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/https/picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/_posts/%25E4%25BB%2580%25E4%25B9%2588%25E6%2598%25AFCPU%25E3%2580%2581GPU%25E3%2580%2581NPU%25E3%2580%2581TPU%25EF%25BC%259F/2026-05-09-10-40-15-2026-05-09-10-40-09-Understanding%20CPU%20vs%20GPU%20vs%20TPU%20vs%20NPU%20in%20Modern%20Al%20Systems.png">
+<meta name="twitter:image" content="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/IMG-%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F_F8B318851B5E46432E0C49849AC99112.png">
   
   
   <title>什么是 CPU、GPU、NPU、TPU？ - Leia Blog</title>
@@ -312,7 +312,7 @@ mjx-container[display="true"] + br {
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://s1.ax1x.com/2023/01/02/pSPVr1e.png') no-repeat center center;
+         style="background: url('https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/banner.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -420,9 +420,9 @@ CPU、GPU、NPU 和 TPU？它們之間有何不同？ - Ciao AI 工具實驗室<
 </colgroup>
 <thead>
 <tr>
-<th><img src="IMG-什么是CPU、GPU、NPU、TPU？_B7DCAE69649ACFF281C6E85451693432.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-15-56-53-AMD Ryzen 9 9950X3D"></th>
-<th><img src="IMG-什么是CPU、GPU、NPU、TPU？_8C9646EF68FEC5964FA0C032409DA2E5.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-15-57-47-Intel Core i9-14900KS"></th>
-<th><img src="IMG-什么是CPU、GPU、NPU、TPU？_35B4C7E151591C78C387B1B005E02D71.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-15-58-22-AMD EPYC 9005 Turin"></th>
+<th><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/IMG-%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F_B7DCAE69649ACFF281C6E85451693432.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-15-56-53-AMD Ryzen 9 9950X3D"></th>
+<th><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/IMG-%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F_8C9646EF68FEC5964FA0C032409DA2E5.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-15-57-47-Intel Core i9-14900KS"></th>
+<th><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/IMG-%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F_35B4C7E151591C78C387B1B005E02D71.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-15-58-22-AMD EPYC 9005 Turin"></th>
 </tr>
 </thead>
 <tbody>
@@ -432,9 +432,9 @@ CPU、GPU、NPU 和 TPU？它們之間有何不同？ - Ciao AI 工具實驗室<
 <td>AMD EPYC Turin</td>
 </tr>
 <tr>
-<td><img src="IMG-什么是CPU、GPU、NPU、TPU？_C6522D86D0A2EEA93EA2CA178AAC4B34.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-10-03-Intel Xeon 6980P"></td>
-<td><img src="IMG-什么是CPU、GPU、NPU、TPU？_8594D2AC303079472C73DA03437F5064.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-10-43-AMD EPYC 9654 Genoa"></td>
-<td><img src="IMG-什么是CPU、GPU、NPU、TPU？_FDD30C1C8BC29331C01282950CB57812.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-11-24-Apple A18 Pro"></td>
+<td><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/IMG-%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F_C6522D86D0A2EEA93EA2CA178AAC4B34.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-10-03-Intel Xeon 6980P"></td>
+<td><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/IMG-%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F_8594D2AC303079472C73DA03437F5064.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-10-43-AMD EPYC 9654 Genoa"></td>
+<td><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/IMG-%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F_FDD30C1C8BC29331C01282950CB57812.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-11-24-Apple A18 Pro"></td>
 </tr>
 <tr>
 <td>Intel Xeon 6980 P</td>
@@ -560,15 +560,15 @@ AI 训练和高性能计算的重要基础。如今，GPU
 <p><strong>当前顶级 GPU 代表型号（仅供参考）</strong></p>
 <table>
 <colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
 <col style="width: 32%">
-<col style="width: 32%">
-<col style="width: 34%">
 </colgroup>
 <thead>
 <tr>
-<th style="text-align: left;"><img src="IMG-什么是CPU、GPU、NPU、TPU？_7304F0C0B45EBBEDEDBBB5D33F1B412B.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-13-47-NVIDIA B200 Blackwell"></th>
-<th><img src="IMG-什么是CPU、GPU、NPU、TPU？_FB1AB1AA681649C703E8D8926FD929FF.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-16-27-NVIDIA H200"></th>
-<th><img src="IMG-什么是CPU、GPU、NPU、TPU？_A9A772357AA01F29493F8EDE7F020CD4.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-16-52-NVIDIA RTX 5090"></th>
+<th style="text-align: left;"><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/IMG-%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F_7304F0C0B45EBBEDEDBBB5D33F1B412B.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-13-47-NVIDIA B200 Blackwell"></th>
+<th><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/IMG-%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F_FB1AB1AA681649C703E8D8926FD929FF.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-16-27-NVIDIA H200"></th>
+<th><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/IMG-%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F_A9A772357AA01F29493F8EDE7F020CD4.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-16-52-NVIDIA RTX 5090"></th>
 </tr>
 </thead>
 <tbody>
@@ -578,9 +578,9 @@ AI 训练和高性能计算的重要基础。如今，GPU
 <td>NVIDIA RTX 5090</td>
 </tr>
 <tr>
-<td style="text-align: left;"><img src="IMG-什么是CPU、GPU、NPU、TPU？_CD0A17179EA101ED15F318125FF6AFCA.png" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-17-10-NVIDIA RTX 6000 Ada"></td>
-<td><img src="IMG-什么是CPU、GPU、NPU、TPU？_E930A090F8F2BEA61F7C53D6B78FB01B.png" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-17-30-AMD Instinct MI325X"></td>
-<td><img src="IMG-什么是CPU、GPU、NPU、TPU？_D92D5816F43CE52BEA0CDC4B6FE397AA.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-18-02-A 系列芯片"></td>
+<td style="text-align: left;"><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/IMG-%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F_CD0A17179EA101ED15F318125FF6AFCA.png" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-17-10-NVIDIA RTX 6000 Ada"></td>
+<td><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/IMG-%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F_E930A090F8F2BEA61F7C53D6B78FB01B.png" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-17-30-AMD Instinct MI325X"></td>
+<td><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/IMG-%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F_D92D5816F43CE52BEA0CDC4B6FE397AA.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-18-02-A 系列芯片"></td>
 </tr>
 <tr>
 <td style="text-align: left;">NVIDIA RTX 6000 Ada</td>
@@ -689,15 +689,15 @@ CPU 和 GPU，NPU 更强调 AI
 设备等领域。</p>
 <table>
 <colgroup>
-<col style="width: 34%">
-<col style="width: 32%">
+<col style="width: 33%">
+<col style="width: 33%">
 <col style="width: 32%">
 </colgroup>
 <thead>
 <tr>
-<th><img src="IMG-什么是CPU、GPU、NPU、TPU？_7C2A6341B4BE70A452301D0B66E30807.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-24-59-Apple Neural Engine inside M4"></th>
-<th><img src="IMG-什么是CPU、GPU、NPU、TPU？_0045EE837C3AAE45AD05C74944AF5B39.webp" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-25-42-Qualcomm Hexagon NPU"></th>
-<th><img src="IMG-什么是CPU、GPU、NPU、TPU？_138E807A8D744A093444CD75FF339D2A.png" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-27-02-Google TPU v5p"></th>
+<th><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/IMG-%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F_7C2A6341B4BE70A452301D0B66E30807.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-24-59-Apple Neural Engine inside M4"></th>
+<th><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/IMG-%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F_0045EE837C3AAE45AD05C74944AF5B39.webp" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-25-42-Qualcomm Hexagon NPU"></th>
+<th><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/IMG-%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F_138E807A8D744A093444CD75FF339D2A.png" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-27-02-Google TPU v5p"></th>
 </tr>
 </thead>
 <tbody>
@@ -707,9 +707,9 @@ CPU 和 GPU，NPU 更强调 AI
 <td>Google TPU v5p</td>
 </tr>
 <tr>
-<td><img src="IMG-什么是CPU、GPU、NPU、TPU？_5ED72AAD929337F4FA46D9535E8993B1.png" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-26-33-Google TPU 8i 和 8t"></td>
-<td><img src="IMG-什么是CPU、GPU、NPU、TPU？_619411FA4411E0AC3928776F6C339C32.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-27-25-Huawei Ascend 910B"></td>
-<td><img src="IMG-什么是CPU、GPU、NPU、TPU？_61EE0B6F0901A050E749786FED07BCFE.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-28-15-NVIDIA DRIVE Thor"></td>
+<td><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/IMG-%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F_5ED72AAD929337F4FA46D9535E8993B1.png" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-26-33-Google TPU 8i 和 8t"></td>
+<td><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/IMG-%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F_619411FA4411E0AC3928776F6C339C32.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-27-25-Huawei Ascend 910B"></td>
+<td><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F/IMG-%E4%BB%80%E4%B9%88%E6%98%AFCPU%E3%80%81GPU%E3%80%81NPU%E3%80%81TPU%EF%BC%9F_61EE0B6F0901A050E749786FED07BCFE.jpg" srcset="/img/loading.gif" lazyload alt="2026-05-09-16-28-15-NVIDIA DRIVE Thor"></td>
 </tr>
 <tr>
 <td>Google TPU 8t and 8i</td>

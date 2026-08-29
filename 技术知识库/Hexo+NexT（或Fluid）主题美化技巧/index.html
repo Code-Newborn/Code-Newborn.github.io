@@ -40,14 +40,14 @@
 <meta property="og:site_name" content="Leia Blog">
 <meta property="og:description" content="1 网站界面 1.1 更改网站底部年份和版权信息之间的图标（NexT，Fluid） 在NexT 主题配置文件中找到Footer Settings修改配置项如下： 123456789101112footer:  # Specify the year when the site was setup. If not defined, current year will be used.  #s">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s1.ax1x.com/2023/03/20/ppNl3YF.png">
+<meta property="og:image" content="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Hexo%2BNexT%EF%BC%88%E6%88%96Fluid%EF%BC%89%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%8A%80%E5%B7%A7/IMG-Hexo%2BNexT%EF%BC%88%E6%88%96Fluid%EF%BC%89%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%8A%80%E5%B7%A7_4A9B64207BFEEE2FD7D52F0F9CB03D57.png">
 <meta property="article:published_time" content="2022-02-16T08:56:21.000Z">
-<meta property="article:modified_time" content="2026-08-29T13:38:05.990Z">
+<meta property="article:modified_time" content="2026-08-29T14:07:30.067Z">
 <meta property="article:author" content="ChenZhao">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="NexT">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s1.ax1x.com/2023/03/20/ppNl3YF.png">
+<meta name="twitter:image" content="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Hexo%2BNexT%EF%BC%88%E6%88%96Fluid%EF%BC%89%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%8A%80%E5%B7%A7/IMG-Hexo%2BNexT%EF%BC%88%E6%88%96Fluid%EF%BC%89%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%8A%80%E5%B7%A7_4A9B64207BFEEE2FD7D52F0F9CB03D57.png">
   
   
   <title>Hexo + NexT（或 Fluid）主题美化技巧 - Leia Blog</title>
@@ -422,7 +422,7 @@ Fluid<b>主题配置文件</b>中查找<b>Favicon</b>修改图标路径如下，
 <figure class="highlight stylus"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs stylus">&lt;script&gt;<br>    (<span class="hljs-built_in">function</span>(){<br>        <span class="hljs-built_in">if</span>(<span class="hljs-string">'{{ page.password }}'</span>){<br>            <span class="hljs-built_in">if</span>(<span class="hljs-built_in">prompt</span>(<span class="hljs-string">'请输入文章密码'</span>) !== <span class="hljs-string">'{{ page.password }}'</span>){<br>                <span class="hljs-built_in">alert</span>(<span class="hljs-string">'密码错误！'</span>);<br>                history<span class="hljs-selector-class">.back</span>();<br>            }<br>        }<br>    })();<br>&lt;/script&gt;<br></code></pre></div></td></tr></table></figure>
 <p>在创建的文章顶部的配置选项中添加 password
 字段用于设置文章访问密码，例如：</p>
-<p><img src="IMG-Hexo+NexT（或Fluid）主题美化技巧_02D0A9DE0A8DF3491E2792049C60B523.png" srcset="/img/loading.gif" lazyload alt="image-20220219201529466-20220219201532"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Hexo%2BNexT%EF%BC%88%E6%88%96Fluid%EF%BC%89%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%8A%80%E5%B7%A7/IMG-Hexo%2BNexT%EF%BC%88%E6%88%96Fluid%EF%BC%89%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%8A%80%E5%B7%A7_02D0A9DE0A8DF3491E2792049C60B523.png" srcset="/img/loading.gif" lazyload alt="image-20220219201529466-20220219201532"></p>
 <h2 id="去除-next-主题下博客网站顶部的黑色宽线条next">1.5 去除 NexT
 主题下博客网站顶部的黑色宽线条（NexT）</h2>
 <p>在<b>\blog\source</b>目录下的<b>_data
@@ -496,7 +496,7 @@ end：错误位置定位</h2>
 <p>若是段外公式则在公式首尾加入如下内容，并且进入源码模式，检查确认段外公式最后留出一行空行（保证公式显示正确）：</p>
 <figure class="highlight markdown"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs markdown">$${% raw %}<br>公式内容<br>$${% endraw %}<br></code></pre></div></td></tr></table></figure>
 <p>定位错误位置：</p>
-<p><img src="IMG-Hexo+NexT（或Fluid）主题美化技巧_421EAAEF8672F51C4435A4EFFE4ADBF6.png" srcset="/img/loading.gif" lazyload alt="pPR68un"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Hexo%2BNexT%EF%BC%88%E6%88%96Fluid%EF%BC%89%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%8A%80%E5%B7%A7/IMG-Hexo%2BNexT%EF%BC%88%E6%88%96Fluid%EF%BC%89%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%8A%80%E5%B7%A7_421EAAEF8672F51C4435A4EFFE4ADBF6.png" srcset="/img/loading.gif" lazyload alt="pPR68un"></p>
 <h1 id="文章编辑">4 文章编辑</h1>
 <h2 id="利用-typora-编辑-hexo-博客">4.1 利用 typora 编辑 Hexo 博客</h2>
 <p>通过 typora 对发布在 Hexo
@@ -517,7 +517,7 @@ tab 键并无效果，使用全角空格缩进效果如下：（这一问题貌�
 <p><b>Fluid 主题</b>下使用<code>&amp;emsp;</code>即可。</p>
 <h2 id="为文章在网站上显示添加-read-more-按钮next">4.4
 为文章在网站上显示添加 Read More 按钮（NexT）</h2>
-<p>在文章中任意位置插入<code> HEXOMATH_1788010758745_31 </code>，在此之后的内容将被折叠隐藏。</p>
+<p>在文章中任意位置插入<code> HEXOMATH_1788013014499_31 </code>，在此之后的内容将被折叠隐藏。</p>
 <h2 id="数学公式显示nextfluid">4.5 数学公式显示（NexT，Fluid）</h2>
 <p>参考 NexT 主题官方教程<a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/third-party-services/math-equations.html?highlight=math+equation">Math
 Equations | NexT (theme-next.js.org)</a>，首先将站点配置文件中的 mathjax

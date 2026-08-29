@@ -40,14 +40,14 @@
 <meta property="og:site_name" content="Leia Blog">
 <meta property="og:description" content="符号对象 (Symbolic Objects) 不同于普通的数值计算，是 Matlab 中的一种特殊数据类型，它可以用来表示符号变量、表达式以及矩阵，利用符号对象能够在不考虑符号所对应的具体数值的情况下进行代数分析和符号计算 (symbolic math operations)，例如解代数方程、微分方程、进行矩阵运算等。  1 符号对象的定义 在 Matlab 中，使用 syms 语句">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s1.ax1x.com/2023/03/20/ppNlRmt.jpg">
+<meta property="og:image" content="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Matlab%E7%AC%A6%E5%8F%B7%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97/IMG-Matlab%E7%AC%A6%E5%8F%B7%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97_A15CE677F20E0F71179C7E1CEB19A05F.jpg">
 <meta property="article:published_time" content="2022-03-28T08:31:00.000Z">
-<meta property="article:modified_time" content="2026-08-29T13:38:12.323Z">
+<meta property="article:modified_time" content="2026-08-29T14:08:35.543Z">
 <meta property="article:author" content="ChenZhao">
 <meta property="article:tag" content="符号函数组">
 <meta property="article:tag" content="符号矩阵">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s1.ax1x.com/2023/03/20/ppNlRmt.jpg">
+<meta name="twitter:image" content="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Matlab%E7%AC%A6%E5%8F%B7%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97/IMG-Matlab%E7%AC%A6%E5%8F%B7%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97_A15CE677F20E0F71179C7E1CEB19A05F.jpg">
   
   
   <title>Matlab 符号对象与符号运算 - Leia Blog</title>
@@ -395,7 +395,7 @@ mjx-container[display="true"] + br {
 中的一种特殊数据类型，它可以用来表示符号变量、表达式以及矩阵，利用符号对象能够在不考虑符号所对应的具体数值的情况下进行代数分析和符号计算
 (symbolic math
 operations)，例如解代数方程、微分方程、进行矩阵运算等。</p>
-<p><img src="IMG-Matlab符号对象与符号运算_A15CE677F20E0F71179C7E1CEB19A05F.jpg" srcset="/img/loading.gif" lazyload alt="pp3lQMT"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Matlab%E7%AC%A6%E5%8F%B7%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97/IMG-Matlab%E7%AC%A6%E5%8F%B7%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97_A15CE677F20E0F71179C7E1CEB19A05F.jpg" srcset="/img/loading.gif" lazyload alt="pp3lQMT"></p>
 <h1 id="符号对象的定义">1 符号对象的定义</h1>
 <p>在 Matlab 中，使用 syms 语句可以直接定义符号变量。</p>
 <h1 id="sym-函数">2 sym 函数</h1>
@@ -475,7 +475,7 @@ limit(f,x,0,'right')。</p>
 <figure class="highlight matlab"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs matlab">&gt;&gt; simplify(f)<br><br><span class="hljs-built_in">ans</span> =<br><br>a2*<span class="hljs-built_in">cos</span>(alpha2) + ((a2*<span class="hljs-built_in">cos</span>(alpha2) - alpha1*<span class="hljs-built_in">cos</span>(d_theta)*<span class="hljs-built_in">sin</span>(alpha2))^<span class="hljs-number">2</span> - n2^<span class="hljs-number">2</span> + <span class="hljs-number">1</span>)^(<span class="hljs-number">1</span>/<span class="hljs-number">2</span>) - a1*<span class="hljs-built_in">cos</span>(d_theta)*<span class="hljs-built_in">sin</span>(alpha2)<br></code></pre></div></td></tr></table></figure>
 <h1 id="symdisp-函数自定义">25 symdisp 函数【自定义】</h1>
 <figure class="highlight matlab"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs matlab">&gt;&gt; symdisp(f)<br><br><span class="hljs-built_in">ans</span> =<br><br>  Figure (Msgbox_字符的数学展示形式) - 属性:<br><br>      Number: []<br>        Name: <span class="hljs-string">'字符的数学展示形式'</span><br>       Color: [<span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">1</span>]<br>    Position: [<span class="hljs-number">589.2500</span> <span class="hljs-number">481.1667</span> <span class="hljs-number">719.7634</span> <span class="hljs-number">76.8003</span>]<br>       Units: <span class="hljs-string">'points'</span><br></code></pre></div></td></tr></table></figure>
-<p><img src="IMG-Matlab符号对象与符号运算_486F74D536CA7A9979C15DF96A6E0F6F.png" srcset="/img/loading.gif" lazyload alt="pp1CUsK"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/Matlab%E7%AC%A6%E5%8F%B7%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97/IMG-Matlab%E7%AC%A6%E5%8F%B7%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97_486F74D536CA7A9979C15DF96A6E0F6F.png" srcset="/img/loading.gif" lazyload alt="pp1CUsK"></p>
 <p>需要将<code>symdisp.m</code>文件添加至 Matlab
 的<code>设置路径</code>中，以方便 Matlab 在任何工作路径下调用。</p>
 

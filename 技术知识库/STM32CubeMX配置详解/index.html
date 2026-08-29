@@ -40,9 +40,9 @@
 <meta property="og:site_name" content="Leia Blog">
 <meta property="og:description" content="STM32CubeMX 是由 ST 公司开发的图形化代码自动生成工具，旨在帮助开发者快速生成初始化代码，如配置 GPIO、时钟树、中间件等，从而使用户能够专注于业务代码的开发。这个工具通过提供一个直观的图形界面，使得开发者能够轻松地配置 STM32 微控制器和微处理器，以及为 Arm Cortex-M 内核或面向 Arm Cortex-A 内核的特定 Linux 设备树生成相应的初始化 C 代码。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://i.miji.bid/2024/02/14/3466989befb222b29fe5669b4ce7431f.jpeg">
+<meta property="og:image" content="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/STM32CubeMX%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/IMG-STM32CubeMX%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3_AE12D49E3CB07B0807A914745120EBAF.png">
 <meta property="article:published_time" content="2023-10-21T02:59:06.000Z">
-<meta property="article:modified_time" content="2026-08-29T13:36:40.958Z">
+<meta property="article:modified_time" content="2026-08-29T13:58:20.063Z">
 <meta property="article:author" content="ChenZhao">
 <meta property="article:tag" content="STM32">
 <meta property="article:tag" content="STM32CubeMX">
@@ -52,7 +52,7 @@
 <meta property="article:tag" content="HAL">
 <meta property="article:tag" content="AI">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://i.miji.bid/2024/02/14/3466989befb222b29fe5669b4ce7431f.jpeg">
+<meta name="twitter:image" content="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/STM32CubeMX%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/IMG-STM32CubeMX%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3_AE12D49E3CB07B0807A914745120EBAF.png">
   
   
   <title>STM32CubeMX 配置详解 - Leia Blog</title>
@@ -418,7 +418,7 @@ GPIO，时钟树，中间件等，使用户专注于业务代码的开发。现�
 <li>一般情况下，<strong>系统代码执行过程中，只设置一次中断优先级分组</strong>，比如分组
 2，设置好分组之后一般不会再改变分组。随意改变分组会导致中断管理混乱，程序出现意想不到的执行结果。</li>
 </ul>
-<p><img src="IMG-STM32CubeMX配置详解_39F9E8A694A5A524C6B54503AF8F33F3.png" srcset="/img/loading.gif" lazyload alt="a2c0c84440cd1d9f794d30d21c10e576"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/STM32CubeMX%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/IMG-STM32CubeMX%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3_39F9E8A694A5A524C6B54503AF8F33F3.png" srcset="/img/loading.gif" lazyload alt="a2c0c84440cd1d9f794d30d21c10e576"></p>
 <h2 id="priority-group-优先级分组">Priority Group 优先级分组</h2>
 <p>STM 32 使用 4 个 bit 位来分组，设置用几个 bit
 来区分抢占优先级和响应优先级，优先级数值越小，优先级别越高；</p>
@@ -502,7 +502,7 @@ API 函数，如 <code>osSystick_Handler()</code>，来处理中断。</p>
 <p>STM 32
 的时钟部分是其操作的核心，处理器的稳定工作也离不开时钟，它负责为微控制器提供时钟信号以驱动
 CPU、外设和总线。</p>
-<p><img src="IMG-STM32CubeMX配置详解_1A175EE679C5016C6D239B352392F43A.png" srcset="/img/loading.gif" lazyload alt="2003e2094cc4eefd6deb34d6955f6f26"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/STM32CubeMX%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/IMG-STM32CubeMX%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3_1A175EE679C5016C6D239B352392F43A.png" srcset="/img/loading.gif" lazyload alt="2003e2094cc4eefd6deb34d6955f6f26"></p>
 <h2 id="high-speed-clock-hse-low-speed-clock-lse-高低速外部时钟">High
 Speed Clock (HSE) / Low Speed Clock (LSE) 高/低速外部时钟</h2>
 <h3 id="bypass-clock-source">BYPASS Clock Source</h3>
@@ -528,7 +528,7 @@ Configuration 模式和配置</h1>
 <p>SYS 的模式与配置 (SYS Mode and Configuration)
 界面中是一些有关系统的配置参数，如调试 (Debug)
 的方式、系统唤醒模式的选择、时间基准的选择等。</p>
-<p><img src="IMG-STM32CubeMX配置详解_0F6633377FBF756E78D6F04BB0702389.png" srcset="/img/loading.gif" lazyload alt="303ab608c4da44c4c23c11554873934a"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/STM32CubeMX%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/IMG-STM32CubeMX%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3_0F6633377FBF756E78D6F04BB0702389.png" srcset="/img/loading.gif" lazyload alt="303ab608c4da44c4c23c11554873934a"></p>
 <h2 id="debug-调试模式">Debug 调试模式</h2>
 <p>SYS 项的 Debug 配置允许用户选择不同的调试模式，这些模式包括 SW
 串行模式、4 针脚的 JTAG 模式、5 针脚的 JTAG 模式以及其他一些带 Trace
@@ -547,7 +547,7 @@ CubeMX 会自动使能相关的引脚。</p>
 Software Packs 中间件及软件包</h1>
 <p>软件包（Software Packs）是 ST
 提供的一系列库和中间件，用于提高开发人员的生产力，简化应用程序开发。中间件（Middleware）是连接不同软件组件的组件，它提供了一个接口，使得开发人员可以更容易地集成第三方软件或者服务。</p>
-<p><img src="IMG-STM32CubeMX配置详解_BA43333B2FFA96DEDC1FFFC1F19ED2E5.png" srcset="/img/loading.gif" lazyload alt="c05122238a2e6250dcb834a9db39482f"></p>
+<p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/STM32CubeMX%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/IMG-STM32CubeMX%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3_BA43333B2FFA96DEDC1FFFC1F19ED2E5.png" srcset="/img/loading.gif" lazyload alt="c05122238a2e6250dcb834a9db39482f"></p>
 <h2 id="fatfs">FATFS</h2>
 <p><strong>FATFS
 是一个文件系统，专门为小型嵌入式系统设计，具有以下特点和功能</strong>：</p>
