@@ -42,7 +42,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E8%B7%9F%E8%B8%AA%E5%BE%AE%E5%88%86%E5%99%A8/IMG-%E8%B7%9F%E8%B8%AA%E5%BE%AE%E5%88%86%E5%99%A8_09C7121ECC98505EFC8553DA74ED71D9.png">
 <meta property="article:published_time" content="2023-07-20T08:26:16.000Z">
-<meta property="article:modified_time" content="2026-07-08T14:10:38.856Z">
+<meta property="article:modified_time" content="2026-08-07T12:26:56.387Z">
 <meta property="article:author" content="ChenZhao">
 <meta property="article:tag" content="Simulink">
 <meta property="article:tag" content="跟踪微分器">
@@ -392,7 +392,7 @@ mjx-container[display="true"] + br {
             
               <p class="note note-info">
                 
-                  本文最后更新于：2026年7月8日 晚上
+                  本文最后更新于：2026年8月7日 晚上
                 
               </p>
             
@@ -416,25 +416,27 @@ P 控制，从而限制了 PID 的控制能力；</p></li>
 PID 中的微分项 D
 没有发挥出应有的作用。而跟踪微分器便是解决这两个问题的一个较好的工具。</p>
 <blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.freesion.com/article/1706957142/">微分-跟踪器（tracking
-- differentiator, TD）灰信网</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35007540/article/details/87909764">跟踪微分器(Tracking
-Differentiator，TD)_跟踪微分器原理-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freesion.com/article/1706957142/">微分 -
+跟踪器（tracking - differentiator, TD）灰信网</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35007540/article/details/87909764">跟踪微分器
+(Tracking Differentiator，TD)_跟踪微分器原理-CSDN 博客</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/511275301">【ADRC】跟踪微分器 -
 知乎 (zhihu.com)</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/551432259">ADRC的理解（含效果视频） -
-知乎 (zhihu.com)</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Terrys0518/article/details/85198863">非线性跟踪-微分器
-仿真应用_非线性跟踪微分器-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/tardis/bd/art/537916699">自抗扰控制2—
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/551432259">ADRC
+的理解（含效果视频） - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Terrys0518/article/details/85198863">非线性跟踪
+- 微分器 仿真应用_非线性跟踪微分器-CSDN 博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/tardis/bd/art/537916699">自抗扰控制 2—
 跟踪微分器是怎么设计的 (zhihu.com)</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/510927934">【ADRC】一.
-线性跟踪微分器 - 知乎 (zhihu.com)</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/JeSuisDavid/article/details/119597487">ADRC学习|TD微分跟踪器(原理解析和Matlab实现)_跟踪微分器原理_David小伟同学的博客-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.xjx100.cn/news/424245.html?action=onClick">自抗扰控制ADRC之三种微分跟踪器TD仿真分析
-(xjx100.cn)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/510927934">【ADRC】一。线性跟踪微分器
+- 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/JeSuisDavid/article/details/119597487">ADRC
+学习|TD 微分跟踪器 (原理解析和 Matlab 实现)_跟踪微分器原理_David
+小伟同学的博客-CSDN 博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.xjx100.cn/news/424245.html?action=onClick">自抗扰控制
+ADRC 之三种微分跟踪器 TD 仿真分析 (xjx100.cn)</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/348323512">自抗扰控制算法（一）—
-Simulink实现 - 知乎 (zhihu.com)</a></p>
+Simulink 实现 - 知乎 (zhihu.com)</a></p>
 <p><a target="_blank" rel="noopener" href="https://kns.cnki.net/kcms2/article/abstract?v=3uoqIhG8C44YLTlOAiTRKgchrJ08w1e7eeyE9jLkqq_SJGM9XjKCJCmlFIlu-xeGJeWABchMl3JI97yHw0UZr8mLaBtoZQ2q&amp;uniplatform=NZKPT">跟踪微分器滤波性能研究
 - 中国知网 (cnki.net)</a></p>
 </blockquote>
@@ -564,7 +566,8 @@ PID 进行控制，即 TD 微分器+PID 控制。</p>
 <p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E8%B7%9F%E8%B8%AA%E5%BE%AE%E5%88%86%E5%99%A8/IMG-%E8%B7%9F%E8%B8%AA%E5%BE%AE%E5%88%86%E5%99%A8_7C0779CE025AD084412EF47181D0193B.png" srcset="/img/loading.gif" lazyload alt="IMG-跟踪微分器_7C0779CE025AD084412EF47181D0193B"></p>
 <figure class="highlight matlab"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fh</span> = <span class="hljs-title">fhan</span><span class="hljs-params">(x1, x2, v, r, h1)</span></span><br><span class="hljs-comment">% h1为滤波因子，r为调节系数，r越大跟踪效果越好，但微分信号会增加高频噪声</span><br><span class="hljs-comment">% 反之，微分信号越平滑，会产生一定的滞后</span><br>d = r * h1;<br>d1 = h1 * r^<span class="hljs-number">2</span>;<br>y = x1 - v + h1 * x2;<br><span class="hljs-keyword">if</span> (<span class="hljs-built_in">abs</span>(y) &gt;= d1)<br>    a = x2 + <span class="hljs-built_in">sign</span>(y) * (<span class="hljs-built_in">sqrt</span>(d^<span class="hljs-number">2</span>+<span class="hljs-number">8</span>*r*<span class="hljs-built_in">abs</span>(y)) - d) / <span class="hljs-number">2</span>;<br><span class="hljs-keyword">else</span><br>    a = x2 + y / h1;<br><span class="hljs-keyword">end</span><br>fh = -r * sat(a, d);<br><span class="hljs-keyword">end</span><br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">m</span> = <span class="hljs-title">sat</span><span class="hljs-params">(a, d)</span></span><br><span class="hljs-keyword">if</span> (<span class="hljs-built_in">abs</span>(a) &gt;= d)<br>    m = <span class="hljs-built_in">sign</span>(a);<br><span class="hljs-keyword">else</span><br>    m = a / d;<br><span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br></code></pre></div></td></tr></table></figure>
 <p>Simulink 中的仿真步长改为固定步长，且与采样步长 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.339ex" xmlns="http://www.w3.org/2000/svg" width="2.291ex" height="1.91ex" role="img" focusable="false" viewBox="0 -694 1012.6 844"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="210E" d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"></path></g><g data-mml-node="mn" transform="translate(609,-150) scale(0.707)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g></g></g></svg></mjx-container></span>
-一致，其中噪声模块和正弦波发生模块的采样时间改为-1，表示使用仿真步长采样。</p>
+一致，其中噪声模块和正弦波发生模块的采样时间改为
+-1，表示使用仿真步长采样。</p>
 <p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E8%B7%9F%E8%B8%AA%E5%BE%AE%E5%88%86%E5%99%A8/IMG-%E8%B7%9F%E8%B8%AA%E5%BE%AE%E5%88%86%E5%99%A8_A3BD3534EE73A634032B893F5A81073F.png" srcset="/img/loading.gif" lazyload alt="IMG-跟踪微分器_A3BD3534EE73A634032B893F5A81073F"></p>
 <p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E8%B7%9F%E8%B8%AA%E5%BE%AE%E5%88%86%E5%99%A8/IMG-%E8%B7%9F%E8%B8%AA%E5%BE%AE%E5%88%86%E5%99%A8_BA21BB5AD5C03CA1A07E27D7026EB2FF.png" srcset="/img/loading.gif" lazyload alt="IMG-跟踪微分器_BA21BB5AD5C03CA1A07E27D7026EB2FF"></p>
 <p><img src="https://picgo0010.oss-cn-beijing.aliyuncs.com/img/hexo_blog/G/Obsidian_Mynotes/90-Assets/Images/%E8%B7%9F%E8%B8%AA%E5%BE%AE%E5%88%86%E5%99%A8/IMG-%E8%B7%9F%E8%B8%AA%E5%BE%AE%E5%88%86%E5%99%A8_C8DEB167C079C4F1D6EB6CFE690A7FF4.png" srcset="/img/loading.gif" lazyload alt="IMG-跟踪微分器_C8DEB167C079C4F1D6EB6CFE690A7FF4"></p>
@@ -621,9 +624,9 @@ PID 进行控制，即 TD 微分器+PID 控制。</p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E7%AE%97%E6%B3%95/%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/%E7%B2%92%E5%AD%90%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95/">
+                      <a href="/%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86%E5%BA%93/%E7%94%B5%E5%8A%A8%E6%9C%BA%E7%9A%84%E7%9F%A5%E8%AF%86/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">粒子滤波算法</span>
+                        <span class="hidden-mobile">电动机的知识</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -631,8 +634,8 @@ PID 进行控制，即 TD 微分器+PID 控制。</p>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/Qt/Qt%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
-                        <span class="hidden-mobile">Qt多线程</span>
+                      <a href="/%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86%E5%BA%93/Qt%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+                        <span class="hidden-mobile">Qt 多线程</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
