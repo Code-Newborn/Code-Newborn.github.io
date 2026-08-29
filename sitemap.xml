@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.cznewborn.com/%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86%E5%BA%93/Kalman%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D/</loc>
+    
+    <lastmod>2026-08-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.cznewborn.com/%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86%E5%BA%93/Hexo+NexT%EF%BC%88%E6%88%96Fluid%EF%BC%89%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E6%8A%80%E5%B7%A7/</loc>
     
     <lastmod>2026-08-29</lastmod>
@@ -165,15 +174,6 @@
   
   <url>
     <loc>https://www.cznewborn.com/%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86%E5%BA%93/MATLAB-Filter-Designer%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B/</loc>
-    
-    <lastmod>2026-08-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.cznewborn.com/%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86%E5%BA%93/Kalman%E6%BB%A4%E6%B3%A2%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D/</loc>
     
     <lastmod>2026-08-07</lastmod>
     
