@@ -64,3 +64,15 @@ mjx-container[jax="CHTML"][display="true"] {
   text-align: center;
   margin: 1em 0;
 }
+
+/* Fluid 图片与图题间距 */
+.markdown-body > p > img,
+.markdown-body > p > a > img,
+.markdown-body > figure > img,
+.markdown-body > figure > a > img {
+  margin-bottom: 0;
+}
+
+.markdown-body figcaption.image-caption {
+  margin: 1rem auto 2rem;
+}
