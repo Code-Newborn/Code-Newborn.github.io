@@ -2,8 +2,8 @@
    Fluid 正文排版
    ======================================== */
 
-/* 普通正文 */
-.markdown-body > p {
+/* 普通正文：排除图片标题 */
+.markdown-body > p:not(.image-caption) {
   text-indent: 2em;
   line-height: 1.9;
   letter-spacing: 0.03em;
@@ -67,28 +67,51 @@ mjx-container[jax="CHTML"][display="true"] {
 
 
 /* ========================================
-   Fluid 图片 
+   Fluid 图片
    ======================================== */
+
 .markdown-body > p > img,
 .markdown-body > p > a > img,
 .markdown-body > figure > img,
 .markdown-body > figure > a > img {
   display: block;
+
+  /* 图片上方与正文的距离 */
   margin-top: 1.5rem;
+
+  /* 图片底部不额外留白，
+     图片到图题的距离由图题 margin-top 控制 */
   margin-bottom: 0;
 }
 
+
 /* ========================================
    Fluid 图题
+   实际 HTML：
+   <p class="image-caption">...</p>
    ======================================== */
-.markdown-body figcaption.image-caption {
-  margin: 1.2rem auto 2rem;
-  text-align: center;
-  text-indent: 0;
 
+.markdown-body p.image-caption {
+  /* 图题与图片底端的距离 */
+  margin-top: 1.2rem !important;
+
+  /* 图题与后续正文的距离 */
+  margin-bottom: 2rem !important;
+
+  /* 图题不缩进 */
+  text-indent: 0 !important;
+
+  /* 图题居中 */
+  text-align: center !important;
+
+  /* 图题文字样式 */
   font-size: 0.9rem;
   line-height: 1.5;
-  color: #ff0000 !important; /* 亮红色 */
-  background: yellow !important;
-  opacity: 1;
+  letter-spacing: normal;
+
+  /* 亮红色 */
+  color: #ff0000 !important;
+
+  /* 避免 Fluid 默认透明度让红色变淡 */
+  opacity: 1 !important;
 }
