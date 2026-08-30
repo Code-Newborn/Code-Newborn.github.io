@@ -112,50 +112,46 @@ mjx-container[jax="CHTML"][display="true"] {
 
 
 /* ========================================
-   Fluid 表格
-   占满正文宽度 + 自动列宽 + 整体居中
+   Fluid 普通表格
+   只处理正文 Markdown 表格
+   避免影响代码块内部 table
    ======================================== */
 
-.markdown-body table {
-  /* 恢复真正的表格布局 */
+.markdown-body > table {
   display: table !important;
 
-  /* 占满正文宽度 */
   width: 100% !important;
   max-width: 100% !important;
 
-  /* 根据每列实际内容自动计算列宽 */
   table-layout: auto !important;
 
-  /* 整体居中 */
   margin: 1.5em auto !important;
 
-  /* display: table 后不再需要 block 模式的滚动 */
   overflow: visible !important;
 }
 
-/* 覆盖生成 HTML 中的：
-   <col style="width: 53%">
-*/
-.markdown-body table col {
+
+/* 覆盖生成 HTML 中的 col 宽度 */
+.markdown-body > table col {
   width: auto !important;
 }
 
-/* 单元格 */
-.markdown-body table th,
-.markdown-body table td {
+
+/* 普通 Markdown 表格单元格 */
+.markdown-body > table th,
+.markdown-body > table td {
   padding: 0.4em 0.7em !important;
   line-height: 1.6;
   vertical-align: middle;
 
-  /* 正常换行 */
   word-break: normal;
   overflow-wrap: break-word;
 }
 
-/* 表格中的链接 */
-.markdown-body table th a,
-.markdown-body table td a {
+
+/* 普通 Markdown 表格中的链接 */
+.markdown-body > table th a,
+.markdown-body > table td a {
   display: inline;
   margin: 0;
   padding: 0;
@@ -164,82 +160,103 @@ mjx-container[jax="CHTML"][display="true"] {
 
 /* ========================================
    Fluid 代码块
-   移动端：过长代码左右滑动
+   移动端：长代码只在代码块内部左右滑动
+   不撑宽正文
    ======================================== */
 
 @media (max-width: 768px) {
 
   /*
-   * Highlight.js / Hexo 代码块
+   * 正文容器允许内部元素收缩
    *
-   * 常见结构：
+   * min-width: 0 很重要：
+   * 防止长代码的固有宽度把正文容器一起撑开。
+   */
+  .markdown-body {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+
+  /*
+   * Hexo + Highlight.js 代码块外层
    *
-   * <figure class="highlight">
-   *   <table>
-   *     ...
-   *   </table>
-   * </figure>
-   *
-   * 横向滚动放在整个代码块上，
-   * 避免把整个网页撑宽。
+   * 真正的横向滚动容器放在这里。
    */
   .markdown-body figure.highlight {
     display: block !important;
 
-    width: 100%;
-    max-width: 100%;
+    /*
+     * 不使用 width: 100%
+     *
+     * 因为主题如果给 figure 设置了 padding/border，
+     * width: 100% 有可能出现：
+     *
+     * 100% + padding + border > 正文宽度
+     */
+    width: auto !important;
 
+    max-width: 100% !important;
+    min-width: 0 !important;
+
+    box-sizing: border-box !important;
+
+    /*
+     * 防止 figure 默认 margin
+     * 或主题样式造成额外横向宽度
+     */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+    /*
+     * 超长代码在代码块内部滚动
+     */
     overflow-x: auto !important;
     overflow-y: hidden !important;
 
-    /* iOS 滑动体验 */
     -webkit-overflow-scrolling: touch;
 
-    /* 防止横向滑动影响整个页面 */
     overscroll-behavior-x: contain;
   }
 
 
   /*
-   * 关键：
+   * 代码块内部用于：
    *
-   * 前面的：
+   * 行号 | 代码
    *
-   * .markdown-body table {
-   *   width: 100%;
-   * }
+   * 的 table。
    *
-   * 也会命中代码块内部的 table。
-   *
-   * 所以这里必须单独覆盖。
+   * 不再使用 width: max-content。
    */
   .markdown-body figure.highlight > table {
     display: table !important;
 
-    /* 代码有多长，table 就允许有多宽 */
-    width: max-content !important;
-
-    /* 短代码仍至少占满代码框 */
+    /*
+     * 短代码时至少铺满代码框
+     */
+    width: auto !important;
     min-width: 100% !important;
 
-    /* 不限制为正文宽度 */
+    /*
+     * 长代码时允许 table 自然变宽，
+     * 然后由 figure.highlight 提供滚动。
+     */
     max-width: none !important;
 
-    /* 取消普通 Markdown 表格的上下间距 */
     margin: 0 !important;
 
-    /* 根据代码实际长度计算宽度 */
     table-layout: auto !important;
 
     overflow: visible !important;
+
+    border-collapse: collapse;
   }
 
 
   /*
-   * 恢复代码块内部单元格。
-   *
-   * 避免前面的普通表格 td 样式
-   * 给代码行号和代码区域增加 padding。
+   * 取消普通表格规则对代码 table
+   * 可能产生的影响。
    */
   .markdown-body figure.highlight > table th,
   .markdown-body figure.highlight > table td {
@@ -247,43 +264,90 @@ mjx-container[jax="CHTML"][display="true"] {
 
     word-break: normal !important;
     overflow-wrap: normal !important;
+
+    /*
+     * 不允许 table 单元格为了适配屏幕
+     * 而折断代码。
+     */
+    white-space: nowrap !important;
   }
 
 
   /*
-   * 代码绝不自动折行。
+   * gutter = 行号区域
    *
-   * 超过屏幕宽度后，
-   * 由 figure.highlight 横向滚动。
+   * 不允许行号列被压缩或者换行。
+   */
+  .markdown-body figure.highlight .gutter {
+    width: 1% !important;
+    white-space: nowrap !important;
+  }
+
+
+  /*
+   * code = 真正的代码区域
+   *
+   * 允许它按照代码实际长度增长。
+   */
+  .markdown-body figure.highlight .code {
+    width: auto !important;
+    min-width: 0 !important;
+  }
+
+
+  /*
+   * 最关键：
+   *
+   * 代码保持原始行，
+   * 绝对不要自动折行。
    */
   .markdown-body figure.highlight pre,
-  .markdown-body figure.highlight code {
+  .markdown-body figure.highlight code,
+  .markdown-body figure.highlight .line {
     white-space: pre !important;
 
     word-break: normal !important;
     overflow-wrap: normal !important;
+    word-wrap: normal !important;
   }
 
 
   /*
-   * Prism.js / 普通 Markdown pre
-   *
-   * 用于兼容不生成 figure.highlight 的情况。
+   * 防止 Fluid / Highlight.js
+   * 把滚动放到内部 pre 上，
+   * 我们统一让 figure.highlight 负责横向滚动。
    */
+  .markdown-body figure.highlight pre {
+    width: auto !important;
+    max-width: none !important;
+
+    overflow: visible !important;
+  }
+
+
+  /* ========================================
+     普通 pre / Prism.js 兼容
+     ======================================== */
+
   .markdown-body > pre,
   .markdown-body pre[class*="language-"] {
-    display: block;
+    display: block !important;
 
-    width: 100%;
-    max-width: 100%;
+    width: auto !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+
+    box-sizing: border-box !important;
 
     overflow-x: auto !important;
-    overflow-y: hidden;
+    overflow-y: hidden !important;
 
     white-space: pre !important;
 
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+
     -webkit-overflow-scrolling: touch;
-    overscroll-behavior-x: contain;
   }
 
 
