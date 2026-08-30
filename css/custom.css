@@ -88,6 +88,6 @@ mjx-container[jax="CHTML"][display="true"] {
 
   font-size: 0.9rem;
   line-height: 1.5;
-  color: #ff0000; /* 亮红色 */
+  color: #ff0000 !important; /* 亮红色 */
   opacity: 1;
 }
