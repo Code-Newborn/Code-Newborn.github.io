@@ -93,10 +93,10 @@ mjx-container[jax="CHTML"][display="true"] {
 
 .markdown-body p.image-caption {
   /* 图题与图片底端的距离 */
-  margin-top: 0.8rem !important;
+  margin-top: 0.2rem !important;
 
   /* 图题与后续正文的距离 */
-  margin-bottom: 0.8rem !important;
+  margin-bottom: 0.5rem !important;
 
   /* 图题不缩进 */
   text-indent: 0 !important;
