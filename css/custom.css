@@ -111,14 +111,16 @@ mjx-container[jax="CHTML"][display="true"] {
 }
 
 /* ========================================
-   Fluid 表格：占满正文，列宽按内容自动分配
+   Fluid 表格：占满正文、自动列宽、整体居中
    ======================================== */
 
 .markdown-body table {
   width: 100% !important;
   max-width: 100%;
   table-layout: auto !important;
-  margin: 1.5em 0;
+
+  /* 表格整体居中 */
+  margin: 1.5em auto;
 }
 
 /* 覆盖生成 HTML 中 col 的固定百分比宽度 */
@@ -126,15 +128,19 @@ mjx-container[jax="CHTML"][display="true"] {
   width: auto !important;
 }
 
-/* 单元格 */
+/* 单元格样式 */
 .markdown-body table th,
 .markdown-body table td {
   padding: 0.4em 0.7em !important;
   line-height: 1.6;
   vertical-align: middle;
+
+  /* 必要时允许内容换行 */
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
-/* 表格中的链接 */
+/* 表格中的链接不额外占空间 */
 .markdown-body table th a,
 .markdown-body table td a {
   display: inline;
