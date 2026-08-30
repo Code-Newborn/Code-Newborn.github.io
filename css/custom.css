@@ -110,6 +110,7 @@ mjx-container[jax="CHTML"][display="true"] {
   letter-spacing: normal;
 }
 
+
 /* ========================================
    Fluid 表格
    占满正文宽度 + 自动列宽 + 整体居中
@@ -158,4 +159,139 @@ mjx-container[jax="CHTML"][display="true"] {
   display: inline;
   margin: 0;
   padding: 0;
+}
+
+
+/* ========================================
+   Fluid 代码块
+   移动端：过长代码左右滑动
+   ======================================== */
+
+@media (max-width: 768px) {
+
+  /*
+   * Highlight.js / Hexo 代码块
+   *
+   * 常见结构：
+   *
+   * <figure class="highlight">
+   *   <table>
+   *     ...
+   *   </table>
+   * </figure>
+   *
+   * 横向滚动放在整个代码块上，
+   * 避免把整个网页撑宽。
+   */
+  .markdown-body figure.highlight {
+    display: block !important;
+
+    width: 100%;
+    max-width: 100%;
+
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+
+    /* iOS 滑动体验 */
+    -webkit-overflow-scrolling: touch;
+
+    /* 防止横向滑动影响整个页面 */
+    overscroll-behavior-x: contain;
+  }
+
+
+  /*
+   * 关键：
+   *
+   * 前面的：
+   *
+   * .markdown-body table {
+   *   width: 100%;
+   * }
+   *
+   * 也会命中代码块内部的 table。
+   *
+   * 所以这里必须单独覆盖。
+   */
+  .markdown-body figure.highlight > table {
+    display: table !important;
+
+    /* 代码有多长，table 就允许有多宽 */
+    width: max-content !important;
+
+    /* 短代码仍至少占满代码框 */
+    min-width: 100% !important;
+
+    /* 不限制为正文宽度 */
+    max-width: none !important;
+
+    /* 取消普通 Markdown 表格的上下间距 */
+    margin: 0 !important;
+
+    /* 根据代码实际长度计算宽度 */
+    table-layout: auto !important;
+
+    overflow: visible !important;
+  }
+
+
+  /*
+   * 恢复代码块内部单元格。
+   *
+   * 避免前面的普通表格 td 样式
+   * 给代码行号和代码区域增加 padding。
+   */
+  .markdown-body figure.highlight > table th,
+  .markdown-body figure.highlight > table td {
+    padding: 0 !important;
+
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+  }
+
+
+  /*
+   * 代码绝不自动折行。
+   *
+   * 超过屏幕宽度后，
+   * 由 figure.highlight 横向滚动。
+   */
+  .markdown-body figure.highlight pre,
+  .markdown-body figure.highlight code {
+    white-space: pre !important;
+
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+  }
+
+
+  /*
+   * Prism.js / 普通 Markdown pre
+   *
+   * 用于兼容不生成 figure.highlight 的情况。
+   */
+  .markdown-body > pre,
+  .markdown-body pre[class*="language-"] {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+
+    overflow-x: auto !important;
+    overflow-y: hidden;
+
+    white-space: pre !important;
+
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+
+  .markdown-body > pre code,
+  .markdown-body pre[class*="language-"] code {
+    white-space: pre !important;
+
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+  }
 }
