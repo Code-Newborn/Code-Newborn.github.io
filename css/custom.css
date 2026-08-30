@@ -65,7 +65,10 @@ mjx-container[jax="CHTML"][display="true"] {
   margin: 1em 0;
 }
 
-/* Fluid 图片与图题间距 */
+
+/* ========================================
+   Fluid 图片与图题间距 
+   ======================================== */
 .markdown-body > p > img,
 .markdown-body > p > a > img,
 .markdown-body > figure > img,
@@ -75,4 +78,8 @@ mjx-container[jax="CHTML"][display="true"] {
 
 .markdown-body figcaption.image-caption {
   margin: 1rem auto 2rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  opacity: 0.8;
+  text-align: center;
 }
