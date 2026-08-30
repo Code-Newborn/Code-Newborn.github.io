@@ -2,13 +2,11 @@
    Fluid 正文排版
    ======================================== */
 
-/* 普通正文：排除图片标题 */
 .markdown-body > p:not(.image-caption) {
   text-indent: 2em;
   line-height: 1.9;
   letter-spacing: 0.03em;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
   text-align: justify;
 }
 
@@ -49,9 +47,8 @@
   margin-bottom: 0;
 }
 
-.markdown-body li {
+.markdown-body li + li {
   margin-top: 0.3em;
-  margin-bottom: 0.3em;
 }
 
 
@@ -60,51 +57,35 @@
    ======================================== */
 
 mjx-container[jax="CHTML"][display="true"] {
-  display: block;
-  text-align: center;
   margin: 1em 0;
 }
 
 
 /* ========================================
    Fluid 图片
+   Fluid 已负责 display:block、顶部距离和居中
    ======================================== */
 
 .markdown-body > p > img,
 .markdown-body > p > a > img,
 .markdown-body > figure > img,
 .markdown-body > figure > a > img {
-  display: block;
-
-  /* 图片上方与正文的距离 */
-  margin-top: 1.5rem;
-
-  /* 图片底部不额外留白，
-     图片到图题的距离由图题 margin-top 控制 */
   margin-bottom: 0;
 }
 
 
 /* ========================================
    Fluid 图题
-   实际 HTML：
-   <p class="image-caption">...</p>
+   同时兼容 p / figcaption
    ======================================== */
 
-.markdown-body p.image-caption {
-  /* 图题与图片底端的距离 */
+.markdown-body p.image-caption,
+.markdown-body figcaption.image-caption {
   margin-top: 0.2rem !important;
-
-  /* 图题与后续正文的距离 */
   margin-bottom: 0.2rem !important;
 
-  /* 图题不缩进 */
-  text-indent: 0 !important;
-
-  /* 图题居中 */
   text-align: center !important;
 
-  /* 图题文字样式 */
   font-size: 0.9rem;
   line-height: 1.5;
   letter-spacing: normal;
@@ -113,8 +94,6 @@ mjx-container[jax="CHTML"][display="true"] {
 
 /* ========================================
    Fluid 普通表格
-   只处理正文 Markdown 表格
-   避免影响代码块内部 table
    ======================================== */
 
 .markdown-body > table {
@@ -123,21 +102,16 @@ mjx-container[jax="CHTML"][display="true"] {
   width: 100% !important;
   max-width: 100% !important;
 
-  table-layout: auto !important;
-
   margin: 1.5em auto !important;
-
-  overflow: visible !important;
 }
 
 
-/* 覆盖生成 HTML 中的 col 宽度 */
+/* 仅当生成 HTML 中存在 <col style="width: ..."> 时保留 */
 .markdown-body > table col {
   width: auto !important;
 }
 
 
-/* 普通 Markdown 表格单元格 */
 .markdown-body > table th,
 .markdown-body > table td {
   padding: 0.4em 0.7em !important;
@@ -149,213 +123,26 @@ mjx-container[jax="CHTML"][display="true"] {
 }
 
 
-/* 普通 Markdown 表格中的链接 */
-.markdown-body > table th a,
-.markdown-body > table td a {
-  display: inline;
-  margin: 0;
-  padding: 0;
-}
-
-
 /* ========================================
-   Fluid 代码块
-   移动端：长代码只在代码块内部左右滑动
-   不撑宽正文
+   Fluid Highlight.js 代码块
+   移动端横向滑动
    ======================================== */
 
 @media (max-width: 768px) {
 
-  /*
-   * 正文容器允许内部元素收缩
-   *
-   * min-width: 0 很重要：
-   * 防止长代码的固有宽度把正文容器一起撑开。
-   */
-  .markdown-body {
-    min-width: 0 !important;
-    max-width: 100% !important;
-  }
-
-
-  /*
-   * Hexo + Highlight.js 代码块外层
-   *
-   * 真正的横向滚动容器放在这里。
-   */
   .markdown-body figure.highlight {
-    display: block !important;
-
-    /*
-     * 不使用 width: 100%
-     *
-     * 因为主题如果给 figure 设置了 padding/border，
-     * width: 100% 有可能出现：
-     *
-     * 100% + padding + border > 正文宽度
-     */
-    width: auto !important;
-
     max-width: 100% !important;
-    min-width: 0 !important;
-
-    box-sizing: border-box !important;
-
-    /*
-     * 防止 figure 默认 margin
-     * 或主题样式造成额外横向宽度
-     */
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-
-    /*
-     * 超长代码在代码块内部滚动
-     */
     overflow-x: auto !important;
-    overflow-y: hidden !important;
-
-    -webkit-overflow-scrolling: touch;
-
+    overflow-y: hidden;
     overscroll-behavior-x: contain;
   }
 
-
-  /*
-   * 代码块内部用于：
-   *
-   * 行号 | 代码
-   *
-   * 的 table。
-   *
-   * 不再使用 width: max-content。
-   */
   .markdown-body figure.highlight > table {
-    display: table !important;
-
-    /*
-     * 短代码时至少铺满代码框
-     */
-    width: auto !important;
     min-width: 100% !important;
-
-    /*
-     * 长代码时允许 table 自然变宽，
-     * 然后由 figure.highlight 提供滚动。
-     */
     max-width: none !important;
-
-    margin: 0 !important;
-
-    table-layout: auto !important;
-
-    overflow: visible !important;
-
-    border-collapse: collapse;
   }
 
-
-  /*
-   * 取消普通表格规则对代码 table
-   * 可能产生的影响。
-   */
-  .markdown-body figure.highlight > table th,
-  .markdown-body figure.highlight > table td {
-    padding: 0 !important;
-
-    word-break: normal !important;
-    overflow-wrap: normal !important;
-
-    /*
-     * 不允许 table 单元格为了适配屏幕
-     * 而折断代码。
-     */
-    white-space: nowrap !important;
-  }
-
-
-  /*
-   * gutter = 行号区域
-   *
-   * 不允许行号列被压缩或者换行。
-   */
-  .markdown-body figure.highlight .gutter {
-    width: 1% !important;
-    white-space: nowrap !important;
-  }
-
-
-  /*
-   * code = 真正的代码区域
-   *
-   * 允许它按照代码实际长度增长。
-   */
-  .markdown-body figure.highlight .code {
-    width: auto !important;
-    min-width: 0 !important;
-  }
-
-
-  /*
-   * 最关键：
-   *
-   * 代码保持原始行，
-   * 绝对不要自动折行。
-   */
-  .markdown-body figure.highlight pre,
-  .markdown-body figure.highlight code,
-  .markdown-body figure.highlight .line {
-    white-space: pre !important;
-
-    word-break: normal !important;
-    overflow-wrap: normal !important;
-    word-wrap: normal !important;
-  }
-
-
-  /*
-   * 防止 Fluid / Highlight.js
-   * 把滚动放到内部 pre 上，
-   * 我们统一让 figure.highlight 负责横向滚动。
-   */
   .markdown-body figure.highlight pre {
-    width: auto !important;
-    max-width: none !important;
-
-    overflow: visible !important;
-  }
-
-
-  /* ========================================
-     普通 pre / Prism.js 兼容
-     ======================================== */
-
-  .markdown-body > pre,
-  .markdown-body pre[class*="language-"] {
-    display: block !important;
-
-    width: auto !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-
-    box-sizing: border-box !important;
-
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-
     white-space: pre !important;
-
-    word-break: normal !important;
-    overflow-wrap: normal !important;
-
-    -webkit-overflow-scrolling: touch;
-  }
-
-
-  .markdown-body > pre code,
-  .markdown-body pre[class*="language-"] code {
-    white-space: pre !important;
-
-    word-break: normal !important;
-    overflow-wrap: normal !important;
   }
 }
