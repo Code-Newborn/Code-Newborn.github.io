@@ -111,22 +111,22 @@ mjx-container[jax="CHTML"][display="true"] {
 }
 
 /* ========================================
-   Fluid 表格
+   Fluid 表格：占满正文，列宽按内容自动分配
    ======================================== */
 
 .markdown-body table {
   width: 100% !important;
   max-width: 100%;
   table-layout: auto !important;
-  margin: 1.5em auto;
+  margin: 1.5em 0;
 }
 
-/* 覆盖 Markdown 转换器生成的内联列宽 */
+/* 覆盖生成 HTML 中 col 的固定百分比宽度 */
 .markdown-body table col {
   width: auto !important;
 }
 
-/* 单元格紧凑一些 */
+/* 单元格 */
 .markdown-body table th,
 .markdown-body table td {
   padding: 0.4em 0.7em !important;
