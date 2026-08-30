@@ -85,7 +85,9 @@ mjx-container[jax="CHTML"][display="true"] {
   margin: 1.2rem auto 2rem;
   text-align: center;
   text-indent: 0;
+
   font-size: 0.9rem;
   line-height: 1.5;
-  opacity: 0.75;
+  color: #ff0000; /* 亮红色 */
+  opacity: 1;
 }
