@@ -67,19 +67,25 @@ mjx-container[jax="CHTML"][display="true"] {
 
 
 /* ========================================
-   Fluid 图片与图题间距 
+   Fluid 图片 
    ======================================== */
 .markdown-body > p > img,
 .markdown-body > p > a > img,
 .markdown-body > figure > img,
 .markdown-body > figure > a > img {
+  display: block;
+  margin-top: 1.5rem;
   margin-bottom: 0;
 }
 
+/* ========================================
+   Fluid 图题
+   ======================================== */
 .markdown-body figcaption.image-caption {
-  margin: 1rem auto 2rem;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  opacity: 0.8;
+  margin: 1.2rem auto 2rem;
   text-align: center;
+  text-indent: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  opacity: 0.75;
 }
