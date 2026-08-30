@@ -6285,7 +6285,7 @@ tab 键并无效果，使用全角空格缩进效果如下：（这一问题貌�
 <p><b>Fluid 主题</b>下使用<code>&amp;emsp;</code>即可。</p>
 <h2 id="为文章在网站上显示添加-read-more-按钮next">4.4
 为文章在网站上显示添加 Read More 按钮（NexT）</h2>
-<p>在文章中任意位置插入<code> HEXOMATH_1788055563086_31 </code>，在此之后的内容将被折叠隐藏。</p>
+<p>在文章中任意位置插入<code> HEXOMATH_1788055789218_31 </code>，在此之后的内容将被折叠隐藏。</p>
 <h2 id="数学公式显示nextfluid">4.5 数学公式显示（NexT，Fluid）</h2>
 <p>参考 NexT 主题官方教程<a href="https://theme-next.js.org/docs/third-party-services/math-equations.html?highlight=math+equation">Math
 Equations | NexT (theme-next.js.org)</a>，首先将站点配置文件中的 mathjax
