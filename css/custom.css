@@ -1,43 +1,22 @@
-/*INFO 段落行间距设置*/
-.post-content p {
-  letter-spacing:2px; /*文字间距为*/
-  line-height: 2.5; /*行间距为字体大小的2.5倍*/
-  margin-top: 0px; /*段前距离*/
-  margin-bottom: 0px; /*段后距离*/
-  text-align: justify; /*文本对齐方式*/
-}
+/* ========================================
+   Fluid 正文排版
+   ======================================== */
 
-/*INFO 下划线设置*/
-.post-content hr {
-  height: 1px; /*将高度设为0*/
-  margin: 10px 0; /*设置间距*/
-}
-
-/*INFO 内容里列表*/
-.post-content li {
-  margin-top: 15px;
-  margin-bottom: 15px;
-}
-
-/*INFO 内容里列表*/
-.post-content ol {
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-
-.mjx-container[jax="CHTML"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
-
-/* 正文首行缩进 */
+/* 普通正文 */
 .markdown-body > p {
   text-indent: 2em;
   line-height: 1.9;
+  letter-spacing: 0.03em;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: justify;
 }
 
-/* 正文标题 */
+
+/* ========================================
+   正文标题
+   ======================================== */
+
 .markdown-body h1,
 .markdown-body h2,
 .markdown-body h3,
@@ -48,4 +27,40 @@
   line-height: 1.4;
   margin-top: 1.8em;
   margin-bottom: 0.8em;
+}
+
+
+/* ========================================
+   分割线
+   ======================================== */
+
+.markdown-body hr {
+  margin: 1.5em 0;
+}
+
+
+/* ========================================
+   列表
+   ======================================== */
+
+.markdown-body ul,
+.markdown-body ol {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li {
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+}
+
+
+/* ========================================
+   MathJax 块级公式
+   ======================================== */
+
+mjx-container[jax="CHTML"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
 }
