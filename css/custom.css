@@ -31,7 +31,21 @@
   margin: 1em 0;
 }
 
-/* Fluid：仅普通正文段落首行缩进 2 个汉字 */
+/* 正文首行缩进 */
 .markdown-body > p {
   text-indent: 2em;
+  line-height: 1.9;
+}
+
+/* 正文标题 */
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  color: #245b8a;
+  line-height: 1.4;
+  margin-top: 1.8em;
+  margin-bottom: 0.8em;
 }
