@@ -109,3 +109,28 @@ mjx-container[jax="CHTML"][display="true"] {
   line-height: 1.5;
   letter-spacing: normal;
 }
+
+/* ========================================
+   Fluid 表格：紧凑排版
+   ======================================== */
+
+.markdown-body table {
+  width: auto !important;
+  max-width: 100%;
+  table-layout: auto;
+  margin: 1.5em auto;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 0.35em 0.65em !important;
+  line-height: 1.6;
+  vertical-align: middle;
+}
+
+.markdown-body table td a,
+.markdown-body table th a {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
